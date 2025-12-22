@@ -2,6 +2,8 @@
 
 A fun, interactive quiz application for school kids (ages 8-16) built with **ZealPHP** framework on **OpenSwoole**. Features animated mascots that react to answers with funny dialogs and topic-themed backgrounds.
 
+**Live Demo:** https://funquiz.zeal.ninja
+
 ## Features
 
 - **20 Quiz Topics**: Indian History, Science, Space, Sports, Mythology, and more
