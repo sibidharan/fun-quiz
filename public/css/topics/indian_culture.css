@@ -1,0 +1,699 @@
+/* ============================================
+   INDIAN CULTURE THEME - CINEMATIC PREMIUM
+   Diwali Festival Magic, Diyas, Rangoli, Celebration
+   Festive Orange/Gold with Mystical Sparkles
+   ============================================ */
+
+/* === LAYERED BACKGROUND - FESTIVE SUNSET === */
+.theme-indian_culture .scene-background {
+    background:
+        /* Golden sunset glow layers */
+        radial-gradient(ellipse 80% 60% at 50% 20%, rgba(255, 193, 7, 0.35) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 30% 35%, rgba(255, 152, 0, 0.25) 0%, transparent 45%),
+        radial-gradient(ellipse 65% 45% at 70% 40%, rgba(233, 30, 99, 0.2) 0%, transparent 48%),
+        radial-gradient(ellipse 50% 35% at 50% 80%, rgba(156, 39, 176, 0.18) 0%, transparent 42%),
+        /* Rich gradient base */
+        linear-gradient(180deg,
+            #FF6F00 0%,
+            #FF8F00 10%,
+            #FFA000 20%,
+            #FFB300 30%,
+            #FFCA28 40%,
+            #FFD54F 50%,
+            #FFE082 60%,
+            #FFECB3 70%,
+            #FCE4EC 80%,
+            #F8BBD9 90%,
+            #EC407A 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === RANGOLI MANDALA BASE === */
+.theme-indian_culture .scene-background::before {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 220px;
+    background:
+        /* Center dot */
+        radial-gradient(circle at 50% 50%, #E91E63 0%, #E91E63 4%, transparent 5%),
+        /* Petal ring 1 */
+        radial-gradient(ellipse 16% 28% at 50% 15%, #FFEB3B 0%, #FFC107 85%, transparent 86%),
+        radial-gradient(ellipse 28% 16% at 85% 50%, #FFEB3B 0%, #FFC107 85%, transparent 86%),
+        radial-gradient(ellipse 16% 28% at 50% 85%, #FFEB3B 0%, #FFC107 85%, transparent 86%),
+        radial-gradient(ellipse 28% 16% at 15% 50%, #FFEB3B 0%, #FFC107 85%, transparent 86%),
+        /* Petal ring 2 */
+        radial-gradient(ellipse 13% 22% at 25% 25%, #FF5722 0%, #E64A19 85%, transparent 86%),
+        radial-gradient(ellipse 13% 22% at 75% 25%, #FF5722 0%, #E64A19 85%, transparent 86%),
+        radial-gradient(ellipse 13% 22% at 75% 75%, #FF5722 0%, #E64A19 85%, transparent 86%),
+        radial-gradient(ellipse 13% 22% at 25% 75%, #FF5722 0%, #E64A19 85%, transparent 86%),
+        /* Decorative rings */
+        radial-gradient(circle at 50% 50%, transparent 12%, #9C27B0 13%, #9C27B0 16%, transparent 17%),
+        radial-gradient(circle at 50% 50%, transparent 22%, #4CAF50 23%, #4CAF50 26%, transparent 27%),
+        radial-gradient(circle at 50% 50%, transparent 32%, #2196F3 33%, #2196F3 36%, transparent 37%);
+    animation: culture-rangoli-pulse 4.7s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.6));
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes culture-rangoli-pulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.6)) brightness(1);
+    }
+    25% {
+        transform: translateX(-50%) scale(1.05) rotate(3deg);
+        filter: drop-shadow(0 0 30px rgba(233, 30, 99, 0.7)) brightness(1.12);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.08) rotate(0deg);
+        filter: drop-shadow(0 0 35px rgba(156, 39, 176, 0.75)) brightness(1.18);
+    }
+    75% {
+        transform: translateX(-50%) scale(1.05) rotate(-3deg);
+        filter: drop-shadow(0 0 28px rgba(255, 152, 0, 0.65)) brightness(1.1);
+    }
+}
+
+/* === FLOATING DIYA PARTICLES === */
+.theme-indian_culture .scene-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse 5px 8px at 12% 18%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 4px 7px at 88% 22%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 6px 9px at 25% 45%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 4px 7px at 75% 48%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 5px 8px at 15% 72%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 5px 8px at 85% 75%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 4px 7px at 45% 12%, #FFD700 0%, #FF9800 70%, transparent 100%),
+        radial-gradient(ellipse 5px 8px at 55% 88%, #FFD700 0%, #FF9800 70%, transparent 100%);
+    animation: culture-diya-twinkle 2.3s ease-in-out infinite;
+    filter: blur(0.8px);
+    pointer-events: none;
+    z-index: 15;
+}
+
+@keyframes culture-diya-twinkle {
+    0%, 100% {
+        opacity: 0.6;
+        filter: blur(0.8px) brightness(1);
+    }
+    50% {
+        opacity: 1;
+        filter: blur(0.3px) brightness(1.4);
+    }
+}
+
+/* === ELEMENT 1: ORNATE DIYA (OIL LAMP) === */
+.theme-indian_culture .elem-1 {
+    position: absolute;
+    bottom: 35%;
+    left: 15%;
+    width: 60px;
+    height: 70px;
+    z-index: 12;
+    animation: culture-diya-float 6.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes culture-diya-float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    33% {
+        transform: translateY(-12px) scale(1.04);
+    }
+    66% {
+        transform: translateY(-6px) scale(1.02);
+    }
+}
+
+.theme-indian_culture .elem-1::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 28px;
+    background:
+        linear-gradient(180deg,
+            #FFD700 0%,
+            #FFC107 15%,
+            #FF9800 35%,
+            #FF6F00 60%,
+            #8B4513 85%,
+            #654321 100%);
+    border-radius: 50% 50% 40% 40%;
+    box-shadow:
+        0 5px 15px rgba(139, 69, 19, 0.6),
+        inset 0 -6px 12px rgba(255, 215, 0, 0.35),
+        0 0 25px rgba(255, 193, 7, 0.5);
+}
+
+.theme-indian_culture .elem-1::after {
+    content: '';
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 32px;
+    background:
+        radial-gradient(ellipse at 50% 85%, #FFF 0%, transparent 25%),
+        linear-gradient(180deg,
+            #FFEB3B 0%,
+            #FFC107 30%,
+            #FF9800 55%,
+            #FF5722 80%,
+            #E64A19 100%);
+    border-radius: 50% 50% 50% 50% / 75% 75% 25% 25%;
+    animation: culture-flame-dance 0.25s ease-in-out infinite alternate;
+    box-shadow:
+        0 0 25px rgba(255, 235, 59, 0.95),
+        0 0 45px rgba(255, 152, 0, 0.7),
+        0 0 65px rgba(255, 87, 34, 0.4);
+}
+
+@keyframes culture-flame-dance {
+    0% {
+        transform: translateX(-50%) scaleX(1) scaleY(1) skewX(0deg);
+        filter: brightness(1) hue-rotate(0deg);
+    }
+    50% {
+        transform: translateX(-48%) scaleX(0.88) scaleY(1.12) skewX(4deg);
+        filter: brightness(1.15) hue-rotate(5deg);
+    }
+    100% {
+        transform: translateX(-52%) scaleX(0.82) scaleY(1.18) skewX(-4deg);
+        filter: brightness(1.25) hue-rotate(-5deg);
+    }
+}
+
+/* === ELEMENT 2: FLOWER GARLAND === */
+.theme-indian_culture .elem-2 {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 80px;
+    z-index: 11;
+    animation: culture-garland-sway 5.3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes culture-garland-sway {
+    0%, 100% {
+        transform: translateX(-50%) scaleY(1);
+    }
+    25% {
+        transform: translateX(-50%) scaleY(1.08);
+    }
+    75% {
+        transform: translateX(-50%) scaleY(0.98);
+    }
+}
+
+.theme-indian_culture .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Flowers */
+        radial-gradient(circle 10px at 10% 40%, #FF9800 0%, #FF5722 100%),
+        radial-gradient(circle 9px at 15% 35%, #FFEB3B 0%, #FFC107 100%),
+        radial-gradient(circle 11px at 25% 42%, #E91E63 0%, #C2185B 100%),
+        radial-gradient(circle 10px at 35% 38%, #9C27B0 0%, #7B1FA2 100%),
+        radial-gradient(circle 9px at 45% 40%, #FF9800 0%, #FF5722 100%),
+        radial-gradient(circle 11px at 55% 37%, #FFEB3B 0%, #FFC107 100%),
+        radial-gradient(circle 10px at 65% 41%, #E91E63 0%, #C2185B 100%),
+        radial-gradient(circle 9px at 75% 39%, #9C27B0 0%, #7B1FA2 100%),
+        radial-gradient(circle 10px at 85% 40%, #FF9800 0%, #FF5722 100%),
+        radial-gradient(circle 11px at 90% 36%, #FFEB3B 0%, #FFC107 100%),
+        /* String/rope */
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(139, 69, 19, 0.3) 5%,
+            rgba(101, 67, 33, 0.4) 50%,
+            rgba(139, 69, 19, 0.3) 95%,
+            transparent 100%) no-repeat 0% 45% / 100% 6px;
+    border-radius: 0 0 50% 50%;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+}
+
+.theme-indian_culture .elem-2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Flower petals detail */
+        radial-gradient(circle 4px at 10% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+        radial-gradient(circle 4px at 25% 42%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+        radial-gradient(circle 4px at 45% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+        radial-gradient(circle 4px at 65% 41%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+        radial-gradient(circle 4px at 85% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 100%);
+    animation: culture-garland-glow 3.7s ease-in-out infinite;
+}
+
+@keyframes culture-garland-glow {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+    }
+}
+
+/* === ELEMENT 3: SPARKLE BURST === */
+.theme-indian_culture .elem-3 {
+    position: absolute;
+    top: 20%;
+    right: 18%;
+    width: 90px;
+    height: 90px;
+    z-index: 13;
+    pointer-events: none;
+}
+
+.theme-indian_culture .elem-3::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background:
+        radial-gradient(circle, #FFF 0%, #FFEB3B 40%, #FF9800 70%, transparent 75%);
+    border-radius: 50%;
+    animation: culture-sparkle-burst 3.2s ease-out infinite;
+    box-shadow:
+        0 0 25px rgba(255, 235, 59, 0.9),
+        0 0 50px rgba(255, 152, 0, 0.6);
+}
+
+@keyframes culture-sparkle-burst {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.5);
+    }
+}
+
+.theme-indian_culture .elem-3::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background:
+        linear-gradient(0deg, transparent 48%, #FF5722 49%, #FF5722 51%, transparent 52%),
+        linear-gradient(45deg, transparent 48%, #E91E63 49%, #E91E63 51%, transparent 52%),
+        linear-gradient(90deg, transparent 48%, #9C27B0 49%, #9C27B0 51%, transparent 52%),
+        linear-gradient(135deg, transparent 48%, #FFD700 49%, #FFD700 51%, transparent 52%),
+        radial-gradient(circle 4px at 15% 15%, #FFD700 0%, transparent 100%),
+        radial-gradient(circle 4px at 85% 15%, #FFD700 0%, transparent 100%),
+        radial-gradient(circle 4px at 85% 85%, #FFD700 0%, transparent 100%),
+        radial-gradient(circle 4px at 15% 85%, #FFD700 0%, transparent 100%);
+    animation: culture-sparkle-rays 3.2s ease-out infinite;
+}
+
+@keyframes culture-sparkle-rays {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(60deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2) rotate(120deg);
+    }
+}
+
+/* === ELEMENT 4: LOTUS FLOWER === */
+.theme-indian_culture .elem-4 {
+    position: absolute;
+    bottom: 40%;
+    right: 25%;
+    width: 65px;
+    height: 50px;
+    z-index: 9;
+    animation: culture-lotus-bloom 7.3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes culture-lotus-bloom {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1) drop-shadow(0 0 8px rgba(233, 30, 99, 0.3));
+    }
+    25% {
+        transform: scale(1.08) rotate(-3deg);
+        filter: brightness(1.1) drop-shadow(0 0 15px rgba(233, 30, 99, 0.4));
+    }
+    50% {
+        transform: scale(1.15) rotate(3deg);
+        filter: brightness(1.2) drop-shadow(0 0 22px rgba(233, 30, 99, 0.5));
+    }
+    75% {
+        transform: scale(1.1) rotate(-2deg);
+        filter: brightness(1.12) drop-shadow(0 0 18px rgba(233, 30, 99, 0.42));
+    }
+}
+
+.theme-indian_culture .elem-4::before {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background:
+        /* Back petals */
+        radial-gradient(ellipse 12px 24px at 10% 100%, #F8BBD9 0%, #F48FB1 85%, transparent 86%),
+        radial-gradient(ellipse 12px 24px at 25% 100%, #FCE4EC 0%, #F8BBD9 85%, transparent 86%),
+        radial-gradient(ellipse 12px 24px at 50% 100%, #F8BBD9 0%, #F48FB1 85%, transparent 86%),
+        radial-gradient(ellipse 12px 24px at 75% 100%, #FCE4EC 0%, #F8BBD9 85%, transparent 86%),
+        radial-gradient(ellipse 12px 24px at 90% 100%, #F8BBD9 0%, #F48FB1 85%, transparent 86%);
+}
+
+.theme-indian_culture .elem-4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 90%;
+    background:
+        /* Center */
+        radial-gradient(ellipse 10px 10px at 50% 92%, #FFEB3B 0%, #FFC107 80%, transparent 81%),
+        /* Front petals */
+        radial-gradient(ellipse 10px 22px at 20% 100%, #FCE4EC 0%, #F8BBD9 92%, transparent 93%),
+        radial-gradient(ellipse 12px 26px at 50% 100%, #FFF 0%, #FCE4EC 88%, transparent 89%),
+        radial-gradient(ellipse 10px 22px at 80% 100%, #FCE4EC 0%, #F8BBD9 92%, transparent 93%);
+    filter: drop-shadow(0 3px 8px rgba(233, 30, 99, 0.35));
+}
+
+/* === ELEMENT 5: PEACOCK === */
+.theme-indian_culture .elem-5 {
+    position: absolute;
+    top: 35%;
+    left: 8%;
+    width: 85px;
+    height: 90px;
+    z-index: 10;
+    animation: culture-peacock-dance 8.7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes culture-peacock-dance {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    20% {
+        transform: translate(-8px, -5px) scale(1.02);
+    }
+    40% {
+        transform: translate(5px, -8px) scale(0.98);
+    }
+    60% {
+        transform: translate(8px, -3px) scale(1.03);
+    }
+    80% {
+        transform: translate(-3px, -6px) scale(1.01);
+    }
+}
+
+.theme-indian_culture .elem-5::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    background:
+        /* Feather eyes top */
+        radial-gradient(ellipse 7px 7px at 20% 18%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #43A047 55%, transparent 100%),
+        radial-gradient(ellipse 7px 7px at 35% 10%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #43A047 55%, transparent 100%),
+        radial-gradient(ellipse 7px 7px at 50% 6%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #43A047 55%, transparent 100%),
+        radial-gradient(ellipse 7px 7px at 65% 10%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #43A047 55%, transparent 100%),
+        radial-gradient(ellipse 7px 7px at 80% 18%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #43A047 55%, transparent 100%),
+        /* Feather eyes middle */
+        radial-gradient(ellipse 6px 6px at 15% 38%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #2E7D32 55%, transparent 100%),
+        radial-gradient(ellipse 6px 6px at 30% 32%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #2E7D32 55%, transparent 100%),
+        radial-gradient(ellipse 6px 6px at 50% 30%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #2E7D32 55%, transparent 100%),
+        radial-gradient(ellipse 6px 6px at 70% 32%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #2E7D32 55%, transparent 100%),
+        radial-gradient(ellipse 6px 6px at 85% 38%, #1A237E 0%, #1A237E 35%, #4FC3F7 35%, #4FC3F7 55%, #2E7D32 55%, transparent 100%),
+        /* Fan gradient */
+        linear-gradient(180deg,
+            #1B5E20 0%,
+            #2E7D32 25%,
+            #388E3C 45%,
+            #43A047 65%,
+            #4CAF50 100%);
+    border-radius: 50% 50% 8% 8% / 65% 65% 8% 8%;
+    animation: culture-fan-display 8.7s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+@keyframes culture-fan-display {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(1) scaleY(1);
+        filter: brightness(1) saturate(1);
+    }
+    25% {
+        transform: translateX(-50%) scaleX(1.08) scaleY(1.03);
+        filter: brightness(1.08) saturate(1.12);
+    }
+    50% {
+        transform: translateX(-50%) scaleX(1.15) scaleY(1.06);
+        filter: brightness(1.15) saturate(1.2);
+    }
+    75% {
+        transform: translateX(-50%) scaleX(1.1) scaleY(1.04);
+        filter: brightness(1.1) saturate(1.15);
+    }
+}
+
+.theme-indian_culture .elem-5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 45px;
+    background:
+        /* Crown feathers */
+        radial-gradient(ellipse 2px 10px at 38% 4%, #1565C0 0%, transparent 100%),
+        radial-gradient(ellipse 2px 12px at 50% 1%, #1565C0 0%, transparent 100%),
+        radial-gradient(ellipse 2px 10px at 62% 4%, #1565C0 0%, transparent 100%),
+        /* Head */
+        radial-gradient(ellipse 14px 14px at 50% 20%, #1565C0 0%, #0D47A1 100%),
+        /* Eye */
+        radial-gradient(circle 3px at 57% 18%, #FFF 0%, #FFF 45%, #000 45%, #000 100%),
+        /* Beak */
+        radial-gradient(ellipse 5px 4px at 68% 22%, #FF9800 0%, #F57C00 100%),
+        /* Neck */
+        radial-gradient(ellipse 12px 24px at 50% 50%, #1976D2 0%, #1565C0 100%),
+        /* Body */
+        radial-gradient(ellipse 20px 26px at 50% 85%, #1565C0 0%, #0D47A1 100%);
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* === ATMOSPHERIC SPARKLES === */
+.theme-indian_culture .sparkle-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 16;
+    background:
+        radial-gradient(circle at 15% 25%, rgba(255, 215, 0, 0.9) 0%, rgba(255, 215, 0, 0.9) 1px, transparent 2px),
+        radial-gradient(circle at 85% 18%, rgba(255, 193, 7, 0.85) 0%, rgba(255, 193, 7, 0.85) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 28% 52%, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.8) 1px, transparent 2px),
+        radial-gradient(circle at 72% 58%, rgba(255, 193, 7, 0.9) 0%, rgba(255, 193, 7, 0.9) 1.2px, transparent 2.2px),
+        radial-gradient(circle at 18% 78%, rgba(255, 215, 0, 0.85) 0%, rgba(255, 215, 0, 0.85) 1.3px, transparent 2.3px),
+        radial-gradient(circle at 88% 82%, rgba(255, 193, 7, 0.8) 0%, rgba(255, 193, 7, 0.8) 1px, transparent 2px),
+        radial-gradient(circle at 45% 15%, rgba(255, 215, 0, 0.9) 0%, rgba(255, 215, 0, 0.9) 1.4px, transparent 2.4px),
+        radial-gradient(circle at 55% 85%, rgba(255, 193, 7, 0.85) 0%, rgba(255, 193, 7, 0.85) 1.2px, transparent 2.2px),
+        radial-gradient(circle at 8% 42%, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.8) 1.1px, transparent 2.1px),
+        radial-gradient(circle at 92% 48%, rgba(255, 193, 7, 0.9) 0%, rgba(255, 193, 7, 0.9) 1.3px, transparent 2.3px),
+        radial-gradient(circle at 38% 68%, rgba(255, 215, 0, 0.85) 0%, rgba(255, 215, 0, 0.85) 1px, transparent 2px),
+        radial-gradient(circle at 62% 32%, rgba(255, 193, 7, 0.8) 0%, rgba(255, 193, 7, 0.8) 1.4px, transparent 2.4px);
+    animation: culture-sparkle-twinkle 4.5s ease-in-out infinite;
+}
+
+@keyframes culture-sparkle-twinkle {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    25% {
+        opacity: 0.9;
+        transform: scale(1.12);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+    75% {
+        opacity: 0.8;
+        transform: scale(1.15);
+    }
+}
+
+/* === MASCOT HAPPY ANIMATIONS === */
+.theme-indian_culture .worm-character.happy,
+.theme-indian_culture .bunny-character.happy,
+.theme-indian_culture .owl-character.happy,
+.theme-indian_culture .cat-character.happy,
+.theme-indian_culture .robot-character.happy {
+    animation: culture-happy-celebrate 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes culture-happy-celebrate {
+    0% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        filter: brightness(1) drop-shadow(0 0 0 transparent);
+    }
+    15% {
+        transform: scale(0.9) translateY(10px) rotate(-4deg);
+    }
+    35% {
+        transform: scale(1.3) translateY(-40px) rotate(-18deg);
+        filter: brightness(1.5) drop-shadow(0 0 25px rgba(255, 193, 7, 0.8));
+    }
+    50% {
+        transform: scale(1.25) translateY(-35px) rotate(22deg);
+        filter: brightness(1.4) drop-shadow(0 0 20px rgba(233, 30, 99, 0.6));
+    }
+    65% {
+        transform: scale(1.28) translateY(-38px) rotate(-15deg);
+        filter: brightness(1.45) drop-shadow(0 0 22px rgba(156, 39, 176, 0.7));
+    }
+    80% {
+        transform: scale(1.12) translateY(-18px) rotate(10deg);
+    }
+    100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        filter: brightness(1) drop-shadow(0 0 0 transparent);
+    }
+}
+
+.theme-indian_culture .bunny-character.excited,
+.theme-indian_culture .cat-character.excited {
+    animation: culture-festival-dance 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes culture-festival-dance {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: brightness(1);
+    }
+    15% {
+        transform: translateY(-28px) rotate(22deg) scale(1.12);
+        filter: brightness(1.25);
+    }
+    30% {
+        transform: translateY(-22px) rotate(-26deg) scale(1.1);
+        filter: brightness(1.18);
+    }
+    45% {
+        transform: translateY(-32px) rotate(18deg) scale(1.14);
+        filter: brightness(1.3);
+    }
+    60% {
+        transform: translateY(-24px) rotate(-22deg) scale(1.1);
+        filter: brightness(1.2);
+    }
+    75% {
+        transform: translateY(-15px) rotate(12deg) scale(1.06);
+        filter: brightness(1.12);
+    }
+}
+
+/* === MASCOT SAD ANIMATIONS === */
+.theme-indian_culture .worm-character.sad,
+.theme-indian_culture .bunny-character.sad,
+.theme-indian_culture .owl-character.sad,
+.theme-indian_culture .cat-character.sad,
+.theme-indian_culture .robot-character.sad {
+    animation: culture-sad-dim 2.2s ease-out forwards;
+}
+
+@keyframes culture-sad-dim {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) saturate(1);
+    }
+    35% {
+        transform: scale(0.9) translateY(10px);
+        filter: brightness(0.75) saturate(0.65);
+    }
+    100% {
+        transform: scale(0.82) translateY(20px);
+        filter: brightness(0.5) saturate(0.3) grayscale(0.25);
+    }
+}
+
+/* === WORM SPECIAL - DIWALI GLOW === */
+.theme-indian_culture .worm-character.idle {
+    animation: culture-worm-diwali 3.5s ease-in-out infinite;
+}
+
+@keyframes culture-worm-diwali {
+    0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.45)) drop-shadow(0 0 18px rgba(233, 30, 99, 0.25));
+    }
+    33% {
+        filter: drop-shadow(0 0 18px rgba(255, 193, 7, 0.75)) drop-shadow(0 0 30px rgba(233, 30, 99, 0.45));
+    }
+    66% {
+        filter: drop-shadow(0 0 15px rgba(156, 39, 176, 0.55)) drop-shadow(0 0 25px rgba(255, 152, 0, 0.35));
+    }
+}
+
+/* === OWL SPECIAL - WISE OBSERVER === */
+.theme-indian_culture .owl-character.idle {
+    animation: culture-owl-observe 4.5s ease-in-out infinite;
+}
+
+@keyframes culture-owl-observe {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.35));
+    }
+    50% {
+        transform: scale(1.06);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.65));
+    }
+}

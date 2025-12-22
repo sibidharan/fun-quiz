@@ -1,0 +1,615 @@
+/* ============================================
+   SPORTS THEME - CHAMPIONSHIP STADIUM
+   Energetic red/green stadium atmosphere
+   Cricket, football, trophies, victory confetti
+   Premium cinematic experience for champions
+   ============================================ */
+
+/* === LAYERED BACKGROUND WITH GRADIENTS === */
+.theme-sports .scene-background {
+    background:
+        /* Championship spotlight beams */
+        radial-gradient(ellipse at 20% 8%, rgba(255, 215, 0, 0.25) 0%, transparent 35%),
+        radial-gradient(ellipse at 80% 8%, rgba(255, 215, 0, 0.25) 0%, transparent 35%),
+        radial-gradient(ellipse at 50% 5%, rgba(255, 255, 255, 0.2) 0%, transparent 28%),
+        /* Stadium sky to field gradient - vibrant */
+        linear-gradient(180deg,
+            #0D3B66 0%,
+            #1565C0 8%,
+            #1976D2 15%,
+            #2196F3 22%,
+            #42A5F5 30%,
+            #64B5F6 38%,
+            #81C784 45%,
+            #66BB6A 52%,
+            #4CAF50 58%,
+            #43A047 65%,
+            #388E3C 75%,
+            #2E7D32 85%,
+            #1B5E20 95%,
+            #0D4715 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === STADIUM GRASS PATTERN (STRIPED FIELD) === */
+.theme-sports .scene-background::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background:
+        repeating-linear-gradient(90deg,
+            #43A047 0px, #43A047 60px,
+            #4CAF50 60px, #4CAF50 120px
+        );
+    box-shadow:
+        inset 0 20px 40px rgba(0,0,0,0.15),
+        inset 0 -10px 25px rgba(255,255,255,0.05);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* === FIELD BOUNDARY LINES === */
+.theme-sports .scene-background::after {
+    content: '';
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 38%;
+    border: 5px solid rgba(255,255,255,0.8);
+    border-radius: 12px;
+    background:
+        /* Center circle */
+        radial-gradient(circle at 50% 50%, transparent 12%, transparent 12.8%, rgba(255,255,255,0.8) 12.8%, rgba(255,255,255,0.8) 13.5%, transparent 13.5%),
+        /* Center line */
+        linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.8) 49%, rgba(255,255,255,0.8) 51%, transparent 51%);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* === ELEMENT 1: CRICKET BALL (DETAILED) === */
+.theme-sports .elem-1 {
+    position: absolute;
+    bottom: 32%;
+    left: 18%;
+    width: 50px;
+    height: 50px;
+    background:
+        radial-gradient(circle at 35% 35%, #E53935, #C62828, #8B0000);
+    border-radius: 50%;
+    z-index: 10;
+    animation: sports-ball-bounce 3.2s ease-in-out infinite;
+    box-shadow:
+        inset -10px -10px 25px rgba(0,0,0,0.5),
+        inset 5px 5px 15px rgba(255,100,100,0.3),
+        5px 8px 15px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
+
+/* Cricket ball seam stitching */
+.theme-sports .elem-1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background:
+        linear-gradient(90deg, transparent 42%, #FFEB3B 45%, #FDD835 50%, #FFEB3B 55%, transparent 58%);
+    animation: sports-ball-spin 4.5s linear infinite;
+}
+
+.theme-sports .elem-1::after {
+    content: '';
+    position: absolute;
+    width: 38px;
+    height: 6px;
+    background:
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 3px,
+            #FFEB3B 3px, #FFEB3B 5px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+}
+
+@keyframes sports-ball-bounce {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    25% { transform: translateY(-65px) rotate(90deg) scale(1.05); }
+    50% { transform: translateY(-15px) rotate(180deg) scale(0.98); }
+    75% { transform: translateY(-45px) rotate(270deg) scale(1.02); }
+}
+
+@keyframes sports-ball-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === ELEMENT 2: FOOTBALL (SOCCER BALL) === */
+.theme-sports .elem-2 {
+    position: absolute;
+    bottom: 28%;
+    right: 22%;
+    width: 55px;
+    height: 55px;
+    background:
+        radial-gradient(circle at 35% 35%, #FFFFFF, #E0E0E0, #BDBDBD);
+    border-radius: 50%;
+    z-index: 9;
+    animation: sports-football-roll 7.5s linear infinite;
+    box-shadow:
+        inset -10px -10px 25px rgba(0,0,0,0.25),
+        inset 5px 5px 15px rgba(255,255,255,0.5),
+        5px 8px 15px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
+
+/* Football pentagon pattern */
+.theme-sports .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 50% 25%, #212121 0%, #212121 18%, transparent 19%),
+        radial-gradient(circle at 22% 58%, #212121 0%, #212121 14%, transparent 15%),
+        radial-gradient(circle at 78% 58%, #212121 0%, #212121 14%, transparent 15%),
+        radial-gradient(circle at 38% 82%, #212121 0%, #212121 11%, transparent 12%),
+        radial-gradient(circle at 62% 82%, #212121 0%, #212121 11%, transparent 12%);
+    animation: sports-football-pattern-rotate 4.2s linear infinite reverse;
+}
+
+@keyframes sports-football-roll {
+    0% { transform: rotate(0deg) translateX(0) translateY(0); }
+    25% { transform: rotate(120deg) translateX(25px) translateY(-15px); }
+    50% { transform: rotate(240deg) translateX(40px) translateY(-5px); }
+    75% { transform: rotate(360deg) translateX(25px) translateY(-15px); }
+    100% { transform: rotate(480deg) translateX(0) translateY(0); }
+}
+
+@keyframes sports-football-pattern-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* === ELEMENT 3: CHAMPIONSHIP TROPHY === */
+.theme-sports .elem-3 {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 95px;
+    z-index: 12;
+    animation: sports-trophy-float 6.5s ease-in-out infinite;
+    filter: drop-shadow(0 8px 20px rgba(255,215,0,0.6));
+    pointer-events: none;
+}
+
+/* Trophy cup */
+.theme-sports .elem-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 50px;
+    background:
+        linear-gradient(180deg, #FFD700 0%, #FFC107 30%, #FFA000 70%, #FF8F00 100%);
+    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+    box-shadow:
+        inset -8px -8px 20px rgba(0,0,0,0.35),
+        inset 5px 5px 15px rgba(255,255,150,0.4),
+        0 8px 20px rgba(255, 215, 0, 0.6);
+    animation: sports-trophy-gleam 3.8s ease-in-out infinite;
+}
+
+/* Trophy handles */
+.theme-sports .elem-3 .trophy-handle {
+    position: absolute;
+    width: 18px;
+    height: 35px;
+    top: 12px;
+    border: 4px solid #FFD700;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(255,215,0,0.5);
+}
+
+.theme-sports .elem-3 .trophy-handle:nth-child(1) {
+    left: -8px;
+    border-right: none;
+}
+
+.theme-sports .elem-3 .trophy-handle:nth-child(2) {
+    right: -8px;
+    border-left: none;
+}
+
+/* Trophy base */
+.theme-sports .elem-3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 25px;
+    background:
+        linear-gradient(180deg, #FFA000 0%, #FF6F00 50%, #E65100 100%);
+    border-radius: 6px 6px 12px 12px;
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.4),
+        inset 0 -3px 8px rgba(0,0,0,0.3);
+}
+
+@keyframes sports-trophy-gleam {
+    0%, 100% {
+        filter: brightness(1);
+        box-shadow: inset -8px -8px 20px rgba(0,0,0,0.35), 0 8px 20px rgba(255, 215, 0, 0.6);
+    }
+    50% {
+        filter: brightness(1.4);
+        box-shadow: inset -5px -5px 15px rgba(0,0,0,0.2), 0 8px 30px rgba(255, 215, 0, 0.9);
+    }
+}
+
+@keyframes sports-trophy-float {
+    0%, 100% { transform: translateX(-50%) translateY(0) scale(1) rotate(0deg); }
+    33% { transform: translateX(-50%) translateY(-15px) scale(1.05) rotate(-3deg); }
+    66% { transform: translateX(-50%) translateY(-8px) scale(1.08) rotate(3deg); }
+}
+
+/* === ELEMENT 4: CRICKET BAT === */
+.theme-sports .elem-4 {
+    position: absolute;
+    bottom: 22%;
+    left: 38%;
+    width: 25px;
+    height: 85px;
+    z-index: 8;
+    animation: sports-bat-swing 5.5s ease-in-out infinite;
+    transform-origin: bottom center;
+    pointer-events: none;
+}
+
+/* Bat blade (willow wood) */
+.theme-sports .elem-4::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 55px;
+    background:
+        linear-gradient(90deg, #BCAAA4, #EFEBE9, #D7CCC8, #BCAAA4);
+    border-radius: 4px 4px 18px 18px;
+    top: 0;
+    box-shadow:
+        inset -4px 0 10px rgba(0,0,0,0.12),
+        inset 2px 2px 8px rgba(255,255,255,0.3),
+        3px 3px 8px rgba(0,0,0,0.25);
+}
+
+/* Bat handle (grip) */
+.theme-sports .elem-4::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 30px;
+    background:
+        repeating-linear-gradient(180deg,
+            #5D4037 0px, #5D4037 4px,
+            #8D6E63 4px, #8D6E63 8px);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+@keyframes sports-bat-swing {
+    0%, 100% { transform: rotate(-25deg); }
+    15% { transform: rotate(-15deg); }
+    30% { transform: rotate(35deg); }
+    50% { transform: rotate(25deg); }
+    70% { transform: rotate(-8deg); }
+    85% { transform: rotate(-20deg); }
+}
+
+/* === ELEMENT 5: RUNNING TRACK LINES === */
+.theme-sports .elem-5 {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.theme-sports .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 80px,
+            rgba(255,255,255,0.4) 80px,
+            rgba(255,255,255,0.6) 85px,
+            rgba(255,255,255,0.4) 90px,
+            transparent 90px,
+            transparent 170px);
+    animation: sports-track-scroll 8s linear infinite;
+}
+
+@keyframes sports-track-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-170px); }
+}
+
+/* === CONFETTI PARTICLES (VICTORY CELEBRATION) === */
+.theme-sports .confetti-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 18;
+    background:
+        /* Red confetti */
+        radial-gradient(circle at 15% 12%, #D32F2F 0%, #D32F2F 2.5px, transparent 3.5px),
+        radial-gradient(circle at 38% 18%, #F44336 0%, #F44336 2px, transparent 3px),
+        radial-gradient(circle at 62% 15%, #EF5350 0%, #EF5350 2.5px, transparent 3.5px),
+        radial-gradient(circle at 82% 22%, #E57373 0%, #E57373 2px, transparent 3px),
+        /* Gold confetti */
+        radial-gradient(circle at 22% 28%, #FFD700 0%, #FFD700 2.8px, transparent 3.8px),
+        radial-gradient(circle at 48% 32%, #FFC107 0%, #FFC107 2.2px, transparent 3.2px),
+        radial-gradient(circle at 75% 38%, #FFEB3B 0%, #FFEB3B 2.5px, transparent 3.5px),
+        /* Green confetti */
+        radial-gradient(circle at 12% 45%, #4CAF50 0%, #4CAF50 2.5px, transparent 3.5px),
+        radial-gradient(circle at 55% 52%, #66BB6A 0%, #66BB6A 2px, transparent 3px),
+        radial-gradient(circle at 88% 58%, #81C784 0%, #81C784 2.3px, transparent 3.3px),
+        /* Blue confetti */
+        radial-gradient(circle at 28% 65%, #2196F3 0%, #2196F3 2.5px, transparent 3.5px),
+        radial-gradient(circle at 68% 72%, #42A5F5 0%, #42A5F5 2px, transparent 3px),
+        radial-gradient(circle at 92% 78%, #64B5F6 0%, #64B5F6 2.2px, transparent 3.2px);
+    animation: sports-confetti-cascade 20s linear infinite;
+}
+
+@keyframes sports-confetti-cascade {
+    0% {
+        transform: translateY(-12%) rotate(0deg);
+        opacity: 0;
+    }
+    8% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(112%) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* === STADIUM LIGHTS GLOW === */
+.theme-sports .stadium-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    pointer-events: none;
+    z-index: 20;
+    background:
+        radial-gradient(ellipse at 12% 3%, rgba(255, 255, 255, 0.28) 0%, transparent 28%),
+        radial-gradient(ellipse at 30% 6%, rgba(255, 255, 255, 0.22) 0%, transparent 22%),
+        radial-gradient(ellipse at 50% 4%, rgba(255, 255, 255, 0.25) 0%, transparent 25%),
+        radial-gradient(ellipse at 70% 6%, rgba(255, 255, 255, 0.22) 0%, transparent 22%),
+        radial-gradient(ellipse at 88% 3%, rgba(255, 255, 255, 0.28) 0%, transparent 28%);
+    animation: sports-stadium-pulse 5.5s ease-in-out infinite;
+}
+
+@keyframes sports-stadium-pulse {
+    0%, 100% {
+        opacity: 0.5;
+        filter: brightness(1);
+    }
+    8%, 24%, 40%, 56%, 72%, 88% {
+        opacity: 0.9;
+        filter: brightness(1.3);
+    }
+    16%, 32%, 48%, 64%, 80%, 96% {
+        opacity: 0.7;
+        filter: brightness(1.1);
+    }
+}
+
+/* === ENERGY BURST EFFECTS === */
+.theme-sports .energy-burst-1,
+.theme-sports .energy-burst-2,
+.theme-sports .energy-burst-3 {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 11;
+}
+
+.theme-sports .energy-burst-1 {
+    width: 120px;
+    height: 120px;
+    top: 22%;
+    left: 12%;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.35) 0%, rgba(255, 193, 7, 0.15) 40%, transparent 65%);
+    animation: sports-burst-pulse-1 9.5s ease-in-out infinite;
+}
+
+.theme-sports .energy-burst-2 {
+    width: 140px;
+    height: 140px;
+    top: 38%;
+    right: 18%;
+    background: radial-gradient(circle, rgba(33, 150, 243, 0.3) 0%, rgba(33, 150, 243, 0.12) 35%, transparent 60%);
+    animation: sports-burst-pulse-2 11.5s ease-in-out infinite 2.5s;
+}
+
+.theme-sports .energy-burst-3 {
+    width: 110px;
+    height: 110px;
+    bottom: 28%;
+    left: 52%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.32) 0%, rgba(76, 175, 80, 0.14) 38%, transparent 68%);
+    animation: sports-burst-pulse-3 13.5s ease-in-out infinite 5s;
+}
+
+@keyframes sports-burst-pulse-1 {
+    0%, 100% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    12% {
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.6);
+        opacity: 0.85;
+    }
+    88% {
+        opacity: 0.25;
+    }
+}
+
+@keyframes sports-burst-pulse-2 {
+    0%, 100% {
+        transform: scale(0.65);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.7);
+        opacity: 0.75;
+    }
+    85% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes sports-burst-pulse-3 {
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.22;
+    }
+}
+
+/* === ATMOSPHERIC PARTICLES === */
+.theme-sports .atmosphere-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.theme-sports .atmosphere-particles::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow:
+        12vw 18vh 0 1.5px rgba(255, 255, 255, 0.7),
+        28vw 28vh 0 1px rgba(255, 215, 0, 0.6),
+        45vw 12vh 0 2px rgba(255, 255, 255, 0.8),
+        62vw 38vh 0 1.2px rgba(76, 175, 80, 0.65),
+        78vw 22vh 0 1px rgba(33, 150, 243, 0.6),
+        88vw 45vh 0 1.5px rgba(255, 255, 255, 0.75),
+        15vw 58vh 0 2px rgba(255, 193, 7, 0.7),
+        32vw 72vh 0 1px rgba(255, 255, 255, 0.65),
+        50vw 68vh 0 1.5px rgba(244, 67, 54, 0.6),
+        68vw 58vh 0 1.2px rgba(255, 255, 255, 0.7),
+        82vw 75vh 0 1px rgba(76, 175, 80, 0.55),
+        95vw 65vh 0 1.8px rgba(255, 215, 0, 0.75);
+    animation: sports-particles-shimmer 10s ease-in-out infinite alternate;
+}
+
+@keyframes sports-particles-shimmer {
+    0% { opacity: 0.4; filter: brightness(0.85); }
+    100% { opacity: 1; filter: brightness(1.4); }
+}
+
+/* === MASCOT ANIMATIONS === */
+.theme-sports .worm-character.happy,
+.theme-sports .bunny-character.happy,
+.theme-sports .owl-character.happy,
+.theme-sports .cat-character.happy,
+.theme-sports .robot-character.happy {
+    animation: sports-happy-victory 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes sports-happy-victory {
+    0% { transform: scale(1) translateY(0) rotate(0deg); }
+    18% { transform: scale(0.88) translateY(12px) rotate(0deg); }
+    35% { transform: scale(1.25) translateY(-50px) rotate(12deg); }
+    52% { transform: scale(1.2) translateY(-40px) rotate(-10deg); }
+    68% { transform: scale(1.15) translateY(-35px) rotate(8deg); }
+    82% { transform: scale(1.08) translateY(-18px) rotate(-4deg); }
+    100% { transform: scale(1) translateY(0) rotate(0deg); }
+}
+
+.theme-sports .bunny-character.excited {
+    animation: sports-bunny-jump 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes sports-bunny-jump {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    20% { transform: translateY(-60px) rotate(18deg); }
+    40% { transform: translateY(-40px) rotate(-12deg); }
+    60% { transform: translateY(-55px) rotate(10deg); }
+    80% { transform: translateY(-25px) rotate(-6deg); }
+}
+
+.theme-sports .worm-character.sad,
+.theme-sports .bunny-character.sad,
+.theme-sports .owl-character.sad,
+.theme-sports .cat-character.sad,
+.theme-sports .robot-character.sad {
+    animation: sports-sad-defeat 2.5s ease-out forwards;
+}
+
+@keyframes sports-sad-defeat {
+    0% { transform: scale(1); filter: brightness(1) saturate(1); }
+    35% { transform: scale(0.92) translateY(8px); filter: brightness(0.85) saturate(0.8); }
+    65% { transform: scale(0.85) translateY(18px); filter: brightness(0.65) saturate(0.5); }
+    100% { transform: scale(0.8) translateY(25px); filter: brightness(0.5) saturate(0.3); }
+}
+
+.theme-sports .cat-character.idle {
+    animation: sports-cat-athletic 4.5s ease-in-out infinite;
+}
+
+@keyframes sports-cat-athletic {
+    0%, 100% { transform: scaleX(1) scaleY(1); }
+    50% { transform: scaleX(1.12) scaleY(0.93); }
+}

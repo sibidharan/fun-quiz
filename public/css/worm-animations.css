@@ -1,0 +1,2628 @@
+/* ============================================
+   WORM CHARACTER ANIMATIONS
+   Fun Quiz - Animated Mascot System
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    /* Worm Colors */
+    --worm-body: #8BC34A;
+    --worm-body-light: #AED581;
+    --worm-body-dark: #689F38;
+    --worm-body-shadow: #558B2F;
+    --worm-blush: #FFAB91;
+    --worm-eye-white: #FFFFFF;
+    --worm-eye-pupil: #37474F;
+    --worm-eye-sparkle: #FFFFFF;
+    --worm-mouth: #5D4037;
+    --worm-tear: #64B5F6;
+    --worm-antenna: #7CB342;
+
+    /* Bunny Colors */
+    --bunny-body: #F8BBD9;
+    --bunny-body-light: #FCE4EC;
+    --bunny-body-dark: #F48FB1;
+    --bunny-inner-ear: #FFCDD2;
+    --bunny-nose: #FF8A80;
+
+    /* Owl Colors */
+    --owl-body: #8D6E63;
+    --owl-body-light: #BCAAA4;
+    --owl-body-dark: #6D4C41;
+    --owl-belly: #FFECB3;
+    --owl-beak: #FF9800;
+
+    /* Cat Colors */
+    --cat-body: #FFB74D;
+    --cat-body-light: #FFE0B2;
+    --cat-body-dark: #F57C00;
+    --cat-stripes: #E65100;
+    --cat-nose: #FF7043;
+
+    /* Robot Colors */
+    --robot-body: #90CAF9;
+    --robot-body-light: #BBDEFB;
+    --robot-body-dark: #42A5F5;
+    --robot-metal: #78909C;
+    --robot-screen: #00E676;
+    --robot-accent: #FF5252;
+
+    /* Animation Timings */
+    --idle-duration: 3s;
+    --reaction-duration: 1.5s;
+    --transition-ease: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --bounce-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --wobble-ease: cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* ============================================
+   ANIMATION LAYER (Full Page Container)
+   ============================================ */
+.worm-animation-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* When a theme is active, hide body's default gradient */
+body[class*="theme-"] {
+    background: transparent !important;
+}
+
+/* Ensure the app content appears above the animation layer */
+.app {
+    position: relative;
+    z-index: 10;
+}
+
+/* ============================================
+   SCENE BACKGROUND (Topic-specific)
+   ============================================ */
+.scene-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: background 0.8s ease, opacity 0.5s ease;
+    /* Default gradient fallback */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.scene-element {
+    position: absolute;
+    opacity: 1;
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+/* ============================================
+   WORM CHARACTER - MAIN STRUCTURE
+   ============================================ */
+.worm-character {
+    position: fixed;
+    bottom: 12%;
+    right: 6%;
+    width: 160px;
+    height: 120px;
+    z-index: 1000;
+    pointer-events: none;
+    transform-origin: center bottom;
+    transition: transform 0.3s ease;
+}
+
+/* ============================================
+   WORM BODY (4 Segments)
+   ============================================ */
+.worm-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: -8px;
+}
+
+.worm-segment {
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%,
+        var(--worm-body-light) 0%,
+        var(--worm-body) 50%,
+        var(--worm-body-dark) 100%);
+    box-shadow:
+        inset -4px -4px 10px var(--worm-body-shadow),
+        inset 4px 4px 10px var(--worm-body-light),
+        2px 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.worm-segment.seg-1 {
+    width: 22px;
+    height: 22px;
+    margin-left: 0;
+    z-index: 1;
+}
+
+.worm-segment.seg-2 {
+    width: 28px;
+    height: 28px;
+    margin-left: -10px;
+    z-index: 2;
+}
+
+.worm-segment.seg-3 {
+    width: 34px;
+    height: 34px;
+    margin-left: -12px;
+    z-index: 3;
+}
+
+.worm-segment.seg-4 {
+    width: 40px;
+    height: 40px;
+    margin-left: -14px;
+    z-index: 4;
+}
+
+/* ============================================
+   WORM HEAD
+   ============================================ */
+.worm-head {
+    position: absolute;
+    bottom: 8px;
+    left: 75px;
+    width: 70px;
+    height: 65px;
+    background: radial-gradient(ellipse at 40% 30%,
+        var(--worm-body-light) 0%,
+        var(--worm-body) 40%,
+        var(--worm-body-dark) 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow:
+        inset -5px -5px 15px var(--worm-body-shadow),
+        inset 5px 5px 15px var(--worm-body-light),
+        3px 5px 10px rgba(0,0,0,0.25);
+    z-index: 10;
+}
+
+/* ============================================
+   WORM ANTENNAE
+   ============================================ */
+.worm-antenna {
+    position: absolute;
+    width: 4px;
+    height: 25px;
+    background: linear-gradient(to top, var(--worm-body-dark), var(--worm-antenna));
+    border-radius: 4px 4px 50% 50%;
+    z-index: 11;
+    transform-origin: bottom center;
+}
+
+.worm-antenna.left {
+    bottom: 75px;
+    left: 85px;
+    transform: rotate(-15deg);
+}
+
+.worm-antenna.right {
+    bottom: 75px;
+    left: 105px;
+    transform: rotate(15deg);
+}
+
+.worm-antenna::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 30% 30%,
+        var(--worm-body-light),
+        var(--worm-body));
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ============================================
+   WORM EYES
+   ============================================ */
+.worm-eye {
+    position: absolute;
+    width: 22px;
+    height: 26px;
+    background: var(--worm-eye-white);
+    border-radius: 50%;
+    box-shadow:
+        inset 0 -2px 4px rgba(0,0,0,0.1),
+        0 2px 4px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.worm-eye.left {
+    top: 12px;
+    left: 12px;
+}
+
+.worm-eye.right {
+    top: 12px;
+    left: 38px;
+}
+
+/* Pupil */
+.worm-pupil {
+    position: absolute;
+    width: 12px;
+    height: 14px;
+    background: radial-gradient(circle at 40% 40%,
+        #546E7A,
+        var(--worm-eye-pupil));
+    border-radius: 50%;
+    top: 8px;
+    left: 5px;
+    transition: all 0.2s ease;
+}
+
+/* Eye Sparkle */
+.worm-sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--worm-eye-sparkle);
+    border-radius: 50%;
+    top: 6px;
+    left: 4px;
+    opacity: 0.9;
+}
+
+/* ============================================
+   WORM BLUSH (Cheeks)
+   ============================================ */
+.worm-blush {
+    position: absolute;
+    width: 14px;
+    height: 8px;
+    background: var(--worm-blush);
+    border-radius: 50%;
+    opacity: 0.6;
+    top: 38px;
+}
+
+.worm-blush.left {
+    left: 6px;
+}
+
+.worm-blush.right {
+    left: 50px;
+}
+
+/* ============================================
+   WORM MOUTH
+   ============================================ */
+.worm-mouth {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 8px;
+    border: 3px solid var(--worm-mouth);
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   WORM TEARS (Hidden by default)
+   ============================================ */
+.worm-tear {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        var(--worm-tear) 30%,
+        var(--worm-tear) 100%);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+    top: 40px;
+    z-index: 12;
+}
+
+.worm-tear.left {
+    left: 18px;
+}
+
+.worm-tear.right {
+    left: 45px;
+}
+
+/* ============================================
+   WORM ACCESSORY (Topic-specific)
+   ============================================ */
+.worm-accessory {
+    position: absolute;
+    z-index: 15;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ============================================
+   REACTION PARTICLES CONTAINER
+   ============================================ */
+.reaction-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* ============================================
+   IDLE ANIMATION (Default State)
+   ============================================ */
+@keyframes worm-idle-bob {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-6px) rotate(-1deg);
+    }
+    50% {
+        transform: translateY(-3px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+}
+
+@keyframes worm-idle-segment {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.02);
+    }
+}
+
+@keyframes worm-antenna-sway {
+    0%, 100% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes worm-antenna-sway-right {
+    0%, 100% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes worm-eye-blink {
+    0%, 45%, 55%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.1);
+    }
+}
+
+.worm-character.idle {
+    animation: worm-idle-bob var(--idle-duration) ease-in-out infinite;
+}
+
+.worm-character.idle .worm-segment.seg-1 {
+    animation: worm-idle-segment var(--idle-duration) ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.worm-character.idle .worm-segment.seg-2 {
+    animation: worm-idle-segment var(--idle-duration) ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.worm-character.idle .worm-segment.seg-3 {
+    animation: worm-idle-segment var(--idle-duration) ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.worm-character.idle .worm-segment.seg-4 {
+    animation: worm-idle-segment var(--idle-duration) ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+.worm-character.idle .worm-antenna.left {
+    animation: worm-antenna-sway 2s ease-in-out infinite;
+}
+
+.worm-character.idle .worm-antenna.right {
+    animation: worm-antenna-sway-right 2s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.worm-character.idle .worm-eye {
+    animation: worm-eye-blink 4s ease-in-out infinite;
+}
+
+/* ============================================
+   GENERIC HAPPY STATE (Base)
+   ============================================ */
+@keyframes happy-jump-base {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    20% {
+        transform: translateY(-40px) scale(1.1);
+    }
+    40% {
+        transform: translateY(0) scale(0.95);
+    }
+    55% {
+        transform: translateY(-20px) scale(1.05);
+    }
+    70% {
+        transform: translateY(0) scale(0.98);
+    }
+    85% {
+        transform: translateY(-8px) scale(1.02);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes happy-eyes-squint {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    20%, 80% {
+        transform: scaleY(0.3);
+    }
+}
+
+.worm-character.happy .worm-mouth {
+    border-radius: 50% 50% 0 0;
+    border-top: 3px solid var(--worm-mouth);
+    border-bottom: none;
+    height: 10px;
+    width: 20px;
+}
+
+.worm-character.happy .worm-eye {
+    animation: happy-eyes-squint 0.4s ease-in-out 3;
+}
+
+.worm-character.happy .worm-blush {
+    opacity: 0.9;
+    transform: scale(1.2);
+}
+
+/* ============================================
+   GENERIC SAD STATE (Base)
+   ============================================ */
+@keyframes sad-droop-base {
+    0% {
+        transform: scale(1) rotate(0deg) translateY(0);
+    }
+    30% {
+        transform: scale(0.92) rotate(-5deg) translateY(5px);
+    }
+    60% {
+        transform: scale(0.88) rotate(-8deg) translateY(10px);
+    }
+    100% {
+        transform: scale(0.9) rotate(-5deg) translateY(8px);
+    }
+}
+
+@keyframes sad-tear-fall {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(5px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.7);
+    }
+}
+
+@keyframes sad-pupil-down {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(4px);
+    }
+}
+
+.worm-character.sad .worm-mouth {
+    border-radius: 0 0 50% 50%;
+    border-bottom: 3px solid var(--worm-mouth);
+    border-top: none;
+    width: 12px;
+    height: 6px;
+}
+
+.worm-character.sad .worm-pupil {
+    animation: sad-pupil-down 2s ease-in-out infinite;
+}
+
+.worm-character.sad .worm-tear {
+    animation: sad-tear-fall 1.2s ease-in infinite;
+}
+
+.worm-character.sad .worm-tear.right {
+    animation-delay: 0.4s;
+}
+
+.worm-character.sad .worm-blush {
+    opacity: 0.3;
+}
+
+.worm-character.sad .worm-antenna.left {
+    transform: rotate(-35deg);
+}
+
+.worm-character.sad .worm-antenna.right {
+    transform: rotate(35deg);
+}
+
+/* ============================================
+   PARTICLE BASE STYLES
+   ============================================ */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 101;
+}
+
+.particle.star {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.particle.heart {
+    width: 20px;
+    height: 20px;
+    background: #FF6B6B;
+    transform: rotate(-45deg);
+    animation: particle-float-up 1.5s ease-out forwards;
+}
+
+.particle.heart::before,
+.particle.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #FF6B6B;
+    border-radius: 50%;
+}
+
+.particle.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.particle.heart::after {
+    top: 0;
+    left: 10px;
+}
+
+@keyframes particle-float-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(-45deg) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-50px) rotate(-45deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(-45deg) scale(0.8);
+    }
+}
+
+@keyframes particle-float-down {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.5);
+    }
+}
+
+@keyframes particle-sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .worm-character {
+        width: 120px;
+        height: 90px;
+        right: 4%;
+        bottom: 10%;
+        transform: scale(0.75);
+        transform-origin: bottom right;
+    }
+}
+
+@media (max-width: 480px) {
+    .worm-character {
+        width: 100px;
+        height: 75px;
+        right: 3%;
+        bottom: 8%;
+        transform: scale(0.6);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY: Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .worm-character,
+    .worm-character *,
+    .scene-element,
+    .particle {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .worm-character.happy,
+    .worm-character.sad {
+        transform: none !important;
+    }
+}
+
+/* ============================================
+   PERFORMANCE HINTS
+   ============================================ */
+.worm-character,
+.worm-head,
+.worm-segment,
+.scene-element {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.reaction-particles {
+    contain: layout style;
+}
+
+/* ============================================
+   MASCOT CONTAINER - Holds all mascots
+   ============================================ */
+.mascot-container {
+    position: fixed;
+    bottom: 12%;
+    right: 6%;
+    width: 180px;
+    height: 140px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Hide all mascots by default, show active one */
+.mascot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s ease, transform 0.5s var(--bounce-ease);
+}
+
+.mascot.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ============================================
+   LEFT/RIGHT SIDE POSITIONING
+   ============================================ */
+
+/* Left side positioning for worm */
+.worm-character.side-left {
+    right: auto;
+    left: 6%;
+    transform: scaleX(-1); /* Flip horizontally to face right */
+}
+
+/* Left side positioning for mascot container */
+.mascot-container.side-left {
+    right: auto;
+    left: 6%;
+}
+
+.mascot-container.side-left .mascot {
+    right: auto;
+    left: 0;
+    transform: scaleX(-1); /* Flip horizontally */
+}
+
+.mascot-container.side-left .mascot.active {
+    transform: scaleX(-1) scale(1);
+}
+
+/* ============================================
+   HIDE/SHOW ANIMATIONS (Wrong/Correct Answer)
+   ============================================ */
+
+/* Hide to right (slide off screen right) */
+@keyframes mascot-hide-right {
+    0% { transform: translateX(0) scale(1); opacity: 1; }
+    100% { transform: translateX(200px) scale(0.5); opacity: 0; }
+}
+
+/* Hide to left (slide off screen left) */
+@keyframes mascot-hide-left {
+    0% { transform: translateX(0) scale(1); opacity: 1; }
+    100% { transform: translateX(-200px) scale(0.5); opacity: 0; }
+}
+
+/* Come out from right */
+@keyframes mascot-show-right {
+    0% { transform: translateX(200px) scale(0.5); opacity: 0; }
+    60% { transform: translateX(-20px) scale(1.1); opacity: 1; }
+    80% { transform: translateX(10px) scale(0.95); }
+    100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+/* Come out from left */
+@keyframes mascot-show-left {
+    0% { transform: translateX(-200px) scale(0.5); opacity: 0; }
+    60% { transform: translateX(20px) scale(1.1); opacity: 1; }
+    80% { transform: translateX(-10px) scale(0.95); }
+    100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+/* Hidden state classes */
+.worm-character.hiding {
+    animation: mascot-hide-right 0.6s ease-in forwards;
+}
+
+.worm-character.side-left.hiding {
+    animation: mascot-hide-left 0.6s ease-in forwards;
+}
+
+.worm-character.showing {
+    animation: mascot-show-right 0.8s var(--bounce-ease) forwards;
+}
+
+.worm-character.side-left.showing {
+    animation: mascot-show-left 0.8s var(--bounce-ease) forwards;
+}
+
+.worm-character.hidden {
+    transform: translateX(200px);
+    opacity: 0;
+}
+
+.worm-character.side-left.hidden {
+    transform: translateX(-200px) scaleX(-1);
+    opacity: 0;
+}
+
+/* Mascot container hide/show */
+.mascot-container.hiding .mascot.active {
+    animation: mascot-hide-right 0.6s ease-in forwards;
+}
+
+.mascot-container.side-left.hiding .mascot.active {
+    animation: mascot-hide-left 0.6s ease-in forwards;
+}
+
+.mascot-container.showing .mascot.active {
+    animation: mascot-show-right 0.8s var(--bounce-ease) forwards;
+}
+
+.mascot-container.side-left.showing .mascot.active {
+    animation: mascot-show-left 0.8s var(--bounce-ease) forwards;
+}
+
+.mascot-container.hidden .mascot.active {
+    transform: translateX(200px) scale(0.5);
+    opacity: 0;
+}
+
+.mascot-container.side-left.hidden .mascot.active {
+    transform: translateX(-200px) scaleX(-1) scale(0.5);
+    opacity: 0;
+}
+
+/* ============================================
+   BUNNY MASCOT
+   ============================================ */
+.bunny-character {
+    width: 120px;
+    height: 140px;
+}
+
+.bunny-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 75px;
+    background: radial-gradient(ellipse at 50% 40%,
+        var(--bunny-body-light) 0%,
+        var(--bunny-body) 60%,
+        var(--bunny-body-dark) 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow:
+        inset -5px -5px 15px rgba(0,0,0,0.1),
+        inset 5px 5px 15px rgba(255,255,255,0.5),
+        0 8px 20px rgba(0,0,0,0.15);
+}
+
+.bunny-head {
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 65px;
+    background: radial-gradient(ellipse at 50% 40%,
+        var(--bunny-body-light) 0%,
+        var(--bunny-body) 60%,
+        var(--bunny-body-dark) 100%);
+    border-radius: 50%;
+    box-shadow:
+        inset -4px -4px 12px rgba(0,0,0,0.1),
+        inset 4px 4px 12px rgba(255,255,255,0.5),
+        0 4px 10px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+.bunny-ear {
+    position: absolute;
+    width: 22px;
+    height: 55px;
+    background: linear-gradient(90deg,
+        var(--bunny-body-dark) 0%,
+        var(--bunny-body) 30%,
+        var(--bunny-body-light) 70%,
+        var(--bunny-body) 100%);
+    border-radius: 50% 50% 40% 40%;
+    z-index: 1;
+    transform-origin: bottom center;
+}
+
+.bunny-ear.left {
+    bottom: 95px;
+    left: 25px;
+    transform: rotate(-15deg);
+}
+
+.bunny-ear.right {
+    bottom: 95px;
+    right: 25px;
+    transform: rotate(15deg);
+}
+
+.bunny-ear::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 35px;
+    background: var(--bunny-inner-ear);
+    border-radius: 50%;
+}
+
+.bunny-eye {
+    position: absolute;
+    width: 18px;
+    height: 22px;
+    background: var(--worm-eye-white);
+    border-radius: 50%;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
+    top: 18px;
+}
+
+.bunny-eye.left { left: 12px; }
+.bunny-eye.right { right: 12px; }
+
+.bunny-pupil {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    background: radial-gradient(circle at 40% 40%, #6D4C41, #3E2723);
+    border-radius: 50%;
+    top: 6px;
+    left: 4px;
+}
+
+.bunny-sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    top: 4px;
+    left: 3px;
+}
+
+.bunny-nose {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 10px;
+    background: var(--bunny-nose);
+    border-radius: 50% 50% 40% 40%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bunny-mouth {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 8px;
+}
+
+.bunny-mouth::before,
+.bunny-mouth::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 8px;
+    border: 2px solid #5D4037;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+}
+
+.bunny-mouth::before { left: 0; }
+.bunny-mouth::after { right: 0; }
+
+.bunny-blush {
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: rgba(255,138,128,0.5);
+    border-radius: 50%;
+    top: 38px;
+}
+
+.bunny-blush.left { left: 4px; }
+.bunny-blush.right { right: 4px; }
+
+.bunny-foot {
+    position: absolute;
+    bottom: -5px;
+    width: 28px;
+    height: 15px;
+    background: var(--bunny-body);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bunny-foot.left { left: 15px; }
+.bunny-foot.right { right: 15px; }
+
+.bunny-tail {
+    position: absolute;
+    bottom: 15px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, var(--bunny-body-light), var(--bunny-body));
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Bunny Idle Animation */
+@keyframes bunny-idle-hop {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@keyframes bunny-ear-twitch {
+    0%, 90%, 100% { transform: rotate(-15deg); }
+    95% { transform: rotate(-25deg); }
+}
+
+@keyframes bunny-ear-twitch-right {
+    0%, 85%, 100% { transform: rotate(15deg); }
+    90% { transform: rotate(25deg); }
+}
+
+.bunny-character.idle .bunny-body {
+    animation: bunny-idle-hop 2s ease-in-out infinite;
+}
+
+.bunny-character.idle .bunny-head {
+    animation: bunny-idle-hop 2s ease-in-out infinite;
+    animation-delay: 0.05s;
+}
+
+.bunny-character.idle .bunny-ear.left {
+    animation: bunny-ear-twitch 3s ease-in-out infinite;
+}
+
+.bunny-character.idle .bunny-ear.right {
+    animation: bunny-ear-twitch-right 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+/* ============================================
+   OWL MASCOT
+   ============================================ */
+.owl-character {
+    width: 110px;
+    height: 130px;
+}
+
+.owl-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 90px;
+    background: radial-gradient(ellipse at 50% 30%,
+        var(--owl-body-light) 0%,
+        var(--owl-body) 50%,
+        var(--owl-body-dark) 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow:
+        inset -5px -5px 15px rgba(0,0,0,0.15),
+        inset 5px 5px 15px rgba(255,255,255,0.2),
+        0 8px 20px rgba(0,0,0,0.2);
+}
+
+.owl-belly {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 55px;
+    background: var(--owl-belly);
+    border-radius: 50%;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.05);
+}
+
+/* Belly feather pattern */
+.owl-belly::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 5px,
+        rgba(139,69,19,0.15) 5px,
+        rgba(139,69,19,0.15) 7px
+    );
+    border-radius: 50%;
+}
+
+.owl-head {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 60px;
+    background: radial-gradient(ellipse at 50% 60%,
+        var(--owl-body-light) 0%,
+        var(--owl-body) 60%,
+        var(--owl-body-dark) 100%);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.owl-tuft {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 25px solid var(--owl-body);
+    z-index: 1;
+}
+
+.owl-tuft.left {
+    bottom: 115px;
+    left: 18px;
+    transform: rotate(-20deg);
+}
+
+.owl-tuft.right {
+    bottom: 115px;
+    right: 18px;
+    transform: rotate(20deg);
+}
+
+.owl-eye-ring {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle,
+        var(--owl-belly) 0%,
+        var(--owl-belly) 60%,
+        var(--owl-body) 100%);
+    border-radius: 50%;
+    top: 12px;
+}
+
+.owl-eye-ring.left { left: 6px; }
+.owl-eye-ring.right { right: 6px; }
+
+.owl-eye {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: var(--worm-eye-white);
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+.owl-pupil {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #4E342E, #1B0000);
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+}
+
+.owl-sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+}
+
+.owl-beak {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid var(--owl-beak);
+    z-index: 3;
+}
+
+.owl-wing {
+    position: absolute;
+    width: 25px;
+    height: 45px;
+    background: linear-gradient(180deg,
+        var(--owl-body) 0%,
+        var(--owl-body-dark) 100%);
+    border-radius: 50% 50% 60% 60%;
+    bottom: 20px;
+    z-index: 0;
+}
+
+.owl-wing.left {
+    left: -8px;
+    transform: rotate(15deg);
+}
+
+.owl-wing.right {
+    right: -8px;
+    transform: rotate(-15deg);
+}
+
+.owl-foot {
+    position: absolute;
+    bottom: -3px;
+    width: 22px;
+    height: 12px;
+    background: var(--owl-beak);
+    border-radius: 50%;
+}
+
+.owl-foot.left { left: 20px; }
+.owl-foot.right { right: 20px; }
+
+/* Owl Idle Animation */
+@keyframes owl-idle-bob {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+    25% { transform: translateX(-50%) translateY(-3px) rotate(-2deg); }
+    75% { transform: translateX(-50%) translateY(-3px) rotate(2deg); }
+}
+
+@keyframes owl-blink {
+    0%, 96%, 100% { transform: scaleY(1); }
+    98% { transform: scaleY(0.1); }
+}
+
+@keyframes owl-wing-flap {
+    0%, 100% { transform: rotate(15deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.owl-character.idle .owl-body {
+    animation: owl-idle-bob 3s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-head {
+    animation: owl-idle-bob 3s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.owl-character.idle .owl-eye {
+    animation: owl-blink 5s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-wing.left {
+    animation: owl-wing-flap 2s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-wing.right {
+    animation: owl-wing-flap 2s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   CAT MASCOT
+   ============================================ */
+.cat-character {
+    width: 120px;
+    height: 120px;
+}
+
+.cat-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 65px;
+    background: radial-gradient(ellipse at 50% 40%,
+        var(--cat-body-light) 0%,
+        var(--cat-body) 60%,
+        var(--cat-body-dark) 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow:
+        inset -4px -4px 12px rgba(0,0,0,0.1),
+        inset 4px 4px 12px rgba(255,255,255,0.3),
+        0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Belly stripe pattern */
+.cat-body::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 40px;
+    background: var(--cat-body-light);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.cat-head {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 55px;
+    background: radial-gradient(ellipse at 50% 50%,
+        var(--cat-body-light) 0%,
+        var(--cat-body) 60%,
+        var(--cat-body-dark) 100%);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.cat-ear {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 28px solid var(--cat-body);
+    z-index: 1;
+}
+
+.cat-ear.left {
+    bottom: 90px;
+    left: 18px;
+    transform: rotate(-10deg);
+}
+
+.cat-ear.right {
+    bottom: 90px;
+    right: 18px;
+    transform: rotate(10deg);
+}
+
+.cat-ear::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid var(--bunny-inner-ear);
+}
+
+.cat-eye {
+    position: absolute;
+    width: 20px;
+    height: 22px;
+    background: var(--worm-eye-white);
+    border-radius: 50%;
+    top: 14px;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+.cat-eye.left { left: 10px; }
+.cat-eye.right { right: 10px; }
+
+.cat-pupil {
+    position: absolute;
+    width: 8px;
+    height: 16px;
+    background: linear-gradient(180deg, #2E7D32, #1B5E20);
+    border-radius: 50%;
+    top: 3px;
+    left: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Cat slit pupil */
+.cat-pupil::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 12px;
+    background: #000;
+    border-radius: 50%;
+    top: 2px;
+    left: 2.5px;
+}
+
+.cat-sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 1px;
+}
+
+.cat-nose {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 8px;
+    background: var(--cat-nose);
+    border-radius: 50% 50% 40% 40%;
+}
+
+.cat-mouth {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 6px;
+}
+
+.cat-mouth::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #5D4037;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+}
+
+.cat-whisker {
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: #5D4037;
+    top: 35px;
+}
+
+.cat-whisker.left-1 { left: -15px; transform: rotate(-10deg); }
+.cat-whisker.left-2 { left: -15px; top: 40px; }
+.cat-whisker.left-3 { left: -15px; top: 45px; transform: rotate(10deg); }
+.cat-whisker.right-1 { right: -15px; transform: rotate(10deg); }
+.cat-whisker.right-2 { right: -15px; top: 40px; }
+.cat-whisker.right-3 { right: -15px; top: 45px; transform: rotate(-10deg); }
+
+.cat-tail {
+    position: absolute;
+    bottom: 20px;
+    left: -20px;
+    width: 50px;
+    height: 15px;
+    background: linear-gradient(90deg,
+        var(--cat-body-dark),
+        var(--cat-body),
+        var(--cat-body-dark));
+    border-radius: 50% 0 0 50%;
+    transform-origin: right center;
+}
+
+.cat-tail::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: -5px;
+    width: 20px;
+    height: 25px;
+    background: var(--cat-body);
+    border-radius: 50%;
+}
+
+.cat-paw {
+    position: absolute;
+    bottom: -2px;
+    width: 20px;
+    height: 12px;
+    background: var(--cat-body);
+    border-radius: 50%;
+}
+
+.cat-paw.left { left: 18px; }
+.cat-paw.right { right: 18px; }
+
+/* Cat Idle Animation */
+@keyframes cat-idle-sway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-3deg); }
+    75% { transform: translateX(-50%) rotate(3deg); }
+}
+
+@keyframes cat-tail-wag {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+@keyframes cat-ear-twitch {
+    0%, 85%, 100% { transform: rotate(-10deg) scaleY(1); }
+    90% { transform: rotate(-15deg) scaleY(0.9); }
+}
+
+.cat-character.idle .cat-body {
+    animation: cat-idle-sway 4s ease-in-out infinite;
+}
+
+.cat-character.idle .cat-head {
+    animation: cat-idle-sway 4s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.cat-character.idle .cat-tail {
+    animation: cat-tail-wag 1.5s ease-in-out infinite;
+}
+
+.cat-character.idle .cat-ear.left {
+    animation: cat-ear-twitch 4s ease-in-out infinite;
+}
+
+/* ============================================
+   ROBOT MASCOT
+   ============================================ */
+.robot-character {
+    width: 100px;
+    height: 130px;
+}
+
+.robot-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(180deg,
+        var(--robot-body-light) 0%,
+        var(--robot-body) 50%,
+        var(--robot-body-dark) 100%);
+    border-radius: 15px;
+    box-shadow:
+        inset -3px -3px 10px rgba(0,0,0,0.2),
+        inset 3px 3px 10px rgba(255,255,255,0.4),
+        0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Robot chest display */
+.robot-body::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 30px;
+    background: #263238;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Heart display on chest */
+.robot-body::after {
+    content: '♥';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: var(--robot-screen);
+    text-shadow: 0 0 10px var(--robot-screen);
+    animation: robot-heart-beat 1s ease-in-out infinite;
+}
+
+@keyframes robot-heart-beat {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+.robot-head {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 50px;
+    background: linear-gradient(180deg,
+        var(--robot-body-light) 0%,
+        var(--robot-body) 50%,
+        var(--robot-body-dark) 100%);
+    border-radius: 15px 15px 10px 10px;
+    z-index: 2;
+    box-shadow:
+        inset -3px -3px 8px rgba(0,0,0,0.2),
+        inset 3px 3px 8px rgba(255,255,255,0.4),
+        0 4px 10px rgba(0,0,0,0.15);
+}
+
+.robot-antenna {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 20px;
+    background: var(--robot-metal);
+    z-index: 1;
+}
+
+.robot-antenna::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--robot-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--robot-accent);
+    animation: robot-antenna-blink 2s ease-in-out infinite;
+}
+
+@keyframes robot-antenna-blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--robot-accent); }
+    50% { opacity: 0.5; box-shadow: 0 0 5px var(--robot-accent); }
+}
+
+.robot-eye {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #263238;
+    border-radius: 4px;
+    top: 12px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+.robot-eye.left { left: 8px; }
+.robot-eye.right { right: 8px; }
+
+.robot-pupil {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--robot-screen);
+    border-radius: 2px;
+    top: 4px;
+    left: 4px;
+    box-shadow: 0 0 8px var(--robot-screen);
+}
+
+.robot-mouth {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 8px;
+    background: #263238;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+/* Robot smile using bars */
+.robot-mouth::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 3px,
+        var(--robot-screen) 3px,
+        var(--robot-screen) 6px
+    );
+}
+
+.robot-arm {
+    position: absolute;
+    width: 15px;
+    height: 40px;
+    background: linear-gradient(180deg,
+        var(--robot-metal),
+        var(--robot-body-dark));
+    border-radius: 8px;
+    bottom: 20px;
+}
+
+.robot-arm.left {
+    left: 3px;
+    transform: rotate(10deg);
+    transform-origin: top center;
+}
+
+.robot-arm.right {
+    right: 3px;
+    transform: rotate(-10deg);
+    transform-origin: top center;
+}
+
+.robot-arm::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--robot-metal);
+    border-radius: 50%;
+}
+
+.robot-leg {
+    position: absolute;
+    bottom: -12px;
+    width: 18px;
+    height: 15px;
+    background: linear-gradient(180deg,
+        var(--robot-body-dark),
+        var(--robot-metal));
+    border-radius: 5px 5px 8px 8px;
+}
+
+.robot-leg.left { left: 15px; }
+.robot-leg.right { right: 15px; }
+
+/* Robot Idle Animation */
+@keyframes robot-idle-hover {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+@keyframes robot-arm-swing {
+    0%, 100% { transform: rotate(10deg); }
+    50% { transform: rotate(15deg); }
+}
+
+@keyframes robot-eye-scan {
+    0%, 100% { left: 4px; }
+    50% { left: 6px; }
+}
+
+.robot-character.idle .robot-body {
+    animation: robot-idle-hover 2s ease-in-out infinite;
+}
+
+.robot-character.idle .robot-head {
+    animation: robot-idle-hover 2s ease-in-out infinite;
+    animation-delay: 0.05s;
+}
+
+.robot-character.idle .robot-arm.left {
+    animation: robot-arm-swing 1.5s ease-in-out infinite;
+}
+
+.robot-character.idle .robot-arm.right {
+    animation: robot-arm-swing 1.5s ease-in-out infinite reverse;
+}
+
+.robot-character.idle .robot-pupil {
+    animation: robot-eye-scan 3s ease-in-out infinite;
+}
+
+/* ============================================
+   EXTENDED EMOTIONS - All Mascots
+   ============================================ */
+
+/* EXCITED - Jumping with sparkle eyes */
+@keyframes excited-bounce {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    15% { transform: translateY(-35px) scale(1.1) rotate(-5deg); }
+    30% { transform: translateY(0) scale(0.95) rotate(0deg); }
+    45% { transform: translateY(-25px) scale(1.08) rotate(5deg); }
+    60% { transform: translateY(0) scale(0.97) rotate(0deg); }
+    75% { transform: translateY(-15px) scale(1.05) rotate(-3deg); }
+    90% { transform: translateY(0) scale(0.99) rotate(0deg); }
+}
+
+@keyframes excited-eyes-sparkle {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    50% { transform: scale(1.1); }
+    75% { transform: scale(1.25); }
+}
+
+.mascot.excited,
+.worm-character.excited {
+    animation: excited-bounce 1.2s var(--bounce-ease);
+}
+
+.worm-character.excited .worm-sparkle,
+.bunny-character.excited .bunny-sparkle,
+.owl-character.excited .owl-sparkle,
+.cat-character.excited .cat-sparkle {
+    animation: excited-eyes-sparkle 0.4s ease-in-out infinite;
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.worm-character.excited .worm-mouth,
+.bunny-character.excited .bunny-mouth,
+.cat-character.excited .cat-mouth {
+    width: 25px !important;
+    height: 15px !important;
+    border-radius: 50% 50% 50% 50% !important;
+    background: #5D4037 !important;
+    border: none !important;
+}
+
+/* SURPRISED - Wide eyes, open mouth */
+@keyframes surprised-jolt {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-20px) scale(1.15); }
+    50% { transform: translateY(-15px) scale(1.1); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes surprised-eyes-wide {
+    0%, 100% { transform: scale(1); }
+    20%, 80% { transform: scale(1.4); }
+}
+
+.mascot.surprised,
+.worm-character.surprised {
+    animation: surprised-jolt 0.8s var(--bounce-ease);
+}
+
+.worm-character.surprised .worm-eye,
+.bunny-character.surprised .bunny-eye,
+.owl-character.surprised .owl-eye,
+.cat-character.surprised .cat-eye {
+    animation: surprised-eyes-wide 0.8s ease-out;
+    transform: scale(1.3);
+}
+
+.worm-character.surprised .worm-mouth {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: #5D4037 !important;
+    border: none !important;
+}
+
+/* GIGGLING - Shaking with squinty eyes */
+@keyframes giggle-shake {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    10% { transform: translateX(-5px) rotate(-3deg); }
+    20% { transform: translateX(5px) rotate(3deg); }
+    30% { transform: translateX(-5px) rotate(-3deg); }
+    40% { transform: translateX(5px) rotate(3deg); }
+    50% { transform: translateX(-3px) rotate(-2deg); }
+    60% { transform: translateX(3px) rotate(2deg); }
+    70% { transform: translateX(-2px) rotate(-1deg); }
+    80% { transform: translateX(2px) rotate(1deg); }
+    90% { transform: translateX(-1px) rotate(0deg); }
+}
+
+@keyframes giggle-eyes {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.2); }
+}
+
+.mascot.giggling,
+.worm-character.giggling {
+    animation: giggle-shake 1s ease-in-out;
+}
+
+.worm-character.giggling .worm-eye,
+.bunny-character.giggling .bunny-eye,
+.owl-character.giggling .owl-eye,
+.cat-character.giggling .cat-eye {
+    animation: giggle-eyes 0.2s ease-in-out infinite;
+}
+
+.worm-character.giggling .worm-blush,
+.bunny-character.giggling .bunny-blush {
+    opacity: 1 !important;
+    transform: scale(1.4);
+}
+
+/* CRYING - Tears streaming, trembling */
+@keyframes crying-shake {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(2px) rotate(-2deg); }
+    75% { transform: translateY(2px) rotate(2deg); }
+}
+
+@keyframes crying-tears-stream {
+    0% { opacity: 0; transform: translateY(0) scale(0.5); }
+    10% { opacity: 1; transform: translateY(5px) scale(1); }
+    100% { opacity: 0; transform: translateY(60px) scale(0.5); }
+}
+
+.mascot.crying,
+.worm-character.crying {
+    animation: crying-shake 0.3s ease-in-out infinite;
+}
+
+.worm-character.crying .worm-tear {
+    opacity: 1 !important;
+    animation: crying-tears-stream 0.8s ease-in infinite !important;
+}
+
+.worm-character.crying .worm-tear.right {
+    animation-delay: 0.2s !important;
+}
+
+.worm-character.crying .worm-mouth {
+    width: 18px !important;
+    height: 10px !important;
+    border-radius: 0 0 50% 50% !important;
+    background: #5D4037 !important;
+    border: none !important;
+}
+
+/* CONFUSED - Tilted head, question mark */
+@keyframes confused-tilt {
+    0%, 100% { transform: rotate(0deg); }
+    30% { transform: rotate(-15deg); }
+    60% { transform: rotate(10deg); }
+}
+
+@keyframes confused-eyes {
+    0%, 100% { transform: translateX(0); }
+    30% { transform: translateX(-3px); }
+    60% { transform: translateX(3px); }
+}
+
+.mascot.confused,
+.worm-character.confused {
+    animation: confused-tilt 1.5s ease-in-out;
+}
+
+.worm-character.confused .worm-pupil,
+.bunny-character.confused .bunny-pupil,
+.cat-character.confused .cat-pupil {
+    animation: confused-eyes 1.5s ease-in-out;
+}
+
+.worm-character.confused::after {
+    content: '?';
+    position: absolute;
+    top: -30px;
+    right: 20px;
+    font-size: 30px;
+    color: #FF9800;
+    font-weight: bold;
+    animation: confused-question 1s ease-in-out infinite;
+}
+
+@keyframes confused-question {
+    0%, 100% { transform: rotate(-10deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+}
+
+/* SLEEPY - Droopy eyes, yawning */
+@keyframes sleepy-droop {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(5px) rotate(-5deg); }
+}
+
+@keyframes sleepy-eyes {
+    0%, 30%, 100% { transform: scaleY(0.3); }
+    15% { transform: scaleY(0.1); }
+}
+
+@keyframes sleepy-zzz {
+    0% { opacity: 0; transform: translateY(0) scale(0.5); }
+    50% { opacity: 1; transform: translateY(-20px) scale(1); }
+    100% { opacity: 0; transform: translateY(-40px) scale(0.8); }
+}
+
+.mascot.sleepy,
+.worm-character.sleepy {
+    animation: sleepy-droop 3s ease-in-out infinite;
+}
+
+.worm-character.sleepy .worm-eye,
+.bunny-character.sleepy .bunny-eye,
+.owl-character.sleepy .owl-eye,
+.cat-character.sleepy .cat-eye {
+    animation: sleepy-eyes 4s ease-in-out infinite;
+}
+
+.worm-character.sleepy::before {
+    content: 'z';
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 16px;
+    color: #9E9E9E;
+    font-style: italic;
+    animation: sleepy-zzz 2s ease-in-out infinite;
+}
+
+.worm-character.sleepy::after {
+    content: 'z';
+    position: absolute;
+    top: -25px;
+    right: 25px;
+    font-size: 20px;
+    color: #9E9E9E;
+    font-style: italic;
+    animation: sleepy-zzz 2s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+/* PROUD - Chest puffed, chin up */
+@keyframes proud-puff {
+    0%, 100% { transform: scale(1) translateY(0); }
+    30% { transform: scale(1.1) translateY(-10px); }
+    60% { transform: scale(1.08) translateY(-8px); }
+}
+
+.mascot.proud,
+.worm-character.proud {
+    animation: proud-puff 1.5s var(--bounce-ease);
+}
+
+.worm-character.proud .worm-head {
+    transform: translateY(-5px) !important;
+}
+
+.worm-character.proud .worm-eye {
+    transform: scaleY(0.7);
+}
+
+.worm-character.proud::after {
+    content: '★';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700;
+    animation: proud-star 1s ease-in-out infinite;
+}
+
+@keyframes proud-star {
+    0%, 100% { transform: translateX(-50%) scale(1) rotate(0deg); }
+    50% { transform: translateX(-50%) scale(1.2) rotate(180deg); }
+}
+
+/* DANCING - Rhythmic movement */
+@keyframes dance-move {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    12.5% { transform: translateY(-10px) rotate(-8deg); }
+    25% { transform: translateY(0) rotate(0deg); }
+    37.5% { transform: translateY(-10px) rotate(8deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    62.5% { transform: translateY(-15px) rotate(-5deg); }
+    75% { transform: translateY(0) rotate(0deg); }
+    87.5% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes dance-segment {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
+}
+
+.mascot.dancing,
+.worm-character.dancing {
+    animation: dance-move 1s ease-in-out infinite;
+}
+
+.worm-character.dancing .worm-segment {
+    animation: dance-segment 0.5s ease-in-out infinite;
+}
+
+.worm-character.dancing .worm-segment.seg-2 { animation-delay: 0.1s; }
+.worm-character.dancing .worm-segment.seg-3 { animation-delay: 0.2s; }
+.worm-character.dancing .worm-segment.seg-4 { animation-delay: 0.3s; }
+
+/* ============================================
+   COMIC VISUAL EFFECTS
+   ============================================ */
+
+/* Speech Bubble */
+.speech-bubble {
+    position: absolute;
+    bottom: 130px;
+    right: 50px;
+    background: white;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1002;
+    animation: bubble-pop 0.5s var(--bounce-ease);
+    opacity: 0;
+    transform: scale(0);
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid white;
+}
+
+/* Left side speech bubble */
+.speech-bubble.side-left {
+    right: auto;
+    left: 50px;
+}
+
+.speech-bubble.side-left::after {
+    right: auto;
+    left: 25px;
+}
+
+@keyframes bubble-pop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Impact Lines (for emphasis) */
+.impact-lines {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.impact-line {
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    border-radius: 2px;
+    opacity: 0;
+}
+
+.impact-lines.show .impact-line {
+    animation: impact-burst 0.6s ease-out forwards;
+}
+
+@keyframes impact-burst {
+    0% { transform: scaleX(0); opacity: 0; }
+    30% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(1.5) translateX(20px); opacity: 0; }
+}
+
+.impact-line:nth-child(1) { top: 50%; left: 100%; transform: rotate(0deg); }
+.impact-line:nth-child(2) { top: 30%; left: 95%; transform: rotate(-30deg); animation-delay: 0.05s; }
+.impact-line:nth-child(3) { top: 70%; left: 95%; transform: rotate(30deg); animation-delay: 0.1s; }
+.impact-line:nth-child(4) { top: 15%; left: 85%; transform: rotate(-60deg); animation-delay: 0.15s; }
+.impact-line:nth-child(5) { top: 85%; left: 85%; transform: rotate(60deg); animation-delay: 0.2s; }
+
+/* Sweat Drops */
+.sweat-drop {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(180deg, #E3F2FD, #64B5F6);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+    z-index: 1002;
+}
+
+.sweat-drop.show {
+    animation: sweat-fall 1s ease-in forwards;
+}
+
+@keyframes sweat-fall {
+    0% { opacity: 0; transform: translateY(0); }
+    20% { opacity: 1; transform: translateY(5px); }
+    100% { opacity: 0; transform: translateY(40px); }
+}
+
+/* Spiral Eyes (for dizzy/confused) */
+.spiral-eyes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.spiral {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid transparent;
+    border-top-color: #5D4037;
+    border-radius: 50%;
+    animation: spiral-spin 0.5s linear infinite;
+}
+
+@keyframes spiral-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Heart Eyes */
+.heart-eyes {
+    position: absolute;
+    font-size: 18px;
+    color: #FF6B6B;
+    animation: heart-pulse 0.5s ease-in-out infinite;
+    z-index: 15;
+}
+
+@keyframes heart-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Star Eyes */
+.star-eyes {
+    position: absolute;
+    font-size: 16px;
+    color: #FFD700;
+    animation: star-twinkle 0.3s ease-in-out infinite;
+    z-index: 15;
+}
+
+@keyframes star-twinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(15deg); }
+}
+
+/* Action Words (POW, BOOM, YAY) */
+.action-word {
+    position: absolute;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    text-shadow:
+        -2px -2px 0 #FF6B6B,
+        2px -2px 0 #FF6B6B,
+        -2px 2px 0 #FF6B6B,
+        2px 2px 0 #FF6B6B,
+        0 0 10px rgba(255,107,107,0.5);
+    z-index: 1003;
+    opacity: 0;
+    transform: scale(0) rotate(-10deg);
+}
+
+.action-word.show {
+    animation: action-pop 0.8s var(--bounce-ease) forwards;
+}
+
+@keyframes action-pop {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    50% { transform: scale(1.3) rotate(5deg); opacity: 1; }
+    70% { transform: scale(0.9) rotate(-3deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Floating Sparkles */
+.floating-sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 1002;
+}
+
+.floating-sparkle::before,
+.floating-sparkle::after {
+    content: '';
+    position: absolute;
+    background: #FFD700;
+}
+
+.floating-sparkle::before {
+    width: 100%;
+    height: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.floating-sparkle::after {
+    width: 3px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.floating-sparkle {
+    animation: sparkle-float 1.5s ease-out forwards;
+}
+
+@keyframes sparkle-float {
+    0% { opacity: 0; transform: scale(0) rotate(0deg); }
+    30% { opacity: 1; transform: scale(1) rotate(45deg); }
+    100% { opacity: 0; transform: scale(0.5) rotate(90deg) translateY(-50px); }
+}
+
+/* Bouncing Emoji Burst */
+.emoji-burst {
+    position: absolute;
+    font-size: 24px;
+    z-index: 1002;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.emoji-burst.show {
+    animation: emoji-bounce 1s var(--bounce-ease) forwards;
+}
+
+@keyframes emoji-bounce {
+    0% { opacity: 0; transform: scale(0) translateY(0); }
+    30% { opacity: 1; transform: scale(1.2) translateY(-30px); }
+    50% { transform: scale(1) translateY(-20px); }
+    70% { transform: scale(1.1) translateY(-40px); }
+    100% { opacity: 0; transform: scale(0.8) translateY(-60px); }
+}
+
+/* ============================================
+   CINEMATIC SCENE ENHANCEMENTS
+   ============================================ */
+
+/* Parallax Layers */
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.parallax-layer.back {
+    transform: translateZ(-100px) scale(2);
+    opacity: 0.5;
+}
+
+.parallax-layer.mid {
+    transform: translateZ(-50px) scale(1.5);
+    opacity: 0.7;
+}
+
+.parallax-layer.front {
+    transform: translateZ(0);
+    opacity: 1;
+}
+
+/* Ambient Glow Effect */
+.ambient-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    pointer-events: none;
+    animation: ambient-pulse 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes ambient-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+/* Floating Bubbles Background */
+.floating-bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+    animation: bubble-rise linear infinite;
+}
+
+@keyframes bubble-rise {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+/* Twinkling Stars Background */
+.twinkling-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.twinkle-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px rgba(255,255,255,0.8);
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Rainbow Trail Effect */
+.rainbow-trail {
+    position: absolute;
+    width: 100px;
+    height: 10px;
+    background: linear-gradient(90deg,
+        #FF6B6B 0%,
+        #FFD93D 20%,
+        #6BCB77 40%,
+        #4D96FF 60%,
+        #9B59B6 80%,
+        #FF6B6B 100%);
+    border-radius: 5px;
+    opacity: 0;
+    z-index: 1001;
+}
+
+.rainbow-trail.show {
+    animation: rainbow-swoosh 0.8s ease-out forwards;
+}
+
+@keyframes rainbow-swoosh {
+    0% { transform: scaleX(0) translateX(-50px); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: scaleX(2) translateX(100px); opacity: 0; }
+}
+
+/* Confetti Burst Enhancement */
+.confetti-burst {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    z-index: 1002;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+}
+
+.confetti-burst.show .confetti-piece {
+    animation: confetti-explode 1s ease-out forwards;
+}
+
+@keyframes confetti-explode {
+    0% { transform: translate(0, 0) rotate(0deg) scale(0); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) rotate(720deg) scale(0.5); opacity: 0; }
+}
+
+/* Screen Shake Effect */
+@keyframes screen-shake {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-5px); }
+    20% { transform: translateX(5px); }
+    30% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    50% { transform: translateX(-3px); }
+    60% { transform: translateX(3px); }
+    70% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    90% { transform: translateX(-1px); }
+}
+
+.screen-shake {
+    animation: screen-shake 0.5s ease-out;
+}
+
+/* Victory Spin */
+@keyframes victory-spin {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(1); }
+    75% { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.victory-spin {
+    animation: victory-spin 0.8s var(--bounce-ease);
+}
+
+/* Slow Motion Effect */
+.slow-motion {
+    animation-duration: 3s !important;
+    animation-timing-function: ease-in-out !important;
+}
+
+/* ============================================
+   RESPONSIVE FOR NEW MASCOTS
+   ============================================ */
+@media (max-width: 768px) {
+    .mascot-container {
+        width: 140px;
+        height: 110px;
+        right: 4%;
+        bottom: 10%;
+    }
+
+    .bunny-character,
+    .owl-character,
+    .cat-character,
+    .robot-character {
+        transform: scale(0.75);
+        transform-origin: bottom right;
+    }
+
+    .speech-bubble {
+        font-size: 14px;
+        padding: 8px 12px;
+        right: 30px;
+        bottom: 100px;
+    }
+
+    .action-word {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mascot-container {
+        width: 100px;
+        height: 80px;
+        right: 3%;
+        bottom: 8%;
+    }
+
+    .bunny-character,
+    .owl-character,
+    .cat-character,
+    .robot-character {
+        transform: scale(0.55);
+    }
+
+    .speech-bubble {
+        display: none;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY: Reduced Motion (Extended)
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .bunny-character *,
+    .owl-character *,
+    .cat-character *,
+    .robot-character *,
+    .speech-bubble,
+    .impact-lines *,
+    .action-word,
+    .floating-sparkle,
+    .emoji-burst,
+    .rainbow-trail,
+    .confetti-piece,
+    .bubble,
+    .twinkle-star {
+        animation: none !important;
+        transition: none !important;
+    }
+}

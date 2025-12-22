@@ -1,0 +1,89 @@
+# Environment files (contains secrets)
+.env
+.env.local
+.env.*.local
+
+# PHP Dependencies
+/vendor/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python Virtual Environment
+scripts/.venv/
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Session files
+sessions/
+
+# Cache
+.cache/
+*.cache
+
+# Temporary files
+tmp/
+temp/
+
+# Generated question files (use database instead)
+scripts/questions.json
+
+# Leaderboard data (local testing)
+scripts/leaderboard.json
+
+# Claude Code settings (keep CLAUDE.md)
+.claude/settings.json
+.claude/settings.local.json
+
+# Composer
+composer.lock

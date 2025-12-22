@@ -1,0 +1,1015 @@
+/* ============================================
+   CAT MASCOT - "Whiskers the Quiz Cat"
+   A curious, playful orange tabby!
+   Reacts with dramatic tail swishes and ear twitches
+   ============================================ */
+
+/* === CSS Variables for Cat === */
+:root {
+    --cat-body: #FF9800;
+    --cat-body-light: #FFB74D;
+    --cat-body-dark: #F57C00;
+    --cat-stripes: #E65100;
+    --cat-belly: #FFECB3;
+    --cat-nose: #FFB6C1;
+    --cat-inner-ear: #FFCDD2;
+}
+
+/* === MAIN CHARACTER CONTAINER === */
+.cat-character {
+    width: 125px;
+    height: 130px;
+    position: absolute;
+}
+
+/* Hidden by default, shown when .active */
+.cat-character:not(.active) {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.cat-character.active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* === CAT BODY === */
+.cat-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 70px;
+    background: radial-gradient(ellipse at 50% 35%,
+        var(--cat-body-light) 0%,
+        var(--cat-body) 50%,
+        var(--cat-body-dark) 100%);
+    border-radius: 52% 52% 48% 48%;
+    box-shadow:
+        inset -5px -5px 15px rgba(0,0,0,0.12),
+        inset 5px 5px 15px rgba(255,255,255,0.25),
+        0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* Tabby stripes on body */
+.cat-body::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 8px,
+            rgba(230, 81, 0, 0.25) 8px,
+            rgba(230, 81, 0, 0.25) 12px
+        );
+    border-radius: 50%;
+}
+
+/* Belly patch */
+.cat-body::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 40px;
+    background: radial-gradient(ellipse at 50% 50%,
+        var(--cat-belly) 0%,
+        rgba(255, 236, 179, 0.5) 70%,
+        transparent 100%);
+    border-radius: 50%;
+}
+
+/* === CAT HEAD === */
+.cat-head {
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 60px;
+    background: radial-gradient(ellipse at 50% 45%,
+        var(--cat-body-light) 0%,
+        var(--cat-body) 55%,
+        var(--cat-body-dark) 100%);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow:
+        inset -4px -4px 12px rgba(0,0,0,0.1),
+        inset 4px 4px 12px rgba(255,255,255,0.2),
+        0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Forehead "M" marking (tabby pattern) */
+.cat-head::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 12px;
+    background:
+        linear-gradient(135deg, transparent 40%, var(--cat-stripes) 40%, var(--cat-stripes) 45%, transparent 45%),
+        linear-gradient(225deg, transparent 40%, var(--cat-stripes) 40%, var(--cat-stripes) 45%, transparent 45%);
+    opacity: 0.5;
+}
+
+/* White muzzle area */
+.cat-head::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 25px;
+    background: radial-gradient(ellipse at 50% 60%,
+        #FFFFFF 0%,
+        rgba(255,255,255,0.7) 60%,
+        transparent 100%);
+    border-radius: 50%;
+}
+
+/* === CAT EARS === */
+.cat-ear {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 35px solid var(--cat-body);
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.cat-ear.left {
+    bottom: 98px;
+    left: 15px;
+    transform: rotate(-12deg);
+}
+
+.cat-ear.right {
+    bottom: 98px;
+    right: 15px;
+    transform: rotate(12deg);
+}
+
+/* Inner ear (pink) */
+.cat-ear::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 22px solid var(--cat-inner-ear);
+}
+
+/* Ear fur tufts */
+.cat-ear::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -5px;
+    width: 10px;
+    height: 8px;
+    background: var(--cat-body-light);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+/* === CAT EYES === */
+.cat-eye {
+    position: absolute;
+    width: 22px;
+    height: 24px;
+    background: radial-gradient(circle at 50% 45%,
+        #FFFFFF 0%,
+        #F5F5F5 60%,
+        #E8E8E8 100%);
+    border-radius: 50%;
+    top: 15px;
+    box-shadow:
+        inset 0 -3px 6px rgba(0,0,0,0.1),
+        0 2px 4px rgba(0,0,0,0.12);
+    overflow: hidden;
+    z-index: 3;
+}
+
+.cat-eye.left { left: 10px; }
+.cat-eye.right { right: 10px; }
+
+.cat-pupil {
+    position: absolute;
+    width: 10px;
+    height: 18px;
+    background: linear-gradient(180deg,
+        #388E3C 0%,
+        #2E7D32 50%,
+        #1B5E20 100%);
+    border-radius: 50%;
+    top: 3px;
+    left: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Cat slit pupil - thin vertical line */
+.cat-pupil::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    background: radial-gradient(ellipse at 50% 50%,
+        #000 60%,
+        #1B5E20 100%);
+    border-radius: 50%;
+    top: 2px;
+    left: 3px;
+    transition: width 0.3s ease;
+}
+
+.cat-sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, #FFFFFF 60%, transparent 100%);
+    border-radius: 50%;
+    top: 3px;
+    left: 2px;
+}
+
+/* Secondary sparkle */
+.cat-sparkle::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    bottom: -8px;
+    right: -2px;
+}
+
+/* === CAT NOSE === */
+.cat-nose {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 10px;
+    background: radial-gradient(ellipse at 40% 30%,
+        #FFD4D9 0%,
+        var(--cat-nose) 50%,
+        #E8A0A8 100%);
+    border-radius: 50% 50% 40% 40%;
+    z-index: 4;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.1),
+        inset 1px 1px 3px rgba(255,255,255,0.5);
+}
+
+/* Nose bridge line */
+.cat-nose::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 6px;
+    background: #BDBDBD;
+    border-radius: 2px;
+}
+
+/* === CAT MOUTH === */
+.cat-mouth {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 8px;
+    z-index: 4;
+}
+
+/* Cute 'w' cat smile */
+.cat-mouth::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2.5px solid #795548;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+}
+
+/* === CAT WHISKERS === */
+.cat-whisker {
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg,
+        #5D4037 0%,
+        #8D6E63 50%,
+        transparent 100%);
+    z-index: 4;
+    transform-origin: right center;
+    transition: transform 0.2s ease;
+}
+
+.cat-whisker.left-1 { top: 32px; left: -18px; transform: rotate(-12deg); }
+.cat-whisker.left-2 { top: 38px; left: -20px; transform: rotate(0deg); }
+.cat-whisker.left-3 { top: 44px; left: -18px; transform: rotate(12deg); }
+.cat-whisker.right-1 { top: 32px; right: -18px; transform: rotate(12deg) scaleX(-1); }
+.cat-whisker.right-2 { top: 38px; right: -20px; transform: rotate(0deg) scaleX(-1); }
+.cat-whisker.right-3 { top: 44px; right: -18px; transform: rotate(-12deg) scaleX(-1); }
+
+/* === CAT TAIL === */
+.cat-tail {
+    position: absolute;
+    bottom: 25px;
+    left: -25px;
+    width: 60px;
+    height: 18px;
+    background: linear-gradient(90deg,
+        var(--cat-body-dark) 0%,
+        var(--cat-body) 30%,
+        var(--cat-body-light) 60%,
+        var(--cat-body) 100%);
+    border-radius: 50% 0 0 50%;
+    transform-origin: right center;
+    z-index: 0;
+}
+
+/* Tail curl at end */
+.cat-tail::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: -8px;
+    width: 25px;
+    height: 35px;
+    background: var(--cat-body);
+    border-radius: 50%;
+    box-shadow: inset 3px -3px 8px rgba(0,0,0,0.15);
+}
+
+/* Tail stripes */
+.cat-tail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 0;
+    height: 100%;
+    background: repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 10px,
+        var(--cat-stripes) 10px,
+        var(--cat-stripes) 14px
+    );
+    opacity: 0.4;
+    border-radius: inherit;
+}
+
+/* === CAT PAWS === */
+.cat-paw {
+    position: absolute;
+    bottom: -4px;
+    width: 24px;
+    height: 14px;
+    background: linear-gradient(180deg,
+        var(--cat-body) 0%,
+        var(--cat-body-dark) 100%);
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+}
+
+.cat-paw.left { left: 18px; }
+.cat-paw.right { right: 18px; }
+
+/* Toe beans! */
+.cat-paw::before {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 8px;
+    background:
+        radial-gradient(ellipse at 20% 50%, var(--cat-inner-ear) 25%, transparent 26%),
+        radial-gradient(ellipse at 50% 50%, var(--cat-inner-ear) 25%, transparent 26%),
+        radial-gradient(ellipse at 80% 50%, var(--cat-inner-ear) 25%, transparent 26%),
+        radial-gradient(ellipse at 50% 100%, var(--cat-inner-ear) 40%, transparent 41%);
+}
+
+/* === CAT TEARS === */
+.cat-tear {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        rgba(100, 181, 246, 0.8) 0%,
+        rgba(66, 165, 245, 0.9) 100%);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+    top: 42px;
+}
+
+.cat-tear.left { left: 12px; }
+.cat-tear.right { right: 12px; }
+
+
+/* ============================================
+   IDLE ANIMATIONS - Cat being a cat
+   ============================================ */
+
+@keyframes cat-idle-sway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    30% { transform: translateX(-50%) rotate(-3deg); }
+    70% { transform: translateX(-50%) rotate(3deg); }
+}
+
+@keyframes cat-tail-lazy-wag {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-12deg); }
+    75% { transform: rotate(12deg); }
+}
+
+@keyframes cat-ear-curious {
+    0%, 80%, 100% { transform: rotate(-12deg); }
+    85%, 95% { transform: rotate(-20deg); }
+    90% { transform: rotate(-8deg); }
+}
+
+@keyframes cat-whisker-twitch {
+    0%, 85%, 100% { transform: rotate(-12deg); }
+    90% { transform: rotate(-5deg); }
+    95% { transform: rotate(-15deg); }
+}
+
+@keyframes cat-blink-slow {
+    0%, 92%, 100% { transform: scaleY(1); }
+    94%, 98% { transform: scaleY(0.1); }
+}
+
+.cat-character.idle .cat-body {
+    animation: cat-idle-sway 4.5s ease-in-out infinite;
+}
+
+.cat-character.idle .cat-head {
+    animation: cat-idle-sway 4.5s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.cat-character.idle .cat-tail {
+    animation: cat-tail-lazy-wag 2s ease-in-out infinite;
+}
+
+.cat-character.idle .cat-ear.left {
+    animation: cat-ear-curious 5s ease-in-out infinite;
+}
+
+.cat-character.idle .cat-ear.right {
+    animation: cat-ear-curious 5s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+.cat-character.idle .cat-whisker.left-1,
+.cat-character.idle .cat-whisker.left-2 {
+    animation: cat-whisker-twitch 4s ease-in-out infinite;
+}
+
+.cat-character.idle .cat-eye {
+    animation: cat-blink-slow 5s ease-in-out infinite;
+}
+
+
+/* ============================================
+   HAPPY - Correct answer! Cat goes crazy!
+   Pouncing with rapid tail wagging
+   ============================================ */
+
+@keyframes cat-happy-pounce {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    15% {
+        transform: translateY(8px) scale(0.9) rotate(-5deg);
+    }
+    30% {
+        transform: translateY(-45px) scale(1.15) rotate(8deg);
+    }
+    45% {
+        transform: translateY(-40px) scale(1.1) rotate(-5deg);
+    }
+    60% {
+        transform: translateY(0) scale(0.95) rotate(3deg);
+    }
+    75% {
+        transform: translateY(-25px) scale(1.08) rotate(-3deg);
+    }
+    90% {
+        transform: translateY(0) scale(0.98) rotate(0deg);
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes cat-happy-tail-crazy {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-30deg); }
+    20% { transform: rotate(30deg); }
+    30% { transform: rotate(-25deg); }
+    40% { transform: rotate(25deg); }
+    50% { transform: rotate(-20deg); }
+    60% { transform: rotate(20deg); }
+    70% { transform: rotate(-15deg); }
+    80% { transform: rotate(15deg); }
+    90% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes cat-happy-ears-perk {
+    0%, 100% { transform: rotate(-12deg); }
+    20% { transform: rotate(5deg) scaleY(1.15); }
+    40% { transform: rotate(-5deg) scaleY(1.1); }
+    60% { transform: rotate(3deg) scaleY(1.12); }
+    80% { transform: rotate(-8deg) scaleY(1.05); }
+}
+
+@keyframes cat-happy-pupils-dilate {
+    0%, 100% { width: 10px; }
+    30%, 70% { width: 16px; }
+}
+
+@keyframes cat-happy-whiskers-dance {
+    0%, 100% { transform: rotate(-12deg); }
+    25% { transform: rotate(-25deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-18deg); }
+}
+
+.cat-character.happy {
+    animation: cat-happy-pounce 1.5s var(--bounce-ease);
+}
+
+.cat-character.happy .cat-tail {
+    animation: cat-happy-tail-crazy 0.8s ease-in-out 2;
+}
+
+.cat-character.happy .cat-ear.left {
+    animation: cat-happy-ears-perk 1.5s ease-out;
+}
+
+.cat-character.happy .cat-ear.right {
+    animation: cat-happy-ears-perk 1.5s ease-out 0.1s;
+}
+
+.cat-character.happy .cat-pupil {
+    animation: cat-happy-pupils-dilate 1.5s ease-out;
+}
+
+/* Pupils become round when excited */
+.cat-character.happy .cat-pupil::after {
+    width: 8px;
+    border-radius: 50%;
+}
+
+.cat-character.happy .cat-whisker.left-1,
+.cat-character.happy .cat-whisker.left-2,
+.cat-character.happy .cat-whisker.left-3 {
+    animation: cat-happy-whiskers-dance 0.4s ease-in-out infinite;
+}
+
+
+/* ============================================
+   EXCITED - Cat spotted something interesting!
+   Alert posture, intense focus
+   ============================================ */
+
+@keyframes cat-excited-crouch {
+    0%, 100% { transform: translateY(0) scale(1); }
+    30% { transform: translateY(8px) scale(0.95) scaleX(1.05); }
+    60% { transform: translateY(-20px) scale(1.1); }
+    80% { transform: translateY(-15px) scale(1.05); }
+}
+
+@keyframes cat-excited-tail-up {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-60deg) translateY(-10px); }
+    100% { transform: rotate(-45deg) translateY(-8px); }
+}
+
+@keyframes cat-excited-wiggle-butt {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-5deg) translateX(-3px); }
+    50% { transform: translateX(-50%) rotate(5deg) translateX(3px); }
+    75% { transform: translateX(-50%) rotate(-3deg) translateX(-2px); }
+}
+
+@keyframes cat-excited-ears-forward {
+    0%, 100% { transform: rotate(-12deg); }
+    50% { transform: rotate(10deg) scaleY(1.1); }
+}
+
+.cat-character.excited {
+    animation: cat-excited-crouch 1s var(--bounce-ease);
+}
+
+.cat-character.excited .cat-body {
+    animation: cat-excited-wiggle-butt 0.3s ease-in-out infinite;
+}
+
+.cat-character.excited .cat-tail {
+    animation: cat-excited-tail-up 0.5s ease-out forwards;
+}
+
+.cat-character.excited .cat-ear.left,
+.cat-character.excited .cat-ear.right {
+    animation: cat-excited-ears-forward 0.5s ease-out;
+}
+
+/* Dilated hunting pupils */
+.cat-character.excited .cat-pupil {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+.cat-character.excited .cat-pupil::after {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+
+/* ============================================
+   SAD - Wrong answer... Pouty kitty
+   Droopy ears and tail, sad eyes
+   ============================================ */
+
+@keyframes cat-sad-droop {
+    0% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+    30% {
+        transform: scale(0.93) translateY(8px);
+        filter: brightness(0.88);
+    }
+    100% {
+        transform: scale(0.85) translateY(15px);
+        filter: brightness(0.65) saturate(0.5);
+    }
+}
+
+@keyframes cat-sad-ears-flat {
+    0% { transform: rotate(-12deg); }
+    100% { transform: rotate(-55deg) scaleY(0.8); }
+}
+
+@keyframes cat-sad-ears-flat-right {
+    0% { transform: rotate(12deg); }
+    100% { transform: rotate(55deg) scaleY(0.8); }
+}
+
+@keyframes cat-sad-tail-droop {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(30deg) translateY(15px); }
+}
+
+@keyframes cat-sad-whiskers-droop {
+    0% { transform: rotate(-12deg); }
+    100% { transform: rotate(15deg); }
+}
+
+.cat-character.sad {
+    animation: cat-sad-droop 1.5s ease-out forwards;
+}
+
+.cat-character.sad .cat-ear.left {
+    animation: cat-sad-ears-flat 1s ease-out forwards;
+}
+
+.cat-character.sad .cat-ear.right {
+    animation: cat-sad-ears-flat-right 1s ease-out forwards;
+}
+
+.cat-character.sad .cat-tail {
+    animation: cat-sad-tail-droop 1s ease-out forwards;
+}
+
+.cat-character.sad .cat-whisker {
+    animation: cat-sad-whiskers-droop 0.8s ease-out forwards;
+}
+
+/* Sad narrow pupils */
+.cat-character.sad .cat-pupil::after {
+    width: 2px;
+}
+
+
+/* ============================================
+   CRYING - Really upset kitty with tears
+   Shaking and crying
+   ============================================ */
+
+@keyframes cat-crying-shake {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(3px) rotate(-3deg); }
+    50% { transform: translateY(0) rotate(3deg); }
+    75% { transform: translateY(3px) rotate(-2deg); }
+}
+
+@keyframes cat-crying-tears {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(8px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.3);
+    }
+}
+
+@keyframes cat-crying-ears-shake {
+    0%, 100% { transform: rotate(-50deg) scaleY(0.8); }
+    50% { transform: rotate(-60deg) scaleY(0.75); }
+}
+
+@keyframes cat-crying-tail-droop-shake {
+    0%, 100% { transform: rotate(25deg) translateY(15px); }
+    50% { transform: rotate(35deg) translateY(18px); }
+}
+
+.cat-character.crying {
+    animation: cat-crying-shake 0.4s ease-in-out infinite;
+    filter: brightness(0.7) saturate(0.4);
+}
+
+.cat-character.crying .cat-ear.left {
+    animation: cat-crying-ears-shake 0.5s ease-in-out infinite;
+}
+
+.cat-character.crying .cat-ear.right {
+    animation: cat-crying-ears-shake 0.5s ease-in-out infinite reverse;
+}
+
+.cat-character.crying .cat-tail {
+    animation: cat-crying-tail-droop-shake 0.6s ease-in-out infinite;
+}
+
+.cat-character.crying .cat-tear {
+    opacity: 1;
+    animation: cat-crying-tears 1s ease-in infinite;
+}
+
+.cat-character.crying .cat-tear.right {
+    animation-delay: 0.3s;
+}
+
+/* Crying mouth - open wail */
+.cat-character.crying .cat-mouth::before {
+    width: 16px;
+    height: 12px;
+    border: none;
+    background: #5D4037;
+    border-radius: 50%;
+    left: 2px;
+}
+
+.cat-character.crying .cat-eye {
+    transform: scaleY(0.2);
+}
+
+
+/* ============================================
+   SURPRISED - "WHAT?!" startled cat
+   Puffed up, arched back, wide eyes
+   ============================================ */
+
+@keyframes cat-surprised-jump {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-40px) scale(1.2) scaleX(0.9); }
+    40% { transform: translateY(-35px) scale(1.15); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes cat-surprised-puff {
+    0% { transform: translateX(-50%) scale(1); }
+    20% { transform: translateX(-50%) scale(1.3) scaleY(0.9); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes cat-surprised-tail-puff {
+    0% { height: 18px; }
+    20%, 60% { height: 30px; }
+    100% { height: 18px; }
+}
+
+@keyframes cat-surprised-ears-back {
+    0% { transform: rotate(-12deg); }
+    20% { transform: rotate(-45deg) scaleX(0.8); }
+    100% { transform: rotate(-12deg); }
+}
+
+@keyframes cat-surprised-whiskers-spread {
+    0%, 100% { transform: rotate(-12deg); }
+    20%, 70% { transform: rotate(-30deg); }
+}
+
+.cat-character.surprised {
+    animation: cat-surprised-jump 1s var(--bounce-ease);
+}
+
+.cat-character.surprised .cat-body {
+    animation: cat-surprised-puff 1s ease-out;
+}
+
+.cat-character.surprised .cat-tail {
+    animation: cat-surprised-tail-puff 1s ease-out;
+}
+
+.cat-character.surprised .cat-ear.left,
+.cat-character.surprised .cat-ear.right {
+    animation: cat-surprised-ears-back 1s ease-out;
+}
+
+.cat-character.surprised .cat-whisker {
+    animation: cat-surprised-whiskers-spread 1s ease-out;
+}
+
+/* Wide terrified eyes with tiny pupils */
+.cat-character.surprised .cat-eye {
+    transform: scale(1.4);
+}
+
+.cat-character.surprised .cat-pupil {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.cat-character.surprised .cat-pupil::after {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}
+
+
+/* ============================================
+   GIGGLING - Playful silly cat
+   Rolling around, squinty eyes
+   ============================================ */
+
+@keyframes cat-giggle-roll {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    15% { transform: translateX(-8px) rotate(-8deg); }
+    30% { transform: translateX(8px) rotate(8deg); }
+    45% { transform: translateX(-6px) rotate(-6deg); }
+    60% { transform: translateX(6px) rotate(6deg); }
+    75% { transform: translateX(-4px) rotate(-4deg); }
+    90% { transform: translateX(4px) rotate(4deg); }
+}
+
+@keyframes cat-giggle-squint {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
+
+@keyframes cat-giggle-tail-wag-fast {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-25deg); }
+    75% { transform: rotate(25deg); }
+}
+
+@keyframes cat-giggle-paws-up {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-10deg); }
+}
+
+.cat-character.giggling {
+    animation: cat-giggle-roll 1.2s ease-in-out;
+}
+
+.cat-character.giggling .cat-eye {
+    animation: cat-giggle-squint 0.25s ease-in-out infinite;
+}
+
+.cat-character.giggling .cat-tail {
+    animation: cat-giggle-tail-wag-fast 0.2s ease-in-out infinite;
+}
+
+.cat-character.giggling .cat-paw.left {
+    animation: cat-giggle-paws-up 0.4s ease-in-out infinite;
+}
+
+.cat-character.giggling .cat-paw.right {
+    animation: cat-giggle-paws-up 0.4s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+
+/* ============================================
+   THINKING - Contemplating cat
+   Head tilt, focused gaze
+   ============================================ */
+
+@keyframes cat-thinking-tilt {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    30%, 70% { transform: translateX(-50%) rotate(-15deg); }
+}
+
+@keyframes cat-thinking-tail-slow-swish {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-8deg); }
+}
+
+@keyframes cat-thinking-ear-twitch {
+    0%, 70%, 100% { transform: rotate(-12deg); }
+    75%, 85% { transform: rotate(-5deg); }
+    80% { transform: rotate(-15deg); }
+}
+
+@keyframes cat-thinking-pupil-look {
+    0%, 100% { left: 6px; }
+    30%, 70% { left: 10px; top: 2px; }
+}
+
+.cat-character.thinking .cat-head {
+    animation: cat-thinking-tilt 4s ease-in-out infinite;
+}
+
+.cat-character.thinking .cat-tail {
+    animation: cat-thinking-tail-slow-swish 3s ease-in-out infinite;
+}
+
+.cat-character.thinking .cat-ear.right {
+    animation: cat-thinking-ear-twitch 3s ease-in-out infinite;
+}
+
+.cat-character.thinking .cat-pupil {
+    animation: cat-thinking-pupil-look 4s ease-in-out infinite;
+}
+
+
+/* ============================================
+   MISCHIEVOUS - Up to something cat
+   Sly look, plotting expression
+   ============================================ */
+
+@keyframes cat-mischievous-crouch {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(5px) scale(0.98) scaleX(1.02); }
+}
+
+@keyframes cat-mischievous-tail-twitch {
+    0%, 90%, 100% { transform: rotate(0deg); }
+    92% { transform: rotate(-15deg); }
+    94% { transform: rotate(10deg); }
+    96% { transform: rotate(-8deg); }
+    98% { transform: rotate(5deg); }
+}
+
+@keyframes cat-mischievous-eyes-narrow {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.6); }
+}
+
+.cat-character.mischievous {
+    animation: cat-mischievous-crouch 2s ease-in-out infinite;
+}
+
+.cat-character.mischievous .cat-tail {
+    animation: cat-mischievous-tail-twitch 3s ease-in-out infinite;
+}
+
+.cat-character.mischievous .cat-eye {
+    animation: cat-mischievous-eyes-narrow 3s ease-in-out infinite;
+}
+
+/* Sly narrow pupils */
+.cat-character.mischievous .cat-pupil::after {
+    width: 2px;
+}

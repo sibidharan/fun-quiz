@@ -1,0 +1,891 @@
+/* ============================================
+   WORM MASCOT - "Wormy the Bookworm"
+   An adorable, curious bookworm who loves learning!
+   Reacts with squishy stretches and wiggles
+   ============================================ */
+
+/* === CSS Variables for Worm === */
+:root {
+    --worm-body: #8BC34A;
+    --worm-body-light: #9CCC65;
+    --worm-body-dark: #7CB342;
+    --worm-body-shadow: #689F38;
+    --worm-belly: #C5E1A5;
+    --worm-cheek: rgba(255, 138, 128, 0.5);
+    --worm-eye-white: #FFFFFF;
+    --worm-glasses: #5D4037;
+}
+
+/* === MAIN CHARACTER CONTAINER === */
+.worm-character {
+    width: 100px;
+    height: 130px;
+}
+
+/* === WORM BODY (Segmented) === */
+.worm-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 85px;
+    background: linear-gradient(180deg,
+        var(--worm-body-light) 0%,
+        var(--worm-body) 40%,
+        var(--worm-body-dark) 100%);
+    border-radius: 35px 35px 25px 25px;
+    box-shadow:
+        inset -6px 0 15px rgba(0,0,0,0.1),
+        inset 6px 0 15px rgba(255,255,255,0.3),
+        0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Belly highlight */
+.worm-body::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 50px;
+    background: radial-gradient(ellipse at 50% 40%,
+        var(--worm-belly) 0%,
+        rgba(197, 225, 165, 0.3) 70%,
+        transparent 100%);
+    border-radius: 50%;
+}
+
+/* Segment lines */
+.worm-body::after {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 45px;
+    background:
+        repeating-linear-gradient(
+            180deg,
+            transparent 0px,
+            transparent 10px,
+            rgba(104, 159, 56, 0.2) 10px,
+            rgba(104, 159, 56, 0.2) 12px
+        );
+    border-radius: 50%;
+}
+
+/* === WORM HEAD === */
+.worm-head {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 55px;
+    background: radial-gradient(ellipse at 50% 40%,
+        var(--worm-body-light) 0%,
+        var(--worm-body) 60%,
+        var(--worm-body-dark) 100%);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow:
+        inset -4px -4px 12px rgba(0,0,0,0.08),
+        inset 4px 4px 12px rgba(255,255,255,0.4),
+        0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Face highlight */
+.worm-head::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 35px;
+    background: radial-gradient(ellipse at 50% 30%,
+        rgba(255,255,255,0.35) 0%,
+        transparent 70%);
+    border-radius: 50%;
+}
+
+/* === WORM ANTENNA === */
+.worm-antenna {
+    position: absolute;
+    bottom: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg,
+        var(--worm-body) 0%,
+        var(--worm-body-dark) 100%);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Antenna ball */
+.worm-antenna::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%,
+        var(--worm-body-light) 0%,
+        var(--worm-body) 50%,
+        var(--worm-body-dark) 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* === WORM GLASSES === */
+.worm-glasses {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 25px;
+    z-index: 3;
+}
+
+/* Glasses frame */
+.worm-glasses::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 3px;
+    background: var(--worm-glasses);
+    border-radius: 2px;
+}
+
+/* Left lens frame */
+.worm-glasses::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--worm-glasses);
+    border-radius: 50%;
+    background: transparent;
+}
+
+/* === WORM EYES === */
+.worm-eye {
+    position: absolute;
+    width: 20px;
+    height: 22px;
+    background: radial-gradient(circle at 50% 45%,
+        var(--worm-eye-white) 0%,
+        #F5F5F5 80%,
+        #E8E8E8 100%);
+    border-radius: 50%;
+    top: 13px;
+    box-shadow:
+        inset 0 -3px 6px rgba(0,0,0,0.08),
+        0 2px 4px rgba(0,0,0,0.12);
+    z-index: 4;
+}
+
+.worm-eye.left { left: 11px; }
+.worm-eye.right { right: 11px; }
+
+/* Second glasses lens */
+.worm-eye.right::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--worm-glasses);
+    border-radius: 50%;
+    background: transparent;
+    z-index: 5;
+}
+
+.worm-pupil {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    background: radial-gradient(circle at 35% 35%,
+        #5D4037 0%,
+        #4E342E 50%,
+        #1B0000 100%);
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    transition: all 0.2s ease;
+}
+
+.worm-sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, #FFFFFF 60%, transparent 100%);
+    border-radius: 50%;
+    top: 3px;
+    left: 2px;
+}
+
+/* Secondary sparkle */
+.worm-sparkle::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    bottom: -5px;
+    right: -3px;
+}
+
+/* === WORM MOUTH === */
+.worm-mouth {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 8px;
+    border: 2.5px solid #5D4037;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+    background: transparent;
+    z-index: 4;
+}
+
+/* === WORM BLUSH === */
+.worm-blush {
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: var(--worm-cheek);
+    border-radius: 50%;
+    top: 35px;
+    z-index: 4;
+    opacity: 0.8;
+}
+
+.worm-blush.left { left: 6px; }
+.worm-blush.right { right: 6px; }
+
+/* === WORM TAIL (Curly end) === */
+.worm-tail {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 20px;
+    background: radial-gradient(ellipse at 50% 0%,
+        var(--worm-body) 60%,
+        var(--worm-body-dark) 100%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Tail curl detail */
+.worm-tail::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: var(--worm-body-dark);
+    border-radius: 50% 50% 0 50%;
+}
+
+/* === WORM TEARS === */
+.worm-tear {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        rgba(100, 181, 246, 0.8) 0%,
+        rgba(66, 165, 245, 0.9) 100%);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+    top: 40px;
+    z-index: 5;
+}
+
+.worm-tear.left { left: 10px; }
+.worm-tear.right { right: 10px; }
+
+
+/* ============================================
+   IDLE ANIMATIONS - Happy reading worm
+   ============================================ */
+
+@keyframes worm-idle-wobble {
+    0%, 100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-50%) rotate(-3deg) scaleY(1.02);
+    }
+    75% {
+        transform: translateX(-50%) rotate(3deg) scaleY(0.98);
+    }
+}
+
+@keyframes worm-antenna-sway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    30% { transform: translateX(-50%) rotate(-12deg); }
+    70% { transform: translateX(-50%) rotate(12deg); }
+}
+
+@keyframes worm-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    94%, 98% { transform: scaleY(0.1); }
+}
+
+@keyframes worm-tail-wag {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(15deg); }
+}
+
+.worm-character.idle .worm-body {
+    animation: worm-idle-wobble 3s ease-in-out infinite;
+}
+
+.worm-character.idle .worm-head {
+    animation: worm-idle-wobble 3s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.worm-character.idle .worm-antenna {
+    animation: worm-antenna-sway 2.5s ease-in-out infinite;
+}
+
+.worm-character.idle .worm-eye {
+    animation: worm-blink 5s ease-in-out infinite;
+}
+
+.worm-character.idle .worm-tail {
+    animation: worm-tail-wag 2s ease-in-out infinite;
+}
+
+
+/* ============================================
+   HAPPY - Correct answer! Worm celebrates!
+   Stretchy bounce with joyful wiggles
+   ============================================ */
+
+@keyframes worm-happy-stretch-bounce {
+    0% {
+        transform: translateY(0) scaleY(1) scaleX(1) rotate(0deg);
+    }
+    12% {
+        transform: translateY(8px) scaleY(0.85) scaleX(1.15) rotate(0deg);
+    }
+    28% {
+        transform: translateY(-50px) scaleY(1.25) scaleX(0.85) rotate(-8deg);
+    }
+    40% {
+        transform: translateY(-45px) scaleY(1.2) scaleX(0.88) rotate(8deg);
+    }
+    55% {
+        transform: translateY(0) scaleY(0.9) scaleX(1.1) rotate(0deg);
+    }
+    70% {
+        transform: translateY(-30px) scaleY(1.15) scaleX(0.9) rotate(-5deg);
+    }
+    85% {
+        transform: translateY(0) scaleY(0.95) scaleX(1.05) rotate(3deg);
+    }
+    100% {
+        transform: translateY(0) scaleY(1) scaleX(1) rotate(0deg);
+    }
+}
+
+@keyframes worm-happy-antenna-spin {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-30deg); }
+    50% { transform: translateX(-50%) rotate(30deg); }
+    75% { transform: translateX(-50%) rotate(-20deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+@keyframes worm-happy-glasses-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    30% { transform: translateX(-50%) translateY(-5px) rotate(-5deg); }
+    60% { transform: translateX(-50%) translateY(-3px) rotate(5deg); }
+}
+
+@keyframes worm-happy-blush-glow {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); background: rgba(255, 100, 100, 0.7); }
+}
+
+@keyframes worm-happy-tail-wag-fast {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    20% { transform: translateX(-50%) rotate(-25deg); }
+    40% { transform: translateX(-50%) rotate(25deg); }
+    60% { transform: translateX(-50%) rotate(-20deg); }
+    80% { transform: translateX(-50%) rotate(20deg); }
+}
+
+.worm-character.happy {
+    animation: worm-happy-stretch-bounce 1.8s var(--bounce-ease);
+}
+
+.worm-character.happy .worm-antenna {
+    animation: worm-happy-antenna-spin 0.6s ease-in-out 3;
+}
+
+.worm-character.happy .worm-glasses {
+    animation: worm-happy-glasses-bounce 0.6s ease-in-out 3;
+}
+
+.worm-character.happy .worm-blush {
+    animation: worm-happy-blush-glow 0.5s ease-in-out 4;
+}
+
+.worm-character.happy .worm-tail {
+    animation: worm-happy-tail-wag-fast 0.4s ease-in-out 4;
+}
+
+/* Big happy smile */
+.worm-character.happy .worm-mouth {
+    width: 22px;
+    height: 12px;
+    border: none;
+    background: #5D4037;
+    border-radius: 0 0 50% 50%;
+}
+
+.worm-character.happy .worm-sparkle {
+    animation: bunny-sparkle-grow 0.3s ease-in-out infinite;
+}
+
+
+/* ============================================
+   EXCITED - Super curious worm!
+   Eyes go huge, body wiggles rapidly
+   ============================================ */
+
+@keyframes worm-excited-wiggle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    10% { transform: translateY(-15px) rotate(-6deg); }
+    20% { transform: translateY(-8px) rotate(6deg); }
+    30% { transform: translateY(-20px) rotate(-5deg); }
+    40% { transform: translateY(-10px) rotate(5deg); }
+    50% { transform: translateY(-18px) rotate(-4deg); }
+    60% { transform: translateY(-6px) rotate(4deg); }
+    70% { transform: translateY(-14px) rotate(-3deg); }
+    80% { transform: translateY(-4px) rotate(3deg); }
+    90% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+@keyframes worm-excited-eyes-huge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+}
+
+@keyframes worm-excited-antenna-rapid {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-20deg); }
+    75% { transform: translateX(-50%) rotate(20deg); }
+}
+
+.worm-character.excited {
+    animation: worm-excited-wiggle 1.2s var(--bounce-ease);
+}
+
+.worm-character.excited .worm-eye {
+    animation: worm-excited-eyes-huge 0.4s ease-in-out infinite;
+}
+
+.worm-character.excited .worm-antenna {
+    animation: worm-excited-antenna-rapid 0.25s ease-in-out infinite;
+}
+
+.worm-character.excited .worm-blush {
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+/* Wide excited eyes */
+.worm-character.excited .worm-pupil {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+
+/* ============================================
+   SAD - Wrong answer... Sad little worm
+   Droopy posture, sad eyes
+   ============================================ */
+
+@keyframes worm-sad-droop {
+    0% {
+        transform: scaleY(1) scaleX(1) translateY(0);
+        filter: brightness(1);
+    }
+    30% {
+        transform: scaleY(0.9) scaleX(1.05) translateY(8px);
+        filter: brightness(0.88);
+    }
+    100% {
+        transform: scaleY(0.82) scaleX(1.08) translateY(15px);
+        filter: brightness(0.65) saturate(0.5);
+    }
+}
+
+@keyframes worm-sad-antenna-droop {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(-35deg) scaleY(0.8); }
+}
+
+@keyframes worm-sad-glasses-slide {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(5px) rotate(-5deg); }
+}
+
+@keyframes worm-sad-eyes-droop {
+    0% { transform: scaleY(1); }
+    100% { transform: scaleY(0.7); }
+}
+
+.worm-character.sad {
+    animation: worm-sad-droop 1.5s ease-out forwards;
+}
+
+.worm-character.sad .worm-antenna {
+    animation: worm-sad-antenna-droop 1s ease-out forwards;
+}
+
+.worm-character.sad .worm-glasses {
+    animation: worm-sad-glasses-slide 1s ease-out forwards;
+}
+
+.worm-character.sad .worm-eye {
+    animation: worm-sad-eyes-droop 0.8s ease-out forwards;
+}
+
+/* Sad upside-down mouth */
+.worm-character.sad .worm-mouth {
+    border: 2.5px solid #5D4037;
+    border-bottom: none;
+    border-top: 2.5px solid #5D4037;
+    border-radius: 50% 50% 0 0;
+}
+
+
+/* ============================================
+   CRYING - Really sad worm with big tears
+   Shaking and crying
+   ============================================ */
+
+@keyframes worm-crying-shake {
+    0%, 100% { transform: translateY(0) rotate(0deg) scaleY(0.85); }
+    25% { transform: translateY(3px) rotate(-3deg) scaleY(0.83); }
+    50% { transform: translateY(0) rotate(3deg) scaleY(0.85); }
+    75% { transform: translateY(3px) rotate(-2deg) scaleY(0.82); }
+}
+
+@keyframes worm-crying-tears {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(8px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.3);
+    }
+}
+
+@keyframes worm-crying-antenna-shake {
+    0%, 100% { transform: translateX(-50%) rotate(-30deg); }
+    50% { transform: translateX(-50%) rotate(-40deg); }
+}
+
+@keyframes worm-crying-glasses-shake {
+    0%, 100% { transform: translateX(-50%) translateY(5px) rotate(-5deg); }
+    50% { transform: translateX(-50%) translateY(6px) rotate(-8deg); }
+}
+
+.worm-character.crying {
+    animation: worm-crying-shake 0.4s ease-in-out infinite;
+    filter: brightness(0.7) saturate(0.4);
+}
+
+.worm-character.crying .worm-antenna {
+    animation: worm-crying-antenna-shake 0.5s ease-in-out infinite;
+}
+
+.worm-character.crying .worm-glasses {
+    animation: worm-crying-glasses-shake 0.4s ease-in-out infinite;
+}
+
+.worm-character.crying .worm-tear {
+    opacity: 1;
+    animation: worm-crying-tears 1s ease-in infinite;
+}
+
+.worm-character.crying .worm-tear.right {
+    animation-delay: 0.3s;
+}
+
+/* Crying open mouth */
+.worm-character.crying .worm-mouth {
+    width: 16px;
+    height: 10px;
+    border: none;
+    background: #5D4037;
+    border-radius: 0 0 50% 50%;
+}
+
+.worm-character.crying .worm-eye {
+    transform: scaleY(0.3);
+}
+
+
+/* ============================================
+   SURPRISED - "Whoa!" shocked worm
+   Eyes go huge, body stretches up
+   ============================================ */
+
+@keyframes worm-surprised-stretch {
+    0% { transform: translateY(0) scaleY(1) scaleX(1); }
+    20% { transform: translateY(-30px) scaleY(1.3) scaleX(0.85); }
+    50% { transform: translateY(-25px) scaleY(1.25) scaleX(0.88); }
+    100% { transform: translateY(0) scaleY(1) scaleX(1); }
+}
+
+@keyframes worm-surprised-antenna-up {
+    0% { transform: translateX(-50%) scaleY(1); }
+    20% { transform: translateX(-50%) scaleY(1.4); }
+    100% { transform: translateX(-50%) scaleY(1); }
+}
+
+@keyframes worm-surprised-eyes-wide {
+    0%, 100% { transform: scale(1); }
+    20%, 70% { transform: scale(1.5); }
+}
+
+@keyframes worm-surprised-glasses-bounce {
+    0% { transform: translateX(-50%) translateY(0); }
+    20% { transform: translateX(-50%) translateY(-10px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+.worm-character.surprised {
+    animation: worm-surprised-stretch 1s var(--bounce-ease);
+}
+
+.worm-character.surprised .worm-antenna {
+    animation: worm-surprised-antenna-up 1s ease-out;
+}
+
+.worm-character.surprised .worm-eye {
+    animation: worm-surprised-eyes-wide 1s ease-out;
+}
+
+.worm-character.surprised .worm-glasses {
+    animation: worm-surprised-glasses-bounce 1s ease-out;
+}
+
+/* Surprised 'O' mouth */
+.worm-character.surprised .worm-mouth {
+    width: 14px;
+    height: 14px;
+    border: none;
+    background: #5D4037;
+    border-radius: 50%;
+}
+
+/* Tiny surprised pupils */
+.worm-character.surprised .worm-pupil {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    top: 8px;
+    left: 7px;
+}
+
+
+/* ============================================
+   GIGGLING - Silly laughing worm
+   Body shakes, squinty eyes
+   ============================================ */
+
+@keyframes worm-giggle-wobble {
+    0%, 100% { transform: translateX(0) rotate(0deg) scaleX(1); }
+    10% { transform: translateX(-5px) rotate(-5deg) scaleX(1.05); }
+    20% { transform: translateX(5px) rotate(5deg) scaleX(0.95); }
+    30% { transform: translateX(-4px) rotate(-4deg) scaleX(1.03); }
+    40% { transform: translateX(4px) rotate(4deg) scaleX(0.97); }
+    50% { transform: translateX(-3px) rotate(-3deg) scaleX(1.02); }
+    60% { transform: translateX(3px) rotate(3deg) scaleX(0.98); }
+    70% { transform: translateX(-2px) rotate(-2deg) scaleX(1.01); }
+    80% { transform: translateX(2px) rotate(2deg) scaleX(0.99); }
+    90% { transform: translateX(-1px) rotate(-1deg) scaleX(1); }
+}
+
+@keyframes worm-giggle-squint {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.15); }
+}
+
+@keyframes worm-giggle-antenna-wobble {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-15deg); }
+    75% { transform: translateX(-50%) rotate(15deg); }
+}
+
+@keyframes worm-giggle-tail-wag {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-20deg); }
+    75% { transform: translateX(-50%) rotate(20deg); }
+}
+
+.worm-character.giggling {
+    animation: worm-giggle-wobble 1.2s ease-in-out;
+}
+
+.worm-character.giggling .worm-eye {
+    animation: worm-giggle-squint 0.25s ease-in-out infinite;
+}
+
+.worm-character.giggling .worm-antenna {
+    animation: worm-giggle-antenna-wobble 0.2s ease-in-out infinite;
+}
+
+.worm-character.giggling .worm-tail {
+    animation: worm-giggle-tail-wag 0.2s ease-in-out infinite;
+}
+
+.worm-character.giggling .worm-blush {
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+
+/* ============================================
+   THINKING - Contemplating worm
+   Antenna taps, thoughtful look
+   ============================================ */
+
+@keyframes worm-thinking-tilt {
+    0%, 100% { transform: rotate(0deg); }
+    30%, 70% { transform: rotate(-12deg); }
+}
+
+@keyframes worm-thinking-antenna-tap {
+    0%, 75%, 100% { transform: translateX(-50%) rotate(0deg); }
+    80%, 95% { transform: translateX(-50%) rotate(-10deg); }
+    85%, 90% { transform: translateX(-50%) rotate(5deg); }
+}
+
+@keyframes worm-thinking-pupil-look {
+    0%, 100% { left: 5px; top: 5px; }
+    30%, 70% { left: 8px; top: 3px; }
+}
+
+.worm-character.thinking {
+    animation: worm-thinking-tilt 4s ease-in-out infinite;
+}
+
+.worm-character.thinking .worm-antenna {
+    animation: worm-thinking-antenna-tap 3s ease-in-out infinite;
+}
+
+.worm-character.thinking .worm-pupil {
+    animation: worm-thinking-pupil-look 4s ease-in-out infinite;
+}
+
+/* Thoughtful small mouth */
+.worm-character.thinking .worm-mouth {
+    width: 10px;
+    height: 5px;
+}
+
+
+/* ============================================
+   READING - Focused study worm
+   Eyes moving back and forth like reading
+   ============================================ */
+
+@keyframes worm-reading-eyes {
+    0%, 100% { left: 3px; }
+    25% { left: 8px; }
+    50% { left: 3px; }
+    75% { left: 8px; }
+}
+
+@keyframes worm-reading-head-bob {
+    0%, 50%, 100% { transform: translateX(-50%) translateY(0); }
+    25% { transform: translateX(-50%) translateY(-3px); }
+    75% { transform: translateX(-50%) translateY(-2px); }
+}
+
+.worm-character.reading .worm-pupil {
+    animation: worm-reading-eyes 2s ease-in-out infinite;
+}
+
+.worm-character.reading .worm-head {
+    animation: worm-reading-head-bob 2s ease-in-out infinite;
+}
+
+
+/* ============================================
+   EUREKA - Figured it out!
+   Light bulb moment animation
+   ============================================ */
+
+@keyframes worm-eureka-jump {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-40px) scale(1.1); }
+    40% { transform: translateY(-35px) scale(1.08); }
+    60% { transform: translateY(0) scale(0.95); }
+    80% { transform: translateY(-15px) scale(1.03); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes worm-eureka-antenna-glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    50% { box-shadow: 0 0 25px #FFD600, 0 0 40px #FFD600; background: #FFD600; }
+}
+
+@keyframes worm-eureka-eyes-sparkle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+.worm-character.eureka {
+    animation: worm-eureka-jump 1s var(--bounce-ease);
+}
+
+.worm-character.eureka .worm-antenna::after {
+    animation: worm-eureka-antenna-glow 0.5s ease-in-out 2;
+}
+
+.worm-character.eureka .worm-sparkle {
+    animation: worm-eureka-eyes-sparkle 0.3s ease-in-out infinite;
+}
+
+.worm-character.eureka .worm-blush {
+    opacity: 1;
+    animation: worm-happy-blush-glow 0.4s ease-in-out 3;
+}

@@ -1,0 +1,13 @@
+[project]
+name = "funquiz-generator"
+version = "0.1.0"
+description = "Fun Quiz Question Generator using OpenAI Agents SDK"
+requires-python = ">=3.10"
+dependencies = [
+    "openai-agents>=0.6.0",
+    "pymongo>=4.0.0",
+    "pydantic>=2.0.0",
+]
+
+[tool.uv]
+dev-dependencies = []

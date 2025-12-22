@@ -1,0 +1,1026 @@
+/* ============================================
+   ROBOT MASCOT - "Byte the Quiz Bot"
+   A friendly tech robot who loves data!
+   Reacts with LED expressions and mechanical movements
+   ============================================ */
+
+/* === CSS Variables for Robot === */
+:root {
+    --robot-body: #78909C;
+    --robot-body-light: #90A4AE;
+    --robot-body-dark: #546E7A;
+    --robot-metal: #B0BEC5;
+    --robot-accent: #00BCD4;
+    --robot-screen: #00E676;
+    --robot-screen-red: #FF5252;
+    --robot-screen-yellow: #FFD600;
+    --robot-chest: #263238;
+}
+
+/* === MAIN CHARACTER CONTAINER === */
+.robot-character {
+    width: 105px;
+    height: 140px;
+    position: absolute;
+}
+
+/* Hidden by default, shown when .active */
+.robot-character:not(.active) {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.robot-character.active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* === ROBOT BODY === */
+.robot-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(180deg,
+        var(--robot-body-light) 0%,
+        var(--robot-body) 40%,
+        var(--robot-body-dark) 100%);
+    border-radius: 18px;
+    box-shadow:
+        inset -4px -4px 12px rgba(0,0,0,0.25),
+        inset 4px 4px 12px rgba(255,255,255,0.35),
+        0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Metallic edge highlight */
+.robot-body::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    height: 50%;
+    background: linear-gradient(180deg,
+        rgba(255,255,255,0.3) 0%,
+        transparent 100%);
+    border-radius: 16px 16px 50% 50%;
+}
+
+/* === ROBOT CHEST DISPLAY === */
+.robot-chest {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 35px;
+    background: var(--robot-chest);
+    border-radius: 6px;
+    box-shadow:
+        inset 0 0 15px rgba(0,0,0,0.6),
+        0 2px 5px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Screen scanline effect */
+.robot-chest::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0,0,0,0.1) 2px,
+        rgba(0,0,0,0.1) 4px
+    );
+    pointer-events: none;
+}
+
+/* Heart display */
+.robot-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    color: var(--robot-screen);
+    text-shadow: 0 0 12px var(--robot-screen);
+    animation: robot-heart-beat 1.2s ease-in-out infinite;
+}
+
+@keyframes robot-heart-beat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* === ROBOT HEAD === */
+.robot-head {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 55px;
+    background: linear-gradient(180deg,
+        var(--robot-body-light) 0%,
+        var(--robot-body) 45%,
+        var(--robot-body-dark) 100%);
+    border-radius: 18px 18px 12px 12px;
+    z-index: 2;
+    box-shadow:
+        inset -3px -3px 10px rgba(0,0,0,0.2),
+        inset 3px 3px 10px rgba(255,255,255,0.3),
+        0 5px 12px rgba(0,0,0,0.18);
+}
+
+/* Head top highlight */
+.robot-head::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    right: 5px;
+    height: 40%;
+    background: linear-gradient(180deg,
+        rgba(255,255,255,0.25) 0%,
+        transparent 100%);
+    border-radius: 15px 15px 50% 50%;
+}
+
+/* Neck connector */
+.robot-head::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 10px;
+    background: linear-gradient(180deg,
+        var(--robot-metal) 0%,
+        var(--robot-body-dark) 100%);
+    border-radius: 3px;
+}
+
+/* === ROBOT ANTENNA === */
+.robot-antenna {
+    position: absolute;
+    bottom: 118px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 25px;
+    background: linear-gradient(180deg,
+        var(--robot-metal) 0%,
+        var(--robot-body-dark) 100%);
+    z-index: 1;
+    border-radius: 2px;
+}
+
+/* Antenna ball with glow */
+.robot-antenna::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%,
+        #4DD0E1 0%,
+        var(--robot-accent) 60%,
+        #00838F 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 15px var(--robot-accent),
+        0 0 30px rgba(0, 188, 212, 0.5);
+    animation: robot-antenna-pulse 2s ease-in-out infinite;
+}
+
+@keyframes robot-antenna-pulse {
+    0%, 100% {
+        box-shadow: 0 0 15px var(--robot-accent), 0 0 30px rgba(0, 188, 212, 0.5);
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        box-shadow: 0 0 25px var(--robot-accent), 0 0 50px rgba(0, 188, 212, 0.7);
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* Signal waves from antenna */
+.robot-antenna::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--robot-accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: robot-signal-wave 2s ease-out infinite;
+}
+
+@keyframes robot-signal-wave {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.8;
+    }
+    100% {
+        width: 40px;
+        height: 40px;
+        opacity: 0;
+    }
+}
+
+/* === ROBOT EYES (LED Screens) === */
+.robot-eye {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--robot-chest);
+    border-radius: 4px;
+    top: 14px;
+    box-shadow:
+        inset 0 0 8px rgba(0,0,0,0.6),
+        0 0 2px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.robot-eye.left { left: 10px; }
+.robot-eye.right { right: 10px; }
+
+/* Screen glow border */
+.robot-eye::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: 3px;
+}
+
+.robot-pupil {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--robot-screen);
+    border-radius: 3px;
+    top: 4px;
+    left: 4px;
+    box-shadow:
+        0 0 10px var(--robot-screen),
+        0 0 20px rgba(0, 230, 118, 0.5);
+    transition: all 0.2s ease;
+}
+
+/* Pixel pattern on pupil */
+.robot-pupil::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(90deg, transparent 50%, rgba(0,0,0,0.1) 50%),
+        linear-gradient(0deg, transparent 50%, rgba(0,0,0,0.1) 50%);
+    background-size: 4px 4px;
+}
+
+/* === ROBOT MOUTH (LED Bar) === */
+.robot-mouth {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 10px;
+    background: var(--robot-chest);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* LED bars smile pattern */
+.robot-mouth::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 3px,
+        var(--robot-screen) 3px,
+        var(--robot-screen) 6px
+    );
+    box-shadow: 0 0 8px var(--robot-screen);
+}
+
+/* === ROBOT ARMS === */
+.robot-arm {
+    position: absolute;
+    width: 16px;
+    height: 45px;
+    background: linear-gradient(180deg,
+        var(--robot-metal) 0%,
+        var(--robot-body) 30%,
+        var(--robot-body-dark) 100%);
+    border-radius: 8px;
+    bottom: 20px;
+    z-index: 0;
+    transform-origin: top center;
+}
+
+.robot-arm.left {
+    left: 2px;
+    transform: rotate(12deg);
+}
+
+.robot-arm.right {
+    right: 2px;
+    transform: rotate(-12deg);
+}
+
+/* Joint ring */
+.robot-arm::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 5px;
+    background: var(--robot-body-dark);
+    border-radius: 2px;
+}
+
+/* Hand/gripper */
+.robot-arm::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 50% 50%,
+        var(--robot-metal) 40%,
+        var(--robot-body-dark) 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* === ROBOT LEGS === */
+.robot-leg {
+    position: absolute;
+    bottom: -15px;
+    width: 22px;
+    height: 18px;
+    background: linear-gradient(180deg,
+        var(--robot-body-dark) 0%,
+        var(--robot-metal) 50%,
+        var(--robot-body-dark) 100%);
+    border-radius: 6px 6px 10px 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.robot-leg.left { left: 15px; }
+.robot-leg.right { right: 15px; }
+
+/* Leg joint detail */
+.robot-leg::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 4px;
+    background: var(--robot-accent);
+    border-radius: 2px;
+    box-shadow: 0 0 5px var(--robot-accent);
+}
+
+/* === ROBOT TEARS (for crying - oil drops) === */
+.robot-tear {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        rgba(55, 71, 79, 0.8) 0%,
+        rgba(38, 50, 56, 0.9) 100%);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+    top: 38px;
+}
+
+.robot-tear.left { left: 12px; }
+.robot-tear.right { right: 12px; }
+
+
+/* ============================================
+   IDLE ANIMATIONS - Robot standby mode
+   ============================================ */
+
+@keyframes robot-idle-hover {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-6px);
+    }
+}
+
+@keyframes robot-arm-idle-swing {
+    0%, 100% { transform: rotate(12deg); }
+    50% { transform: rotate(18deg); }
+}
+
+@keyframes robot-eye-scan {
+    0%, 100% { left: 4px; }
+    30% { left: 6px; top: 3px; }
+    60% { left: 2px; top: 5px; }
+}
+
+@keyframes robot-mouth-blink {
+    0%, 95%, 100% { opacity: 1; }
+    97% { opacity: 0.3; }
+}
+
+.robot-character.idle .robot-body {
+    animation: robot-idle-hover 2.5s ease-in-out infinite;
+}
+
+.robot-character.idle .robot-head {
+    animation: robot-idle-hover 2.5s ease-in-out infinite;
+    animation-delay: 0.05s;
+}
+
+.robot-character.idle .robot-arm.left {
+    animation: robot-arm-idle-swing 2s ease-in-out infinite;
+}
+
+.robot-character.idle .robot-arm.right {
+    animation: robot-arm-idle-swing 2s ease-in-out infinite reverse;
+}
+
+.robot-character.idle .robot-pupil {
+    animation: robot-eye-scan 4s ease-in-out infinite;
+}
+
+.robot-character.idle .robot-mouth::before {
+    animation: robot-mouth-blink 3s ease-in-out infinite;
+}
+
+
+/* ============================================
+   HAPPY - Correct answer! Robot celebration!
+   Arms pump, LEDs flash green rapidly
+   ============================================ */
+
+@keyframes robot-happy-bounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    15% {
+        transform: translateY(8px) scale(0.95);
+    }
+    30% {
+        transform: translateY(-40px) scale(1.1);
+    }
+    45% {
+        transform: translateY(-35px) scale(1.08);
+    }
+    60% {
+        transform: translateY(0) scale(0.98);
+    }
+    75% {
+        transform: translateY(-25px) scale(1.05);
+    }
+    90% {
+        transform: translateY(0) scale(0.99);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes robot-happy-arms-pump {
+    0%, 100% { transform: rotate(12deg); }
+    25% { transform: rotate(-45deg) translateY(-15px); }
+    50% { transform: rotate(12deg); }
+    75% { transform: rotate(-45deg) translateY(-15px); }
+}
+
+@keyframes robot-happy-eyes-flash {
+    0%, 100% { background: var(--robot-screen); box-shadow: 0 0 10px var(--robot-screen); }
+    25% { background: #FFFFFF; box-shadow: 0 0 20px #FFFFFF; }
+    50% { background: var(--robot-screen); box-shadow: 0 0 15px var(--robot-screen); }
+    75% { background: #69F0AE; box-shadow: 0 0 20px #69F0AE; }
+}
+
+@keyframes robot-happy-antenna-burst {
+    0%, 100% { box-shadow: 0 0 15px var(--robot-accent); transform: translateX(-50%) scale(1); }
+    25% { box-shadow: 0 0 40px var(--robot-screen), 0 0 60px var(--robot-screen); transform: translateX(-50%) scale(1.3); }
+    50% { box-shadow: 0 0 20px var(--robot-accent); transform: translateX(-50%) scale(1.1); }
+    75% { box-shadow: 0 0 35px #69F0AE, 0 0 55px #69F0AE; transform: translateX(-50%) scale(1.25); }
+}
+
+@keyframes robot-happy-heart-rapid {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    10% { transform: translate(-50%, -50%) scale(1.3); }
+    20% { transform: translate(-50%, -50%) scale(1); }
+    30% { transform: translate(-50%, -50%) scale(1.3); }
+    40% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes robot-happy-mouth-wide {
+    0%, 100% { height: 10px; }
+    50% { height: 16px; }
+}
+
+.robot-character.happy {
+    animation: robot-happy-bounce 1.5s var(--bounce-ease);
+}
+
+.robot-character.happy .robot-arm.left {
+    animation: robot-happy-arms-pump 0.5s ease-in-out 3;
+}
+
+.robot-character.happy .robot-arm.right {
+    animation: robot-happy-arms-pump 0.5s ease-in-out 3;
+    animation-delay: 0.15s;
+}
+
+.robot-character.happy .robot-pupil {
+    animation: robot-happy-eyes-flash 0.3s ease-in-out infinite;
+}
+
+.robot-character.happy .robot-antenna::after {
+    animation: robot-happy-antenna-burst 0.4s ease-in-out infinite;
+}
+
+.robot-character.happy .robot-heart {
+    animation: robot-happy-heart-rapid 1s ease-in-out;
+    color: #69F0AE;
+    text-shadow: 0 0 20px #69F0AE;
+}
+
+.robot-character.happy .robot-mouth {
+    animation: robot-happy-mouth-wide 0.3s ease-in-out infinite;
+}
+
+
+/* ============================================
+   EXCITED - Processing at maximum speed!
+   Spinning antenna, rapid movements
+   ============================================ */
+
+@keyframes robot-excited-vibrate {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    10% { transform: translateY(-15px) rotate(-3deg); }
+    20% { transform: translateY(-5px) rotate(3deg); }
+    30% { transform: translateY(-18px) rotate(-2deg); }
+    40% { transform: translateY(-8px) rotate(2deg); }
+    50% { transform: translateY(-20px) rotate(-3deg); }
+    60% { transform: translateY(-6px) rotate(3deg); }
+    70% { transform: translateY(-15px) rotate(-2deg); }
+    80% { transform: translateY(-4px) rotate(2deg); }
+    90% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+@keyframes robot-excited-antenna-spin {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes robot-excited-eyes-rapid {
+    0%, 100% { left: 4px; }
+    25% { left: 8px; }
+    50% { left: 0px; }
+    75% { left: 6px; }
+}
+
+@keyframes robot-excited-arms-wave {
+    0%, 100% { transform: rotate(12deg); }
+    25% { transform: rotate(-60deg); }
+    50% { transform: rotate(12deg); }
+    75% { transform: rotate(-60deg); }
+}
+
+.robot-character.excited {
+    animation: robot-excited-vibrate 1s var(--bounce-ease);
+}
+
+.robot-character.excited .robot-antenna::after {
+    animation: robot-excited-antenna-spin 0.3s linear infinite;
+}
+
+.robot-character.excited .robot-pupil {
+    animation: robot-excited-eyes-rapid 0.2s ease-in-out infinite;
+    width: 14px;
+    height: 14px;
+}
+
+.robot-character.excited .robot-arm.left {
+    animation: robot-excited-arms-wave 0.3s ease-in-out infinite;
+}
+
+.robot-character.excited .robot-arm.right {
+    animation: robot-excited-arms-wave 0.3s ease-in-out infinite;
+    animation-delay: 0.15s;
+}
+
+
+/* ============================================
+   SAD - Wrong answer... System error!
+   LEDs turn red, droopy posture
+   ============================================ */
+
+@keyframes robot-sad-power-down {
+    0% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+    30% {
+        transform: scale(0.95) translateY(5px);
+        filter: brightness(0.85);
+    }
+    100% {
+        transform: scale(0.88) translateY(12px);
+        filter: brightness(0.6) saturate(0.4);
+    }
+}
+
+@keyframes robot-sad-eyes-dim {
+    0% {
+        background: var(--robot-screen);
+        box-shadow: 0 0 10px var(--robot-screen);
+    }
+    100% {
+        background: var(--robot-screen-red);
+        box-shadow: 0 0 5px var(--robot-screen-red);
+        opacity: 0.5;
+    }
+}
+
+@keyframes robot-sad-antenna-dim {
+    0% { box-shadow: 0 0 15px var(--robot-accent); }
+    100% { box-shadow: 0 0 5px rgba(0, 188, 212, 0.3); opacity: 0.4; }
+}
+
+@keyframes robot-sad-arms-droop {
+    0% { transform: rotate(12deg); }
+    100% { transform: rotate(35deg) translateY(10px); }
+}
+
+@keyframes robot-sad-heart-break {
+    0% { content: '\2665'; color: var(--robot-screen); }
+    50% { content: '\2665'; color: var(--robot-screen-red); }
+    100% { content: '\2639'; color: var(--robot-screen-red); opacity: 0.5; }
+}
+
+.robot-character.sad {
+    animation: robot-sad-power-down 1.5s ease-out forwards;
+}
+
+.robot-character.sad .robot-pupil {
+    animation: robot-sad-eyes-dim 1s ease-out forwards;
+}
+
+.robot-character.sad .robot-antenna::after {
+    animation: robot-sad-antenna-dim 1s ease-out forwards;
+}
+
+.robot-character.sad .robot-arm.left,
+.robot-character.sad .robot-arm.right {
+    animation: robot-sad-arms-droop 1s ease-out forwards;
+}
+
+.robot-character.sad .robot-heart {
+    color: var(--robot-screen-red);
+    text-shadow: 0 0 8px var(--robot-screen-red);
+    opacity: 0.5;
+}
+
+/* Red LED mouth */
+.robot-character.sad .robot-mouth::before {
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 3px,
+        var(--robot-screen-red) 3px,
+        var(--robot-screen-red) 6px
+    );
+    box-shadow: 0 0 5px var(--robot-screen-red);
+    opacity: 0.6;
+}
+
+
+/* ============================================
+   CRYING - Critical system failure!
+   Oil tears, glitching LEDs
+   ============================================ */
+
+@keyframes robot-crying-glitch {
+    0%, 100% { transform: translateX(0) skewX(0deg); }
+    10% { transform: translateX(-3px) skewX(-2deg); }
+    20% { transform: translateX(3px) skewX(2deg); }
+    30% { transform: translateX(-2px) skewX(-1deg); }
+    40% { transform: translateX(2px) skewX(1deg); }
+    50% { transform: translateX(-1px) skewX(0deg); }
+}
+
+@keyframes robot-crying-oil-leak {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(8px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.3);
+    }
+}
+
+@keyframes robot-crying-eyes-flicker {
+    0%, 10%, 30%, 50%, 70%, 90%, 100% { opacity: 0.3; background: var(--robot-screen-red); }
+    5%, 15%, 35%, 55%, 75%, 95% { opacity: 0.8; background: #FF8A80; }
+    20%, 40%, 60%, 80% { opacity: 0.1; background: var(--robot-screen-red); }
+}
+
+@keyframes robot-crying-antenna-flicker {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+}
+
+.robot-character.crying {
+    animation: robot-crying-glitch 0.5s ease-in-out infinite;
+    filter: brightness(0.65) saturate(0.3);
+}
+
+.robot-character.crying .robot-pupil {
+    animation: robot-crying-eyes-flicker 0.3s steps(1) infinite;
+}
+
+.robot-character.crying .robot-antenna::after {
+    animation: robot-crying-antenna-flicker 0.5s ease-in-out infinite;
+    background: var(--robot-screen-red);
+}
+
+.robot-character.crying .robot-tear {
+    opacity: 1;
+    animation: robot-crying-oil-leak 1.2s ease-in infinite;
+}
+
+.robot-character.crying .robot-tear.right {
+    animation-delay: 0.4s;
+}
+
+.robot-character.crying .robot-heart {
+    content: 'X_X';
+    color: var(--robot-screen-red);
+    text-shadow: 0 0 5px var(--robot-screen-red);
+    animation: none;
+}
+
+/* Error mouth */
+.robot-character.crying .robot-mouth::before {
+    background: var(--robot-screen-red);
+    box-shadow: 0 0 8px var(--robot-screen-red);
+    animation: robot-crying-eyes-flicker 0.2s steps(1) infinite;
+}
+
+
+/* ============================================
+   SURPRISED - Unexpected input detected!
+   Big eyes, alert mode
+   ============================================ */
+
+@keyframes robot-surprised-jolt {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-35px) scale(1.15); }
+    50% { transform: translateY(-30px) scale(1.12); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes robot-surprised-eyes-huge {
+    0%, 100% { transform: scale(1); }
+    20%, 70% { transform: scale(1.5); }
+}
+
+@keyframes robot-surprised-antenna-alert {
+    0%, 100% {
+        background: var(--robot-accent);
+        box-shadow: 0 0 15px var(--robot-accent);
+    }
+    25%, 75% {
+        background: var(--robot-screen-yellow);
+        box-shadow: 0 0 30px var(--robot-screen-yellow);
+    }
+}
+
+@keyframes robot-surprised-arms-up {
+    0% { transform: rotate(12deg); }
+    20% { transform: rotate(-75deg) translateY(-20px); }
+    100% { transform: rotate(12deg); }
+}
+
+.robot-character.surprised {
+    animation: robot-surprised-jolt 1s var(--bounce-ease);
+}
+
+.robot-character.surprised .robot-eye {
+    animation: robot-surprised-eyes-huge 1s ease-out;
+}
+
+.robot-character.surprised .robot-pupil {
+    width: 16px;
+    height: 16px;
+    background: var(--robot-screen-yellow);
+    box-shadow: 0 0 15px var(--robot-screen-yellow);
+}
+
+.robot-character.surprised .robot-antenna::after {
+    animation: robot-surprised-antenna-alert 0.3s ease-in-out infinite;
+}
+
+.robot-character.surprised .robot-arm.left,
+.robot-character.surprised .robot-arm.right {
+    animation: robot-surprised-arms-up 1s ease-out;
+}
+
+/* Alert exclamation mouth */
+.robot-character.surprised .robot-mouth {
+    width: 12px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+.robot-character.surprised .robot-mouth::before {
+    background: var(--robot-screen-yellow);
+    box-shadow: 0 0 10px var(--robot-screen-yellow);
+}
+
+
+/* ============================================
+   GIGGLING - Beep boop funny error!
+   Shaking with random beeps
+   ============================================ */
+
+@keyframes robot-giggle-shake {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    10% { transform: translateX(-4px) rotate(-3deg); }
+    20% { transform: translateX(4px) rotate(3deg); }
+    30% { transform: translateX(-3px) rotate(-2deg); }
+    40% { transform: translateX(3px) rotate(2deg); }
+    50% { transform: translateX(-2px) rotate(-1deg); }
+    60% { transform: translateX(2px) rotate(1deg); }
+}
+
+@keyframes robot-giggle-eyes-squint {
+    0%, 100% { height: 12px; }
+    50% { height: 4px; }
+}
+
+@keyframes robot-giggle-antenna-wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+@keyframes robot-giggle-arms-clap {
+    0%, 100% { transform: rotate(12deg); }
+    50% { transform: rotate(-30deg) translateX(8px); }
+}
+
+.robot-character.giggling {
+    animation: robot-giggle-shake 1s ease-in-out;
+}
+
+.robot-character.giggling .robot-pupil {
+    animation: robot-giggle-eyes-squint 0.25s ease-in-out infinite;
+}
+
+.robot-character.giggling .robot-antenna {
+    animation: robot-giggle-antenna-wobble 0.3s ease-in-out infinite;
+}
+
+.robot-character.giggling .robot-arm.left {
+    animation: robot-giggle-arms-clap 0.4s ease-in-out infinite;
+}
+
+.robot-character.giggling .robot-arm.right {
+    animation: robot-giggle-arms-clap 0.4s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+/* Happy zigzag mouth */
+.robot-character.giggling .robot-mouth::before {
+    background: repeating-linear-gradient(
+        90deg,
+        var(--robot-screen) 0px,
+        var(--robot-screen) 4px,
+        transparent 4px,
+        transparent 6px
+    );
+}
+
+
+/* ============================================
+   THINKING - Processing query...
+   Loading animation, focused eyes
+   ============================================ */
+
+@keyframes robot-thinking-process {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(-8deg); }
+}
+
+@keyframes robot-thinking-eyes-scroll {
+    0% { left: 2px; }
+    50% { left: 8px; }
+    100% { left: 2px; }
+}
+
+@keyframes robot-thinking-antenna-pulse {
+    0%, 100% { box-shadow: 0 0 10px var(--robot-accent); }
+    50% { box-shadow: 0 0 25px var(--robot-screen-yellow); }
+}
+
+@keyframes robot-thinking-loading-bar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.robot-character.thinking .robot-head {
+    animation: robot-thinking-process 3s ease-in-out infinite;
+}
+
+.robot-character.thinking .robot-pupil {
+    animation: robot-thinking-eyes-scroll 1.5s ease-in-out infinite;
+    background: var(--robot-screen-yellow);
+    box-shadow: 0 0 8px var(--robot-screen-yellow);
+}
+
+.robot-character.thinking .robot-antenna::after {
+    animation: robot-thinking-antenna-pulse 1s ease-in-out infinite;
+}
+
+/* Loading bar mouth */
+.robot-character.thinking .robot-mouth::before {
+    background: linear-gradient(90deg,
+        var(--robot-screen-yellow) 0%,
+        transparent 0%);
+    animation: robot-thinking-loading-bar 2s ease-in-out infinite;
+}
+
+
+/* ============================================
+   COMPUTING - Deep calculation mode
+   Matrix-like eye patterns
+   ============================================ */
+
+@keyframes robot-computing-matrix {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 20px; }
+}
+
+@keyframes robot-computing-antenna-strobe {
+    0%, 100% { background: var(--robot-accent); }
+    50% { background: var(--robot-screen); }
+}
+
+.robot-character.computing .robot-pupil {
+    background:
+        repeating-linear-gradient(
+            180deg,
+            var(--robot-screen) 0px,
+            var(--robot-screen) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+    animation: robot-computing-matrix 0.5s linear infinite;
+}
+
+.robot-character.computing .robot-antenna::after {
+    animation: robot-computing-antenna-strobe 0.2s ease-in-out infinite;
+}

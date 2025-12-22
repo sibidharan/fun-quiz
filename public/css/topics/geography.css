@@ -1,0 +1,477 @@
+/* ============================================
+   GEOGRAPHY THEME - PREMIUM CINEMATIC
+   Majestic mountains, flowing rivers, world exploration
+   Earthy browns, vibrant greens, sky blues
+   ============================================ */
+
+/* === LAYERED BACKGROUND WITH GRADIENTS === */
+.theme-geography .scene-background {
+    background:
+        /* Atmospheric depth layers */
+        radial-gradient(ellipse at 50% 100%, rgba(121, 85, 72, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 235, 59, 0.2) 0%, transparent 35%),
+        radial-gradient(ellipse at 20% 60%, rgba(33, 150, 243, 0.15) 0%, transparent 30%),
+        /* Majestic gradient - sky to mountains to earth */
+        linear-gradient(180deg,
+            #0D47A1 0%,
+            #1565C0 5%,
+            #1976D2 10%,
+            #1E88E5 15%,
+            #2196F3 20%,
+            #42A5F5 25%,
+            #64B5F6 30%,
+            #90CAF9 35%,
+            #BBDEFB 40%,
+            #795548 45%,
+            #8D6E63 50%,
+            #A1887F 55%,
+            #66BB6A 60%,
+            #4CAF50 65%,
+            #43A047 70%,
+            #388E3C 75%,
+            #2E7D32 82%,
+            #1B5E20 90%,
+            #33691E 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === 3D MOUNTAIN RANGE (LAYERED DEPTH) === */
+.theme-geography .elem-1 {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Mountain layer 1 - Distant */
+.theme-geography .elem-1::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(140deg, transparent 48%, rgba(93, 64, 55, 0.4) 48%, rgba(93, 64, 55, 0.4) 52%, transparent 52%) 0% 20% / 150px 120px,
+        linear-gradient(135deg, transparent 47%, rgba(109, 76, 65, 0.45) 47%, rgba(109, 76, 65, 0.45) 53%, transparent 53%) 10% 15% / 180px 140px,
+        linear-gradient(145deg, transparent 46%, rgba(121, 85, 72, 0.5) 46%, rgba(121, 85, 72, 0.5) 54%, transparent 54%) 25% 25% / 160px 130px,
+        linear-gradient(130deg, transparent 48%, rgba(93, 64, 55, 0.42) 48%, rgba(93, 64, 55, 0.42) 52%, transparent 52%) 40% 18% / 170px 135px;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    animation: geo-mountains-distant 45s ease-in-out infinite;
+}
+
+/* Mountain layer 2 - Mid-range */
+.theme-geography .elem-1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Peak 1 with snow cap */
+        linear-gradient(135deg, transparent 45%, #5D4037 45%, #795548 50%, #8D6E63 52%, transparent 52%) 5% 0% / 200px 180px,
+        radial-gradient(ellipse at 5% 15%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 15%, transparent 20%) 5% 0% / 200px 180px,
+        /* Peak 2 */
+        linear-gradient(140deg, transparent 46%, #6D4C41 46%, #8D6E63 50%, #A1887F 53%, transparent 53%) 30% 5% / 230px 200px,
+        radial-gradient(ellipse at 30% 18%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.6) 12%, transparent 18%) 30% 5% / 230px 200px,
+        /* Peak 3 */
+        linear-gradient(132deg, transparent 47%, #5D4037 47%, #6D4C41 50%, #795548 52%, transparent 52%) 55% 8% / 210px 185px,
+        radial-gradient(ellipse at 55% 20%, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.65) 14%, transparent 19%) 55% 8% / 210px 185px,
+        /* Peak 4 */
+        linear-gradient(138deg, transparent 46%, #795548 46%, #8D6E63 51%, #BCAAA4 53%, transparent 53%) 80% 3% / 220px 195px,
+        radial-gradient(ellipse at 80% 16%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.7) 13%, transparent 17%) 80% 3% / 220px 195px;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+    animation: geo-mountains-parallax 38s ease-in-out infinite;
+}
+
+@keyframes geo-mountains-distant {
+    0%, 100% { transform: translateX(0) scale(1); opacity: 0.8; }
+    50% { transform: translateX(-2%) scale(1.01); opacity: 0.7; }
+}
+
+@keyframes geo-mountains-parallax {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-1%) translateY(-3px); }
+}
+
+/* === FLOWING RIVER === */
+.theme-geography .elem-2 {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.theme-geography .elem-2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    width: 120%;
+    height: 100%;
+    background:
+        /* Water flow with curves */
+        radial-gradient(ellipse at 15% 50%, rgba(33, 150, 243, 0.6) 0%, rgba(33, 150, 243, 0.4) 20%, transparent 25%),
+        radial-gradient(ellipse at 35% 60%, rgba(30, 136, 229, 0.65) 0%, rgba(30, 136, 229, 0.45) 22%, transparent 28%),
+        radial-gradient(ellipse at 55% 45%, rgba(33, 150, 243, 0.7) 0%, rgba(33, 150, 243, 0.5) 18%, transparent 23%),
+        radial-gradient(ellipse at 75% 55%, rgba(25, 118, 210, 0.65) 0%, rgba(25, 118, 210, 0.45) 20%, transparent 26%),
+        radial-gradient(ellipse at 90% 48%, rgba(33, 150, 243, 0.6) 0%, rgba(33, 150, 243, 0.4) 19%, transparent 24%),
+        linear-gradient(180deg,
+            transparent 0%,
+            rgba(33, 150, 243, 0.3) 20%,
+            rgba(30, 136, 229, 0.5) 50%,
+            rgba(25, 118, 210, 0.6) 100%);
+    clip-path: polygon(0% 40%, 10% 35%, 25% 45%, 40% 30%, 55% 40%, 70% 35%, 85% 45%, 100% 38%, 100% 100%, 0% 100%);
+    animation: geo-river-flow 25s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+/* River sparkles */
+.theme-geography .elem-2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 12% 55%, rgba(255, 255, 255, 0.8) 0%, transparent 2px) 0 0 / 80px 80px,
+        radial-gradient(circle at 28% 45%, rgba(255, 255, 255, 0.9) 0%, transparent 2.5px) 0 0 / 100px 100px,
+        radial-gradient(circle at 45% 60%, rgba(255, 255, 255, 0.75) 0%, transparent 2px) 0 0 / 90px 90px,
+        radial-gradient(circle at 62% 50%, rgba(255, 255, 255, 0.85) 0%, transparent 2.2px) 0 0 / 95px 95px,
+        radial-gradient(circle at 78% 58%, rgba(255, 255, 255, 0.8) 0%, transparent 2px) 0 0 / 85px 85px,
+        radial-gradient(circle at 88% 48%, rgba(255, 255, 255, 0.9) 0%, transparent 2.3px) 0 0 / 105px 105px;
+    animation: geo-river-sparkle 8s ease-in-out infinite;
+    clip-path: polygon(0% 40%, 10% 35%, 25% 45%, 40% 30%, 55% 40%, 70% 35%, 85% 45%, 100% 38%, 100% 100%, 0% 100%);
+}
+
+@keyframes geo-river-flow {
+    0%, 100% { transform: translateX(0) scaleX(1); opacity: 0.8; }
+    50% { transform: translateX(3%) scaleX(1.02); opacity: 0.9; }
+}
+
+@keyframes geo-river-sparkle {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    25% { opacity: 0.8; transform: scale(1.2); }
+    50% { opacity: 1; transform: scale(0.9); }
+    75% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* === WORLD MAP SILHOUETTE === */
+.theme-geography .elem-3 {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 120px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.15;
+    animation: geo-map-float 42s ease-in-out infinite;
+}
+
+.theme-geography .elem-3::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Continents simplified */
+        radial-gradient(ellipse at 15% 30%, #1B5E20 0%, #1B5E20 35%, transparent 36%),
+        radial-gradient(ellipse at 35% 45%, #2E7D32 0%, #2E7D32 28%, transparent 29%),
+        radial-gradient(ellipse at 55% 35%, #388E3C 0%, #388E3C 32%, transparent 33%),
+        radial-gradient(ellipse at 75% 50%, #43A047 0%, #43A047 30%, transparent 31%),
+        radial-gradient(ellipse at 85% 28%, #4CAF50 0%, #4CAF50 25%, transparent 26%),
+        radial-gradient(ellipse at 25% 70%, #66BB6A 0%, #66BB6A 22%, transparent 23%),
+        radial-gradient(ellipse at 65% 75%, #81C784 0%, #81C784 27%, transparent 28%);
+    border-radius: 8px;
+    filter: blur(2px);
+}
+
+@keyframes geo-map-float {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); opacity: 0.15; }
+    25% { transform: translateX(-50%) translateY(-8px) rotate(1deg); opacity: 0.22; }
+    50% { transform: translateX(-50%) translateY(-15px) rotate(-1deg); opacity: 0.18; }
+    75% { transform: translateX(-50%) translateY(-8px) rotate(0.5deg); opacity: 0.2; }
+}
+
+/* === COMPASS ROSE === */
+.theme-geography .elem-4 {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    width: 80px;
+    height: 80px;
+    z-index: 10;
+    pointer-events: none;
+    animation: geo-compass-float 8s ease-in-out infinite;
+}
+
+/* Compass outer circle */
+.theme-geography .elem-4::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 50%, #FFF8E1 0%, #FFF8E1 35%, transparent 36%, transparent 42%, #8D6E63 42%, #8D6E63 45%, transparent 45%),
+        conic-gradient(from 0deg at 50% 50%,
+            #8D6E63 0deg, #8D6E63 5deg, transparent 5deg,
+            transparent 85deg, #8D6E63 85deg, #8D6E63 95deg, transparent 95deg,
+            transparent 175deg, #8D6E63 175deg, #8D6E63 185deg, transparent 185deg,
+            transparent 265deg, #8D6E63 265deg, #8D6E63 275deg, transparent 275deg,
+            transparent 355deg, #8D6E63 355deg);
+    border-radius: 50%;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 3px 8px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Compass needle */
+.theme-geography .elem-4::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 45px;
+    background: linear-gradient(180deg,
+        #D32F2F 0%, #D32F2F 48%,
+        #757575 48%, #757575 50%,
+        #FAFAFA 50%, #FAFAFA 100%);
+    transform: translate(-50%, -50%);
+    clip-path: polygon(50% 0%, 100% 45%, 70% 48%, 70% 100%, 30% 100%, 30% 48%, 0% 45%);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+    animation: geo-needle-wobble 6.5s ease-in-out infinite;
+}
+
+@keyframes geo-compass-float {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.9; }
+    50% { transform: translateY(-5px) scale(1.05); opacity: 1; }
+}
+
+@keyframes geo-needle-wobble {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    15% { transform: translate(-50%, -50%) rotate(12deg); }
+    30% { transform: translate(-50%, -50%) rotate(-8deg); }
+    45% { transform: translate(-50%, -50%) rotate(15deg); }
+    60% { transform: translate(-50%, -50%) rotate(-10deg); }
+    75% { transform: translate(-50%, -50%) rotate(6deg); }
+}
+
+/* === FLOATING CLOUDS === */
+.theme-geography .elem-5 {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    top: 0;
+    left: 0;
+    z-index: 12;
+    pointer-events: none;
+}
+
+.theme-geography .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 8% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 18%, transparent 22%),
+        radial-gradient(ellipse at 12% 28%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 14%, transparent 18%),
+        radial-gradient(ellipse at 18% 26%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.92) 16%, transparent 20%),
+        radial-gradient(ellipse at 65% 18%, rgba(255, 255, 255, 0.93) 0%, rgba(255, 255, 255, 0.93) 20%, transparent 24%),
+        radial-gradient(ellipse at 70% 20%, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.88) 15%, transparent 19%),
+        radial-gradient(ellipse at 75% 19%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 17%, transparent 21%);
+    animation: geo-clouds-drift 55s linear infinite;
+    filter: blur(1px);
+}
+
+.theme-geography .elem-5::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 35% 35%, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.88) 22%, transparent 26%),
+        radial-gradient(ellipse at 40% 37%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 17%, transparent 21%),
+        radial-gradient(ellipse at 88% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 19%, transparent 23%),
+        radial-gradient(ellipse at 92% 32%, rgba(255, 255, 255, 0.87) 0%, rgba(255, 255, 255, 0.87) 14%, transparent 18%);
+    animation: geo-clouds-drift 48s linear infinite reverse;
+    filter: blur(1.5px);
+}
+
+@keyframes geo-clouds-drift {
+    0% { transform: translateX(-10%); }
+    100% { transform: translateX(10%); }
+}
+
+/* === ATMOSPHERIC PARTICLES === */
+.theme-geography .scene-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 20;
+    background:
+        radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.7) 0%, transparent 1.5px),
+        radial-gradient(circle at 23% 32%, rgba(255, 255, 255, 0.8) 0%, transparent 1.2px),
+        radial-gradient(circle at 38% 22%, rgba(255, 255, 255, 0.75) 0%, transparent 1.4px),
+        radial-gradient(circle at 52% 48%, rgba(255, 255, 255, 0.65) 0%, transparent 1.3px),
+        radial-gradient(circle at 65% 28%, rgba(255, 255, 255, 0.8) 0%, transparent 1.5px),
+        radial-gradient(circle at 78% 55%, rgba(255, 255, 255, 0.7) 0%, transparent 1.2px),
+        radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.75) 0%, transparent 1.4px),
+        radial-gradient(circle at 92% 42%, rgba(255, 255, 255, 0.65) 0%, transparent 1.3px),
+        radial-gradient(circle at 15% 68%, rgba(255, 255, 255, 0.7) 0%, transparent 1.5px),
+        radial-gradient(circle at 42% 75%, rgba(255, 255, 255, 0.8) 0%, transparent 1.2px),
+        radial-gradient(circle at 58% 82%, rgba(255, 255, 255, 0.75) 0%, transparent 1.4px),
+        radial-gradient(circle at 88% 72%, rgba(255, 255, 255, 0.65) 0%, transparent 1.3px);
+    animation: geo-particles-float 12s ease-in-out infinite;
+}
+
+@keyframes geo-particles-float {
+    0%, 100% { opacity: 0.3; transform: translateY(0) translateX(0); }
+    25% { opacity: 0.6; transform: translateY(-15px) translateX(8px); }
+    50% { opacity: 0.8; transform: translateY(-8px) translateX(-5px); }
+    75% { opacity: 0.5; transform: translateY(-20px) translateX(10px); }
+}
+
+/* === MASCOT ANIMATIONS === */
+
+/* Happy - Exploration excitement */
+.theme-geography .worm-character.happy,
+.theme-geography .bunny-character.happy,
+.theme-geography .owl-character.happy,
+.theme-geography .cat-character.happy,
+.theme-geography .robot-character.happy {
+    animation: geo-happy-explore 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes geo-happy-explore {
+    0% { transform: scale(1) rotate(0deg) translateY(0); }
+    15% { transform: scale(0.95) rotate(-8deg) translateY(5px); }
+    30% { transform: scale(1.15) rotate(5deg) translateY(-25px); }
+    45% { transform: scale(1.2) rotate(-3deg) translateY(-40px); filter: brightness(1.2); }
+    60% { transform: scale(1.1) rotate(2deg) translateY(-30px); }
+    80% { transform: scale(1.05) rotate(0deg) translateY(-10px); }
+    100% { transform: scale(1) rotate(0deg) translateY(0); filter: brightness(1); }
+}
+
+/* Sad - Lost wanderer */
+.theme-geography .worm-character.sad,
+.theme-geography .bunny-character.sad,
+.theme-geography .owl-character.sad,
+.theme-geography .cat-character.sad,
+.theme-geography .robot-character.sad {
+    animation: geo-sad-lost 2.5s ease-out forwards;
+}
+
+@keyframes geo-sad-lost {
+    0% { transform: scale(1) rotate(0deg); filter: brightness(1) saturate(1); }
+    25% { transform: scale(0.95) rotate(-8deg) translateY(8px); }
+    50% { transform: scale(0.88) rotate(3deg) translateY(15px); filter: brightness(0.7) saturate(0.5); }
+    100% { transform: scale(0.82) rotate(-2deg) translateY(22px); filter: brightness(0.5) saturate(0.3) sepia(0.2); }
+}
+
+/* Excited - Discovery joy */
+.theme-geography .bunny-character.excited,
+.theme-geography .cat-character.excited {
+    animation: geo-excited-discovery 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes geo-excited-discovery {
+    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    20% { transform: translateY(-35px) translateX(20px) rotate(15deg); }
+    40% { transform: translateY(-25px) translateX(-15px) rotate(-10deg); }
+    60% { transform: translateY(-45px) translateX(10px) rotate(8deg); }
+    80% { transform: translateY(-20px) translateX(-8px) rotate(-5deg); }
+}
+
+/* === DEPTH FOG === */
+.theme-geography .depth-fog {
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    bottom: 20%;
+    left: 0;
+    pointer-events: none;
+    z-index: 5;
+    background:
+        radial-gradient(ellipse at 20% 70%, rgba(224, 242, 254, 0.35) 0%, rgba(224, 242, 254, 0.2) 25%, transparent 40%),
+        radial-gradient(ellipse at 50% 65%, rgba(232, 245, 233, 0.3) 0%, rgba(232, 245, 233, 0.15) 28%, transparent 45%),
+        radial-gradient(ellipse at 80% 72%, rgba(224, 242, 254, 0.32) 0%, rgba(224, 242, 254, 0.18) 26%, transparent 42%);
+    animation: geo-fog-drift 35s ease-in-out infinite;
+}
+
+@keyframes geo-fog-drift {
+    0%, 100% { transform: translateX(-5%) scale(1); opacity: 0.6; }
+    50% { transform: translateX(8%) scale(1.08); opacity: 0.8; }
+}
+
+/* === SUN WITH VOLUMETRIC RAYS === */
+.theme-geography .elem-sun {
+    position: absolute;
+    top: 8%;
+    right: 15%;
+    width: 100px;
+    height: 100px;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.theme-geography .elem-sun::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 50%,
+            #FFEB3B 0%,
+            #FFC107 25%,
+            rgba(255, 193, 7, 0.7) 40%,
+            rgba(255, 235, 59, 0.3) 60%,
+            transparent 75%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 40px rgba(255, 235, 59, 0.9),
+        0 0 80px rgba(255, 193, 7, 0.6),
+        0 0 120px rgba(255, 152, 0, 0.4);
+    animation: geo-sun-pulse 8s ease-in-out infinite;
+}
+
+.theme-geography .elem-sun::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(90deg, transparent 47%, rgba(255, 249, 196, 0.6) 50%, transparent 53%),
+        linear-gradient(0deg, transparent 47%, rgba(255, 249, 196, 0.6) 50%, transparent 53%),
+        linear-gradient(45deg, transparent 47%, rgba(255, 236, 179, 0.5) 50%, transparent 53%),
+        linear-gradient(135deg, transparent 47%, rgba(255, 236, 179, 0.5) 50%, transparent 53%);
+    animation: geo-rays-rotate 20s linear infinite;
+}
+
+@keyframes geo-sun-pulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.08); filter: brightness(1.15); }
+}
+
+@keyframes geo-rays-rotate {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}

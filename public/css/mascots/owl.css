@@ -1,0 +1,947 @@
+/* ============================================
+   OWL MASCOT - "Professor Hoot"
+   A wise, scholarly owl who loves knowledge!
+   Reacts with dramatic head rotations and wing flaps
+   ============================================ */
+
+/* === CSS Variables for Owl === */
+:root {
+    --owl-body: #8D6E63;
+    --owl-body-light: #A1887F;
+    --owl-body-dark: #6D4C41;
+    --owl-belly: #EFEBE9;
+    --owl-beak: #FF8F00;
+    --owl-eye-ring: #D7CCC8;
+    --owl-feet: #FFB300;
+}
+
+/* === MAIN CHARACTER CONTAINER === */
+.owl-character {
+    width: 115px;
+    height: 140px;
+    position: absolute;
+}
+
+/* Hidden by default, shown when .active */
+.owl-character:not(.active) {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.owl-character.active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* === OWL BODY === */
+.owl-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 95px;
+    background: radial-gradient(ellipse at 50% 30%,
+        var(--owl-body-light) 0%,
+        var(--owl-body) 45%,
+        var(--owl-body-dark) 100%);
+    border-radius: 50% 50% 48% 48%;
+    box-shadow:
+        inset -6px -6px 18px rgba(0,0,0,0.2),
+        inset 6px 6px 18px rgba(255,255,255,0.15),
+        0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Feather texture overlay */
+.owl-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(0,0,0,0.05) 8px,
+        rgba(0,0,0,0.05) 10px
+    );
+    border-radius: inherit;
+}
+
+/* === OWL BELLY === */
+.owl-belly {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 60px;
+    background: radial-gradient(ellipse at 50% 40%,
+        #FFFFFF 0%,
+        var(--owl-belly) 60%,
+        #D7CCC8 100%);
+    border-radius: 50%;
+    box-shadow: inset 0 -5px 12px rgba(0,0,0,0.06);
+}
+
+/* Belly feather pattern - chevron style */
+.owl-belly::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 35px;
+    background:
+        repeating-linear-gradient(
+            180deg,
+            transparent 0px,
+            transparent 6px,
+            rgba(139,69,19,0.12) 6px,
+            rgba(139,69,19,0.12) 8px
+        );
+    border-radius: 50%;
+}
+
+/* Heart-shaped chest marking */
+.owl-belly::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(139, 69, 19, 0.15);
+    border-radius: 50% 0 50% 50%;
+}
+
+/* === OWL HEAD === */
+.owl-head {
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 65px;
+    background: radial-gradient(ellipse at 50% 55%,
+        var(--owl-body-light) 0%,
+        var(--owl-body) 55%,
+        var(--owl-body-dark) 100%);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow:
+        inset -4px -4px 12px rgba(0,0,0,0.15),
+        inset 4px 4px 12px rgba(255,255,255,0.1),
+        0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* Facial disc - lighter area around eyes */
+.owl-head::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 45px;
+    background: radial-gradient(ellipse at 50% 50%,
+        var(--owl-belly) 30%,
+        var(--owl-body-light) 70%,
+        transparent 100%);
+    border-radius: 50%;
+}
+
+/* === OWL TUFTS (Ear-like feathers) === */
+.owl-tuft {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 30px solid var(--owl-body);
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.owl-tuft.left {
+    bottom: 125px;
+    left: 16px;
+    transform: rotate(-22deg);
+}
+
+.owl-tuft.right {
+    bottom: 125px;
+    right: 16px;
+    transform: rotate(22deg);
+}
+
+/* Tuft inner color */
+.owl-tuft::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 18px solid var(--owl-body-dark);
+}
+
+/* === OWL EYE RINGS (Spectacles look) === */
+.owl-eye-ring {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background: radial-gradient(circle,
+        var(--owl-belly) 0%,
+        var(--owl-eye-ring) 60%,
+        var(--owl-body-light) 100%);
+    border-radius: 50%;
+    top: 12px;
+    box-shadow:
+        0 0 0 3px var(--owl-body),
+        inset 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 3;
+}
+
+.owl-eye-ring.left { left: 5px; }
+.owl-eye-ring.right { right: 5px; }
+
+/* === OWL EYES === */
+.owl-eye {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background: radial-gradient(circle at 50% 45%,
+        #FFFFFF 0%,
+        #F5F5F5 60%,
+        #E0E0E0 100%);
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+    box-shadow:
+        inset 0 -3px 6px rgba(0,0,0,0.1),
+        0 2px 4px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.owl-pupil {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 30% 30%,
+        #5D4037 0%,
+        #4E342E 40%,
+        #1B0000 100%);
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    transition: all 0.2s ease;
+}
+
+/* Owl has round pupils but can dilate */
+.owl-pupil::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%,
+        #000 40%,
+        transparent 42%);
+    border-radius: 50%;
+}
+
+.owl-sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #FFFFFF 60%, transparent 100%);
+    border-radius: 50%;
+    top: 3px;
+    left: 2px;
+}
+
+/* Secondary sparkle */
+.owl-sparkle::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    bottom: -5px;
+    right: -3px;
+}
+
+/* === OWL BEAK === */
+.owl-beak {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid var(--owl-beak);
+    z-index: 4;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+}
+
+/* Beak highlight */
+.owl-beak::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #FFB74D 0%, transparent 50%);
+    border-radius: 50%;
+}
+
+/* Beak curve/nostril */
+.owl-beak::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -3px;
+    width: 6px;
+    height: 4px;
+    background: #E65100;
+    border-radius: 50%;
+}
+
+/* === OWL WINGS === */
+.owl-wing {
+    position: absolute;
+    width: 28px;
+    height: 50px;
+    background: linear-gradient(180deg,
+        var(--owl-body) 0%,
+        var(--owl-body-dark) 50%,
+        #5D4037 100%);
+    border-radius: 50% 50% 65% 65%;
+    bottom: 22px;
+    z-index: 0;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+}
+
+.owl-wing.left {
+    left: -5px;
+    transform: rotate(15deg);
+}
+
+.owl-wing.right {
+    right: -5px;
+    transform: rotate(-15deg);
+}
+
+/* Wing feather details */
+.owl-wing::before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 25px;
+    background: repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 5px,
+        rgba(0,0,0,0.15) 5px,
+        rgba(0,0,0,0.15) 7px
+    );
+    border-radius: 50%;
+}
+
+/* Wing tip */
+.owl-wing::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid var(--owl-body-dark);
+}
+
+/* === OWL FEET === */
+.owl-foot {
+    position: absolute;
+    bottom: -5px;
+    width: 26px;
+    height: 14px;
+    background: linear-gradient(180deg, var(--owl-feet) 0%, #FF8F00 100%);
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.owl-foot.left { left: 22px; }
+.owl-foot.right { right: 22px; }
+
+/* Talons */
+.owl-foot::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 6px;
+    background: repeating-linear-gradient(90deg,
+        #E65100 0px, #E65100 4px,
+        transparent 4px, transparent 7px
+    );
+}
+
+/* === OWL GLASSES (optional accessory) === */
+.owl-glasses {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 30px;
+    z-index: 5;
+}
+
+/* Glasses bridge */
+.owl-glasses::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 3px;
+    background: #5D4037;
+    border-radius: 2px;
+}
+
+/* === OWL TEARS (for crying) === */
+.owl-tear {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        rgba(100, 181, 246, 0.8) 0%,
+        rgba(66, 165, 245, 0.9) 100%);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+    top: 50px;
+}
+
+.owl-tear.left { left: 15px; }
+.owl-tear.right { right: 15px; }
+
+
+/* ============================================
+   IDLE ANIMATIONS - Wise owl observing
+   ============================================ */
+
+@keyframes owl-idle-bob {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-50%) translateY(-4px) rotate(-2deg);
+    }
+    75% {
+        transform: translateX(-50%) translateY(-4px) rotate(2deg);
+    }
+}
+
+@keyframes owl-blink-slow {
+    0%, 94%, 100% { transform: scaleY(1); }
+    96%, 98% { transform: scaleY(0.05); }
+}
+
+@keyframes owl-wing-rest {
+    0%, 100% { transform: rotate(15deg); }
+    50% { transform: rotate(12deg); }
+}
+
+@keyframes owl-head-look {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    30% { transform: translateX(-50%) rotate(-8deg); }
+    70% { transform: translateX(-50%) rotate(8deg); }
+}
+
+@keyframes owl-tuft-sway {
+    0%, 100% { transform: rotate(-22deg); }
+    50% { transform: rotate(-18deg); }
+}
+
+.owl-character.idle .owl-body {
+    animation: owl-idle-bob 3.5s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-head {
+    animation: owl-head-look 6s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-eye {
+    animation: owl-blink-slow 5s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-wing.left {
+    animation: owl-wing-rest 2.5s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-wing.right {
+    animation: owl-wing-rest 2.5s ease-in-out infinite reverse;
+}
+
+.owl-character.idle .owl-tuft.left {
+    animation: owl-tuft-sway 3s ease-in-out infinite;
+}
+
+.owl-character.idle .owl-tuft.right {
+    animation: owl-tuft-sway 3s ease-in-out infinite reverse;
+}
+
+
+/* ============================================
+   HAPPY - Correct answer! Wise owl celebrates!
+   Does a proud head spin and wing spread
+   ============================================ */
+
+@keyframes owl-happy-360-head {
+    0% {
+        transform: translateX(-50%) rotate(0deg) scale(1);
+    }
+    20% {
+        transform: translateX(-50%) rotate(-180deg) scale(1.1);
+    }
+    40% {
+        transform: translateX(-50%) rotate(-360deg) scale(1.15);
+    }
+    60% {
+        transform: translateX(-50%) rotate(-540deg) scale(1.1);
+    }
+    80% {
+        transform: translateX(-50%) rotate(-680deg) scale(1.05);
+    }
+    100% {
+        transform: translateX(-50%) rotate(-720deg) scale(1);
+    }
+}
+
+@keyframes owl-happy-body-bounce {
+    0% { transform: translateX(-50%) translateY(0) scale(1); }
+    15% { transform: translateX(-50%) translateY(8px) scale(0.95); }
+    30% { transform: translateX(-50%) translateY(-35px) scale(1.1); }
+    50% { transform: translateX(-50%) translateY(0) scale(0.98); }
+    65% { transform: translateX(-50%) translateY(-20px) scale(1.05); }
+    80% { transform: translateX(-50%) translateY(0) scale(0.99); }
+    100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes owl-happy-wings-spread {
+    0% { transform: rotate(15deg); }
+    25% { transform: rotate(-45deg) scaleX(1.3); }
+    50% { transform: rotate(-60deg) scaleX(1.4); }
+    75% { transform: rotate(-30deg) scaleX(1.2); }
+    100% { transform: rotate(15deg); }
+}
+
+@keyframes owl-happy-wings-spread-right {
+    0% { transform: rotate(-15deg); }
+    25% { transform: rotate(45deg) scaleX(1.3); }
+    50% { transform: rotate(60deg) scaleX(1.4); }
+    75% { transform: rotate(30deg) scaleX(1.2); }
+    100% { transform: rotate(-15deg); }
+}
+
+@keyframes owl-happy-tufts-bounce {
+    0%, 100% { transform: rotate(-22deg) scaleY(1); }
+    25% { transform: rotate(-35deg) scaleY(1.2); }
+    50% { transform: rotate(-15deg) scaleY(1.3); }
+    75% { transform: rotate(-28deg) scaleY(1.15); }
+}
+
+.owl-character.happy .owl-head {
+    animation: owl-happy-360-head 1.5s ease-out;
+}
+
+.owl-character.happy .owl-body {
+    animation: owl-happy-body-bounce 1.5s var(--bounce-ease);
+}
+
+.owl-character.happy .owl-wing.left {
+    animation: owl-happy-wings-spread 1.5s ease-out;
+}
+
+.owl-character.happy .owl-wing.right {
+    animation: owl-happy-wings-spread-right 1.5s ease-out;
+}
+
+.owl-character.happy .owl-tuft.left {
+    animation: owl-happy-tufts-bounce 0.5s ease-in-out 3;
+}
+
+.owl-character.happy .owl-tuft.right {
+    animation: owl-happy-tufts-bounce 0.5s ease-in-out 3 reverse;
+}
+
+/* Happy owl has sparkly dilated pupils */
+.owl-character.happy .owl-pupil {
+    transform: scale(1.3);
+}
+
+.owl-character.happy .owl-sparkle {
+    animation: bunny-sparkle-grow 0.3s ease-in-out infinite;
+}
+
+
+/* ============================================
+   EXCITED - Super smart owl figured it out!
+   Eyes go huge, rapid looking around
+   ============================================ */
+
+@keyframes owl-excited-look-around {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    15% { transform: translateX(-50%) rotate(-25deg); }
+    30% { transform: translateX(-50%) rotate(25deg); }
+    45% { transform: translateX(-50%) rotate(-20deg); }
+    60% { transform: translateX(-50%) rotate(20deg); }
+    75% { transform: translateX(-50%) rotate(-10deg); }
+    90% { transform: translateX(-50%) rotate(10deg); }
+}
+
+@keyframes owl-excited-body-jump {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    20% { transform: translateX(-50%) translateY(-25px); }
+    40% { transform: translateX(-50%) translateY(-5px); }
+    60% { transform: translateX(-50%) translateY(-18px); }
+    80% { transform: translateX(-50%) translateY(-3px); }
+}
+
+@keyframes owl-excited-wings-flap {
+    0%, 100% { transform: rotate(15deg); }
+    50% { transform: rotate(-40deg); }
+}
+
+@keyframes owl-excited-eyes-huge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+}
+
+.owl-character.excited .owl-head {
+    animation: owl-excited-look-around 1.2s ease-in-out;
+}
+
+.owl-character.excited .owl-body {
+    animation: owl-excited-body-jump 1.2s var(--bounce-ease);
+}
+
+.owl-character.excited .owl-wing.left {
+    animation: owl-excited-wings-flap 0.2s ease-in-out infinite;
+}
+
+.owl-character.excited .owl-wing.right {
+    animation: owl-excited-wings-flap 0.2s ease-in-out infinite reverse;
+}
+
+.owl-character.excited .owl-eye {
+    animation: owl-excited-eyes-huge 0.5s ease-in-out infinite;
+}
+
+.owl-character.excited .owl-pupil {
+    transform: scale(0.6);
+}
+
+
+/* ============================================
+   SAD - Wrong answer... Disappointed owl
+   Droopy posture, closed eyes
+   ============================================ */
+
+@keyframes owl-sad-droop {
+    0% {
+        transform: translateX(-50%) rotate(0deg) scale(1);
+        filter: brightness(1);
+    }
+    30% {
+        transform: translateX(-50%) rotate(-8deg) scale(0.95);
+        filter: brightness(0.85);
+    }
+    100% {
+        transform: translateX(-50%) rotate(-10deg) scale(0.88);
+        filter: brightness(0.65) saturate(0.5);
+    }
+}
+
+@keyframes owl-sad-wings-droop {
+    0% { transform: rotate(15deg); }
+    100% { transform: rotate(40deg) translateY(10px); }
+}
+
+@keyframes owl-sad-tufts-droop {
+    0% { transform: rotate(-22deg); }
+    100% { transform: rotate(-45deg) scaleY(0.8); }
+}
+
+@keyframes owl-sad-eyes-close {
+    0% { transform: scaleY(1); }
+    100% { transform: scaleY(0.15); }
+}
+
+.owl-character.sad {
+    animation: owl-sad-droop 1.5s ease-out forwards;
+}
+
+.owl-character.sad .owl-wing.left {
+    animation: owl-sad-wings-droop 1s ease-out forwards;
+}
+
+.owl-character.sad .owl-wing.right {
+    animation: owl-sad-wings-droop 1s ease-out forwards;
+    transform: rotate(-40deg) translateY(10px);
+}
+
+.owl-character.sad .owl-tuft.left {
+    animation: owl-sad-tufts-droop 1s ease-out forwards;
+}
+
+.owl-character.sad .owl-tuft.right {
+    animation: owl-sad-tufts-droop 1s ease-out forwards;
+    transform: rotate(45deg) scaleY(0.8);
+}
+
+.owl-character.sad .owl-eye {
+    animation: owl-sad-eyes-close 0.8s ease-out forwards;
+}
+
+
+/* ============================================
+   CRYING - Really sad wise owl with tears
+   Head shaking in disbelief
+   ============================================ */
+
+@keyframes owl-crying-shake-head {
+    0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+    25% { transform: translateX(-50%) rotate(-15deg); }
+    50% { transform: translateX(-50%) rotate(-5deg); }
+    75% { transform: translateX(-50%) rotate(-18deg); }
+}
+
+@keyframes owl-crying-tears {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(8px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.3);
+    }
+}
+
+@keyframes owl-crying-wings-cover {
+    0% { transform: rotate(15deg); }
+    100% { transform: rotate(-30deg) translateX(10px) translateY(-15px); }
+}
+
+.owl-character.crying {
+    filter: brightness(0.7) saturate(0.4);
+}
+
+.owl-character.crying .owl-head {
+    animation: owl-crying-shake-head 0.5s ease-in-out infinite;
+}
+
+.owl-character.crying .owl-wing.left {
+    animation: owl-crying-wings-cover 0.5s ease-out forwards;
+}
+
+.owl-character.crying .owl-wing.right {
+    animation: owl-crying-wings-cover 0.5s ease-out forwards;
+    transform: rotate(30deg) translateX(-10px) translateY(-15px);
+}
+
+.owl-character.crying .owl-tear {
+    opacity: 1;
+    animation: owl-crying-tears 1s ease-in infinite;
+}
+
+.owl-character.crying .owl-tear.right {
+    animation-delay: 0.35s;
+}
+
+.owl-character.crying .owl-eye {
+    transform: scaleY(0.1);
+}
+
+
+/* ============================================
+   SURPRISED - "Whooo!" shocked owl
+   Eyes go MASSIVE, tufts shoot up
+   ============================================ */
+
+@keyframes owl-surprised-jolt {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-30px) scale(1.2); }
+    50% { transform: translateY(-25px) scale(1.15); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes owl-surprised-tufts-up {
+    0% { transform: rotate(-22deg); }
+    20% { transform: rotate(-5deg) scaleY(1.5); }
+    100% { transform: rotate(-22deg); }
+}
+
+@keyframes owl-surprised-eyes-massive {
+    0%, 100% { transform: scale(1); }
+    20%, 70% { transform: scale(1.6); }
+}
+
+@keyframes owl-surprised-pupils-tiny {
+    0%, 100% { transform: scale(1); }
+    20%, 70% { transform: scale(0.4); }
+}
+
+.owl-character.surprised {
+    animation: owl-surprised-jolt 1s var(--bounce-ease);
+}
+
+.owl-character.surprised .owl-tuft.left {
+    animation: owl-surprised-tufts-up 1s ease-out;
+}
+
+.owl-character.surprised .owl-tuft.right {
+    animation: owl-surprised-tufts-up 1s ease-out;
+}
+
+.owl-character.surprised .owl-eye {
+    animation: owl-surprised-eyes-massive 1s ease-out;
+}
+
+.owl-character.surprised .owl-pupil {
+    animation: owl-surprised-pupils-tiny 1s ease-out;
+}
+
+
+/* ============================================
+   GIGGLING - Chuckling wise owl
+   Body shakes, eyes squint from laughing
+   ============================================ */
+
+@keyframes owl-giggle-shake {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    10% { transform: translateX(-50%) rotate(-5deg) translateX(-3px); }
+    20% { transform: translateX(-50%) rotate(5deg) translateX(3px); }
+    30% { transform: translateX(-50%) rotate(-4deg) translateX(-2px); }
+    40% { transform: translateX(-50%) rotate(4deg) translateX(2px); }
+    50% { transform: translateX(-50%) rotate(-3deg) translateX(-2px); }
+    60% { transform: translateX(-50%) rotate(3deg) translateX(2px); }
+    70% { transform: translateX(-50%) rotate(-2deg); }
+    80% { transform: translateX(-50%) rotate(2deg); }
+    90% { transform: translateX(-50%) rotate(-1deg); }
+}
+
+@keyframes owl-giggle-squint {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
+
+@keyframes owl-giggle-belly-jiggle {
+    0%, 100% { transform: translateX(-50%) scaleX(1); }
+    25% { transform: translateX(-50%) scaleX(1.05); }
+    75% { transform: translateX(-50%) scaleX(0.98); }
+}
+
+.owl-character.giggling .owl-body {
+    animation: owl-giggle-shake 1.2s ease-in-out,
+               owl-giggle-belly-jiggle 0.2s ease-in-out infinite;
+}
+
+.owl-character.giggling .owl-eye {
+    animation: owl-giggle-squint 0.25s ease-in-out infinite;
+}
+
+.owl-character.giggling .owl-wing.left {
+    animation: owl-wing-rest 0.15s ease-in-out infinite;
+}
+
+.owl-character.giggling .owl-wing.right {
+    animation: owl-wing-rest 0.15s ease-in-out infinite reverse;
+}
+
+
+/* ============================================
+   THINKING - Contemplating owl
+   Head tilts dramatically, one eye squints
+   ============================================ */
+
+@keyframes owl-thinking-head-tilt {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    30%, 70% { transform: translateX(-50%) rotate(-18deg); }
+}
+
+@keyframes owl-thinking-wing-tap {
+    0%, 80%, 100% { transform: rotate(15deg); }
+    85%, 95% { transform: rotate(25deg); }
+    90% { transform: rotate(20deg); }
+}
+
+@keyframes owl-thinking-one-eye-squint {
+    0%, 100% { transform: scaleY(1); }
+    30%, 70% { transform: scaleY(0.4); }
+}
+
+.owl-character.thinking .owl-head {
+    animation: owl-thinking-head-tilt 4s ease-in-out infinite;
+}
+
+.owl-character.thinking .owl-wing.right {
+    animation: owl-thinking-wing-tap 2s ease-in-out infinite;
+}
+
+.owl-character.thinking .owl-eye-ring.right .owl-eye {
+    animation: owl-thinking-one-eye-squint 4s ease-in-out infinite;
+}
+
+
+/* ============================================
+   WISE - Teaching moment owl
+   Dignified nod, wise expression
+   ============================================ */
+
+@keyframes owl-wise-nod {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    20% { transform: translateX(-50%) rotate(-5deg) translateY(-5px); }
+    40% { transform: translateX(-50%) rotate(0deg) translateY(5px); }
+    60% { transform: translateX(-50%) rotate(-3deg) translateY(-3px); }
+    80% { transform: translateX(-50%) rotate(0deg) translateY(2px); }
+}
+
+@keyframes owl-wise-eyes-knowing {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.7); }
+}
+
+.owl-character.wise .owl-head {
+    animation: owl-wise-nod 2s ease-in-out infinite;
+}
+
+.owl-character.wise .owl-eye {
+    animation: owl-wise-eyes-knowing 3s ease-in-out infinite;
+}

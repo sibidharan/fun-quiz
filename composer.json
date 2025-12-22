@@ -1,0 +1,22 @@
+{
+    "name": "sibidharan/fun-quiz",
+    "type": "project",
+    "description": "A fun quiz application for kids built with ZealPHP",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "FunQuiz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sibidharan",
+            "email": "sibidharan@icloud.com"
+        }
+    ],
+    "require": {
+        "sibidharan/zealphp": "^0.1",
+        "mongodb/mongodb": "^2.0",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

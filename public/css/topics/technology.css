@@ -1,0 +1,716 @@
+/* ============================================
+   TECHNOLOGY THEME - PREMIUM CINEMATIC
+   Futuristic cyber world with electric energy
+   Cyan/electric blue palette with neon effects
+   ============================================ */
+
+/* === LAYERED DARK CYBER BACKGROUND === */
+.theme-technology .scene-background {
+    background:
+        /* Top holographic glow */
+        radial-gradient(ellipse 900px 450px at 50% 0%, rgba(0, 255, 255, 0.12) 0%, transparent 50%),
+        /* Neon glow spots */
+        radial-gradient(ellipse 550px 550px at 18% 35%, rgba(224, 64, 251, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 600px 600px at 82% 55%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 450px 450px at 50% 75%, rgba(156, 39, 176, 0.08) 0%, transparent 50%),
+        /* Deep cyber gradient */
+        linear-gradient(180deg,
+            #000510 0%,
+            #050a18 12%,
+            #0a0f20 24%,
+            #0f1428 36%,
+            #141a32 48%,
+            #19203c 60%,
+            #1e2646 72%,
+            #252d52 84%,
+            #2d355e 96%,
+            #353d6a 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === CIRCUIT BOARD PATTERN === */
+.theme-technology .scene-background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Circuit traces */
+        repeating-linear-gradient(0deg, transparent 0px, transparent 59px, rgba(0, 255, 255, 0.12) 59px, rgba(0, 255, 255, 0.12) 61px),
+        repeating-linear-gradient(90deg, transparent 0px, transparent 59px, rgba(0, 229, 255, 0.1) 59px, rgba(0, 229, 255, 0.1) 61px),
+        /* Circuit nodes */
+        radial-gradient(circle at 0% 0%, rgba(0, 255, 255, 0.4) 2.5px, transparent 3px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+    animation: tech-circuit-pulse 7.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes tech-circuit-pulse {
+    0%, 100% { opacity: 0.4; transform: translateX(0) translateY(0); }
+    50% { opacity: 0.7; transform: translateX(2px) translateY(2px); }
+}
+
+/* === FLOATING BINARY PARTICLES === */
+.theme-technology .binary-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 15;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.theme-technology .binary-particles::before {
+    content: '1 0 1 1 0 1 0 0 1 1 0 1 0 1 1 0';
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    writing-mode: vertical-rl;
+    letter-spacing: 10px;
+    animation: tech-binary-stream-1 12s linear infinite;
+}
+
+.theme-technology .binary-particles::after {
+    content: '0 1 0 0 1 0 1 1 0 1 1 0 0 1 0 1';
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    writing-mode: vertical-rl;
+    letter-spacing: 10px;
+    color: rgba(156, 39, 176, 0.4);
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    animation: tech-binary-stream-2 14s linear infinite 2s;
+}
+
+@keyframes tech-binary-stream-1 {
+    0% { transform: translateY(-100px); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
+}
+
+@keyframes tech-binary-stream-2 {
+    0% { transform: translateY(-100px); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
+}
+
+/* === ELEMENT 1: HOLOGRAPHIC SCREEN === */
+.theme-technology .elem-1 {
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    width: 115px;
+    height: 80px;
+    z-index: 12;
+    animation: tech-screen-float 10.5s ease-in-out infinite;
+    filter: drop-shadow(0 5px 20px rgba(0, 255, 255, 0.4));
+    pointer-events: none;
+}
+
+/* Screen frame */
+.theme-technology .elem-1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Screen content */
+        linear-gradient(90deg,
+            rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.6) 2%,
+            transparent 2%, transparent 8%,
+            rgba(156, 39, 176, 0.5) 8%, rgba(156, 39, 176, 0.5) 12%,
+            transparent 12%, transparent 18%,
+            rgba(0, 229, 255, 0.7) 18%, rgba(0, 229, 255, 0.7) 38%,
+            transparent 38%, transparent 45%,
+            rgba(224, 64, 251, 0.4) 45%, rgba(224, 64, 251, 0.4) 52%,
+            transparent 52%, transparent 60%,
+            rgba(0, 255, 255, 0.55) 60%, rgba(0, 255, 255, 0.55) 72%,
+            transparent 72%) 10px 15px / calc(100% - 20px) 50px no-repeat,
+        /* Glass gradient */
+        linear-gradient(135deg,
+            rgba(0, 255, 255, 0.08) 0%,
+            rgba(0, 188, 212, 0.15) 50%,
+            rgba(0, 255, 255, 0.08) 100%);
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    border-radius: 10px;
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.4),
+        inset 0 0 40px rgba(0, 255, 255, 0.1);
+    animation: tech-screen-glow 3.5s ease-in-out infinite;
+}
+
+/* Scan line */
+.theme-technology .elem-1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(0, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.2) 80%,
+        transparent 100%);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    animation: tech-scan-line 3.5s linear infinite;
+}
+
+@keyframes tech-screen-float {
+    0%, 100% { transform: translateY(0) translateX(0) rotateY(0deg); }
+    33% { transform: translateY(-12px) translateX(8px) rotateY(5deg); }
+    66% { transform: translateY(-6px) translateX(-5px) rotateY(-4deg); }
+}
+
+@keyframes tech-screen-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 30px rgba(0, 255, 255, 0.4),
+            inset 0 0 40px rgba(0, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 50px rgba(0, 255, 255, 0.7),
+            0 0 80px rgba(0, 229, 255, 0.4),
+            inset 0 0 50px rgba(0, 255, 255, 0.2);
+    }
+}
+
+@keyframes tech-scan-line {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(80px); opacity: 0; }
+}
+
+/* === ELEMENT 2: ROBOT === */
+.theme-technology .elem-2 {
+    position: absolute;
+    bottom: 18%;
+    right: 15%;
+    width: 70px;
+    height: 90px;
+    z-index: 13;
+    animation: tech-robot-hover 8.5s ease-in-out infinite;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
+    pointer-events: none;
+}
+
+/* Robot body */
+.theme-technology .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 58px;
+    height: 50px;
+    bottom: 18px;
+    left: 6px;
+    background:
+        /* Status lights */
+        radial-gradient(circle 4px at 25% 35%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 1) 70%, transparent 100%),
+        radial-gradient(circle 4px at 50% 35%, rgba(224, 64, 251, 1) 0%, rgba(224, 64, 251, 1) 70%, transparent 100%),
+        radial-gradient(circle 4px at 75% 35%, rgba(118, 255, 3, 1) 0%, rgba(118, 255, 3, 1) 70%, transparent 100%),
+        /* Body gradient */
+        linear-gradient(180deg,
+            #90A4AE 0%,
+            #78909C 30%,
+            #607D8B 70%,
+            #546E7A 100%);
+    border-radius: 12px;
+    border: 2px solid #B0BEC5;
+    box-shadow:
+        inset 0 -12px 25px rgba(0, 0, 0, 0.3),
+        inset 0 3px 15px rgba(255, 255, 255, 0.2),
+        0 6px 20px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(0, 255, 255, 0.25);
+    animation: tech-body-pulse 3.2s ease-in-out infinite;
+}
+
+/* Robot head */
+.theme-technology .elem-2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    bottom: 63px;
+    left: 10px;
+    background:
+        /* Antenna light */
+        radial-gradient(circle 5px at 50% -8%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.8) 70%, transparent 100%),
+        /* Eyes - glowing cyan */
+        radial-gradient(circle 5px at 30% 45%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 150, 150, 0.8) 70%, transparent 100%),
+        radial-gradient(circle 5px at 70% 45%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 150, 150, 0.8) 70%, transparent 100%),
+        /* Mouth display */
+        linear-gradient(90deg,
+            transparent 20%,
+            rgba(0, 255, 255, 0.8) 23%,
+            rgba(0, 255, 255, 0.8) 28%,
+            transparent 31%,
+            transparent 40%,
+            rgba(0, 255, 255, 0.8) 43%,
+            rgba(0, 255, 255, 0.8) 48%,
+            transparent 51%,
+            transparent 60%,
+            rgba(0, 255, 255, 0.8) 63%,
+            rgba(0, 255, 255, 0.8) 68%,
+            transparent 71%) 0 78% / 100% 12%,
+        /* Head gradient */
+        linear-gradient(180deg,
+            #B0BEC5 0%,
+            #90A4AE 40%,
+            #78909C 100%);
+    border-radius: 14px 14px 10px 10px;
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.4),
+        inset 0 -6px 12px rgba(0, 0, 0, 0.15);
+    animation: tech-head-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes tech-robot-hover {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    33% { transform: translateY(-15px) rotate(-3deg) scale(1.03); }
+    66% { transform: translateY(-8px) rotate(2deg) scale(1.02); }
+}
+
+@keyframes tech-body-pulse {
+    0%, 100% {
+        box-shadow:
+            inset 0 -12px 25px rgba(0, 0, 0, 0.3),
+            inset 0 3px 15px rgba(255, 255, 255, 0.2),
+            0 6px 20px rgba(0, 0, 0, 0.35),
+            0 0 25px rgba(0, 255, 255, 0.25);
+    }
+    50% {
+        box-shadow:
+            inset 0 -12px 25px rgba(0, 0, 0, 0.3),
+            inset 0 3px 15px rgba(255, 255, 255, 0.2),
+            0 6px 20px rgba(0, 0, 0, 0.35),
+            0 0 45px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes tech-head-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 25px rgba(0, 255, 255, 0.4),
+            inset 0 -6px 12px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow:
+            0 0 40px rgba(0, 255, 255, 0.7),
+            0 0 60px rgba(224, 64, 251, 0.3),
+            inset 0 -6px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* === ELEMENT 3: DRONE === */
+.theme-technology .elem-3 {
+    position: absolute;
+    top: 28%;
+    right: 25%;
+    width: 60px;
+    height: 35px;
+    z-index: 11;
+    animation: tech-drone-patrol 16.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Drone body */
+.theme-technology .elem-3::before {
+    content: '';
+    position: absolute;
+    width: 38px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:
+        /* Camera/sensor */
+        radial-gradient(circle 4px at 50% 75%, rgba(244, 67, 54, 0.9) 0%, rgba(244, 67, 54, 1) 50%, rgba(200, 50, 40, 0.8) 100%),
+        /* Body gradient */
+        linear-gradient(180deg,
+            #546E7A 0%,
+            #455A64 50%,
+            #37474F 100%);
+    border-radius: 10px;
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.35),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: tech-drone-tilt 3.5s ease-in-out infinite;
+}
+
+/* Propellers */
+.theme-technology .elem-3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Front left rotor */
+        radial-gradient(ellipse 12px 12px at 12% 25%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%),
+        /* Front right rotor */
+        radial-gradient(ellipse 12px 12px at 88% 25%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%),
+        /* Back left rotor */
+        radial-gradient(ellipse 12px 12px at 12% 75%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%),
+        /* Back right rotor */
+        radial-gradient(ellipse 12px 12px at 88% 75%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%);
+    animation: tech-propeller-spin 0.15s linear infinite;
+}
+
+@keyframes tech-drone-patrol {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    14% { transform: translate(25px, -18px) rotate(4deg); }
+    28% { transform: translate(55px, 10px) rotate(-5deg); }
+    42% { transform: translate(40px, -12px) rotate(3deg); }
+    56% { transform: translate(65px, 8px) rotate(-4deg); }
+    70% { transform: translate(30px, -10px) rotate(5deg); }
+    84% { transform: translate(50px, 12px) rotate(-3deg); }
+}
+
+@keyframes tech-drone-tilt {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) rotate(6deg); }
+}
+
+@keyframes tech-propeller-spin {
+    0% { opacity: 0.65; filter: blur(1.5px); }
+    50% { opacity: 0.95; filter: blur(2.5px); }
+    100% { opacity: 0.65; filter: blur(1.5px); }
+}
+
+/* === ELEMENT 4: CIRCUIT CHIP === */
+.theme-technology .elem-4 {
+    position: absolute;
+    bottom: 28%;
+    right: 35%;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    animation: tech-chip-process 5.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Chip body */
+.theme-technology .elem-4::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Circuit traces */
+        linear-gradient(90deg, transparent 47%, rgba(0, 255, 255, 0.7) 48%, rgba(0, 255, 255, 0.7) 52%, transparent 53%),
+        linear-gradient(0deg, transparent 47%, rgba(156, 39, 176, 0.7) 48%, rgba(156, 39, 176, 0.7) 52%, transparent 53%),
+        /* Chip gradient */
+        linear-gradient(135deg,
+            #455A64 0%,
+            #37474F 50%,
+            #263238 100%);
+    border-radius: 6px;
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.5),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Chip pins */
+.theme-technology .elem-4::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Top pins */
+        linear-gradient(90deg,
+            #B0BEC5 10%, #B0BEC5 13%, transparent 13%,
+            transparent 22%, #B0BEC5 22%, #B0BEC5 25%, transparent 25%,
+            transparent 34%, #B0BEC5 34%, #B0BEC5 37%, transparent 37%,
+            transparent 46%, #B0BEC5 46%, #B0BEC5 49%, transparent 49%,
+            transparent 58%, #B0BEC5 58%, #B0BEC5 61%, transparent 61%,
+            transparent 70%, #B0BEC5 70%, #B0BEC5 73%, transparent 73%,
+            transparent 82%, #B0BEC5 82%, #B0BEC5 85%, transparent 85%) 0 -6px / 100% 6px no-repeat,
+        /* Bottom pins */
+        linear-gradient(90deg,
+            #B0BEC5 10%, #B0BEC5 13%, transparent 13%,
+            transparent 22%, #B0BEC5 22%, #B0BEC5 25%, transparent 25%,
+            transparent 34%, #B0BEC5 34%, #B0BEC5 37%, transparent 37%,
+            transparent 46%, #B0BEC5 46%, #B0BEC5 49%, transparent 49%,
+            transparent 58%, #B0BEC5 58%, #B0BEC5 61%, transparent 61%,
+            transparent 70%, #B0BEC5 70%, #B0BEC5 73%, transparent 73%,
+            transparent 82%, #B0BEC5 82%, #B0BEC5 85%, transparent 85%) 0 100% / 100% 6px no-repeat;
+}
+
+@keyframes tech-chip-process {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        filter: brightness(1);
+        box-shadow:
+            0 0 30px rgba(0, 255, 255, 0.5),
+            inset 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+    50% {
+        transform: translateY(-8px) rotate(3deg);
+        filter: brightness(1.25);
+        box-shadow:
+            0 0 50px rgba(0, 255, 255, 0.8),
+            0 0 80px rgba(224, 64, 251, 0.4),
+            inset 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+}
+
+/* === ELEMENT 5: GLOWING NODES === */
+.theme-technology .elem-5 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 14;
+}
+
+.theme-technology .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 55%;
+    left: 65%;
+    background: radial-gradient(circle,
+        rgba(0, 255, 255, 1) 0%,
+        rgba(0, 229, 255, 0.8) 40%,
+        transparent 70%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.9),
+        0 0 50px rgba(0, 229, 255, 0.5);
+    animation: tech-node-pulse-1 6.5s ease-in-out infinite;
+}
+
+.theme-technology .elem-5::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 35%;
+    left: 50%;
+    background: radial-gradient(circle,
+        rgba(224, 64, 251, 1) 0%,
+        rgba(186, 104, 200, 0.8) 40%,
+        transparent 70%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 22px rgba(224, 64, 251, 0.9),
+        0 0 45px rgba(156, 39, 176, 0.5);
+    animation: tech-node-pulse-2 7.5s ease-in-out infinite;
+}
+
+@keyframes tech-node-pulse-1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(15px, -20px) scale(1.3);
+        opacity: 1;
+    }
+}
+
+@keyframes tech-node-pulse-2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.65;
+    }
+    50% {
+        transform: translate(-18px, -25px) scale(1.35);
+        opacity: 1;
+    }
+}
+
+/* === ATMOSPHERIC SCAN BEAMS === */
+.theme-technology .scan-beams {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.theme-technology .scan-beams::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 100%;
+    top: 0;
+    left: 30%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 255, 255, 0.05) 30%,
+        rgba(0, 255, 255, 0.12) 50%,
+        rgba(0, 255, 255, 0.05) 70%,
+        transparent 100%);
+    animation: tech-beam-scan-1 16s ease-in-out infinite;
+}
+
+.theme-technology .scan-beams::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    top: 0;
+    right: 25%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(156, 39, 176, 0.05) 30%,
+        rgba(156, 39, 176, 0.1) 50%,
+        rgba(156, 39, 176, 0.05) 70%,
+        transparent 100%);
+    animation: tech-beam-scan-2 18s ease-in-out infinite 4s;
+}
+
+@keyframes tech-beam-scan-1 {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: translateX(200%);
+    }
+}
+
+@keyframes tech-beam-scan-2 {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+}
+
+/* === ENERGY FIELD BOTTOM === */
+.theme-technology .energy-field {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        radial-gradient(ellipse 700px 350px at 25% 100%, rgba(0, 255, 255, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 650px 400px at 55% 100%, rgba(156, 39, 176, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 600px 350px at 80% 100%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
+    animation: tech-field-pulse 13s ease-in-out infinite;
+}
+
+@keyframes tech-field-pulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scaleY(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scaleY(1.2);
+    }
+}
+
+/* === MASCOT ANIMATIONS === */
+.theme-technology .worm-character.happy,
+.theme-technology .bunny-character.happy,
+.theme-technology .owl-character.happy,
+.theme-technology .cat-character.happy,
+.theme-technology .robot-character.happy {
+    animation: tech-happy-glitch 2.3s ease-out;
+}
+
+@keyframes tech-happy-glitch {
+    0% { transform: scale(1) translateY(0); filter: hue-rotate(0deg); }
+    8% { transform: scale(1.05) translateX(-4px); filter: hue-rotate(60deg); }
+    16% { transform: scale(1.12) translateX(5px); filter: hue-rotate(120deg); }
+    24% { transform: scale(1.2) translateY(-25px); filter: hue-rotate(180deg); }
+    32% { transform: scale(1.28) translateY(-38px) translateX(-3px); filter: hue-rotate(240deg) brightness(1.4); }
+    48% { transform: scale(1.22) translateY(-30px) translateX(4px); filter: hue-rotate(300deg) brightness(1.2); }
+    64% { transform: scale(1.15) translateY(-20px); filter: hue-rotate(360deg); }
+    80% { transform: scale(1.08) translateY(-10px); filter: hue-rotate(0deg); }
+    100% { transform: scale(1) translateY(0); filter: hue-rotate(0deg); }
+}
+
+.theme-technology .robot-character.excited,
+.theme-technology .owl-character.excited {
+    animation: tech-system-boost 2s ease-out;
+}
+
+@keyframes tech-system-boost {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        filter: brightness(1) drop-shadow(0 5px 10px rgba(0, 255, 255, 0.3));
+    }
+    30% {
+        transform: translateY(-35px) scale(1.3);
+        filter: brightness(1.6) drop-shadow(0 18px 35px rgba(0, 255, 255, 0.9));
+    }
+    60% {
+        transform: translateY(-24px) scale(1.18) rotate(15deg);
+        filter: brightness(1.4) drop-shadow(0 12px 25px rgba(224, 64, 251, 0.7));
+    }
+}
+
+.theme-technology .worm-character.sad,
+.theme-technology .bunny-character.sad,
+.theme-technology .owl-character.sad,
+.theme-technology .cat-character.sad,
+.theme-technology .robot-character.sad {
+    animation: tech-sad-shutdown 2.5s ease-out forwards;
+}
+
+@keyframes tech-sad-shutdown {
+    0% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1) saturate(1);
+    }
+    20% {
+        filter: brightness(0.85) saturate(0.7);
+    }
+    40% {
+        transform: scale(0.92) translateY(8px);
+        filter: brightness(0.65) saturate(0.4) grayscale(0.4);
+    }
+    60% {
+        transform: scale(0.86) translateY(14px);
+        filter: brightness(0.5) saturate(0.2) grayscale(0.7);
+    }
+    100% {
+        transform: scale(0.8) translateY(22px);
+        filter: brightness(0.4) saturate(0) grayscale(1);
+    }
+}
+
+.theme-technology .robot-character.idle {
+    animation: tech-robot-standby 3.5s ease-in-out infinite;
+}
+
+@keyframes tech-robot-standby {
+    0%, 100% {
+        filter: drop-shadow(0 5px 12px rgba(0, 255, 255, 0.4)) brightness(1);
+    }
+    50% {
+        filter: drop-shadow(0 8px 22px rgba(0, 255, 255, 0.7)) brightness(1.2);
+    }
+}
