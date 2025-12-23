@@ -1,244 +1,445 @@
 /* ============================================
-   SCIENCE & NATURE THEME - PREMIUM CINEMATIC
-   Beautiful laboratory meets nature wonderland
-   Vibrant green/blue palette with magical elements
+   SCIENCE & NATURE THEME - JULIA MIOCENE STYLE
+   Laboratory discovery meets natural wonder
+   Pure CSS art with border triangles & box-shadow
    ============================================ */
 
-/* === LAYERED BACKGROUND GRADIENTS === */
+:root {
+    /* Sky colors - twilight lab scene */
+    --science-sky-top: #0A1929;
+    --science-sky-mid: #0D2438;
+    --science-sky-horizon: #1A5A6F;
+    --science-sky-glow: #3FA8C1;
+
+    /* Nature greens */
+    --science-nature-dark: #1B5E20;
+    --science-nature-mid: #388E3C;
+    --science-nature-light: #4CAF50;
+    --science-nature-bright: #81C784;
+
+    /* Chemistry colors */
+    --science-cyan-dark: #00838F;
+    --science-cyan-mid: #00ACC1;
+    --science-cyan-light: #00BCD4;
+    --science-cyan-glow: #00FFFF;
+
+    /* Purple/magenta for energy */
+    --science-purple-dark: #6A1B9A;
+    --science-purple-mid: #9C27B0;
+    --science-purple-light: #BA68C8;
+    --science-purple-glow: #E040FB;
+
+    /* Lab equipment */
+    --science-glass-light: rgba(200, 230, 255, 0.6);
+    --science-glass-mid: rgba(150, 200, 230, 0.4);
+    --science-metal-light: #90A4AE;
+    --science-metal-mid: #607D8B;
+    --science-metal-dark: #455A64;
+
+    /* Accent colors */
+    --science-yellow-light: #FFEB3B;
+    --science-yellow-mid: #FBC02D;
+    --science-orange-light: #FF9800;
+    --science-red-light: #F44336;
+}
+
+/* === BASE SCENE SETUP === */
 .theme-science_nature .scene-background {
-    background:
-        /* Top atmospheric glow */
-        radial-gradient(ellipse 800px 400px at 50% 0%, rgba(0, 188, 212, 0.15) 0%, transparent 50%),
-        /* Lab glow spots */
-        radial-gradient(ellipse 600px 600px at 15% 40%, rgba(76, 175, 80, 0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 500px 500px at 85% 60%, rgba(156, 39, 176, 0.12) 0%, transparent 55%),
-        radial-gradient(ellipse 400px 400px at 50% 80%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
-        /* Rich gradient base */
-        linear-gradient(180deg,
-            #0a1929 0%,
-            #0d2438 12%,
-            #103548 24%,
-            #124557 36%,
-            #1a5a6f 48%,
-            #1e6c84 60%,
-            #2d8ba0 72%,
-            #3fa8c1 84%,
-            #5ec9e0 96%,
-            #87e3f5 100%);
+    background: linear-gradient(180deg,
+        var(--science-sky-top) 0%,
+        var(--science-sky-mid) 25%,
+        var(--science-sky-horizon) 50%,
+        var(--science-sky-glow) 70%,
+        var(--science-nature-light) 70%,
+        var(--science-nature-mid) 85%,
+        var(--science-nature-dark) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === HEXAGONAL MOLECULAR GRID === */
-.theme-science_nature .scene-background::before {
+/* Universal element setup - Miocene technique */
+.theme-science_nature .scene-background *,
+.theme-science_nature .scene-background *::before,
+.theme-science_nature .scene-background *::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image:
-        /* Hex grid nodes */
-        radial-gradient(circle at center, rgba(0, 255, 255, 0.25) 2px, transparent 2.5px),
-        /* Connecting lines */
-        repeating-linear-gradient(60deg, transparent 0px, transparent 48px, rgba(0, 255, 255, 0.08) 48px, rgba(0, 255, 255, 0.08) 50px),
-        repeating-linear-gradient(120deg, transparent 0px, transparent 48px, rgba(76, 175, 80, 0.08) 48px, rgba(76, 175, 80, 0.08) 50px);
-    background-size: 50px 50px;
-    opacity: 0.4;
-    animation: science-grid-breathe 8.5s ease-in-out infinite;
-    pointer-events: none;
+}
+
+/* === STARS IN LAB SKY === */
+.theme-science_nature .scene-background::before {
+    width: 3px;
+    height: 3px;
+    top: 8%;
+    left: 15%;
+    background: #FFFFFF;
+    border-radius: 50%;
+    box-shadow:
+        /* Bright stars */
+        50px 20px 0 0 #FFFFFF,
+        120px 35px 0 0 rgba(255, 255, 255, 0.9),
+        200px 15px 0 0 var(--science-cyan-glow),
+        280px 40px 0 1px #FFFFFF,
+        350px 25px 0 0 rgba(255, 255, 255, 0.8),
+        420px 8px 0 0 var(--science-purple-glow),
+        500px 45px 0 0 #FFFFFF,
+        /* Dimmer stars */
+        80px 60px 0 -1px rgba(255, 255, 255, 0.6),
+        150px 75px 0 0 rgba(255, 255, 255, 0.5),
+        230px 55px 0 -1px var(--science-cyan-light),
+        310px 80px 0 0 rgba(255, 255, 255, 0.7),
+        380px 65px 0 -1px rgba(255, 255, 255, 0.5),
+        460px 70px 0 0 var(--science-purple-light),
+        /* Scattered stars */
+        40px 100px 0 -1px rgba(255, 255, 255, 0.4),
+        170px 95px 0 0 rgba(255, 255, 255, 0.6),
+        260px 110px 0 -1px rgba(255, 255, 255, 0.5),
+        340px 105px 0 0 var(--science-cyan-glow),
+        /* More scattered */
+        550px 30px 0 0 #FFFFFF,
+        600px 50px 0 -1px rgba(255, 255, 255, 0.7),
+        650px 20px 0 0 var(--science-purple-glow),
+        700px 60px 0 0 rgba(255, 255, 255, 0.6);
+    animation: science-stars-twinkle 4s ease-in-out infinite;
     z-index: 1;
 }
 
-@keyframes science-grid-breathe {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.02); }
+@keyframes science-stars-twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
 }
 
-/* === FLOATING LEAF PARTICLES === */
-.theme-science_nature .leaf-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
+/* === MOLECULAR HEXAGON GRID (background) === */
+.theme-science_nature .scene-background::after {
+    bottom: 30%;
     left: 0;
-    pointer-events: none;
-    z-index: 15;
-    background:
-        /* Green leaves */
-        radial-gradient(ellipse 10px 15px at 18% 25%, rgba(76, 175, 80, 0.6) 0%, rgba(76, 175, 80, 0.6) 60%, transparent 61%),
-        radial-gradient(ellipse 8px 12px at 42% 15%, rgba(129, 199, 132, 0.5) 0%, rgba(129, 199, 132, 0.5) 60%, transparent 61%),
-        radial-gradient(ellipse 12px 16px at 68% 35%, rgba(102, 187, 106, 0.55) 0%, rgba(102, 187, 106, 0.55) 60%, transparent 61%),
-        radial-gradient(ellipse 9px 14px at 85% 20%, rgba(76, 175, 80, 0.5) 0%, rgba(76, 175, 80, 0.5) 60%, transparent 61%),
-        radial-gradient(ellipse 11px 15px at 32% 55%, rgba(129, 199, 132, 0.6) 0%, rgba(129, 199, 132, 0.6) 60%, transparent 61%),
-        radial-gradient(ellipse 10px 13px at 55% 45%, rgba(76, 175, 80, 0.55) 0%, rgba(76, 175, 80, 0.55) 60%, transparent 61%),
-        radial-gradient(ellipse 9px 12px at 78% 65%, rgba(102, 187, 106, 0.5) 0%, rgba(102, 187, 106, 0.5) 60%, transparent 61%),
-        radial-gradient(ellipse 12px 14px at 22% 75%, rgba(76, 175, 80, 0.6) 0%, rgba(76, 175, 80, 0.6) 60%, transparent 61%);
-    animation: science-leaves-float 18s ease-in-out infinite;
+    width: 100%;
+    height: 40%;
+    background-image:
+        /* Hexagon nodes using box-shadow would go here, simplified to gradient */
+        repeating-linear-gradient(60deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(0, 255, 255, 0.08) 48px,
+            rgba(0, 255, 255, 0.08) 50px),
+        repeating-linear-gradient(120deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(76, 175, 80, 0.08) 48px,
+            rgba(76, 175, 80, 0.08) 50px);
+    opacity: 0.4;
+    animation: science-grid-breathe 8s ease-in-out infinite;
+    z-index: 2;
 }
 
-@keyframes science-leaves-float {
-    0%, 100% {
-        transform: translateY(0) translateX(0) rotate(-5deg);
-        opacity: 0.7;
-    }
-    25% {
-        transform: translateY(-20px) translateX(15px) rotate(8deg);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateY(-35px) translateX(-10px) rotate(-3deg);
-        opacity: 0.8;
-    }
-    75% {
-        transform: translateY(-25px) translateX(20px) rotate(10deg);
-        opacity: 0.85;
-    }
+@keyframes science-grid-breathe {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.02); }
 }
 
-/* === ELEMENT 1: DNA DOUBLE HELIX === */
+/* === DISTANT HILLS (elem-0-ultra) === */
+.theme-science_nature .elem-0-ultra {
+    bottom: 30%;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 80px solid rgba(27, 94, 32, 0.4);
+    z-index: 5;
+}
+
+.theme-science_nature .elem-0-ultra::before {
+    bottom: -80px;
+    left: -40px;
+    width: 0;
+    height: 0;
+    border-left: 220px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid rgba(56, 142, 60, 0.35);
+}
+
+.theme-science_nature .elem-0-ultra::after {
+    bottom: -80px;
+    left: 200px;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 90px solid rgba(27, 94, 32, 0.3);
+}
+
+/* === MID HILLS (elem-0-far) === */
+.theme-science_nature .elem-0-far {
+    bottom: 30%;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 110px solid rgba(56, 142, 60, 0.5);
+    z-index: 6;
+}
+
+.theme-science_nature .elem-0-far::before {
+    bottom: -110px;
+    right: 100px;
+    width: 0;
+    height: 0;
+    border-left: 250px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 130px solid rgba(27, 94, 32, 0.45);
+}
+
+/* === LARGE TREE LEFT (elem-1) === */
 .theme-science_nature .elem-1 {
-    position: absolute;
-    top: 18%;
-    right: 15%;
-    width: 50px;
-    height: 140px;
-    z-index: 12;
-    animation: science-dna-float 10.5s ease-in-out infinite;
-    filter: drop-shadow(0 5px 15px rgba(76, 175, 80, 0.4));
-    pointer-events: none;
+    bottom: 30%;
+    left: 8%;
+    width: 18px;
+    height: 80px;
+    background: linear-gradient(90deg,
+        #3E2723 0%,
+        #5D4037 50%,
+        #4E342E 100%);
+    border-radius: 3px;
+    z-index: 20;
 }
 
-/* DNA strands */
+/* Tree foliage using stacked triangles */
 .theme-science_nature .elem-1::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Left helix strand */
-        linear-gradient(180deg,
-            rgba(76, 175, 80, 0) 0%,
-            rgba(76, 175, 80, 0.9) 10%,
-            rgba(129, 199, 132, 1) 25%,
-            rgba(102, 187, 106, 1) 50%,
-            rgba(129, 199, 132, 1) 75%,
-            rgba(76, 175, 80, 0.9) 90%,
-            rgba(76, 175, 80, 0) 100%) 8% 0 / 4px 100% no-repeat,
-        /* Right helix strand */
-        linear-gradient(180deg,
-            rgba(76, 175, 80, 0) 0%,
-            rgba(76, 175, 80, 0.9) 10%,
-            rgba(129, 199, 132, 1) 25%,
-            rgba(102, 187, 106, 1) 50%,
-            rgba(129, 199, 132, 1) 75%,
-            rgba(76, 175, 80, 0.9) 90%,
-            rgba(76, 175, 80, 0) 100%) 88% 0 / 4px 100% no-repeat;
-    box-shadow:
-        0 0 20px rgba(76, 175, 80, 0.5),
-        inset 0 0 20px rgba(76, 175, 80, 0.3);
-    animation: science-dna-pulse 3.5s ease-in-out infinite;
+    bottom: 75px;
+    left: -35px;
+    width: 0;
+    height: 0;
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 60px solid var(--science-nature-dark);
+    filter: drop-shadow(0 -15px 0 var(--science-nature-mid))
+            drop-shadow(0 -28px 0 var(--science-nature-light));
 }
 
-/* DNA base pairs */
+/* Additional canopy circles */
 .theme-science_nature .elem-1::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Base pair connections */
-        linear-gradient(90deg, rgba(0, 188, 212, 0.8) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 188, 212, 0.8) 100%) 0 12% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(156, 39, 176, 0.8) 0%, rgba(224, 64, 251, 0.9) 50%, rgba(156, 39, 176, 0.8) 100%) 0 24% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(0, 188, 212, 0.8) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 188, 212, 0.8) 100%) 0 36% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(156, 39, 176, 0.8) 0%, rgba(224, 64, 251, 0.9) 50%, rgba(156, 39, 176, 0.8) 100%) 0 48% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(0, 188, 212, 0.8) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 188, 212, 0.8) 100%) 0 60% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(156, 39, 176, 0.8) 0%, rgba(224, 64, 251, 0.9) 50%, rgba(156, 39, 176, 0.8) 100%) 0 72% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(0, 188, 212, 0.8) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 188, 212, 0.8) 100%) 0 84% / 100% 3px no-repeat;
-    animation: science-dna-pairs 4.2s ease-in-out infinite;
+    bottom: 115px;
+    left: -30px;
+    width: 80px;
+    height: 50px;
+    background: var(--science-nature-mid);
+    border-radius: 50%;
+    box-shadow:
+        -15px 20px 0 5px var(--science-nature-dark),
+        20px 15px 0 8px var(--science-nature-dark),
+        5px -10px 0 10px var(--science-nature-light);
+}
+
+/* === PINE FOREST LINE (pine-forest) === */
+.theme-science_nature .pine-forest {
+    bottom: 30%;
+    left: 25%;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 40px solid var(--science-nature-dark);
+    z-index: 8;
+    /* Multiple trees via box-shadow */
+    box-shadow:
+        25px 5px 0 0 var(--science-nature-dark),
+        50px -2px 0 2px var(--science-nature-mid),
+        78px 8px 0 -1px var(--science-nature-dark),
+        105px 3px 0 1px var(--science-nature-mid),
+        135px -5px 0 2px var(--science-nature-dark),
+        160px 6px 0 0 var(--science-nature-dark),
+        190px 0 0 1px var(--science-nature-mid),
+        220px 4px 0 -1px var(--science-nature-dark),
+        250px -3px 0 2px var(--science-nature-mid),
+        280px 7px 0 0 var(--science-nature-dark);
+}
+
+/* === LABORATORY BUILDING (elem-1-fg) === */
+.theme-science_nature .elem-1-fg {
+    bottom: 30%;
+    right: 12%;
+    width: 120px;
+    height: 90px;
+    background: linear-gradient(180deg,
+        var(--science-metal-mid) 0%,
+        var(--science-metal-dark) 100%);
+    border-radius: 5px 5px 0 0;
+    z-index: 22;
+}
+
+/* Lab windows - glowing */
+.theme-science_nature .elem-1-fg::before {
+    top: 15px;
+    left: 10px;
+    width: 20px;
+    height: 25px;
+    background: var(--science-cyan-glow);
+    border-radius: 2px;
+    box-shadow:
+        /* More windows */
+        30px 0 0 0 var(--science-purple-glow),
+        60px 0 0 0 var(--science-yellow-light),
+        90px 0 0 0 var(--science-nature-bright),
+        /* Bottom row */
+        0 35px 0 0 var(--science-yellow-mid),
+        30px 35px 0 0 var(--science-cyan-light),
+        60px 35px 0 0 var(--science-purple-light),
+        90px 35px 0 0 var(--science-orange-light),
+        /* Window glows */
+        0 0 15px 5px rgba(0, 255, 255, 0.5),
+        30px 0 15px 5px rgba(224, 64, 251, 0.5),
+        60px 0 15px 5px rgba(255, 235, 59, 0.5),
+        90px 0 15px 5px rgba(129, 199, 132, 0.5);
+    animation: science-windows-glow 3s ease-in-out infinite alternate;
+}
+
+/* Lab chimney */
+.theme-science_nature .elem-1-fg::after {
+    bottom: 90px;
+    left: 80px;
+    width: 20px;
+    height: 35px;
+    background: linear-gradient(90deg,
+        var(--science-metal-light) 0%,
+        var(--science-metal-mid) 50%,
+        var(--science-metal-dark) 100%);
+    border-radius: 2px 2px 0 0;
+}
+
+@keyframes science-windows-glow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.3); }
+}
+
+/* === DNA HELIX (elem-2) === */
+.theme-science_nature .elem-2 {
+    top: 15%;
+    right: 15%;
+    width: 45px;
+    height: 120px;
+    z-index: 25;
+    animation: science-dna-float 8s ease-in-out infinite;
+}
+
+/* DNA strands using circles */
+.theme-science_nature .elem-2::before {
+    top: 0;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    background: var(--science-nature-light);
+    border-radius: 50%;
+    /* Helix nodes via box-shadow */
+    box-shadow:
+        /* Left strand */
+        0 15px 0 0 var(--science-nature-bright),
+        5px 30px 0 0 var(--science-nature-light),
+        15px 45px 0 0 var(--science-nature-mid),
+        25px 60px 0 0 var(--science-nature-light),
+        30px 75px 0 0 var(--science-nature-bright),
+        25px 90px 0 0 var(--science-nature-light),
+        15px 105px 0 0 var(--science-nature-mid),
+        /* Right strand */
+        30px 0 0 0 var(--science-nature-bright),
+        25px 15px 0 0 var(--science-nature-light),
+        15px 30px 0 0 var(--science-nature-mid),
+        5px 45px 0 0 var(--science-nature-light),
+        0 60px 0 0 var(--science-nature-bright),
+        5px 75px 0 0 var(--science-nature-light),
+        15px 90px 0 0 var(--science-nature-mid),
+        25px 105px 0 0 var(--science-nature-light),
+        /* Glow effect */
+        0 0 10px 3px rgba(76, 175, 80, 0.5),
+        30px 0 10px 3px rgba(129, 199, 132, 0.5);
+}
+
+/* Base pair connections */
+.theme-science_nature .elem-2::after {
+    top: 4px;
+    left: 12px;
+    width: 16px;
+    height: 2px;
+    background: var(--science-cyan-light);
+    /* Connections via box-shadow */
+    box-shadow:
+        -2px 15px 0 0 var(--science-purple-light),
+        2px 30px 0 0 var(--science-cyan-light),
+        4px 45px 0 0 var(--science-purple-light),
+        2px 60px 0 0 var(--science-cyan-light),
+        -2px 75px 0 0 var(--science-purple-light),
+        0 90px 0 0 var(--science-cyan-light),
+        2px 105px 0 0 var(--science-purple-light),
+        /* Glow */
+        0 0 8px 2px rgba(0, 188, 212, 0.6),
+        0 45px 8px 2px rgba(156, 39, 176, 0.6);
 }
 
 @keyframes science-dna-float {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    33% { transform: translateY(-15px) scale(1.05); opacity: 0.95; }
-    66% { transform: translateY(-8px) scale(1.02); opacity: 0.98; }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
 }
 
-@keyframes science-dna-pulse {
-    0%, 100% { opacity: 1; filter: brightness(1); }
-    50% { opacity: 0.9; filter: brightness(1.3); }
-}
-
-@keyframes science-dna-pairs {
-    0%, 100% { opacity: 0.9; }
-    50% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 8px rgba(0, 255, 255, 0.6)); }
-}
-
-/* === ELEMENT 2: ATOM MODEL WITH ORBITS === */
-.theme-science_nature .elem-2 {
-    position: absolute;
+/* === ATOM MODEL (elem-3) === */
+.theme-science_nature .elem-3 {
     top: 12%;
     left: 12%;
-    width: 100px;
-    height: 100px;
-    z-index: 13;
-    animation: science-atom-hover 9.2s ease-in-out infinite;
-    pointer-events: none;
+    width: 80px;
+    height: 80px;
+    z-index: 26;
+    animation: science-atom-hover 7s ease-in-out infinite;
 }
 
 /* Nucleus */
-.theme-science_nature .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
+.theme-science_nature .elem-3::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: radial-gradient(circle, #E040FB 0%, #BA68C8 40%, #9C27B0 100%);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle,
+        var(--science-purple-glow) 0%,
+        var(--science-purple-light) 50%,
+        var(--science-purple-mid) 100%);
     border-radius: 50%;
     box-shadow:
-        0 0 30px rgba(224, 64, 251, 0.8),
-        0 0 60px rgba(156, 39, 176, 0.5),
-        inset 0 0 15px rgba(255, 255, 255, 0.3);
-    animation: science-nucleus-glow 3.1s ease-in-out infinite;
+        0 0 20px 8px rgba(224, 64, 251, 0.6),
+        0 0 40px 15px rgba(156, 39, 176, 0.4);
+    animation: science-nucleus-glow 2.5s ease-in-out infinite;
 }
 
 /* Electron orbits */
-.theme-science_nature .elem-2::after {
-    content: '';
-    position: absolute;
+.theme-science_nature .elem-3::after {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    border: 2px solid rgba(0, 255, 255, 0.4);
     border-radius: 50%;
     box-shadow:
         /* Inner orbit */
-        inset 0 0 0 2px rgba(0, 255, 255, 0.4),
-        /* Middle orbit */
-        0 0 0 2px rgba(0, 188, 212, 0.5),
-        /* Outer orbit glow */
-        0 0 20px rgba(0, 255, 255, 0.3);
-    animation: science-orbit-spin 5.5s linear infinite;
+        inset 0 0 0 12px transparent,
+        inset 0 0 0 14px rgba(76, 175, 80, 0.3),
+        /* Electron dots */
+        35px -5px 0 2px var(--science-cyan-glow),
+        -35px 5px 0 2px var(--science-nature-bright),
+        5px 35px 0 2px var(--science-purple-glow);
+    animation: science-orbit-spin 6s linear infinite;
 }
 
 @keyframes science-atom-hover {
     0%, 100% { transform: translateY(0) scale(1); }
-    33% { transform: translateY(-18px) scale(1.05); }
-    66% { transform: translateY(-10px) scale(1.03); }
+    50% { transform: translateY(-12px) scale(1.05); }
 }
 
 @keyframes science-nucleus-glow {
     0%, 100% {
-        box-shadow:
-            0 0 30px rgba(224, 64, 251, 0.8),
-            0 0 60px rgba(156, 39, 176, 0.5),
-            inset 0 0 15px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 20px 8px rgba(224, 64, 251, 0.6), 0 0 40px 15px rgba(156, 39, 176, 0.4);
         transform: translate(-50%, -50%) scale(1);
     }
     50% {
-        box-shadow:
-            0 0 45px rgba(224, 64, 251, 1),
-            0 0 90px rgba(156, 39, 176, 0.7),
-            inset 0 0 20px rgba(255, 255, 255, 0.5);
-        transform: translate(-50%, -50%) scale(1.15);
+        box-shadow: 0 0 30px 12px rgba(224, 64, 251, 0.8), 0 0 60px 20px rgba(156, 39, 176, 0.6);
+        transform: translate(-50%, -50%) scale(1.1);
     }
 }
 
@@ -247,312 +448,605 @@
     100% { transform: rotate(360deg); }
 }
 
-/* === ELEMENT 3: TEST TUBE WITH BUBBLES === */
-.theme-science_nature .elem-3 {
-    position: absolute;
-    bottom: 28%;
-    left: 8%;
-    width: 28px;
-    height: 75px;
-    z-index: 11;
-    animation: science-tube-rock 4.8s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* Glass tube */
-.theme-science_nature .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Glass reflection */
-        linear-gradient(90deg,
-            rgba(255, 255, 255, 0.15) 0%,
-            rgba(255, 255, 255, 0.4) 20%,
-            rgba(255, 255, 255, 0.2) 40%,
-            rgba(255, 255, 255, 0.05) 60%,
-            transparent 80%);
-    border: 2px solid rgba(200, 230, 255, 0.6);
-    border-radius: 0 0 14px 14px;
-    box-shadow:
-        inset 0 0 15px rgba(255, 255, 255, 0.2),
-        0 8px 20px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(5px);
+/* === TEST TUBE (elem-4) === */
+.theme-science_nature .elem-4 {
+    bottom: 35%;
+    left: 22%;
+    width: 22px;
+    height: 60px;
+    background: var(--science-glass-light);
+    border: 2px solid rgba(200, 230, 255, 0.7);
+    border-radius: 0 0 11px 11px;
+    z-index: 23;
+    animation: science-tube-rock 4s ease-in-out infinite;
+    overflow: hidden;
 }
 
 /* Liquid inside */
-.theme-science_nature .elem-3::after {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: 3px;
-    width: calc(100% - 6px);
-    height: 45px;
-    background:
-        /* Bubbles */
-        radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 3px, transparent 3.5px),
-        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 2px, transparent 2.5px),
-        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.65) 2.5px, transparent 3px),
-        radial-gradient(circle at 45% 75%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 1.5px, transparent 2px),
-        /* Liquid gradient */
-        linear-gradient(180deg,
-            rgba(0, 255, 255, 0.3) 0%,
-            rgba(0, 188, 212, 0.7) 40%,
-            rgba(0, 150, 199, 0.85) 100%);
-    border-radius: 0 0 12px 12px;
+.theme-science_nature .elem-4::before {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: linear-gradient(180deg,
+        rgba(0, 255, 255, 0.4) 0%,
+        var(--science-cyan-mid) 50%,
+        var(--science-cyan-dark) 100%);
+    border-radius: 0 0 9px 9px;
     box-shadow:
-        0 0 25px rgba(0, 188, 212, 0.6),
-        inset 0 -5px 10px rgba(0, 100, 150, 0.4);
-    animation: science-liquid-bubble 3.3s ease-in-out infinite;
+        0 0 20px 5px rgba(0, 255, 255, 0.5),
+        inset 0 5px 10px rgba(255, 255, 255, 0.3);
+    animation: science-liquid-bubble 3s ease-in-out infinite;
+}
+
+/* Bubbles using circles */
+.theme-science_nature .elem-4::after {
+    bottom: 10px;
+    left: 5px;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow:
+        8px 5px 0 -1px rgba(255, 255, 255, 0.7),
+        4px 15px 0 0 rgba(255, 255, 255, 0.6),
+        10px 20px 0 -1px rgba(255, 255, 255, 0.5),
+        2px 25px 0 0 rgba(255, 255, 255, 0.7);
+    animation: science-bubbles-rise 2s ease-in-out infinite;
 }
 
 @keyframes science-tube-rock {
     0%, 100% { transform: rotate(-3deg); }
-    25% { transform: rotate(4deg); }
-    50% { transform: rotate(-5deg); }
-    75% { transform: rotate(3deg); }
+    50% { transform: rotate(3deg); }
 }
 
 @keyframes science-liquid-bubble {
-    0%, 100% {
-        height: 45px;
-        opacity: 0.95;
-    }
-    50% {
-        height: 48px;
-        opacity: 1;
-        box-shadow:
-            0 0 35px rgba(0, 188, 212, 0.8),
-            inset 0 -5px 10px rgba(0, 100, 150, 0.4);
-    }
+    0%, 100% { height: 35px; }
+    50% { height: 38px; }
 }
 
-/* === ELEMENT 4: MICROSCOPE === */
-.theme-science_nature .elem-4 {
-    position: absolute;
-    bottom: 22%;
-    right: 18%;
-    width: 55px;
-    height: 75px;
-    z-index: 10;
-    animation: science-microscope-focus 7.5s ease-in-out infinite;
-    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
-    pointer-events: none;
+@keyframes science-bubbles-rise {
+    0%, 100% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(-8px); opacity: 1; }
+}
+
+/* === BEAKER (elem-5) === */
+.theme-science_nature .elem-5 {
+    bottom: 32%;
+    right: 35%;
+    width: 35px;
+    height: 45px;
+    z-index: 21;
+    animation: science-beaker-glow 5s ease-in-out infinite;
+}
+
+/* Beaker glass shape */
+.theme-science_nature .elem-5::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 45px solid var(--science-glass-mid);
+    transform: scaleX(3.5);
+    filter: drop-shadow(0 0 5px rgba(200, 230, 255, 0.5));
+}
+
+/* Purple liquid */
+.theme-science_nature .elem-5::after {
+    bottom: 5px;
+    left: 5px;
+    width: 25px;
+    height: 28px;
+    background: linear-gradient(180deg,
+        rgba(186, 104, 200, 0.5) 0%,
+        var(--science-purple-light) 50%,
+        var(--science-purple-mid) 100%);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+    box-shadow:
+        0 0 25px 8px rgba(224, 64, 251, 0.5),
+        inset 0 -5px 10px rgba(106, 27, 154, 0.5);
+}
+
+@keyframes science-beaker-glow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2) drop-shadow(0 0 15px rgba(224, 64, 251, 0.6)); }
+}
+
+/* === MICROSCOPE (deer-legs - repurposed) === */
+.theme-science_nature .deer-legs {
+    bottom: 30%;
+    right: 40%;
+    width: 45px;
+    height: 65px;
+    z-index: 24;
+    animation: science-microscope-focus 6s ease-in-out infinite;
 }
 
 /* Microscope body */
-.theme-science_nature .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Eyepiece */
-        radial-gradient(circle 8px at 70% 8%, #78909C 0%, #607D8B 100%) 70% 5% / 15px 15px no-repeat,
-        /* Tube */
-        linear-gradient(130deg, #90A4AE 0%, #78909C 50%, #607D8B 100%) 65% 18% / 10px 35px no-repeat,
-        /* Objective lens */
-        radial-gradient(circle 7px at 50% 48%, #FFEB3B 0%, #FBC02D 70%, #F57F17 100%) 50% 48% / 14px 14px no-repeat,
-        /* Stage */
-        linear-gradient(90deg, #B0BEC5 0%, #90A4AE 50%, #78909C 100%) 25% 60% / 45px 6px no-repeat,
-        /* Base */
-        linear-gradient(180deg, #607D8B 0%, #546E7A 50%, #455A64 100%) 15% 78% / 70% 22% no-repeat;
-    box-shadow:
-        inset -3px -3px 8px rgba(0, 0, 0, 0.3),
-        inset 3px 3px 8px rgba(255, 255, 255, 0.1);
+.theme-science_nature .deer-legs::before {
+    bottom: 0;
+    left: 15px;
+    width: 15px;
+    height: 55px;
+    background: linear-gradient(90deg,
+        var(--science-metal-light) 0%,
+        var(--science-metal-mid) 50%,
+        var(--science-metal-dark) 100%);
+    border-radius: 2px;
 }
 
-/* Lens glow */
-.theme-science_nature .elem-4::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    left: 20px;
-    top: 36px;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, rgba(0, 188, 212, 0.5) 100%);
+/* Eyepiece and lens */
+.theme-science_nature .deer-legs::after {
+    top: 5px;
+    left: 22px;
+    width: 10px;
+    height: 10px;
+    background: var(--science-metal-mid);
     border-radius: 50%;
     box-shadow:
-        0 0 20px rgba(0, 255, 255, 0.8),
-        0 0 40px rgba(0, 188, 212, 0.5);
-    animation: science-lens-glow 3.7s ease-in-out infinite;
+        /* Eyepiece */
+        -12px -5px 0 2px var(--science-metal-light),
+        /* Stage */
+        -8px 40px 0 8px var(--science-metal-mid),
+        /* Base */
+        -5px 55px 0 12px var(--science-metal-dark),
+        /* Lens glow */
+        0 0 15px 5px rgba(0, 255, 255, 0.6);
+    animation: science-lens-glow 3s ease-in-out infinite;
 }
 
 @keyframes science-microscope-focus {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.06); }
-}
-
-@keyframes science-lens-glow {
-    0%, 100% {
-        box-shadow:
-            0 0 20px rgba(0, 255, 255, 0.8),
-            0 0 40px rgba(0, 188, 212, 0.5);
-        opacity: 1;
-    }
-    50% {
-        box-shadow:
-            0 0 35px rgba(0, 255, 255, 1),
-            0 0 70px rgba(0, 188, 212, 0.8);
-        opacity: 0.9;
-    }
-}
-
-/* === ELEMENT 5: BEAKER WITH GLOW === */
-.theme-science_nature .elem-5 {
-    position: absolute;
-    bottom: 32%;
-    left: 28%;
-    width: 42px;
-    height: 52px;
-    z-index: 9;
-    animation: science-beaker-bubble 5.6s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* Glass beaker */
-.theme-science_nature .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Measurement lines */
-        linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 100%) 15% 25% / 70% 1px no-repeat,
-        linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 100%) 15% 45% / 70% 1px no-repeat,
-        linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 100%) 15% 65% / 70% 1px no-repeat,
-        /* Glass gradient */
-        linear-gradient(90deg,
-            rgba(255,255,255,0.2) 0%,
-            rgba(255,255,255,0.45) 30%,
-            rgba(255,255,255,0.25) 60%,
-            rgba(255,255,255,0.1) 100%);
-    border: 2px solid rgba(220, 240, 255, 0.6);
-    border-radius: 0 0 10px 10px;
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    box-shadow:
-        inset 0 0 20px rgba(255,255,255,0.25),
-        0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-/* Chemical liquid */
-.theme-science_nature .elem-5::after {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: 8px;
-    width: 26px;
-    height: 34px;
-    background:
-        /* Sparkles in liquid */
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 1.5px, transparent 2px),
-        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 1px, transparent 1.5px),
-        /* Liquid gradient */
-        linear-gradient(180deg,
-            rgba(156, 39, 176, 0.5) 0%,
-            rgba(186, 104, 200, 0.8) 50%,
-            rgba(224, 64, 251, 0.9) 100%);
-    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
-    box-shadow:
-        0 0 30px rgba(224, 64, 251, 0.7),
-        inset 0 -8px 15px rgba(156, 39, 176, 0.5);
-    animation: science-chemical-glow 4.2s ease-in-out infinite;
-}
-
-@keyframes science-beaker-bubble {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
 }
 
-@keyframes science-chemical-glow {
-    0%, 100% {
-        box-shadow:
-            0 0 30px rgba(224, 64, 251, 0.7),
-            inset 0 -8px 15px rgba(156, 39, 176, 0.5);
-        filter: brightness(1);
-    }
-    50% {
-        box-shadow:
-            0 0 50px rgba(224, 64, 251, 1),
-            0 0 80px rgba(156, 39, 176, 0.6),
-            inset 0 -8px 15px rgba(156, 39, 176, 0.5);
-        filter: brightness(1.35);
-    }
+@keyframes science-lens-glow {
+    0%, 100% { box-shadow: -12px -5px 0 2px var(--science-metal-light), -8px 40px 0 8px var(--science-metal-mid), -5px 55px 0 12px var(--science-metal-dark), 0 0 15px 5px rgba(0, 255, 255, 0.6); }
+    50% { box-shadow: -12px -5px 0 2px var(--science-metal-light), -8px 40px 0 8px var(--science-metal-mid), -5px 55px 0 12px var(--science-metal-dark), 0 0 25px 8px rgba(0, 255, 255, 0.9); }
 }
 
-/* === ATMOSPHERIC PARTICLE STREAM === */
-.theme-science_nature .particle-stream {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* === BUTTERFLY (elem-6) === */
+.theme-science_nature .elem-6 {
+    top: 38%;
+    left: 40%;
+    width: 8px;
+    height: 20px;
+    background: #424242;
+    border-radius: 4px;
+    z-index: 28;
+    animation: science-butterfly-flight 12s ease-in-out infinite;
+}
+
+/* Left wing - using border triangle */
+.theme-science_nature .elem-6::before {
+    top: 2px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid var(--science-orange-light);
+    border-bottom: 10px solid var(--science-yellow-mid);
+    border-left: 18px solid transparent;
+    border-right: 0 solid transparent;
+    border-radius: 50% 0 50% 50%;
+    transform-origin: right center;
+    animation: science-wing-left 0.3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.6));
+}
+
+/* Right wing */
+.theme-science_nature .elem-6::after {
+    top: 2px;
+    left: 8px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid var(--science-orange-light);
+    border-bottom: 10px solid var(--science-yellow-mid);
+    border-right: 18px solid transparent;
+    border-left: 0 solid transparent;
+    border-radius: 0 50% 50% 50%;
+    transform-origin: left center;
+    animation: science-wing-right 0.3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.6));
+}
+
+@keyframes science-butterfly-flight {
+    0%, 100% { transform: translate(0, 0) rotate(-5deg); }
+    25% { transform: translate(60px, -30px) rotate(8deg); }
+    50% { transform: translate(100px, -10px) rotate(-10deg); }
+    75% { transform: translate(50px, -40px) rotate(5deg); }
+}
+
+@keyframes science-wing-left {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(50deg); }
+}
+
+@keyframes science-wing-right {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(-50deg); }
+}
+
+/* === FLOWER (elem-7) === */
+.theme-science_nature .elem-7 {
+    bottom: 30%;
+    left: 45%;
+    width: 12px;
+    height: 40px;
+    background: linear-gradient(90deg, #2E7D32, #388E3C, #2E7D32);
+    border-radius: 2px;
+    z-index: 18;
+    animation: science-flower-sway 6s ease-in-out infinite;
+}
+
+/* Petals using circles */
+.theme-science_nature .elem-7::before {
+    top: -25px;
+    left: -10px;
+    width: 16px;
+    height: 16px;
+    background: #EC407A;
+    border-radius: 50%;
+    box-shadow:
+        /* Petals in circle */
+        16px 0 0 0 #F48FB1,
+        8px -14px 0 0 #EC407A,
+        8px 14px 0 0 #F48FB1,
+        -8px 0 0 0 #EC407A,
+        16px -14px 0 0 #F48FB1,
+        16px 14px 0 0 #EC407A,
+        24px -7px 0 0 #F48FB1,
+        24px 7px 0 0 #EC407A,
+        /* Glow */
+        8px 0 15px 5px rgba(236, 64, 122, 0.4);
+}
+
+/* Flower center */
+.theme-science_nature .elem-7::after {
+    top: -18px;
+    left: -2px;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle,
+        var(--science-yellow-light) 0%,
+        var(--science-yellow-mid) 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 3px rgba(255, 235, 59, 0.6);
+    animation: science-center-pulse 3s ease-in-out infinite;
+}
+
+@keyframes science-flower-sway {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+@keyframes science-center-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px 3px rgba(255, 235, 59, 0.6); }
+    50% { transform: scale(1.15); box-shadow: 0 0 20px 6px rgba(255, 235, 59, 0.9); }
+}
+
+/* === LIGHTNING BOLT (elem-8) === */
+.theme-science_nature .elem-8 {
+    top: 8%;
+    right: 30%;
+    width: 0;
+    height: 0;
+    z-index: 30;
+    animation: science-lightning-strike 8s ease-in-out infinite;
+    opacity: 0;
+}
+
+/* Lightning using border triangles */
+.theme-science_nature .elem-8::before {
     top: 0;
     left: 0;
-    pointer-events: none;
-    z-index: 14;
-    background:
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 35px solid var(--science-yellow-light);
+    transform: rotate(15deg);
+    filter: drop-shadow(0 0 15px rgba(255, 235, 59, 1))
+            drop-shadow(0 0 30px rgba(255, 193, 7, 0.8));
+}
+
+.theme-science_nature .elem-8::after {
+    top: 30px;
+    left: -5px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 45px solid var(--science-yellow-mid);
+    transform: rotate(-10deg);
+    filter: drop-shadow(0 0 15px rgba(255, 235, 59, 1))
+            drop-shadow(0 0 30px rgba(255, 193, 7, 0.8));
+}
+
+@keyframes science-lightning-strike {
+    0%, 85%, 100% { opacity: 0; transform: scale(0.8); }
+    86%, 88%, 90% { opacity: 1; transform: scale(1); }
+    87%, 89% { opacity: 0.3; transform: scale(0.95); }
+}
+
+/* === WATER MOLECULE (elem-9) === */
+.theme-science_nature .elem-9 {
+    top: 55%;
+    right: 10%;
+    width: 60px;
+    height: 40px;
+    z-index: 15;
+    animation: science-molecule-drift 10s ease-in-out infinite;
+}
+
+/* Oxygen atom (center red) */
+.theme-science_nature .elem-9::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle,
+        var(--science-red-light) 0%,
+        #E57373 60%,
+        #EF5350 100%);
+    border-radius: 50%;
+    box-shadow:
+        /* Hydrogen atoms (blue) */
+        -25px -12px 0 -4px #42A5F5,
+        -25px -12px 0 -2px #2196F3,
+        25px -12px 0 -4px #42A5F5,
+        25px -12px 0 -2px #2196F3,
+        /* Glow */
+        0 0 15px 5px rgba(244, 67, 54, 0.5),
+        -25px -12px 10px 3px rgba(33, 150, 243, 0.4),
+        25px -12px 10px 3px rgba(33, 150, 243, 0.4);
+    animation: science-molecule-rotate 8s linear infinite;
+}
+
+/* Bonds */
+.theme-science_nature .elem-9::after {
+    top: 12px;
+    left: 12px;
+    width: 15px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.7);
+    transform: rotate(-30deg);
+    box-shadow:
+        22px 0 0 0 rgba(255, 255, 255, 0.7);
+    transform-origin: right center;
+}
+
+@keyframes science-molecule-drift {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-20px, -30px); }
+    50% { transform: translate(-10px, -50px); }
+    75% { transform: translate(-30px, -25px); }
+}
+
+@keyframes science-molecule-rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* === SUN (elem-5 area reuse via turbine-blades) === */
+.theme-science_nature .turbine-blades {
+    top: 10%;
+    right: 8%;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle,
+        #FFF9C4 0%,
+        var(--science-yellow-light) 40%,
+        var(--science-yellow-mid) 100%);
+    border-radius: 50%;
+    z-index: 4;
+    box-shadow:
+        0 0 40px 15px rgba(255, 235, 59, 0.6),
+        0 0 80px 30px rgba(255, 193, 7, 0.3);
+    animation: science-sun-pulse 6s ease-in-out infinite;
+}
+
+@keyframes science-sun-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px 15px rgba(255, 235, 59, 0.6), 0 0 80px 30px rgba(255, 193, 7, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px 20px rgba(255, 235, 59, 0.8), 0 0 100px 40px rgba(255, 193, 7, 0.4);
+    }
+}
+
+/* === CLOUDS (elem-6 area - cloud-2, cloud-3) === */
+.theme-science_nature .cloud-2 {
+    top: 18%;
+    left: 20%;
+    width: 80px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    z-index: 3;
+    animation: science-cloud-drift-1 40s linear infinite;
+}
+
+.theme-science_nature .cloud-2::before {
+    top: -15px;
+    left: 15px;
+    width: 40px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 25px;
+}
+
+.theme-science_nature .cloud-2::after {
+    top: -10px;
+    left: 40px;
+    width: 35px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+}
+
+.theme-science_nature .cloud-3 {
+    top: 25%;
+    left: 55%;
+    width: 60px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 22px;
+    z-index: 3;
+    animation: science-cloud-drift-2 50s linear infinite;
+}
+
+.theme-science_nature .cloud-3::before {
+    top: -12px;
+    left: 10px;
+    width: 30px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
+}
+
+@keyframes science-cloud-drift-1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+@keyframes science-cloud-drift-2 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 80px)); }
+}
+
+/* === FLYING BIRDS (birds-2) === */
+.theme-science_nature .birds-2 {
+    top: 22%;
+    left: -30px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 3px solid var(--science-metal-dark);
+    z-index: 10;
+    animation: science-birds-fly 20s linear infinite;
+    box-shadow:
+        20px 8px 0 0 var(--science-metal-dark),
+        45px 3px 0 0 var(--science-metal-dark),
+        65px 12px 0 0 var(--science-metal-dark),
+        90px 5px 0 0 var(--science-metal-dark);
+}
+
+@keyframes science-birds-fly {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 120px)); }
+}
+
+/* === GRASS TUFTS (grass) === */
+.theme-science_nature .grass {
+    bottom: 30%;
+    left: 5%;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 15px solid var(--science-nature-mid);
+    z-index: 19;
+    box-shadow:
+        8px 2px 0 0 var(--science-nature-dark),
+        16px -1px 0 0 var(--science-nature-light),
+        24px 3px 0 0 var(--science-nature-mid),
+        32px 0 0 0 var(--science-nature-dark),
+        /* More grass patches */
+        100px 1px 0 0 var(--science-nature-mid),
+        108px -2px 0 0 var(--science-nature-light),
+        116px 2px 0 0 var(--science-nature-dark),
+        /* Right side */
+        350px 0 0 0 var(--science-nature-light),
+        358px 3px 0 0 var(--science-nature-mid),
+        366px -1px 0 0 var(--science-nature-dark),
+        374px 2px 0 0 var(--science-nature-light),
+        /* Far right */
+        500px 1px 0 0 var(--science-nature-mid),
+        508px -2px 0 0 var(--science-nature-dark),
+        516px 3px 0 0 var(--science-nature-light);
+    animation: science-grass-sway 4s ease-in-out infinite;
+}
+
+@keyframes science-grass-sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* === FLOATING PARTICLES (scene-particles) === */
+.theme-science_nature .scene-particles {
+    top: 20%;
+    left: 10%;
+    width: 4px;
+    height: 4px;
+    background: var(--science-cyan-glow);
+    border-radius: 50%;
+    z-index: 27;
+    animation: science-particles-float 15s ease-in-out infinite;
+    box-shadow:
         /* Cyan particles */
-        radial-gradient(circle 2.5px at 15% 20%, rgba(0, 255, 255, 0.8) 0%, rgba(0, 255, 255, 0.8) 70%, transparent 100%),
-        radial-gradient(circle 2px at 35% 35%, rgba(0, 188, 212, 0.7) 0%, rgba(0, 188, 212, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 3px at 55% 18%, rgba(0, 255, 255, 0.75) 0%, rgba(0, 255, 255, 0.75) 70%, transparent 100%),
-        radial-gradient(circle 2px at 75% 42%, rgba(0, 188, 212, 0.7) 0%, rgba(0, 188, 212, 0.7) 70%, transparent 100%),
+        50px 30px 0 0 var(--science-cyan-light),
+        120px -20px 0 -1px var(--science-cyan-glow),
+        200px 50px 0 0 var(--science-cyan-light),
+        280px 10px 0 -1px var(--science-cyan-glow),
         /* Purple particles */
-        radial-gradient(circle 2.5px at 25% 55%, rgba(224, 64, 251, 0.8) 0%, rgba(224, 64, 251, 0.8) 70%, transparent 100%),
-        radial-gradient(circle 2px at 48% 65%, rgba(186, 104, 200, 0.7) 0%, rgba(186, 104, 200, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 3px at 68% 72%, rgba(224, 64, 251, 0.75) 0%, rgba(224, 64, 251, 0.75) 70%, transparent 100%),
+        80px 80px 0 0 var(--science-purple-light),
+        160px 60px 0 -1px var(--science-purple-glow),
+        240px 90px 0 0 var(--science-purple-light),
+        320px 40px 0 -1px var(--science-purple-glow),
         /* Green particles */
-        radial-gradient(circle 2.5px at 85% 58%, rgba(76, 175, 80, 0.8) 0%, rgba(76, 175, 80, 0.8) 70%, transparent 100%),
-        radial-gradient(circle 2px at 12% 78%, rgba(129, 199, 132, 0.7) 0%, rgba(129, 199, 132, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 3px at 38% 88%, rgba(76, 175, 80, 0.75) 0%, rgba(76, 175, 80, 0.75) 70%, transparent 100%),
-        radial-gradient(circle 2px at 62% 85%, rgba(129, 199, 132, 0.7) 0%, rgba(129, 199, 132, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 2.5px at 90% 90%, rgba(76, 175, 80, 0.8) 0%, rgba(76, 175, 80, 0.8) 70%, transparent 100%);
-    animation: science-particles-drift 15s ease-in-out infinite;
+        40px 120px 0 0 var(--science-nature-bright),
+        100px 150px 0 -1px var(--science-nature-light),
+        180px 130px 0 0 var(--science-nature-bright),
+        260px 160px 0 -1px var(--science-nature-light),
+        /* Glows */
+        50px 30px 8px 2px rgba(0, 255, 255, 0.4),
+        200px 50px 8px 2px rgba(0, 255, 255, 0.4),
+        80px 80px 8px 2px rgba(224, 64, 251, 0.4),
+        160px 60px 8px 2px rgba(224, 64, 251, 0.4);
 }
 
-@keyframes science-particles-drift {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.6;
-    }
-    25% {
-        transform: translate(8px, -25px) scale(1.1);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translate(-5px, -40px) scale(0.95);
-        opacity: 0.8;
-    }
-    75% {
-        transform: translate(12px, -30px) scale(1.05);
-        opacity: 0.85;
-    }
+@keyframes science-particles-float {
+    0%, 100% { transform: translate(0, 0); opacity: 0.7; }
+    25% { transform: translate(10px, -20px); opacity: 1; }
+    50% { transform: translate(-5px, -35px); opacity: 0.8; }
+    75% { transform: translate(15px, -25px); opacity: 0.9; }
 }
 
-/* === AMBIENT ENERGY FIELD === */
-.theme-science_nature .energy-field {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 45%;
-    pointer-events: none;
-    z-index: 2;
-    background:
-        radial-gradient(ellipse 700px 400px at 20% 100%, rgba(76, 175, 80, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 600px 350px at 50% 100%, rgba(0, 188, 212, 0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 500px 300px at 80% 100%, rgba(156, 39, 176, 0.12) 0%, transparent 50%);
-    animation: science-field-pulse 12s ease-in-out infinite;
+/* === LEAF PARTICLES (leaf-particles via depth-fog) === */
+.theme-science_nature .depth-fog {
+    top: 30%;
+    left: 15%;
+    width: 12px;
+    height: 8px;
+    background: var(--science-nature-light);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    z-index: 16;
+    animation: science-leaves-drift 18s ease-in-out infinite;
+    box-shadow:
+        /* More leaves */
+        80px 40px 0 0 var(--science-nature-bright),
+        150px -30px 0 -2px var(--science-nature-mid),
+        220px 60px 0 0 var(--science-nature-light),
+        300px 20px 0 -2px var(--science-nature-bright),
+        380px 50px 0 0 var(--science-nature-mid),
+        /* Rotated leaves */
+        100px 100px 0 0 var(--science-nature-light),
+        200px 80px 0 -2px var(--science-nature-bright);
 }
 
-@keyframes science-field-pulse {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scaleY(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scaleY(1.15);
-    }
+@keyframes science-leaves-drift {
+    0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+    25% { transform: rotate(-30deg) translate(20px, -25px); }
+    50% { transform: rotate(-50deg) translate(-10px, -40px); }
+    75% { transform: rotate(-35deg) translate(25px, -30px); }
 }
 
 /* === MASCOT ANIMATIONS === */

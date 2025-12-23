@@ -1,0 +1,785 @@
+/* ============================================
+   ONLINE FRAUD AWARENESS - PREMIUM CINEMATIC
+   Fraud detection & prevention theme
+   8-12s animation loops, CodePen miocene style
+   Complex CSS shapes, investigative atmosphere
+   ============================================ */
+
+/* === CAUTIONARY AMBER BACKGROUND === */
+.theme-online_fraud_awareness .scene-background {
+    background:
+        /* PHISHING HOOK - Right side lurking */
+        radial-gradient(circle 4px at 88% 22%, #E53935 100%, transparent 100%),
+        linear-gradient(45deg, transparent 87.5%, rgba(229, 57, 53, 0.6) 87.5%, rgba(229, 57, 53, 0.6) 88.5%, transparent 88.5%) 88% 18% / 30px 60px no-repeat,
+        radial-gradient(ellipse 25px 18px at 88% 15%, rgba(229, 57, 53, 0.5) 0%, rgba(198, 40, 40, 0.4) 60%, transparent 100%) no-repeat,
+        linear-gradient(180deg, transparent 0%, transparent 13%, rgba(229, 57, 53, 0.3) 13%, rgba(229, 57, 53, 0.3) 14%, transparent 14%) 88% 0 / 2px 120px no-repeat,
+
+        /* BROKEN CREDIT CARD - Bottom left shattered */
+        linear-gradient(25deg, rgba(156, 39, 176, 0.4) 0%, transparent 100%) 8% 78% / 120px 65px no-repeat,
+        linear-gradient(155deg, transparent 48%, rgba(0, 0, 0, 0.6) 48%, rgba(0, 0, 0, 0.6) 52%, transparent 52%) 8% 78% / 120px 65px no-repeat,
+        linear-gradient(45deg, transparent 45%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.5) 55%, transparent 55%) 8% 78% / 120px 65px no-repeat,
+        radial-gradient(circle 3px at 12% 80%, rgba(255, 215, 0, 0.5) 0%, transparent 100%),
+        radial-gradient(circle 2px at 15% 82%, rgba(255, 215, 0, 0.4) 0%, transparent 100%),
+
+        /* MONEY FLYING AWAY - Faded silhouettes top right */
+        linear-gradient(135deg, transparent 0%, rgba(76, 175, 80, 0.25) 50%, transparent 100%) 75% 8% / 90px 45px no-repeat,
+        linear-gradient(90deg, transparent 47%, rgba(27, 94, 32, 0.3) 47%, rgba(27, 94, 32, 0.3) 53%, transparent 53%) 75% 8% / 90px 45px no-repeat,
+        linear-gradient(125deg, transparent 0%, rgba(76, 175, 80, 0.2) 50%, transparent 100%) 82% 12% / 75px 38px no-repeat,
+
+        /* WARNING TRIANGLE - Large bottom center */
+        conic-gradient(from 0deg at 50% 35%, transparent 0deg, transparent 28deg, rgba(255, 152, 0, 0.3) 28deg, rgba(255, 152, 0, 0.3) 32deg, transparent 32deg, transparent 88deg, rgba(255, 152, 0, 0.3) 88deg, rgba(255, 152, 0, 0.3) 92deg, transparent 92deg, transparent 148deg, rgba(255, 152, 0, 0.3) 148deg, rgba(255, 152, 0, 0.3) 152deg, transparent 152deg, transparent 360deg) 50% 85% / 140px 140px no-repeat,
+        linear-gradient(180deg, transparent 58%, rgba(255, 152, 0, 0.35) 58%, rgba(255, 152, 0, 0.35) 66%, transparent 66%) 50% 85% / 120px 120px no-repeat,
+        radial-gradient(circle 5px at 50% 78%, rgba(255, 152, 0, 0.6) 0%, transparent 100%),
+
+        /* WARNING TRIANGLE - Small top left */
+        conic-gradient(from 0deg at 50% 35%, transparent 0deg, transparent 28deg, rgba(244, 67, 54, 0.25) 28deg, rgba(244, 67, 54, 0.25) 32deg, transparent 32deg, transparent 88deg, rgba(244, 67, 54, 0.25) 88deg, rgba(244, 67, 54, 0.25) 92deg, transparent 92deg, transparent 148deg, rgba(244, 67, 54, 0.25) 148deg, rgba(244, 67, 54, 0.25) 152deg, transparent 152deg, transparent 360deg) 15% 18% / 80px 80px no-repeat,
+        linear-gradient(180deg, transparent 60%, rgba(244, 67, 54, 0.3) 60%, rgba(244, 67, 54, 0.3) 68%, transparent 68%) 15% 18% / 68px 68px no-repeat,
+
+        /* SKULL SILHOUETTE - Danger zone center left */
+        radial-gradient(ellipse 35px 40px at 25% 35%, rgba(139, 0, 0, 0.2) 0%, transparent 100%),
+        radial-gradient(circle 8px at 22% 32%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%),
+        radial-gradient(circle 8px at 28% 32%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%),
+        radial-gradient(ellipse 8px 6px at 25% 38%, rgba(0, 0, 0, 0.35) 0%, transparent 100%),
+
+        /* BROKEN LOCK - Security breach top center */
+        linear-gradient(180deg, transparent 12%, rgba(244, 67, 54, 0.4) 12%, rgba(244, 67, 54, 0.4) 18%, transparent 18%) 50% 8% / 18px 35px no-repeat,
+        radial-gradient(circle 10px at 50% 10%, transparent 0%, transparent 7px, rgba(244, 67, 54, 0.35) 7px, rgba(244, 67, 54, 0.35) 100%) 50% 8% / 35px 35px no-repeat,
+        linear-gradient(145deg, transparent 48%, rgba(0, 0, 0, 0.6) 48%, rgba(0, 0, 0, 0.6) 52%, transparent 52%) 50% 8% / 30px 30px no-repeat,
+
+        /* RED ALERT PULSES - Corner warnings */
+        radial-gradient(circle 25px at 5% 5%, rgba(244, 67, 54, 0.15) 0%, transparent 70%),
+        radial-gradient(circle 20px at 95% 5%, rgba(229, 57, 53, 0.12) 0%, transparent 70%),
+        radial-gradient(circle 22px at 5% 95%, rgba(213, 0, 0, 0.13) 0%, transparent 70%),
+        radial-gradient(circle 18px at 95% 95%, rgba(198, 40, 40, 0.14) 0%, transparent 70%),
+
+        /* SUSPICIOUS SHADOW FIGURES - Scattered threats */
+        radial-gradient(ellipse 45px 80px at 70% 50%, rgba(0, 0, 0, 0.15) 0%, transparent 80%),
+        radial-gradient(ellipse 35px 60px at 35% 65%, rgba(0, 0, 0, 0.12) 0%, transparent 75%),
+
+        /* BROKEN SHIELD FRAGMENTS - Failed protection upper right */
+        linear-gradient(135deg, rgba(96, 125, 139, 0.2) 0%, transparent 100%) 80% 30% / 50px 60px no-repeat,
+        linear-gradient(-45deg, transparent 48%, rgba(0, 0, 0, 0.4) 48%, rgba(0, 0, 0, 0.4) 52%, transparent 52%) 80% 30% / 50px 60px no-repeat,
+        linear-gradient(45deg, transparent 48%, rgba(0, 0, 0, 0.35) 48%, rgba(0, 0, 0, 0.35) 52%, transparent 52%) 80% 30% / 50px 60px no-repeat,
+
+        /* DANGER ZONE STRIPES - Bottom edges */
+        repeating-linear-gradient(135deg,
+            transparent 0px, transparent 15px,
+            rgba(255, 152, 0, 0.08) 15px, rgba(255, 152, 0, 0.08) 30px,
+            rgba(33, 33, 33, 0.1) 30px, rgba(33, 33, 33, 0.1) 45px) 0 88% / 100% 80px no-repeat,
+
+        /* Top warning glow */
+        radial-gradient(ellipse 800px 400px at 50% 0%, rgba(255, 152, 0, 0.12) 0%, transparent 60%),
+        /* Investigation spotlight left */
+        radial-gradient(ellipse 500px 500px at 20% 40%, rgba(255, 193, 7, 0.08) 0%, transparent 65%),
+        /* Investigation spotlight right */
+        radial-gradient(ellipse 520px 520px at 80% 60%, rgba(251, 140, 0, 0.07) 0%, transparent 70%),
+        /* Dark red alert underlayer */
+        radial-gradient(ellipse 600px 600px at 50% 50%, rgba(183, 28, 28, 0.05) 0%, transparent 80%),
+        /* Amber gradient base */
+        linear-gradient(165deg,
+            #1a1410 0%,
+            #251a12 10%,
+            #2f1f14 20%,
+            #3a2516 30%,
+            #442b18 40%,
+            #4f311a 50%,
+            #59361c 60%,
+            #643c1e 70%,
+            #6e4220 80%,
+            #794822 90%,
+            #834e24 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === DETECTIVE GRID OVERLAY === */
+.theme-online_fraud_awareness .scene-background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent 0px, transparent 59px,
+            rgba(255, 152, 0, 0.06) 59px, rgba(255, 152, 0, 0.06) 61px),
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 59px,
+            rgba(251, 140, 0, 0.05) 59px, rgba(251, 140, 0, 0.05) 61px);
+    background-size: 60px 60px;
+    opacity: 0.6;
+    animation: fraud-grid-scan 10s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes fraud-grid-scan {
+    0% { transform: translateY(0); opacity: 0.5; }
+    50% { opacity: 0.7; }
+    100% { transform: translateY(60px); opacity: 0.5; }
+}
+
+/* === ELEMENT 1: MAGNIFYING GLASS - INSPECTING === */
+.theme-online_fraud_awareness .elem-1 {
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    width: 90px;
+    height: 110px;
+    z-index: 15;
+    animation: fraud-magnify-inspect 10s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(255, 193, 7, 0.5));
+    pointer-events: none;
+}
+
+/* Glass lens */
+.theme-online_fraud_awareness .elem-1::before {
+    content: '';
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    top: 0;
+    left: 0;
+    background:
+        /* Glare spot */
+        radial-gradient(circle 12px at 35% 35%, rgba(255, 255, 255, 0.9) 0%, transparent 70%),
+        radial-gradient(circle 8px at 60% 25%, rgba(255, 255, 255, 0.6) 0%, transparent 80%),
+        /* Inner glass */
+        radial-gradient(circle at 50% 50%,
+            rgba(100, 200, 255, 0.15) 0%,
+            rgba(100, 200, 255, 0.08) 60%,
+            transparent 100%),
+        /* Glass surface */
+        linear-gradient(135deg,
+            rgba(200, 220, 240, 0.3) 0%,
+            rgba(150, 180, 210, 0.4) 50%,
+            rgba(100, 140, 180, 0.3) 100%);
+    border: 5px solid #FFA726;
+    border-radius: 50%;
+    box-shadow:
+        inset 0 -3px 8px rgba(255, 255, 255, 0.3),
+        inset 0 3px 8px rgba(0, 0, 0, 0.2),
+        0 0 25px rgba(255, 193, 7, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fraud-lens-rotate 8s linear infinite;
+}
+
+/* Magnifying handle */
+.theme-online_fraud_awareness .elem-1::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 60px;
+    bottom: 0;
+    right: 5px;
+    background:
+        /* Handle grip lines */
+        repeating-linear-gradient(180deg,
+            #5D4037 0px, #5D4037 3px,
+            #4E342E 3px, #4E342E 6px),
+        linear-gradient(180deg, #6D4C41 0%, #5D4037 50%, #4E342E 100%);
+    border-radius: 6px;
+    box-shadow:
+        inset 2px 0 4px rgba(0, 0, 0, 0.4),
+        inset -2px 0 4px rgba(255, 255, 255, 0.1),
+        3px 3px 10px rgba(0, 0, 0, 0.4);
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+@keyframes fraud-magnify-inspect {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(15px, 10px) scale(1.08); }
+    50% { transform: translate(25px, -5px) scale(1.15); }
+    75% { transform: translate(10px, 8px) scale(1.05); }
+}
+
+@keyframes fraud-lens-rotate {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* === ELEMENT 2: FAKE VS REAL BADGE === */
+.theme-online_fraud_awareness .elem-2 {
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 140px;
+    height: 70px;
+    z-index: 14;
+    animation: fraud-badge-compare 9s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Fake badge (red X) */
+.theme-online_fraud_awareness .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 0;
+    top: 5px;
+    background:
+        /* X mark */
+        linear-gradient(45deg,
+            transparent 0%, transparent 43%,
+            #fff 43%, #fff 57%,
+            transparent 57%, transparent 100%),
+        linear-gradient(-45deg,
+            transparent 0%, transparent 43%,
+            #fff 43%, #fff 57%,
+            transparent 57%, transparent 100%),
+        /* Badge base */
+        radial-gradient(circle at 50% 50%, #E53935 0%, #C62828 100%);
+    border-radius: 50%;
+    border: 4px solid #B71C1C;
+    box-shadow:
+        0 0 25px rgba(229, 57, 53, 0.6),
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+    animation: fraud-fake-pulse 2s ease-in-out infinite;
+}
+
+/* Real badge (green checkmark) */
+.theme-online_fraud_awareness .elem-2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+    top: 5px;
+    background:
+        /* Checkmark using border tricks */
+        linear-gradient(45deg,
+            transparent 0%, transparent 50%,
+            #fff 50%, #fff 60%,
+            transparent 60%, transparent 100%) -8px 0 / 40px 30px no-repeat,
+        linear-gradient(-60deg,
+            transparent 0%, transparent 45%,
+            #fff 45%, #fff 55%,
+            transparent 55%, transparent 100%) 8px 8px / 25px 25px no-repeat,
+        /* Badge base */
+        radial-gradient(circle at 50% 50%, #43A047 0%, #2E7D32 100%);
+    border-radius: 50%;
+    border: 4px solid #1B5E20;
+    box-shadow:
+        0 0 20px rgba(67, 160, 71, 0.5),
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+    animation: fraud-real-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes fraud-badge-compare {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fraud-fake-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(229, 57, 53, 0.6), 0 5px 15px rgba(0, 0, 0, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(229, 57, 53, 0.9), 0 5px 20px rgba(0, 0, 0, 0.5); }
+}
+
+@keyframes fraud-real-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(67, 160, 71, 0.5), 0 5px 15px rgba(0, 0, 0, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(67, 160, 71, 0.8), 0 5px 20px rgba(0, 0, 0, 0.5); }
+}
+
+/* === ELEMENT 3: MONEY WITH WINGS - BEING STOPPED === */
+.theme-online_fraud_awareness .elem-3 {
+    position: absolute;
+    top: 45%;
+    left: 25%;
+    width: 70px;
+    height: 50px;
+    z-index: 12;
+    animation: fraud-money-escape 11s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Money bill */
+.theme-online_fraud_awareness .elem-3::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    top: 10px;
+    left: 5px;
+    background:
+        /* Dollar sign */
+        linear-gradient(180deg, transparent 35%, #1B5E20 35%, #1B5E20 38%, transparent 38%),
+        linear-gradient(180deg, transparent 50%, #1B5E20 50%, #1B5E20 53%, transparent 53%),
+        linear-gradient(180deg, transparent 65%, #1B5E20 65%, #1B5E20 68%, transparent 68%),
+        linear-gradient(90deg, transparent 47%, #1B5E20 47%, #1B5E20 53%, transparent 53%),
+        /* Bill design */
+        radial-gradient(circle 10px at 50% 50%, rgba(27, 94, 32, 0.3) 0%, transparent 100%),
+        /* Bill gradient */
+        linear-gradient(135deg, #81C784 0%, #66BB6A 50%, #4CAF50 100%);
+    border-radius: 4px;
+    border: 2px solid #43A047;
+    box-shadow:
+        0 3px 12px rgba(76, 175, 80, 0.5),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Wings */
+.theme-online_fraud_awareness .elem-3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Left wing */
+        radial-gradient(ellipse 18px 25px at 10% 50%,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(230, 230, 230, 0.7) 60%,
+            rgba(200, 200, 200, 0.5) 80%,
+            transparent 100%),
+        /* Right wing */
+        radial-gradient(ellipse 18px 25px at 90% 50%,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(230, 230, 230, 0.7) 60%,
+            rgba(200, 200, 200, 0.5) 80%,
+            transparent 100%);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+    animation: fraud-wings-beat 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes fraud-money-escape {
+    0% { transform: translate(0, 0) rotate(-5deg); opacity: 1; }
+    15% { transform: translate(30px, -20px) rotate(5deg); }
+    30% { transform: translate(55px, -35px) rotate(10deg); }
+    45% { transform: translate(70px, -40px) rotate(0deg); }
+    50% { transform: translate(70px, -40px) rotate(-3deg) scale(0.95); filter: brightness(0.8); }
+    /* Stopped by shield */
+    55% { transform: translate(65px, -35px) rotate(-5deg) scale(0.9); filter: brightness(0.7); }
+    70% { transform: translate(40px, -15px) rotate(-10deg) scale(0.95); filter: brightness(0.9); }
+    85% { transform: translate(15px, -5px) rotate(-7deg); filter: brightness(1); }
+    100% { transform: translate(0, 0) rotate(-5deg); opacity: 1; }
+}
+
+@keyframes fraud-wings-beat {
+    0% { transform: scaleY(0.85) scaleX(1.05); }
+    100% { transform: scaleY(1.15) scaleX(0.95); }
+}
+
+/* === ELEMENT 4: OTP SHIELD - PROTECTED === */
+.theme-online_fraud_awareness .elem-4 {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    width: 75px;
+    height: 90px;
+    z-index: 13;
+    animation: fraud-shield-guard 8s ease-in-out infinite;
+    filter: drop-shadow(0 8px 25px rgba(33, 150, 243, 0.6));
+    pointer-events: none;
+}
+
+/* Shield body */
+.theme-online_fraud_awareness .elem-4::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 80px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background:
+        /* OTP digits representation */
+        radial-gradient(circle 4px at 25% 35%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 4px at 38% 35%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 4px at 51% 35%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 4px at 64% 35%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 4px at 77% 35%, #fff 0%, #fff 100%) no-repeat,
+        /* Lock icon */
+        linear-gradient(180deg, transparent 48%, #fff 48%, #fff 62%, transparent 62%) 50% 50% / 18px 25px no-repeat,
+        radial-gradient(circle 6px at 50% 52%, transparent 0%, transparent 5px, #fff 5px, #fff 100%) no-repeat,
+        /* Shield gradient */
+        linear-gradient(135deg, #42A5F5 0%, #2196F3 40%, #1976D2 100%);
+    clip-path: polygon(50% 0%, 100% 15%, 100% 70%, 50% 100%, 0% 70%, 0% 15%);
+    box-shadow:
+        inset 0 -8px 15px rgba(0, 0, 0, 0.2),
+        inset 0 5px 10px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(33, 150, 243, 0.5);
+    animation: fraud-shield-pulse 2.5s ease-in-out infinite;
+}
+
+/* Shield border glow */
+.theme-online_fraud_awareness .elem-4::after {
+    content: '';
+    position: absolute;
+    width: 76px;
+    height: 86px;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #64B5F6, #1E88E5);
+    clip-path: polygon(50% 0%, 100% 15%, 100% 70%, 50% 100%, 0% 70%, 0% 15%);
+    opacity: 0.5;
+    animation: fraud-shield-glow 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes fraud-shield-guard {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.03); }
+}
+
+@keyframes fraud-shield-pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.15); }
+}
+
+@keyframes fraud-shield-glow {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scale(1.05); }
+}
+
+/* === ELEMENT 5: SCAM EMAIL - FLAGGED === */
+.theme-online_fraud_awareness .elem-5 {
+    position: absolute;
+    bottom: 25%;
+    right: 20%;
+    width: 85px;
+    height: 65px;
+    z-index: 11;
+    animation: fraud-email-flag 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Email envelope */
+.theme-online_fraud_awareness .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 55px;
+    top: 0;
+    left: 0;
+    background:
+        /* Suspicious content lines */
+        linear-gradient(90deg, rgba(229, 57, 53, 0.4) 0%, transparent 100%) 8px 18px / 50px 3px no-repeat,
+        linear-gradient(90deg, rgba(229, 57, 53, 0.3) 0%, transparent 100%) 8px 26px / 60px 2px no-repeat,
+        linear-gradient(90deg, rgba(229, 57, 53, 0.3) 0%, transparent 100%) 8px 33px / 45px 2px no-repeat,
+        /* Envelope flap shadow */
+        linear-gradient(135deg, rgba(0, 0, 0, 0.15) 0%, transparent 50%) 0 0 / 100% 28px no-repeat,
+        /* Envelope body */
+        linear-gradient(180deg, #EEEEEE 0%, #E0E0E0 100%);
+    border-radius: 5px;
+    border: 2px solid #BDBDBD;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Red flag */
+.theme-online_fraud_awareness .elem-5::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -15px;
+    right: 10px;
+    border-style: solid;
+    border-width: 12px 0 12px 20px;
+    border-color: transparent transparent transparent #F44336;
+    filter: drop-shadow(0 3px 8px rgba(244, 67, 54, 0.6));
+    animation: fraud-flag-wave 1.5s ease-in-out infinite;
+}
+
+@keyframes fraud-email-flag {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-8px) rotate(-2deg); }
+    50% { transform: translateX(-12px) rotate(-3deg); }
+    75% { transform: translateX(-6px) rotate(-1deg); }
+}
+
+@keyframes fraud-flag-wave {
+    0%, 100% { transform: skewY(0deg); }
+    25% { transform: skewY(-3deg); }
+    75% { transform: skewY(3deg); }
+}
+
+/* === ELEMENT 6: CREDIT CARD WITH SHIELD === */
+.theme-online_fraud_awareness .elem-6 {
+    position: absolute;
+    bottom: 18%;
+    left: 12%;
+    width: 95px;
+    height: 75px;
+    z-index: 10;
+    animation: fraud-card-protect 9s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Credit card */
+.theme-online_fraud_awareness .elem-6::before {
+    content: '';
+    position: absolute;
+    width: 85px;
+    height: 55px;
+    top: 10px;
+    left: 0;
+    background:
+        /* Card chip */
+        linear-gradient(135deg, #FFD54F 0%, #FFC107 50%, #FFA000 100%) 8px 12px / 18px 14px no-repeat,
+        radial-gradient(circle 1px at 50% 50%, #F57F17 0%, transparent 100%) 17px 19px / 18px 14px no-repeat,
+        /* Magnetic stripe */
+        linear-gradient(90deg, #212121 0%, #424242 50%, #212121 100%) 0 16px / 100% 12px no-repeat,
+        /* Card number dots */
+        radial-gradient(circle 2px at 15% 70%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 2px at 25% 70%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 2px at 35% 70%, #fff 0%, #fff 100%) no-repeat,
+        radial-gradient(circle 2px at 45% 70%, #fff 0%, #fff 100%) no-repeat,
+        /* Card gradient */
+        linear-gradient(135deg, #7E57C2 0%, #673AB7 50%, #5E35B1 100%);
+    border-radius: 8px;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Protective shield overlay */
+.theme-online_fraud_awareness .elem-6::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    right: -5px;
+    background:
+        /* Checkmark */
+        linear-gradient(45deg,
+            transparent 0%, transparent 50%,
+            #fff 50%, #fff 58%,
+            transparent 58%, transparent 100%) -5px 2px / 30px 22px no-repeat,
+        linear-gradient(-55deg,
+            transparent 0%, transparent 48%,
+            #fff 48%, #fff 56%,
+            transparent 56%, transparent 100%) 5px 6px / 18px 18px no-repeat,
+        /* Shield */
+        linear-gradient(135deg,
+            rgba(76, 175, 80, 0.95) 0%,
+            rgba(67, 160, 71, 0.95) 50%,
+            rgba(56, 142, 60, 0.95) 100%);
+    clip-path: polygon(50% 0%, 90% 20%, 90% 65%, 50% 100%, 10% 65%, 10% 20%);
+    box-shadow:
+        0 0 20px rgba(76, 175, 80, 0.6),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+    animation: fraud-card-shield-pop 3s ease-in-out infinite;
+}
+
+@keyframes fraud-card-protect {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes fraud-card-shield-pop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); filter: brightness(1.2); }
+}
+
+/* === ELEMENT 7: RED FLAG WARNINGS === */
+.theme-online_fraud_awareness .elem-7 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9;
+}
+
+/* Warning flag 1 */
+.theme-online_fraud_awareness .elem-7::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 55%;
+    right: 8%;
+    border-style: solid;
+    border-width: 16px 0 16px 26px;
+    border-color: transparent transparent transparent #FF5252;
+    filter: drop-shadow(0 4px 10px rgba(255, 82, 82, 0.6));
+    animation: fraud-flag1-wave 2s ease-in-out infinite;
+}
+
+/* Warning flag 2 */
+.theme-online_fraud_awareness .elem-7::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 35%;
+    left: 35%;
+    border-style: solid;
+    border-width: 14px 0 14px 22px;
+    border-color: transparent transparent transparent #FF6E40;
+    filter: drop-shadow(0 3px 8px rgba(255, 110, 64, 0.5));
+    animation: fraud-flag2-wave 2.3s ease-in-out infinite 0.3s;
+}
+
+@keyframes fraud-flag1-wave {
+    0%, 100% { transform: skewY(0deg) rotate(0deg); }
+    25% { transform: skewY(-5deg) rotate(-2deg); }
+    75% { transform: skewY(5deg) rotate(2deg); }
+}
+
+@keyframes fraud-flag2-wave {
+    0%, 100% { transform: skewY(0deg) rotate(0deg); }
+    30% { transform: skewY(4deg) rotate(1deg); }
+    70% { transform: skewY(-4deg) rotate(-1deg); }
+}
+
+/* === ELEMENT 8: DETECTIVE HAT === */
+.theme-online_fraud_awareness .elem-8 {
+    position: absolute;
+    top: 62%;
+    right: 35%;
+    width: 80px;
+    height: 50px;
+    z-index: 8;
+    animation: fraud-detective-tilt 11s ease-in-out infinite;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.5));
+    pointer-events: none;
+}
+
+/* Hat crown */
+.theme-online_fraud_awareness .elem-8::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 32px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background:
+        /* Hat band */
+        linear-gradient(90deg, #1A237E 0%, #283593 50%, #1A237E 100%) 0 20px / 100% 8px no-repeat,
+        /* Crown gradient */
+        linear-gradient(180deg, #424242 0%, #616161 40%, #424242 100%);
+    border-radius: 25px 25px 5px 5px / 18px 18px 3px 3px;
+    box-shadow:
+        inset 0 3px 6px rgba(255, 255, 255, 0.15),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Hat brim */
+.theme-online_fraud_awareness .elem-8::after {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 15px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #212121 0%, #424242 50%, #212121 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fraud-detective-tilt {
+    0%, 100% { transform: rotate(-5deg) translateY(0); }
+    25% { transform: rotate(-8deg) translateY(-5px); }
+    50% { transform: rotate(-2deg) translateY(-8px); }
+    75% { transform: rotate(-6deg) translateY(-3px); }
+}
+
+/* === FLOATING WARNING PARTICLES === */
+.theme-online_fraud_awareness .warning-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+        radial-gradient(circle 3px at 15% 25%, rgba(255, 152, 0, 0.6) 0%, transparent 100%),
+        radial-gradient(circle 2px at 85% 35%, rgba(255, 193, 7, 0.5) 0%, transparent 100%),
+        radial-gradient(circle 3px at 25% 65%, rgba(255, 152, 0, 0.4) 0%, transparent 100%),
+        radial-gradient(circle 2px at 75% 75%, rgba(251, 140, 0, 0.5) 0%, transparent 100%),
+        radial-gradient(circle 3px at 45% 45%, rgba(255, 193, 7, 0.3) 0%, transparent 100%),
+        radial-gradient(circle 2px at 65% 20%, rgba(255, 152, 0, 0.4) 0%, transparent 100%);
+    animation: fraud-particles-float 12s ease-in-out infinite;
+}
+
+@keyframes fraud-particles-float {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-30px); opacity: 0.9; }
+}
+
+/* === INVESTIGATION SPOTLIGHT SWEEP === */
+.theme-online_fraud_awareness .spotlight-sweep {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        radial-gradient(ellipse 300px 800px at 50% 50%,
+            rgba(255, 193, 7, 0.08) 0%,
+            transparent 70%);
+    animation: fraud-spotlight-scan 15s linear infinite;
+}
+
+@keyframes fraud-spotlight-scan {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+/* === MASCOT ANIMATIONS - SAFE (CORRECT ANSWER) === */
+.theme-online_fraud_awareness .worm-character.happy,
+.theme-online_fraud_awareness .bunny-character.happy,
+.theme-online_fraud_awareness .owl-character.happy,
+.theme-online_fraud_awareness .cat-character.happy,
+.theme-online_fraud_awareness .robot-character.happy {
+    animation: fraud-detective-success 2.2s ease-out;
+}
+
+@keyframes fraud-detective-success {
+    0% { transform: scale(1) translateY(0) rotate(0deg); filter: brightness(1); }
+    15% { transform: scale(1.1) translateY(-15px) rotate(-5deg); filter: brightness(1.2) drop-shadow(0 0 15px rgba(76, 175, 80, 0.7)); }
+    30% { transform: scale(1.2) translateY(-30px) rotate(3deg); filter: brightness(1.3) drop-shadow(0 0 25px rgba(76, 175, 80, 0.9)); }
+    45% { transform: scale(1.25) translateY(-40px) rotate(-2deg); filter: brightness(1.4) drop-shadow(0 0 35px rgba(76, 175, 80, 1)); }
+    60% { transform: scale(1.2) translateY(-35px) rotate(2deg); filter: brightness(1.3) drop-shadow(0 0 30px rgba(76, 175, 80, 0.8)); }
+    75% { transform: scale(1.1) translateY(-20px) rotate(-1deg); filter: brightness(1.2) drop-shadow(0 0 20px rgba(76, 175, 80, 0.6)); }
+    90% { transform: scale(1.05) translateY(-8px) rotate(1deg); filter: brightness(1.1) drop-shadow(0 0 10px rgba(76, 175, 80, 0.4)); }
+    100% { transform: scale(1) translateY(0) rotate(0deg); filter: brightness(1); }
+}
+
+/* === MASCOT ANIMATIONS - SCAMMED (WRONG ANSWER) === */
+.theme-online_fraud_awareness .worm-character.sad,
+.theme-online_fraud_awareness .bunny-character.sad,
+.theme-online_fraud_awareness .owl-character.sad,
+.theme-online_fraud_awareness .cat-character.sad,
+.theme-online_fraud_awareness .robot-character.sad {
+    animation: fraud-victim-scammed 2.5s ease-out forwards;
+}
+
+@keyframes fraud-victim-scammed {
+    0% { transform: translateY(0) rotate(0deg) scale(1); filter: brightness(1) saturate(1); }
+    10% { transform: translateY(-12px) rotate(-3deg) scale(1.05); filter: brightness(1.1) saturate(1.2); }
+    20% { transform: translateY(-5px) rotate(2deg) scale(1.02); filter: brightness(0.95) saturate(1.1); }
+    30% { transform: translateY(3px) rotate(-4deg) scale(0.98); filter: brightness(0.85) saturate(0.9) sepia(0.2); }
+    40% { transform: translateY(8px) rotate(3deg) scale(0.95); filter: brightness(0.7) saturate(0.7) sepia(0.4); }
+    50% { transform: translateY(12px) rotate(-5deg) scale(0.92); filter: brightness(0.6) saturate(0.5) sepia(0.6) grayscale(0.3); }
+    60% { transform: translateY(16px) rotate(4deg) scale(0.9); filter: brightness(0.5) saturate(0.4) sepia(0.7) grayscale(0.5); }
+    70% { transform: translateY(18px) rotate(-3deg) scale(0.88); filter: brightness(0.4) saturate(0.3) sepia(0.8) grayscale(0.7); }
+    80% { transform: translateY(20px) rotate(2deg) scale(0.86); filter: brightness(0.35) saturate(0.2) sepia(0.9) grayscale(0.85); }
+    90% { transform: translateY(22px) rotate(-1deg) scale(0.85); filter: brightness(0.3) saturate(0.15) grayscale(0.95); }
+    100% { transform: translateY(25px) rotate(0deg) scale(0.85); filter: brightness(0.3) saturate(0.1) grayscale(1); }
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    .theme-online_fraud_awareness .elem-1 { width: 70px; height: 85px; top: 12%; left: 5%; }
+    .theme-online_fraud_awareness .elem-2 { width: 110px; height: 55px; top: 18%; right: 8%; }
+    .theme-online_fraud_awareness .elem-3 { width: 55px; height: 40px; left: 20%; }
+    .theme-online_fraud_awareness .elem-4 { width: 60px; height: 72px; }
+    .theme-online_fraud_awareness .elem-5 { width: 70px; height: 55px; }
+    .theme-online_fraud_awareness .elem-6 { width: 80px; height: 65px; }
+    .theme-online_fraud_awareness .elem-8 { width: 65px; height: 40px; }
+}

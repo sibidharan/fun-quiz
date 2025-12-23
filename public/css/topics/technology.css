@@ -1,634 +1,960 @@
 /* ============================================
-   TECHNOLOGY THEME - PREMIUM CINEMATIC
-   Futuristic cyber world with electric energy
-   Cyan/electric blue palette with neon effects
+   TECHNOLOGY THEME - JULIA MIOCENE STYLE
+   Futuristic Tech Lab with Pure CSS Art
+   Circuit boards, robots, holograms, drones
    ============================================ */
 
-/* === LAYERED DARK CYBER BACKGROUND === */
+:root {
+    /* Sky/Background colors */
+    --tech-sky-top: #000a12;
+    --tech-sky-mid: #01283c;
+    --tech-sky-bottom: #036e9e;
+
+    /* Neon colors */
+    --tech-cyan: #00ffff;
+    --tech-cyan-dim: rgba(0, 255, 255, 0.6);
+    --tech-purple: #9c27b0;
+    --tech-purple-dim: rgba(156, 39, 176, 0.6);
+    --tech-green: #4CAF50;
+    --tech-amber: #FFC107;
+    --tech-red: #F44336;
+    --tech-pink: #FF4081;
+
+    /* Metal colors */
+    --tech-metal-light: #CFD8DC;
+    --tech-metal-mid: #90A4AE;
+    --tech-metal-dark: #455A64;
+    --tech-metal-darker: #263238;
+
+    /* Screen colors */
+    --tech-screen-dark: #002838;
+    --tech-screen-glow: rgba(0, 255, 255, 0.3);
+
+    /* Building colors */
+    --tech-building-far: rgba(0, 100, 130, 0.6);
+    --tech-building-mid: rgba(0, 85, 115, 0.7);
+    --tech-building-near: rgba(0, 70, 100, 0.8);
+}
+
+/* === BASE SCENE SETUP === */
 .theme-technology .scene-background {
-    background:
-        /* Top holographic glow */
-        radial-gradient(ellipse 900px 450px at 50% 0%, rgba(0, 255, 255, 0.12) 0%, transparent 50%),
-        /* Neon glow spots */
-        radial-gradient(ellipse 550px 550px at 18% 35%, rgba(224, 64, 251, 0.1) 0%, transparent 55%),
-        radial-gradient(ellipse 600px 600px at 82% 55%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 450px 450px at 50% 75%, rgba(156, 39, 176, 0.08) 0%, transparent 50%),
-        /* Deep cyber gradient */
-        linear-gradient(180deg,
-            #000510 0%,
-            #050a18 12%,
-            #0a0f20 24%,
-            #0f1428 36%,
-            #141a32 48%,
-            #19203c 60%,
-            #1e2646 72%,
-            #252d52 84%,
-            #2d355e 96%,
-            #353d6a 100%);
+    background: linear-gradient(180deg,
+        var(--tech-sky-top) 0%,
+        var(--tech-sky-mid) 50%,
+        var(--tech-sky-bottom) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === CIRCUIT BOARD PATTERN === */
-.theme-technology .scene-background::before {
+/* Universal element setup - Miocene style */
+.theme-technology .scene-background *,
+.theme-technology .scene-background *::before,
+.theme-technology .scene-background *::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image:
-        /* Circuit traces */
-        repeating-linear-gradient(0deg, transparent 0px, transparent 59px, rgba(0, 255, 255, 0.12) 59px, rgba(0, 255, 255, 0.12) 61px),
-        repeating-linear-gradient(90deg, transparent 0px, transparent 59px, rgba(0, 229, 255, 0.1) 59px, rgba(0, 229, 255, 0.1) 61px),
-        /* Circuit nodes */
-        radial-gradient(circle at 0% 0%, rgba(0, 255, 255, 0.4) 2.5px, transparent 3px);
-    background-size: 60px 60px;
-    opacity: 0.5;
-    animation: tech-circuit-pulse 7.5s ease-in-out infinite;
-    pointer-events: none;
+}
+
+/* === STAR FIELD (box-shadow multiplication) === */
+.theme-technology .scene-background::before {
+    width: 2px;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: var(--tech-cyan);
+    border-radius: 50%;
+    box-shadow:
+        /* Star layer 1 - bright cyan */
+        50px 30px 0 0 var(--tech-cyan),
+        120px 50px 0 0 var(--tech-cyan),
+        200px 20px 0 1px var(--tech-cyan),
+        280px 60px 0 0 var(--tech-cyan),
+        350px 25px 0 0 var(--tech-cyan),
+        420px 70px 0 1px var(--tech-cyan),
+        500px 35px 0 0 var(--tech-cyan),
+        580px 55px 0 0 var(--tech-cyan),
+        650px 15px 0 1px var(--tech-cyan),
+        720px 45px 0 0 var(--tech-cyan),
+        /* Star layer 2 - purple accent */
+        80px 80px 0 0 var(--tech-purple),
+        160px 100px 0 1px var(--tech-purple),
+        240px 90px 0 0 var(--tech-purple),
+        320px 110px 0 0 var(--tech-purple),
+        400px 85px 0 1px var(--tech-purple),
+        480px 105px 0 0 var(--tech-purple),
+        560px 75px 0 0 var(--tech-purple),
+        640px 95px 0 1px var(--tech-purple),
+        /* Star layer 3 - dim whites */
+        100px 130px 0 0 rgba(255, 255, 255, 0.5),
+        180px 150px 0 0 rgba(255, 255, 255, 0.4),
+        260px 140px 0 0 rgba(255, 255, 255, 0.6),
+        340px 160px 0 0 rgba(255, 255, 255, 0.3),
+        420px 135px 0 0 rgba(255, 255, 255, 0.5),
+        500px 155px 0 0 rgba(255, 255, 255, 0.4),
+        /* Twinkling stars with glow */
+        700px 100px 0 1px var(--tech-cyan),
+        700px 100px 4px 2px rgba(0, 255, 255, 0.4),
+        150px 40px 0 1px var(--tech-purple),
+        150px 40px 4px 2px rgba(156, 39, 176, 0.4);
+    animation: tech-stars-twinkle 4s ease-in-out infinite;
     z-index: 1;
 }
 
-@keyframes tech-circuit-pulse {
-    0%, 100% { opacity: 0.4; transform: translateX(0) translateY(0); }
-    50% { opacity: 0.7; transform: translateX(2px) translateY(2px); }
+@keyframes tech-stars-twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
 }
 
-/* === FLOATING BINARY PARTICLES === */
-.theme-technology .binary-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* === CITY SKYLINE (border shapes + box-shadow) === */
+.theme-technology .scene-background::after {
+    bottom: 25%;
+    left: 0;
+    width: 0;
+    height: 0;
+    /* Main building - tall rectangle using border */
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 180px solid var(--tech-building-near);
+    box-shadow:
+        /* Building cluster 1 - left */
+        80px 40px 0 0 var(--tech-building-far),
+        140px 20px 0 0 var(--tech-building-mid),
+        200px 50px 0 0 var(--tech-building-far),
+        /* Building cluster 2 - center */
+        300px 0px 0 0 var(--tech-building-near),
+        350px 30px 0 0 var(--tech-building-mid),
+        400px 10px 0 0 var(--tech-building-far),
+        450px 40px 0 0 var(--tech-building-mid),
+        /* Building cluster 3 - right */
+        550px 20px 0 0 var(--tech-building-near),
+        600px 50px 0 0 var(--tech-building-far),
+        660px 25px 0 0 var(--tech-building-mid),
+        720px 45px 0 0 var(--tech-building-far);
+    z-index: 3;
+}
+
+/* === CIRCUIT GRID (elem-0-ultra) === */
+.theme-technology .elem-0-ultra {
     top: 0;
     left: 0;
-    pointer-events: none;
-    z-index: 15;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    color: rgba(0, 255, 255, 0.5);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-}
-
-.theme-technology .binary-particles::before {
-    content: '1 0 1 1 0 1 0 0 1 1 0 1 0 1 1 0';
-    position: absolute;
-    top: 15%;
-    left: 25%;
-    writing-mode: vertical-rl;
-    letter-spacing: 10px;
-    animation: tech-binary-stream-1 12s linear infinite;
-}
-
-.theme-technology .binary-particles::after {
-    content: '0 1 0 0 1 0 1 1 0 1 1 0 0 1 0 1';
-    position: absolute;
-    top: 20%;
-    left: 70%;
-    writing-mode: vertical-rl;
-    letter-spacing: 10px;
-    color: rgba(156, 39, 176, 0.4);
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
-    animation: tech-binary-stream-2 14s linear infinite 2s;
-}
-
-@keyframes tech-binary-stream-1 {
-    0% { transform: translateY(-100px); opacity: 0; }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
-}
-
-@keyframes tech-binary-stream-2 {
-    0% { transform: translateY(-100px); opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
-    100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
-}
-
-/* === ELEMENT 1: HOLOGRAPHIC SCREEN === */
-.theme-technology .elem-1 {
-    position: absolute;
-    top: 15%;
-    left: 12%;
-    width: 115px;
-    height: 80px;
-    z-index: 12;
-    animation: tech-screen-float 10.5s ease-in-out infinite;
-    filter: drop-shadow(0 5px 20px rgba(0, 255, 255, 0.4));
-    pointer-events: none;
-}
-
-/* Screen frame */
-.theme-technology .elem-1::before {
-    content: '';
-    position: absolute;
     width: 100%;
     height: 100%;
-    background:
-        /* Screen content */
-        linear-gradient(90deg,
-            rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.6) 2%,
-            transparent 2%, transparent 8%,
-            rgba(156, 39, 176, 0.5) 8%, rgba(156, 39, 176, 0.5) 12%,
-            transparent 12%, transparent 18%,
-            rgba(0, 229, 255, 0.7) 18%, rgba(0, 229, 255, 0.7) 38%,
-            transparent 38%, transparent 45%,
-            rgba(224, 64, 251, 0.4) 45%, rgba(224, 64, 251, 0.4) 52%,
-            transparent 52%, transparent 60%,
-            rgba(0, 255, 255, 0.55) 60%, rgba(0, 255, 255, 0.55) 72%,
-            transparent 72%) 10px 15px / calc(100% - 20px) 50px no-repeat,
-        /* Glass gradient */
-        linear-gradient(135deg,
-            rgba(0, 255, 255, 0.08) 0%,
-            rgba(0, 188, 212, 0.15) 50%,
-            rgba(0, 255, 255, 0.08) 100%);
-    border: 2px solid rgba(0, 255, 255, 0.6);
-    border-radius: 10px;
-    box-shadow:
-        0 0 30px rgba(0, 255, 255, 0.4),
-        inset 0 0 40px rgba(0, 255, 255, 0.1);
-    animation: tech-screen-glow 3.5s ease-in-out infinite;
+    /* Vertical circuit lines using box-shadow */
+    background: transparent;
+    z-index: 2;
 }
 
-/* Scan line */
-.theme-technology .elem-1::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px;
+.theme-technology .elem-0-ultra::before {
     top: 0;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.2) 20%,
-        rgba(0, 255, 255, 0.5) 50%,
-        rgba(255, 255, 255, 0.2) 80%,
-        transparent 100%);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-    animation: tech-scan-line 3.5s linear infinite;
+    left: 80px;
+    width: 1px;
+    height: 100%;
+    background: rgba(0, 255, 255, 0.08);
+    box-shadow:
+        80px 0 0 0 rgba(0, 255, 255, 0.08),
+        160px 0 0 0 rgba(0, 255, 255, 0.08),
+        240px 0 0 0 rgba(0, 255, 255, 0.08),
+        320px 0 0 0 rgba(0, 255, 255, 0.08),
+        400px 0 0 0 rgba(0, 255, 255, 0.08),
+        480px 0 0 0 rgba(0, 255, 255, 0.08),
+        560px 0 0 0 rgba(0, 255, 255, 0.08),
+        640px 0 0 0 rgba(0, 255, 255, 0.08);
 }
 
-@keyframes tech-screen-float {
-    0%, 100% { transform: translateY(0) translateX(0) rotateY(0deg); }
-    33% { transform: translateY(-12px) translateX(8px) rotateY(5deg); }
-    66% { transform: translateY(-6px) translateX(-5px) rotateY(-4deg); }
+.theme-technology .elem-0-ultra::after {
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 255, 255, 0.06);
+    box-shadow:
+        0 80px 0 0 rgba(0, 255, 255, 0.06),
+        0 160px 0 0 rgba(0, 255, 255, 0.06),
+        0 240px 0 0 rgba(0, 255, 255, 0.06),
+        0 320px 0 0 rgba(0, 255, 255, 0.06);
 }
 
-@keyframes tech-screen-glow {
+/* === CIRCUIT NODES (elem-0-far) === */
+.theme-technology .elem-0-far {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.theme-technology .elem-0-far::before {
+    top: 80px;
+    left: 80px;
+    width: 4px;
+    height: 4px;
+    background: var(--tech-cyan);
+    border-radius: 50%;
+    box-shadow:
+        /* Circuit nodes at intersections */
+        80px 0 0 0 var(--tech-cyan),
+        160px 0 0 0 var(--tech-purple),
+        240px 0 0 0 var(--tech-cyan),
+        320px 0 0 0 var(--tech-cyan),
+        400px 0 0 0 var(--tech-purple),
+        480px 0 0 0 var(--tech-cyan),
+        560px 0 0 0 var(--tech-cyan),
+        /* Row 2 */
+        0 80px 0 0 var(--tech-purple),
+        80px 80px 0 0 var(--tech-cyan),
+        160px 80px 0 0 var(--tech-cyan),
+        240px 80px 0 0 var(--tech-purple),
+        320px 80px 0 0 var(--tech-cyan),
+        400px 80px 0 0 var(--tech-cyan),
+        480px 80px 0 0 var(--tech-purple),
+        560px 80px 0 0 var(--tech-cyan),
+        /* Row 3 */
+        0 160px 0 0 var(--tech-cyan),
+        80px 160px 0 0 var(--tech-purple),
+        160px 160px 0 0 var(--tech-cyan),
+        240px 160px 0 0 var(--tech-cyan),
+        320px 160px 0 0 var(--tech-purple),
+        400px 160px 0 0 var(--tech-cyan),
+        480px 160px 0 0 var(--tech-cyan),
+        560px 160px 0 0 var(--tech-purple),
+        /* Glows */
+        80px 0 8px 2px rgba(0, 255, 255, 0.3),
+        240px 80px 8px 2px rgba(156, 39, 176, 0.3),
+        400px 160px 8px 2px rgba(0, 255, 255, 0.3);
+    animation: tech-nodes-pulse 3s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+@keyframes tech-nodes-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.9; }
+}
+
+/* === COMPUTER MONITOR (elem-1) === */
+.theme-technology .elem-1 {
+    top: 12%;
+    left: 8%;
+    width: 120px;
+    height: 80px;
+    z-index: 13;
+    animation: tech-monitor-float 11s ease-in-out infinite;
+}
+
+/* Monitor screen */
+.theme-technology .elem-1::before {
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 65px;
+    background: var(--tech-screen-dark);
+    border: 4px solid var(--tech-metal-mid);
+    border-radius: 6px 6px 0 0;
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.5),
+        inset 0 0 20px var(--tech-screen-glow),
+        /* Code lines using box-shadow */
+        inset 10px 10px 0 0 var(--tech-green),
+        inset 35px 10px 0 0 var(--tech-green),
+        inset 60px 10px 0 0 var(--tech-green),
+        inset 90px 10px 0 0 var(--tech-green),
+        inset 10px 25px 0 0 var(--tech-cyan),
+        inset 30px 25px 0 0 var(--tech-cyan),
+        inset 55px 25px 0 0 var(--tech-cyan),
+        inset 80px 25px 0 0 var(--tech-cyan),
+        inset 10px 40px 0 0 var(--tech-purple),
+        inset 40px 40px 0 0 var(--tech-purple),
+        inset 70px 40px 0 0 var(--tech-purple);
+    animation: tech-screen-flicker 4s ease-in-out infinite;
+}
+
+/* Monitor stand */
+.theme-technology .elem-1::after {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 20px;
+    background: var(--tech-metal-mid);
+    border-radius: 0 0 4px 4px;
+    box-shadow:
+        /* Stand neck */
+        8px -10px 0 -4px var(--tech-metal-dark),
+        /* Base */
+        0 15px 0 10px var(--tech-metal-dark);
+}
+
+@keyframes tech-monitor-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(-2deg); }
+    66% { transform: translateY(-5px) rotate(1deg); }
+}
+
+@keyframes tech-screen-flicker {
     0%, 100% {
         box-shadow:
-            0 0 30px rgba(0, 255, 255, 0.4),
-            inset 0 0 40px rgba(0, 255, 255, 0.1);
+            0 0 30px rgba(0, 255, 255, 0.5),
+            inset 0 0 20px var(--tech-screen-glow),
+            inset 10px 10px 0 0 var(--tech-green),
+            inset 35px 10px 0 0 var(--tech-green),
+            inset 60px 10px 0 0 var(--tech-green),
+            inset 90px 10px 0 0 var(--tech-green),
+            inset 10px 25px 0 0 var(--tech-cyan),
+            inset 30px 25px 0 0 var(--tech-cyan),
+            inset 55px 25px 0 0 var(--tech-cyan),
+            inset 80px 25px 0 0 var(--tech-cyan),
+            inset 10px 40px 0 0 var(--tech-purple),
+            inset 40px 40px 0 0 var(--tech-purple),
+            inset 70px 40px 0 0 var(--tech-purple);
     }
     50% {
         box-shadow:
-            0 0 50px rgba(0, 255, 255, 0.7),
-            0 0 80px rgba(0, 229, 255, 0.4),
-            inset 0 0 50px rgba(0, 255, 255, 0.2);
+            0 0 50px rgba(0, 255, 255, 0.8),
+            0 0 80px rgba(0, 255, 255, 0.4),
+            inset 0 0 30px var(--tech-screen-glow),
+            inset 10px 10px 0 0 var(--tech-green),
+            inset 35px 10px 0 0 var(--tech-green),
+            inset 60px 10px 0 0 var(--tech-green),
+            inset 90px 10px 0 0 var(--tech-green),
+            inset 10px 25px 0 0 var(--tech-cyan),
+            inset 30px 25px 0 0 var(--tech-cyan),
+            inset 55px 25px 0 0 var(--tech-cyan),
+            inset 80px 25px 0 0 var(--tech-cyan),
+            inset 10px 40px 0 0 var(--tech-purple),
+            inset 40px 40px 0 0 var(--tech-purple),
+            inset 70px 40px 0 0 var(--tech-purple);
     }
 }
 
-@keyframes tech-scan-line {
-    0% { transform: translateY(0); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(80px); opacity: 0; }
-}
-
-/* === ELEMENT 2: ROBOT === */
+/* === FRIENDLY ROBOT (elem-2) === */
 .theme-technology .elem-2 {
-    position: absolute;
-    bottom: 18%;
-    right: 15%;
+    bottom: 15%;
+    right: 12%;
     width: 70px;
-    height: 90px;
-    z-index: 13;
-    animation: tech-robot-hover 8.5s ease-in-out infinite;
-    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
-    pointer-events: none;
+    height: 95px;
+    z-index: 14;
+    animation: tech-robot-walk 9s ease-in-out infinite;
 }
 
 /* Robot body */
 .theme-technology .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 58px;
+    bottom: 15px;
+    left: 5px;
+    width: 60px;
     height: 50px;
-    bottom: 18px;
-    left: 6px;
-    background:
-        /* Status lights */
-        radial-gradient(circle 4px at 25% 35%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 1) 70%, transparent 100%),
-        radial-gradient(circle 4px at 50% 35%, rgba(224, 64, 251, 1) 0%, rgba(224, 64, 251, 1) 70%, transparent 100%),
-        radial-gradient(circle 4px at 75% 35%, rgba(118, 255, 3, 1) 0%, rgba(118, 255, 3, 1) 70%, transparent 100%),
-        /* Body gradient */
-        linear-gradient(180deg,
-            #90A4AE 0%,
-            #78909C 30%,
-            #607D8B 70%,
-            #546E7A 100%);
+    background: var(--tech-metal-mid);
     border-radius: 12px;
-    border: 2px solid #B0BEC5;
+    border: 3px solid var(--tech-metal-light);
     box-shadow:
-        inset 0 -12px 25px rgba(0, 0, 0, 0.3),
-        inset 0 3px 15px rgba(255, 255, 255, 0.2),
-        0 6px 20px rgba(0, 0, 0, 0.35),
-        0 0 25px rgba(0, 255, 255, 0.25);
-    animation: tech-body-pulse 3.2s ease-in-out infinite;
+        /* Status lights */
+        12px -8px 0 -8px var(--tech-cyan),
+        30px -8px 0 -8px var(--tech-pink),
+        48px -8px 0 -8px var(--tech-green),
+        /* Heart display */
+        30px 10px 0 -5px var(--tech-pink),
+        30px 10px 8px 0 rgba(255, 64, 129, 0.4),
+        /* Body shadow */
+        inset 0 -10px 20px rgba(0, 0, 0, 0.3),
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        /* Glow */
+        0 0 25px rgba(0, 255, 255, 0.3);
+    animation: tech-body-glow 3.5s ease-in-out infinite;
 }
 
 /* Robot head */
 .theme-technology .elem-2::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 40px;
-    bottom: 63px;
-    left: 10px;
-    background:
-        /* Antenna light */
-        radial-gradient(circle 5px at 50% -8%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.8) 70%, transparent 100%),
-        /* Eyes - glowing cyan */
-        radial-gradient(circle 5px at 30% 45%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 150, 150, 0.8) 70%, transparent 100%),
-        radial-gradient(circle 5px at 70% 45%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.9) 50%, rgba(0, 150, 150, 0.8) 70%, transparent 100%),
-        /* Mouth display */
-        linear-gradient(90deg,
-            transparent 20%,
-            rgba(0, 255, 255, 0.8) 23%,
-            rgba(0, 255, 255, 0.8) 28%,
-            transparent 31%,
-            transparent 40%,
-            rgba(0, 255, 255, 0.8) 43%,
-            rgba(0, 255, 255, 0.8) 48%,
-            transparent 51%,
-            transparent 60%,
-            rgba(0, 255, 255, 0.8) 63%,
-            rgba(0, 255, 255, 0.8) 68%,
-            transparent 71%) 0 78% / 100% 12%,
-        /* Head gradient */
-        linear-gradient(180deg,
-            #B0BEC5 0%,
-            #90A4AE 40%,
-            #78909C 100%);
+    bottom: 60px;
+    left: 8px;
+    width: 54px;
+    height: 42px;
+    background: var(--tech-metal-light);
     border-radius: 14px 14px 10px 10px;
+    border: 2px solid #ECEFF1;
     box-shadow:
+        /* Antenna */
+        27px -20px 0 -25px var(--tech-cyan),
+        27px -20px 6px 0 rgba(0, 255, 255, 0.6),
+        /* Left eye */
+        15px 12px 0 -20px var(--tech-cyan),
+        15px 12px 8px -18px rgba(0, 255, 255, 0.8),
+        /* Right eye */
+        39px 12px 0 -20px var(--tech-cyan),
+        39px 12px 8px -18px rgba(0, 255, 255, 0.8),
+        /* Smile segments */
+        12px 28px 0 -26px var(--tech-cyan),
+        20px 30px 0 -26px var(--tech-cyan),
+        27px 31px 0 -26px var(--tech-cyan),
+        34px 30px 0 -26px var(--tech-cyan),
+        42px 28px 0 -26px var(--tech-cyan),
+        /* Head glow */
         0 0 25px rgba(0, 255, 255, 0.4),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.15);
-    animation: tech-head-glow 2.8s ease-in-out infinite;
+        inset 0 -8px 12px rgba(0, 0, 0, 0.15);
+    animation: tech-head-blink 4.5s ease-in-out infinite;
 }
 
-@keyframes tech-robot-hover {
-    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-    33% { transform: translateY(-15px) rotate(-3deg) scale(1.03); }
-    66% { transform: translateY(-8px) rotate(2deg) scale(1.02); }
+@keyframes tech-robot-walk {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-8px) translateX(-15px); }
+    50% { transform: translateY(-15px) translateX(-25px); }
+    75% { transform: translateY(-8px) translateX(-15px); }
 }
 
-@keyframes tech-body-pulse {
-    0%, 100% {
-        box-shadow:
-            inset 0 -12px 25px rgba(0, 0, 0, 0.3),
-            inset 0 3px 15px rgba(255, 255, 255, 0.2),
-            0 6px 20px rgba(0, 0, 0, 0.35),
-            0 0 25px rgba(0, 255, 255, 0.25);
-    }
-    50% {
-        box-shadow:
-            inset 0 -12px 25px rgba(0, 0, 0, 0.3),
-            inset 0 3px 15px rgba(255, 255, 255, 0.2),
-            0 6px 20px rgba(0, 0, 0, 0.35),
-            0 0 45px rgba(0, 255, 255, 0.5);
-    }
+@keyframes tech-body-glow {
+    0%, 100% { box-shadow: 12px -8px 0 -8px var(--tech-cyan), 30px -8px 0 -8px var(--tech-pink), 48px -8px 0 -8px var(--tech-green), 30px 10px 0 -5px var(--tech-pink), 30px 10px 8px 0 rgba(255, 64, 129, 0.4), inset 0 -10px 20px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 255, 255, 0.3); }
+    50% { box-shadow: 12px -8px 0 -8px var(--tech-cyan), 30px -8px 0 -8px var(--tech-pink), 48px -8px 0 -8px var(--tech-green), 30px 10px 0 -5px var(--tech-pink), 30px 10px 12px 2px rgba(255, 64, 129, 0.6), inset 0 -10px 20px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 45px rgba(0, 255, 255, 0.6); }
 }
 
-@keyframes tech-head-glow {
-    0%, 100% {
-        box-shadow:
-            0 0 25px rgba(0, 255, 255, 0.4),
-            inset 0 -6px 12px rgba(0, 0, 0, 0.15);
-    }
-    50% {
-        box-shadow:
-            0 0 40px rgba(0, 255, 255, 0.7),
-            0 0 60px rgba(224, 64, 251, 0.3),
-            inset 0 -6px 12px rgba(0, 0, 0, 0.15);
-    }
+@keyframes tech-head-blink {
+    0%, 47%, 53%, 100% { box-shadow: 27px -20px 0 -25px var(--tech-cyan), 27px -20px 6px 0 rgba(0, 255, 255, 0.6), 15px 12px 0 -20px var(--tech-cyan), 15px 12px 8px -18px rgba(0, 255, 255, 0.8), 39px 12px 0 -20px var(--tech-cyan), 39px 12px 8px -18px rgba(0, 255, 255, 0.8), 12px 28px 0 -26px var(--tech-cyan), 20px 30px 0 -26px var(--tech-cyan), 27px 31px 0 -26px var(--tech-cyan), 34px 30px 0 -26px var(--tech-cyan), 42px 28px 0 -26px var(--tech-cyan), 0 0 25px rgba(0, 255, 255, 0.4), inset 0 -8px 12px rgba(0, 0, 0, 0.15); }
+    50% { box-shadow: 27px -20px 0 -25px var(--tech-cyan), 27px -20px 6px 0 rgba(0, 255, 255, 0.6), 15px 12px 0 -22px var(--tech-cyan), 15px 12px 4px -20px rgba(0, 255, 255, 0.4), 39px 12px 0 -22px var(--tech-cyan), 39px 12px 4px -20px rgba(0, 255, 255, 0.4), 12px 28px 0 -26px var(--tech-cyan), 20px 30px 0 -26px var(--tech-cyan), 27px 31px 0 -26px var(--tech-cyan), 34px 30px 0 -26px var(--tech-cyan), 42px 28px 0 -26px var(--tech-cyan), 0 0 15px rgba(0, 255, 255, 0.2), inset 0 -8px 12px rgba(0, 0, 0, 0.15); }
 }
 
-/* === ELEMENT 3: DRONE === */
+/* === SMARTPHONE (elem-3) === */
 .theme-technology .elem-3 {
-    position: absolute;
-    top: 28%;
-    right: 25%;
-    width: 60px;
-    height: 35px;
-    z-index: 11;
-    animation: tech-drone-patrol 16.5s ease-in-out infinite;
-    pointer-events: none;
+    top: 48%;
+    left: 18%;
+    width: 40px;
+    height: 75px;
+    z-index: 12;
+    animation: tech-phone-notify 10s ease-in-out infinite;
 }
 
-/* Drone body */
+/* Phone body */
 .theme-technology .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 38px;
-    height: 18px;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 75px;
+    background: var(--tech-screen-dark);
+    border: 3px solid var(--tech-metal-dark);
+    border-radius: 8px;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.4),
+        /* Notification icons */
+        inset 8px 8px 0 -4px var(--tech-cyan),
+        inset 20px 8px 0 -4px var(--tech-amber),
+        inset 32px 8px 0 -4px var(--tech-green),
+        /* App icons row 1 */
+        inset 8px 22px 0 -2px #2196F3,
+        inset 20px 22px 0 -2px var(--tech-purple),
+        inset 32px 22px 0 -2px var(--tech-green),
+        /* App icons row 2 */
+        inset 8px 38px 0 -2px #FF9800,
+        inset 20px 38px 0 -2px var(--tech-red),
+        inset 32px 38px 0 -2px var(--tech-cyan),
+        /* Screen glow */
+        inset 0 0 15px var(--tech-screen-glow);
+    animation: tech-phone-glow 3s ease-in-out infinite;
+}
+
+/* Camera/speaker */
+.theme-technology .elem-3::after {
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 2px;
+    background: var(--tech-metal-dark);
+    border-radius: 1px;
+    box-shadow:
+        /* Camera dot */
+        -8px 0 0 -1px var(--tech-green);
+}
+
+@keyframes tech-phone-notify {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    15% { transform: translateY(-5px) rotate(-5deg) scale(1.05); }
+    20% { transform: translateY(-3px) rotate(5deg); }
+    25% { transform: translateY(-5px) rotate(-3deg); }
+    30% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+@keyframes tech-phone-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 8px 8px 0 -4px var(--tech-cyan), inset 20px 8px 0 -4px var(--tech-amber), inset 32px 8px 0 -4px var(--tech-green), inset 8px 22px 0 -2px #2196F3, inset 20px 22px 0 -2px var(--tech-purple), inset 32px 22px 0 -2px var(--tech-green), inset 8px 38px 0 -2px #FF9800, inset 20px 38px 0 -2px var(--tech-red), inset 32px 38px 0 -2px var(--tech-cyan), inset 0 0 15px var(--tech-screen-glow); }
+    50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.7), 0 0 60px rgba(0, 255, 255, 0.3), inset 8px 8px 0 -4px var(--tech-cyan), inset 20px 8px 0 -4px var(--tech-amber), inset 32px 8px 0 -4px var(--tech-green), inset 8px 22px 0 -2px #2196F3, inset 20px 22px 0 -2px var(--tech-purple), inset 32px 22px 0 -2px var(--tech-green), inset 8px 38px 0 -2px #FF9800, inset 20px 38px 0 -2px var(--tech-red), inset 32px 38px 0 -2px var(--tech-cyan), inset 0 0 25px var(--tech-screen-glow); }
+}
+
+/* === CIRCUIT BOARD (elem-4) === */
+.theme-technology .elem-4 {
+    bottom: 25%;
+    left: 35%;
+    width: 70px;
+    height: 70px;
+    z-index: 10;
+    animation: tech-circuit-process 8s ease-in-out infinite;
+}
+
+/* Circuit board base */
+.theme-technology .elem-4::before {
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    background: var(--tech-metal-darker);
+    border: 2px solid var(--tech-cyan-dim);
+    border-radius: 6px;
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.5),
+        /* Circuit nodes - corners */
+        inset 10px 10px 0 -6px var(--tech-cyan),
+        inset 10px 10px 6px -4px rgba(0, 255, 255, 0.5),
+        inset 60px 10px 0 -6px var(--tech-amber),
+        inset 60px 10px 6px -4px rgba(255, 193, 7, 0.5),
+        inset 10px 60px 0 -6px var(--tech-green),
+        inset 10px 60px 6px -4px rgba(76, 175, 80, 0.5),
+        inset 60px 60px 0 -6px var(--tech-red),
+        inset 60px 60px 6px -4px rgba(244, 67, 54, 0.5),
+        /* Center chip */
+        inset 35px 35px 0 -6px var(--tech-purple),
+        inset 35px 35px 10px -2px rgba(156, 39, 176, 0.6);
+    animation: tech-circuit-pulse 4s ease-in-out infinite;
+}
+
+/* Microchip */
+.theme-technology .elem-4::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background:
-        /* Camera/sensor */
-        radial-gradient(circle 4px at 50% 75%, rgba(244, 67, 54, 0.9) 0%, rgba(244, 67, 54, 1) 50%, rgba(200, 50, 40, 0.8) 100%),
-        /* Body gradient */
-        linear-gradient(180deg,
-            #546E7A 0%,
-            #455A64 50%,
-            #37474F 100%);
-    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    background: var(--tech-metal-dark);
+    border-radius: 3px;
     box-shadow:
-        0 0 15px rgba(0, 229, 255, 0.35),
-        0 4px 12px rgba(0, 0, 0, 0.4);
-    animation: tech-drone-tilt 3.5s ease-in-out infinite;
+        /* Chip pins */
+        -6px 0 0 -4px var(--tech-metal-light),
+        6px 0 0 -4px var(--tech-metal-light),
+        0 -6px 0 -4px var(--tech-metal-light),
+        0 6px 0 -4px var(--tech-metal-light),
+        /* Chip glow */
+        0 0 10px var(--tech-purple-dim);
 }
 
-/* Propellers */
-.theme-technology .elem-3::after {
-    content: '';
-    position: absolute;
+@keyframes tech-circuit-process {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+@keyframes tech-circuit-pulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 10px 10px 0 -6px var(--tech-cyan), inset 10px 10px 6px -4px rgba(0, 255, 255, 0.5), inset 60px 10px 0 -6px var(--tech-amber), inset 60px 10px 6px -4px rgba(255, 193, 7, 0.5), inset 10px 60px 0 -6px var(--tech-green), inset 10px 60px 6px -4px rgba(76, 175, 80, 0.5), inset 60px 60px 0 -6px var(--tech-red), inset 60px 60px 6px -4px rgba(244, 67, 54, 0.5), inset 35px 35px 0 -6px var(--tech-purple), inset 35px 35px 10px -2px rgba(156, 39, 176, 0.6); }
+    50% { box-shadow: 0 0 50px rgba(0, 255, 255, 0.8), inset 10px 10px 0 -6px var(--tech-cyan), inset 10px 10px 10px -2px rgba(0, 255, 255, 0.8), inset 60px 10px 0 -6px var(--tech-amber), inset 60px 10px 10px -2px rgba(255, 193, 7, 0.8), inset 10px 60px 0 -6px var(--tech-green), inset 10px 60px 10px -2px rgba(76, 175, 80, 0.8), inset 60px 60px 0 -6px var(--tech-red), inset 60px 60px 10px -2px rgba(244, 67, 54, 0.8), inset 35px 35px 0 -6px var(--tech-purple), inset 35px 35px 15px 0 rgba(156, 39, 176, 0.9); }
+}
+
+/* === FLOATING DATA PARTICLES (elem-5) === */
+.theme-technology .elem-5 {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background:
-        /* Front left rotor */
-        radial-gradient(ellipse 12px 12px at 12% 25%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%),
-        /* Front right rotor */
-        radial-gradient(ellipse 12px 12px at 88% 25%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%),
-        /* Back left rotor */
-        radial-gradient(ellipse 12px 12px at 12% 75%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%),
-        /* Back right rotor */
-        radial-gradient(ellipse 12px 12px at 88% 75%, rgba(255, 255, 255, 0.7) 0%, rgba(200, 230, 255, 0.8) 60%, transparent 100%);
-    animation: tech-propeller-spin 0.15s linear infinite;
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* Data stream particles */
+.theme-technology .elem-5::before {
+    top: 10%;
+    left: 22%;
+    width: 3px;
+    height: 3px;
+    background: var(--tech-cyan);
+    border-radius: 50%;
+    box-shadow:
+        /* Vertical stream 1 */
+        0 30px 0 0 var(--tech-cyan),
+        0 60px 0 0 var(--tech-cyan),
+        0 90px 0 0 var(--tech-cyan),
+        0 120px 0 0 var(--tech-cyan),
+        0 150px 0 0 var(--tech-cyan),
+        0 180px 0 0 var(--tech-cyan),
+        /* Glow trail */
+        0 0 6px 2px rgba(0, 255, 255, 0.5),
+        0 30px 6px 2px rgba(0, 255, 255, 0.4),
+        0 60px 6px 2px rgba(0, 255, 255, 0.3);
+    animation: tech-data-float-1 12s linear infinite;
+}
+
+.theme-technology .elem-5::after {
+    top: 5%;
+    left: 72%;
+    width: 3px;
+    height: 3px;
+    background: var(--tech-purple);
+    border-radius: 50%;
+    box-shadow:
+        /* Vertical stream 2 */
+        0 25px 0 0 var(--tech-purple),
+        0 50px 0 0 var(--tech-purple),
+        0 75px 0 0 var(--tech-purple),
+        0 100px 0 0 var(--tech-purple),
+        0 125px 0 0 var(--tech-purple),
+        /* Glow trail */
+        0 0 6px 2px rgba(156, 39, 176, 0.5),
+        0 25px 6px 2px rgba(156, 39, 176, 0.4);
+    animation: tech-data-float-2 14s linear infinite 3s;
+}
+
+@keyframes tech-data-float-1 {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(80vh); opacity: 0; }
+}
+
+@keyframes tech-data-float-2 {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(85vh); opacity: 0; }
+}
+
+/* === HOLOGRAPHIC DISPLAY (elem-6) === */
+.theme-technology .elem-6 {
+    top: 25%;
+    right: 15%;
+    width: 80px;
+    height: 70px;
+    z-index: 11;
+    animation: tech-hologram-rotate 12s ease-in-out infinite;
+}
+
+/* Hologram projection */
+.theme-technology .elem-6::before {
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 60px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid var(--tech-cyan-dim);
+    clip-path: polygon(10% 100%, 90% 100%, 100% 0%, 0% 0%);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.4),
+        inset 0 0 20px rgba(0, 255, 255, 0.2),
+        /* Hologram content - circular display */
+        inset 40px 30px 0 -25px var(--tech-cyan),
+        inset 40px 30px 15px -20px rgba(0, 255, 255, 0.3);
+    animation: tech-hologram-flicker 3s ease-in-out infinite;
+}
+
+/* Projector base */
+.theme-technology .elem-6::after {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 10px;
+    background: var(--tech-metal-mid);
+    border-radius: 5px;
+    box-shadow:
+        0 0 15px rgba(0, 255, 255, 0.3),
+        /* Light beam upward */
+        0 -20px 10px 5px rgba(0, 255, 255, 0.15);
+}
+
+@keyframes tech-hologram-rotate {
+    0%, 100% { transform: translateY(0) rotateY(0deg) scale(1); }
+    33% { transform: translateY(-10px) rotateY(15deg) scale(1.05); }
+    66% { transform: translateY(-5px) rotateY(-15deg) scale(1.03); }
+}
+
+@keyframes tech-hologram-flicker {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+}
+
+/* === DRONE (elem-7) === */
+.theme-technology .elem-7 {
+    top: 35%;
+    left: 60%;
+    width: 60px;
+    height: 35px;
+    z-index: 12;
+    animation: tech-drone-patrol 18s ease-in-out infinite;
+}
+
+/* Drone body */
+.theme-technology .elem-7::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 18px;
+    background: var(--tech-metal-dark);
+    border-radius: 10px;
+    border: 2px solid var(--tech-metal-mid);
+    box-shadow:
+        /* LED lights */
+        8px 0 0 -6px var(--tech-red),
+        32px 0 0 -6px var(--tech-green),
+        /* Camera */
+        20px 8px 0 -6px #2196F3,
+        20px 8px 4px -4px rgba(33, 150, 243, 0.5),
+        /* Glow */
+        0 0 15px rgba(0, 255, 255, 0.3),
+        0 4px 10px rgba(0, 0, 0, 0.4);
+    animation: tech-drone-tilt 4s ease-in-out infinite;
+}
+
+/* Rotors */
+.theme-technology .elem-7::after {
+    top: 4px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow:
+        /* All four rotors */
+        0 0 0 0 rgba(255, 255, 255, 0.6),
+        42px 0 0 0 rgba(255, 255, 255, 0.6),
+        0 16px 0 0 rgba(255, 255, 255, 0.6),
+        42px 16px 0 0 rgba(255, 255, 255, 0.6),
+        /* Rotor blur/glow */
+        0 0 4px 2px rgba(200, 230, 255, 0.4),
+        42px 0 4px 2px rgba(200, 230, 255, 0.4),
+        0 16px 4px 2px rgba(200, 230, 255, 0.4),
+        42px 16px 4px 2px rgba(200, 230, 255, 0.4);
+    animation: tech-rotors-spin 0.15s linear infinite;
 }
 
 @keyframes tech-drone-patrol {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    14% { transform: translate(25px, -18px) rotate(4deg); }
-    28% { transform: translate(55px, 10px) rotate(-5deg); }
-    42% { transform: translate(40px, -12px) rotate(3deg); }
-    56% { transform: translate(65px, 8px) rotate(-4deg); }
-    70% { transform: translate(30px, -10px) rotate(5deg); }
-    84% { transform: translate(50px, 12px) rotate(-3deg); }
+    0%, 100% { transform: translate(0, 0); }
+    16% { transform: translate(-35px, -22px); }
+    32% { transform: translate(-65px, 15px); }
+    48% { transform: translate(-45px, -18px); }
+    64% { transform: translate(-75px, 12px); }
+    80% { transform: translate(-40px, -15px); }
 }
 
 @keyframes tech-drone-tilt {
     0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(-50%, -50%) rotate(6deg); }
+    50% { transform: translate(-50%, -50%) rotate(8deg); }
 }
 
-@keyframes tech-propeller-spin {
-    0% { opacity: 0.65; filter: blur(1.5px); }
-    50% { opacity: 0.95; filter: blur(2.5px); }
-    100% { opacity: 0.65; filter: blur(1.5px); }
+@keyframes tech-rotors-spin {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0.5; }
 }
 
-/* === ELEMENT 4: CIRCUIT CHIP === */
-.theme-technology .elem-4 {
-    position: absolute;
-    bottom: 28%;
-    right: 35%;
-    width: 50px;
-    height: 50px;
-    z-index: 10;
-    animation: tech-chip-process 5.5s ease-in-out infinite;
-    pointer-events: none;
+/* === SMART WATCH (elem-8) === */
+.theme-technology .elem-8 {
+    bottom: 32%;
+    right: 28%;
+    width: 45px;
+    height: 55px;
+    z-index: 11;
+    animation: tech-watch-pulse 7s ease-in-out infinite;
 }
 
-/* Chip body */
-.theme-technology .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Circuit traces */
-        linear-gradient(90deg, transparent 47%, rgba(0, 255, 255, 0.7) 48%, rgba(0, 255, 255, 0.7) 52%, transparent 53%),
-        linear-gradient(0deg, transparent 47%, rgba(156, 39, 176, 0.7) 48%, rgba(156, 39, 176, 0.7) 52%, transparent 53%),
-        /* Chip gradient */
-        linear-gradient(135deg,
-            #455A64 0%,
-            #37474F 50%,
-            #263238 100%);
+/* Watch screen */
+.theme-technology .elem-8::before {
+    top: 8px;
+    left: 5px;
+    width: 35px;
+    height: 35px;
+    background: var(--tech-screen-dark);
+    border: 2px solid var(--tech-metal-mid);
     border-radius: 6px;
-    border: 2px solid rgba(0, 255, 255, 0.6);
     box-shadow:
-        0 0 30px rgba(0, 255, 255, 0.5),
-        inset 0 0 20px rgba(0, 255, 255, 0.2);
+        0 0 20px rgba(0, 255, 255, 0.4),
+        /* Time dots */
+        inset 17px 10px 0 -15px var(--tech-cyan),
+        inset 17px 16px 0 -15px var(--tech-cyan),
+        /* Notification badge */
+        inset 28px 8px 0 -13px var(--tech-red),
+        /* Heart rate line */
+        inset 8px 26px 0 -15px var(--tech-pink),
+        inset 14px 24px 0 -15px var(--tech-pink),
+        inset 20px 28px 0 -15px var(--tech-pink),
+        inset 26px 24px 0 -15px var(--tech-pink);
+    animation: tech-watch-screen-glow 3.5s ease-in-out infinite;
 }
 
-/* Chip pins */
-.theme-technology .elem-4::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Top pins */
-        linear-gradient(90deg,
-            #B0BEC5 10%, #B0BEC5 13%, transparent 13%,
-            transparent 22%, #B0BEC5 22%, #B0BEC5 25%, transparent 25%,
-            transparent 34%, #B0BEC5 34%, #B0BEC5 37%, transparent 37%,
-            transparent 46%, #B0BEC5 46%, #B0BEC5 49%, transparent 49%,
-            transparent 58%, #B0BEC5 58%, #B0BEC5 61%, transparent 61%,
-            transparent 70%, #B0BEC5 70%, #B0BEC5 73%, transparent 73%,
-            transparent 82%, #B0BEC5 82%, #B0BEC5 85%, transparent 85%) 0 -6px / 100% 6px no-repeat,
-        /* Bottom pins */
-        linear-gradient(90deg,
-            #B0BEC5 10%, #B0BEC5 13%, transparent 13%,
-            transparent 22%, #B0BEC5 22%, #B0BEC5 25%, transparent 25%,
-            transparent 34%, #B0BEC5 34%, #B0BEC5 37%, transparent 37%,
-            transparent 46%, #B0BEC5 46%, #B0BEC5 49%, transparent 49%,
-            transparent 58%, #B0BEC5 58%, #B0BEC5 61%, transparent 61%,
-            transparent 70%, #B0BEC5 70%, #B0BEC5 73%, transparent 73%,
-            transparent 82%, #B0BEC5 82%, #B0BEC5 85%, transparent 85%) 0 100% / 100% 6px no-repeat;
+/* Watch band */
+.theme-technology .elem-8::after {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 8px;
+    background: var(--tech-metal-dark);
+    border-radius: 2px;
+    box-shadow:
+        /* Bottom band */
+        0 47px 0 0 var(--tech-metal-dark);
 }
 
-@keyframes tech-chip-process {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-        filter: brightness(1);
-        box-shadow:
-            0 0 30px rgba(0, 255, 255, 0.5),
-            inset 0 0 20px rgba(0, 255, 255, 0.2);
-    }
-    50% {
-        transform: translateY(-8px) rotate(3deg);
-        filter: brightness(1.25);
-        box-shadow:
-            0 0 50px rgba(0, 255, 255, 0.8),
-            0 0 80px rgba(224, 64, 251, 0.4),
-            inset 0 0 30px rgba(0, 255, 255, 0.3);
-    }
+@keyframes tech-watch-pulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-3px) scale(1.05); }
+    25% { transform: translateY(0) scale(1); }
+    30% { transform: translateY(-3px) scale(1.05); }
+    35% { transform: translateY(0) scale(1); }
 }
 
-/* === ELEMENT 5: GLOWING NODES === */
-.theme-technology .elem-5 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+@keyframes tech-watch-screen-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 17px 10px 0 -15px var(--tech-cyan), inset 17px 16px 0 -15px var(--tech-cyan), inset 28px 8px 0 -13px var(--tech-red), inset 8px 26px 0 -15px var(--tech-pink), inset 14px 24px 0 -15px var(--tech-pink), inset 20px 28px 0 -15px var(--tech-pink), inset 26px 24px 0 -15px var(--tech-pink); }
+    50% { box-shadow: 0 0 35px rgba(0, 255, 255, 0.7), 0 0 50px rgba(0, 255, 255, 0.3), inset 17px 10px 0 -15px var(--tech-cyan), inset 17px 16px 0 -15px var(--tech-cyan), inset 28px 8px 0 -13px var(--tech-red), inset 8px 26px 0 -15px var(--tech-pink), inset 14px 24px 0 -15px var(--tech-pink), inset 20px 28px 0 -15px var(--tech-pink), inset 26px 24px 0 -15px var(--tech-pink); }
+}
+
+/* === ENERGY NODES (pine-forest reused) === */
+.theme-technology .pine-forest {
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 16;
     pointer-events: none;
-    z-index: 14;
 }
 
-.theme-technology .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    top: 55%;
-    left: 65%;
-    background: radial-gradient(circle,
-        rgba(0, 255, 255, 1) 0%,
-        rgba(0, 229, 255, 0.8) 40%,
-        transparent 70%);
+.theme-technology .pine-forest::before {
+    top: 58%;
+    right: 40%;
+    width: 16px;
+    height: 16px;
+    background: var(--tech-cyan);
     border-radius: 50%;
     box-shadow:
-        0 0 25px rgba(0, 255, 255, 0.9),
-        0 0 50px rgba(0, 229, 255, 0.5);
-    animation: tech-node-pulse-1 6.5s ease-in-out infinite;
+        0 0 25px var(--tech-cyan),
+        0 0 50px rgba(0, 255, 255, 0.5);
+    animation: tech-node-pulse-1 7s ease-in-out infinite;
 }
 
-.theme-technology .elem-5::after {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    top: 35%;
-    left: 50%;
-    background: radial-gradient(circle,
-        rgba(224, 64, 251, 1) 0%,
-        rgba(186, 104, 200, 0.8) 40%,
-        transparent 70%);
+.theme-technology .pine-forest::after {
+    top: 42%;
+    left: 45%;
+    width: 12px;
+    height: 12px;
+    background: var(--tech-purple);
     border-radius: 50%;
     box-shadow:
-        0 0 22px rgba(224, 64, 251, 0.9),
+        0 0 20px var(--tech-purple),
         0 0 45px rgba(156, 39, 176, 0.5);
-    animation: tech-node-pulse-2 7.5s ease-in-out infinite;
+    animation: tech-node-pulse-2 8s ease-in-out infinite;
 }
 
 @keyframes tech-node-pulse-1 {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translate(15px, -20px) scale(1.3);
-        opacity: 1;
-    }
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.75; }
+    50% { transform: translate(20px, -25px) scale(1.4); opacity: 1; }
 }
 
 @keyframes tech-node-pulse-2 {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.65;
-    }
-    50% {
-        transform: translate(-18px, -25px) scale(1.35);
-        opacity: 1;
-    }
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-22px, -30px) scale(1.45); opacity: 1; }
 }
 
-/* === ATMOSPHERIC SCAN BEAMS === */
-.theme-technology .scan-beams {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* === SCAN BEAMS (elem-1-fg) === */
+.theme-technology .elem-1-fg {
     top: 0;
     left: 0;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
     z-index: 3;
+    pointer-events: none;
 }
 
-.theme-technology .scan-beams::before {
-    content: '';
-    position: absolute;
+.theme-technology .elem-1-fg::before {
+    top: 0;
+    left: 28%;
     width: 80px;
     height: 100%;
-    top: 0;
-    left: 30%;
     background: linear-gradient(90deg,
         transparent 0%,
-        rgba(0, 255, 255, 0.05) 30%,
-        rgba(0, 255, 255, 0.12) 50%,
-        rgba(0, 255, 255, 0.05) 70%,
+        rgba(0, 255, 255, 0.08) 30%,
+        rgba(0, 255, 255, 0.15) 50%,
+        rgba(0, 255, 255, 0.08) 70%,
         transparent 100%);
-    animation: tech-beam-scan-1 16s ease-in-out infinite;
+    animation: tech-beam-scan-1 17s ease-in-out infinite;
 }
 
-.theme-technology .scan-beams::after {
-    content: '';
-    position: absolute;
-    width: 70px;
-    height: 100%;
+.theme-technology .elem-1-fg::after {
     top: 0;
-    right: 25%;
+    right: 22%;
+    width: 65px;
+    height: 100%;
     background: linear-gradient(90deg,
         transparent 0%,
-        rgba(156, 39, 176, 0.05) 30%,
-        rgba(156, 39, 176, 0.1) 50%,
-        rgba(156, 39, 176, 0.05) 70%,
+        rgba(156, 39, 176, 0.06) 30%,
+        rgba(156, 39, 176, 0.12) 50%,
+        rgba(156, 39, 176, 0.06) 70%,
         transparent 100%);
-    animation: tech-beam-scan-2 18s ease-in-out infinite 4s;
+    animation: tech-beam-scan-2 19s ease-in-out infinite 5s;
 }
 
 @keyframes tech-beam-scan-1 {
-    0%, 100% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% {
-        opacity: 0;
-        transform: translateX(200%);
-    }
+    0%, 100% { opacity: 0; transform: translateX(-120%); }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(250%); }
 }
 
 @keyframes tech-beam-scan-2 {
-    0%, 100% {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% {
-        opacity: 0;
-        transform: translateX(-200%);
-    }
+    0%, 100% { opacity: 0; transform: translateX(120%); }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-250%); }
 }
 
-/* === ENERGY FIELD BOTTOM === */
-.theme-technology .energy-field {
-    position: absolute;
+/* === ENERGY FIELD BOTTOM (grass reused) === */
+.theme-technology .grass {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 40%;
-    pointer-events: none;
+    height: 35%;
     z-index: 2;
-    background:
-        radial-gradient(ellipse 700px 350px at 25% 100%, rgba(0, 255, 255, 0.15) 0%, transparent 55%),
-        radial-gradient(ellipse 650px 400px at 55% 100%, rgba(156, 39, 176, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 600px 350px at 80% 100%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
-    animation: tech-field-pulse 13s ease-in-out infinite;
+    pointer-events: none;
+    background: radial-gradient(ellipse 600px 300px at 30% 100%, rgba(0, 255, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 500px 350px at 60% 100%, rgba(156, 39, 176, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse 550px 280px at 85% 100%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    animation: tech-field-pulse 14s ease-in-out infinite;
 }
 
 @keyframes tech-field-pulse {
-    0%, 100% {
-        opacity: 0.6;
-        transform: scaleY(1);
-    }
-    50% {
-        opacity: 0.85;
-        transform: scaleY(1.2);
-    }
+    0%, 100% { opacity: 0.65; transform: scaleY(1); }
+    50% { opacity: 0.9; transform: scaleY(1.2); }
+}
+
+/* === ADDITIONAL DATA STREAM (scene-particles) === */
+.theme-technology .scene-particles {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.theme-technology .scene-particles::before {
+    top: 8%;
+    left: 48%;
+    width: 3px;
+    height: 3px;
+    background: var(--tech-green);
+    border-radius: 50%;
+    box-shadow:
+        0 20px 0 0 var(--tech-green),
+        0 40px 0 0 var(--tech-green),
+        0 60px 0 0 var(--tech-green),
+        0 80px 0 0 var(--tech-green),
+        0 0 5px 2px rgba(76, 175, 80, 0.4);
+    animation: tech-data-float-3 13s linear infinite 6s;
+}
+
+@keyframes tech-data-float-3 {
+    0% { transform: translateY(0); opacity: 0; }
+    12% { opacity: 0.7; }
+    88% { opacity: 0.7; }
+    100% { transform: translateY(75vh); opacity: 0; }
+}
+
+/* === DEPTH FOG === */
+.theme-technology .depth-fog {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(0deg,
+        rgba(0, 255, 255, 0.08) 0%,
+        transparent 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* === MASCOT ANIMATIONS === */
@@ -637,38 +963,38 @@
 .theme-technology .owl-character.happy,
 .theme-technology .cat-character.happy,
 .theme-technology .robot-character.happy {
-    animation: tech-happy-glitch 2.3s ease-out;
+    animation: tech-happy-boost 2.5s ease-out;
 }
 
-@keyframes tech-happy-glitch {
-    0% { transform: scale(1) translateY(0); filter: hue-rotate(0deg); }
-    8% { transform: scale(1.05) translateX(-4px); filter: hue-rotate(60deg); }
-    16% { transform: scale(1.12) translateX(5px); filter: hue-rotate(120deg); }
-    24% { transform: scale(1.2) translateY(-25px); filter: hue-rotate(180deg); }
-    32% { transform: scale(1.28) translateY(-38px) translateX(-3px); filter: hue-rotate(240deg) brightness(1.4); }
-    48% { transform: scale(1.22) translateY(-30px) translateX(4px); filter: hue-rotate(300deg) brightness(1.2); }
-    64% { transform: scale(1.15) translateY(-20px); filter: hue-rotate(360deg); }
-    80% { transform: scale(1.08) translateY(-10px); filter: hue-rotate(0deg); }
-    100% { transform: scale(1) translateY(0); filter: hue-rotate(0deg); }
+@keyframes tech-happy-boost {
+    0% { transform: scale(1) translateY(0); filter: hue-rotate(0deg) brightness(1); }
+    10% { transform: scale(1.08) translateX(-5px); filter: hue-rotate(60deg) brightness(1.2); }
+    20% { transform: scale(1.15) translateX(6px); filter: hue-rotate(120deg) brightness(1.3); }
+    30% { transform: scale(1.25) translateY(-30px); filter: hue-rotate(180deg) brightness(1.5); }
+    40% { transform: scale(1.32) translateY(-42px) translateX(-4px); filter: hue-rotate(240deg) brightness(1.6); }
+    55% { transform: scale(1.25) translateY(-35px) translateX(5px); filter: hue-rotate(300deg) brightness(1.4); }
+    70% { transform: scale(1.18) translateY(-24px); filter: hue-rotate(360deg) brightness(1.2); }
+    85% { transform: scale(1.1) translateY(-12px); filter: hue-rotate(0deg) brightness(1.1); }
+    100% { transform: scale(1) translateY(0); filter: hue-rotate(0deg) brightness(1); }
 }
 
 .theme-technology .robot-character.excited,
 .theme-technology .owl-character.excited {
-    animation: tech-system-boost 2s ease-out;
+    animation: tech-system-overload 2.2s ease-out;
 }
 
-@keyframes tech-system-boost {
+@keyframes tech-system-overload {
     0%, 100% {
         transform: translateY(0) scale(1);
-        filter: brightness(1) drop-shadow(0 5px 10px rgba(0, 255, 255, 0.3));
+        filter: brightness(1) drop-shadow(0 6px 12px rgba(0, 255, 255, 0.4));
     }
-    30% {
-        transform: translateY(-35px) scale(1.3);
-        filter: brightness(1.6) drop-shadow(0 18px 35px rgba(0, 255, 255, 0.9));
+    35% {
+        transform: translateY(-40px) scale(1.35);
+        filter: brightness(1.7) drop-shadow(0 20px 40px rgba(0, 255, 255, 1));
     }
-    60% {
-        transform: translateY(-24px) scale(1.18) rotate(15deg);
-        filter: brightness(1.4) drop-shadow(0 12px 25px rgba(224, 64, 251, 0.7));
+    65% {
+        transform: translateY(-28px) scale(1.22) rotate(18deg);
+        filter: brightness(1.5) drop-shadow(0 15px 30px rgba(156, 39, 176, 0.8));
     }
 }
 
@@ -677,7 +1003,7 @@
 .theme-technology .owl-character.sad,
 .theme-technology .cat-character.sad,
 .theme-technology .robot-character.sad {
-    animation: tech-sad-shutdown 2.5s ease-out forwards;
+    animation: tech-sad-shutdown 2.6s ease-out forwards;
 }
 
 @keyframes tech-sad-shutdown {
@@ -685,32 +1011,32 @@
         transform: scale(1) translateY(0);
         filter: brightness(1) saturate(1);
     }
-    20% {
-        filter: brightness(0.85) saturate(0.7);
+    22% {
+        filter: brightness(0.82) saturate(0.65);
     }
-    40% {
-        transform: scale(0.92) translateY(8px);
-        filter: brightness(0.65) saturate(0.4) grayscale(0.4);
+    44% {
+        transform: scale(0.9) translateY(10px);
+        filter: brightness(0.6) saturate(0.35) grayscale(0.45);
     }
-    60% {
-        transform: scale(0.86) translateY(14px);
-        filter: brightness(0.5) saturate(0.2) grayscale(0.7);
+    66% {
+        transform: scale(0.84) translateY(18px);
+        filter: brightness(0.45) saturate(0.15) grayscale(0.75);
     }
     100% {
-        transform: scale(0.8) translateY(22px);
-        filter: brightness(0.4) saturate(0) grayscale(1);
+        transform: scale(0.78) translateY(26px);
+        filter: brightness(0.35) saturate(0) grayscale(1);
     }
 }
 
 .theme-technology .robot-character.idle {
-    animation: tech-robot-standby 3.5s ease-in-out infinite;
+    animation: tech-robot-standby 4s ease-in-out infinite;
 }
 
 @keyframes tech-robot-standby {
     0%, 100% {
-        filter: drop-shadow(0 5px 12px rgba(0, 255, 255, 0.4)) brightness(1);
+        filter: drop-shadow(0 6px 14px rgba(0, 255, 255, 0.45)) brightness(1);
     }
     50% {
-        filter: drop-shadow(0 8px 22px rgba(0, 255, 255, 0.7)) brightness(1.2);
+        filter: drop-shadow(0 10px 26px rgba(0, 255, 255, 0.8)) brightness(1.25);
     }
 }

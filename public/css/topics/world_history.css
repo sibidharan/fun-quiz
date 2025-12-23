@@ -1,437 +1,889 @@
 /* ============================================
-   WORLD HISTORY THEME - PREMIUM CINEMATIC
-   Journey across ancient civilizations worldwide
-   Aged parchment, mysterious artifacts, epic discoveries
+   WORLD HISTORY THEME - JULIA MIOCENE STYLE
+   Journey Through World Civilizations
+   Pure CSS art with border triangles & box-shadows
    ============================================ */
 
-/* === LAYERED GRADIENT BACKGROUND === */
+/* === CSS VARIABLES === */
+:root {
+    /* Sky colors - antique map feel */
+    --world-sky-top: #1A237E;
+    --world-sky-mid: #3949AB;
+    --world-sky-bottom: #7986CB;
+    --world-horizon: #C5CAE9;
+
+    /* Parchment/map colors */
+    --world-parchment-light: #F5DEB3;
+    --world-parchment-mid: #D2B48C;
+    --world-parchment-dark: #8B5A2B;
+
+    /* Golden accents */
+    --world-gold-light: #FFD700;
+    --world-gold-mid: #DAA520;
+    --world-gold-dark: #B8860B;
+
+    /* Pyramid colors */
+    --world-pyramid-light: #DAA520;
+    --world-pyramid-dark: #8B6914;
+    --world-pyramid-shadow: #6B5410;
+
+    /* Greek marble */
+    --world-marble-light: #FFFFFF;
+    --world-marble-mid: #E0E0E0;
+    --world-marble-dark: #BDBDBD;
+
+    /* Roman terracotta */
+    --world-terracotta-light: #A1887F;
+    --world-terracotta-mid: #8D6E63;
+    --world-terracotta-dark: #6D4C41;
+
+    /* Castle stone */
+    --world-stone-light: #90A4AE;
+    --world-stone-mid: #78909C;
+    --world-stone-dark: #607D8B;
+
+    /* Ship wood */
+    --world-wood-light: #8D6E63;
+    --world-wood-mid: #6D4C41;
+    --world-wood-dark: #4E342E;
+
+    /* Ground */
+    --world-ground-light: #C5CAE9;
+    --world-ground-mid: #9FA8DA;
+    --world-ground-dark: #7986CB;
+}
+
+/* === BASE SETUP === */
 .theme-world_history .scene-background {
-    background:
-        /* Ancient artifact mystical glow */
-        radial-gradient(ellipse 700px 500px at 30% 20%, rgba(255, 236, 179, 0.5), transparent),
-        radial-gradient(ellipse 600px 450px at 70% 80%, rgba(215, 189, 143, 0.4), transparent),
-        radial-gradient(ellipse 500px 400px at 50% 50%, rgba(188, 170, 164, 0.3), transparent),
-        /* Aged parchment gradient */
-        linear-gradient(180deg,
-            #FFF9C4 0%,
-            #FFF8E1 8%,
-            #FFECB3 15%,
-            #FFE082 23%,
-            #F5DEB3 30%,
-            #DEB887 38%,
-            #D2B48C 46%,
-            #C9A97B 54%,
-            #BFA06F 62%,
-            #A67B5B 70%,
-            #8B7355 78%,
-            #7A6650 86%,
-            #6B5344 94%,
-            #5D4037 100%);
+    background: linear-gradient(180deg,
+        var(--world-sky-top) 0%,
+        var(--world-sky-mid) 25%,
+        var(--world-sky-bottom) 45%,
+        var(--world-horizon) 60%,
+        var(--world-parchment-light) 60%,
+        var(--world-parchment-mid) 80%,
+        var(--world-parchment-dark) 100%);
     position: relative;
     overflow: hidden;
 }
 
-/* === FLOATING ANCIENT DUST PARTICLES === */
-.theme-world_history .scene-background::before {
+/* Universal element setup - Miocene technique */
+.theme-world_history .scene-background *,
+.theme-world_history .scene-background *::before,
+.theme-world_history .scene-background *::after {
     content: '';
     position: absolute;
-    width: 3px;
-    height: 3px;
+}
+
+/* === STARS IN SKY === */
+.theme-world_history .scene-background::before {
+    width: 2px;
+    height: 2px;
+    top: 5%;
+    left: 10%;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
+    box-shadow:
+        /* Star field using box-shadow multiplication */
+        30px 15px 0 0 rgba(255, 255, 255, 0.8),
+        80px 8px 0 0 rgba(255, 255, 255, 0.7),
+        120px 25px 0 0 rgba(255, 255, 255, 0.9),
+        180px 12px 0 0 rgba(255, 255, 255, 0.6),
+        220px 30px 0 0 rgba(255, 255, 255, 0.8),
+        270px 5px 0 0 rgba(255, 255, 255, 0.7),
+        320px 22px 0 0 rgba(255, 255, 255, 0.9),
+        50px 45px 0 0 rgba(255, 255, 255, 0.6),
+        100px 55px 0 0 rgba(255, 255, 255, 0.7),
+        150px 40px 0 0 rgba(255, 255, 255, 0.8),
+        200px 60px 0 0 rgba(255, 255, 255, 0.6),
+        260px 50px 0 0 rgba(255, 255, 255, 0.9),
+        310px 65px 0 0 rgba(255, 255, 255, 0.7),
+        /* Golden dust particles */
+        15px 100px 0 1px rgba(218, 165, 32, 0.4),
+        65px 120px 0 1px rgba(255, 215, 0, 0.3),
+        115px 95px 0 1px rgba(184, 134, 11, 0.4),
+        175px 115px 0 1px rgba(218, 165, 32, 0.3),
+        225px 90px 0 1px rgba(255, 215, 0, 0.4),
+        285px 110px 0 1px rgba(184, 134, 11, 0.3);
+    z-index: 5;
+    animation: world-stars-twinkle 8s ease-in-out infinite;
+}
+
+@keyframes world-stars-twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* === COMPASS GRID LINES === */
+.theme-world_history .scene-background::after {
     top: 0;
     left: 0;
-    pointer-events: none;
-    box-shadow:
-        /* Upper atmosphere dust */
-        8% 12% 15px 10px rgba(188, 170, 164, 0.25),
-        18% 18% 12px 8px rgba(215, 189, 143, 0.2),
-        32% 15% 18px 11px rgba(188, 170, 164, 0.22),
-        48% 20% 14px 9px rgba(139, 90, 43, 0.18),
-        62% 16% 16px 10px rgba(188, 170, 164, 0.24),
-        78% 22% 13px 8px rgba(215, 189, 143, 0.2),
-        88% 14% 17px 11px rgba(188, 170, 164, 0.23),
-        /* Middle atmosphere */
-        12% 42% 14px 9px rgba(188, 170, 164, 0.2),
-        28% 38% 16px 10px rgba(215, 189, 143, 0.22),
-        45% 45% 13px 8px rgba(139, 90, 43, 0.18),
-        58% 40% 18px 11px rgba(188, 170, 164, 0.24),
-        72% 48% 14px 9px rgba(215, 189, 143, 0.2),
-        85% 43% 15px 10px rgba(188, 170, 164, 0.22),
-        /* Lower atmosphere */
-        15% 68% 12px 8px rgba(188, 170, 164, 0.18),
-        35% 72% 14px 9px rgba(215, 189, 143, 0.2),
-        52% 65% 16px 10px rgba(139, 90, 43, 0.19),
-        68% 70% 13px 8px rgba(188, 170, 164, 0.2),
-        82% 68% 15px 10px rgba(215, 189, 143, 0.21);
-    animation: world-dust-drift 35s ease-in-out infinite;
-}
-
-@keyframes world-dust-drift {
-    0%, 100% {
-        opacity: 0.6;
-        transform: translateY(0) translateX(0) scale(1);
-    }
-    25% {
-        opacity: 0.8;
-        transform: translateY(-15px) translateX(8px) scale(1.15);
-    }
-    50% {
-        opacity: 0.7;
-        transform: translateY(-25px) translateX(-5px) scale(1.25);
-    }
-    75% {
-        opacity: 0.75;
-        transform: translateY(-12px) translateX(10px) scale(1.1);
-    }
-}
-
-/* === ANCIENT MAP GRID OVERLAY === */
-.theme-world_history .scene-background::after {
-    content: '';
-    position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
     background:
-        linear-gradient(90deg, rgba(139, 90, 43, 0.08) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(139, 90, 43, 0.08) 1px, transparent 1px);
-    background-size: 55px 55px;
-    opacity: 0.6;
-    animation: world-map-fade 20s ease-in-out infinite;
+        linear-gradient(90deg, rgba(218, 165, 32, 0.1) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(218, 165, 32, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 2;
+    animation: world-grid-pulse 20s ease-in-out infinite;
 }
 
-@keyframes world-map-fade {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.75; }
+@keyframes world-grid-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
 }
 
-/* === ELEMENT 1: EGYPTIAN PYRAMID === */
-.theme-world_history .elem-1 {
-    position: absolute;
-    bottom: 22%;
-    left: 12%;
-    width: 90px;
-    height: 80px;
-    z-index: 10;
-    pointer-events: none;
-    animation: pyramid-ancient-presence 12s ease-in-out infinite;
-}
-
-/* Pyramid main structure */
-.theme-world_history .elem-1::before {
-    content: '';
-    position: absolute;
+/* === ELEMENT 0 ULTRA: DISTANT MOUNTAINS === */
+.theme-world_history .elem-0-ultra {
+    bottom: 40%;
+    left: 0;
     width: 0;
     height: 0;
-    border-left: 45px solid transparent;
-    border-right: 45px solid transparent;
-    border-bottom: 80px solid #DAA520;
-    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.35))
-            drop-shadow(0 0 35px rgba(218, 165, 32, 0.6));
-    animation: pyramid-mystical-glow 9s ease-in-out infinite;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 80px solid rgba(121, 134, 203, 0.4);
+    z-index: 6;
+    /* Multiple mountains using box-shadow */
+    box-shadow:
+        150px 10px 0 0 rgba(121, 134, 203, 0.35),
+        320px 5px 0 0 rgba(121, 134, 203, 0.3),
+        480px 15px 0 0 rgba(121, 134, 203, 0.35);
+}
+
+/* === ELEMENT 0 FAR: MID MOUNTAINS === */
+.theme-world_history .elem-0-far {
+    bottom: 38%;
+    left: 5%;
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 60px solid rgba(159, 168, 218, 0.5);
+    z-index: 7;
+    box-shadow:
+        180px -5px 0 0 rgba(159, 168, 218, 0.45),
+        350px 0 0 0 rgba(159, 168, 218, 0.4);
+}
+
+/* === ELEMENT 1: ROTATING GLOBE === */
+.theme-world_history .elem-1 {
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    z-index: 15;
+}
+
+/* Globe sphere */
+.theme-world_history .elem-1::before {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 35% 30%,
+        #4FC3F7 0%,
+        #29B6F6 30%,
+        #03A9F4 60%,
+        #0288D1 100%);
+    border-radius: 50%;
+    box-shadow:
+        inset -15px -15px 30px rgba(1, 87, 155, 0.8),
+        inset 10px 10px 20px rgba(79, 195, 247, 0.4),
+        0 0 50px rgba(3, 169, 244, 0.6),
+        0 0 100px rgba(3, 169, 244, 0.3);
+    animation: world-globe-pulse 10s ease-in-out infinite;
+}
+
+/* Continents using box-shadow */
+.theme-world_history .elem-1::after {
+    top: 15px;
+    left: 20px;
+    width: 12px;
+    height: 20px;
+    background: #43A047;
+    border-radius: 30% 70% 50% 50%;
+    box-shadow:
+        /* Americas */
+        5px 25px 0 5px #388E3C,
+        /* Europe/Africa */
+        25px -5px 0 3px #4CAF50,
+        25px 10px 0 8px #43A047,
+        /* Asia */
+        35px -8px 0 6px #388E3C,
+        40px 5px 0 4px #4CAF50;
+    animation: world-continents-rotate 20s linear infinite;
+}
+
+@keyframes world-globe-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow:
+            inset -15px -15px 30px rgba(1, 87, 155, 0.8),
+            inset 10px 10px 20px rgba(79, 195, 247, 0.4),
+            0 0 50px rgba(3, 169, 244, 0.6),
+            0 0 100px rgba(3, 169, 244, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow:
+            inset -15px -15px 30px rgba(1, 87, 155, 0.8),
+            inset 10px 10px 20px rgba(79, 195, 247, 0.4),
+            0 0 80px rgba(3, 169, 244, 0.8),
+            0 0 150px rgba(3, 169, 244, 0.4);
+    }
+}
+
+@keyframes world-continents-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === ELEMENT 2: EGYPTIAN PYRAMID === */
+.theme-world_history .elem-2 {
+    bottom: 18%;
+    left: 8%;
+    width: 0;
+    height: 0;
+    z-index: 12;
+}
+
+/* Main pyramid using border triangle */
+.theme-world_history .elem-2::before {
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 55px solid transparent;
+    border-bottom: 90px solid var(--world-pyramid-light);
+    filter: drop-shadow(0 0 30px rgba(218, 165, 32, 0.6));
+    animation: world-pyramid-glow 8s ease-in-out infinite;
 }
 
 /* Pyramid shadow side */
-.theme-world_history .elem-1::after {
-    content: '';
-    position: absolute;
+.theme-world_history .elem-2::after {
+    left: 55px;
     width: 0;
     height: 0;
     border-left: 0 solid transparent;
-    border-right: 45px solid transparent;
-    border-bottom: 80px solid #B8860B;
-    left: 45px;
-    opacity: 0.85;
+    border-right: 55px solid transparent;
+    border-bottom: 90px solid var(--world-pyramid-dark);
 }
 
-@keyframes pyramid-ancient-presence {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.03); }
+@keyframes world-pyramid-glow {
+    0%, 100% { filter: drop-shadow(0 0 30px rgba(218, 165, 32, 0.6)); }
+    50% { filter: drop-shadow(0 0 60px rgba(218, 165, 32, 0.9)); }
 }
 
-@keyframes pyramid-mystical-glow {
-    0%, 100% {
-        filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.35))
-                drop-shadow(0 0 35px rgba(218, 165, 32, 0.6));
-    }
-    50% {
-        filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.35))
-                drop-shadow(0 0 65px rgba(218, 165, 32, 0.9));
-    }
-}
-
-/* === ELEMENT 2: MEDIEVAL CASTLE === */
-.theme-world_history .elem-2 {
-    position: absolute;
-    top: 12%;
-    right: 8%;
-    width: 75px;
-    height: 85px;
+/* === PINE FOREST: SPHINX SILHOUETTE === */
+.theme-world_history .pine-forest {
+    bottom: 18%;
+    left: 22%;
+    width: 40px;
+    height: 25px;
+    background: linear-gradient(135deg,
+        var(--world-pyramid-dark) 0%,
+        var(--world-pyramid-shadow) 100%);
+    border-radius: 10px 10px 3px 3px;
     z-index: 11;
-    pointer-events: none;
-    animation: castle-fortress-stand 14s ease-in-out infinite;
 }
 
-/* Castle with battlements */
-.theme-world_history .elem-2::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 65px;
-    height: 55px;
-    background:
-        linear-gradient(180deg, #78909C 0%, #607D8B 50%, #546E7A 100%);
-    clip-path: polygon(
-        0% 32%, 12% 32%, 12% 0%, 22% 0%, 22% 32%,
-        38% 32%, 38% 15%, 50% 15%, 50% 32%,
-        62% 32%, 62% 0%, 72% 0%, 72% 32%,
-        88% 32%, 88% 15%, 100% 15%, 100% 32%,
-        100% 100%, 0% 100%
-    );
+/* Sphinx head */
+.theme-world_history .pine-forest::before {
+    top: -15px;
     left: 5px;
-    filter: drop-shadow(3px 3px 12px rgba(0, 0, 0, 0.35))
-            drop-shadow(0 0 30px rgba(120, 144, 156, 0.4));
-    animation: castle-stone-glow 8s ease-in-out infinite;
+    width: 15px;
+    height: 18px;
+    background: var(--world-pyramid-dark);
+    border-radius: 8px 8px 4px 4px;
 }
 
-/* Castle flag */
-.theme-world_history .elem-2::after {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 16px;
-    top: 6px;
-    left: 27px;
-    background:
-        linear-gradient(90deg, #D32F2F 0%, #D32F2F 35%, #C62828 35%, #C62828 100%);
-    clip-path: polygon(0% 0%, 100% 0%, 88% 50%, 100% 100%, 0% 100%);
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
-    animation: castle-flag-wave 3s ease-in-out infinite;
+/* === ELEMENT 3: GREEK PARTHENON === */
+.theme-world_history .elem-3 {
+    bottom: 20%;
+    right: 8%;
+    width: 100px;
+    height: 70px;
+    z-index: 12;
 }
 
-@keyframes castle-fortress-stand {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-6px) rotate(0.5deg); }
+/* Parthenon base/steps */
+.theme-world_history .elem-3::before {
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 15px;
+    background: var(--world-marble-mid);
+    box-shadow:
+        /* Steps */
+        0 -5px 0 0 var(--world-marble-light),
+        0 -10px 0 0 var(--world-marble-mid),
+        /* Column bases using box-shadow */
+        8px -58px 0 -2px var(--world-marble-light),
+        28px -58px 0 -2px var(--world-marble-light),
+        48px -58px 0 -2px var(--world-marble-light),
+        68px -58px 0 -2px var(--world-marble-light),
+        88px -58px 0 -2px var(--world-marble-light);
 }
 
-@keyframes castle-stone-glow {
+/* Columns and roof */
+.theme-world_history .elem-3::after {
+    bottom: 15px;
+    left: 5px;
+    width: 12px;
+    height: 45px;
+    background: linear-gradient(90deg,
+        var(--world-marble-dark) 0%,
+        var(--world-marble-light) 50%,
+        var(--world-marble-dark) 100%);
+    border-radius: 2px;
+    box-shadow:
+        /* More columns */
+        20px 0 0 0 linear-gradient(90deg, var(--world-marble-dark), var(--world-marble-light), var(--world-marble-dark)),
+        20px 0 0 0 var(--world-marble-light),
+        40px 0 0 0 var(--world-marble-light),
+        60px 0 0 0 var(--world-marble-light),
+        80px 0 0 0 var(--world-marble-light),
+        /* Roof beam */
+        0 -50px 0 42px var(--world-marble-mid);
+    animation: world-marble-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes world-marble-shimmer {
     0%, 100% {
-        filter: drop-shadow(3px 3px 12px rgba(0, 0, 0, 0.35))
-                drop-shadow(0 0 30px rgba(120, 144, 156, 0.4));
+        box-shadow:
+            20px 0 0 0 var(--world-marble-light),
+            40px 0 0 0 var(--world-marble-light),
+            60px 0 0 0 var(--world-marble-light),
+            80px 0 0 0 var(--world-marble-light),
+            0 -50px 0 42px var(--world-marble-mid);
     }
     50% {
-        filter: drop-shadow(3px 3px 12px rgba(0, 0, 0, 0.35))
-                drop-shadow(0 0 50px rgba(120, 144, 156, 0.7));
+        box-shadow:
+            20px 0 0 0 #FFFFFF,
+            40px 0 0 0 #FFFFFF,
+            60px 0 0 0 #FFFFFF,
+            80px 0 0 0 #FFFFFF,
+            0 -50px 0 42px var(--world-marble-light);
     }
 }
 
-@keyframes castle-flag-wave {
-    0%, 100% { transform: scaleX(1) skewY(0deg); }
-    25% { transform: scaleX(0.94) skewY(4deg); }
-    75% { transform: scaleX(0.96) skewY(-3deg); }
+/* === ELEMENT 1 FG: PARTHENON TRIANGULAR PEDIMENT === */
+.theme-world_history .elem-1-fg {
+    bottom: 80%;
+    right: 8%;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid var(--world-marble-light);
+    z-index: 13;
+    transform: translateY(265px);
 }
 
-/* === ELEMENT 3: SPINNING COMPASS === */
-.theme-world_history .elem-3 {
-    position: absolute;
-    top: 18%;
-    left: 12%;
-    width: 60px;
-    height: 60px;
-    z-index: 12;
-    pointer-events: none;
-    animation: compass-explorer-float 10s ease-in-out infinite;
+/* === ELEMENT 4: ROMAN COLOSSEUM === */
+.theme-world_history .elem-4 {
+    top: 50%;
+    right: 25%;
+    width: 70px;
+    height: 55px;
+    z-index: 10;
 }
 
-/* Compass body */
-.theme-world_history .elem-3::before {
-    content: '';
-    position: absolute;
+/* Colosseum structure */
+.theme-world_history .elem-4::before {
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at 40% 35%, #FFD700 0%, #DAA520 45%, #B8860B 100%);
-    border-radius: 50%;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35))
-            drop-shadow(0 0 30px rgba(255, 215, 0, 0.5))
-            drop-shadow(inset 0 0 20px rgba(255, 255, 255, 0.3));
-    animation: compass-golden-shine 6s ease-in-out infinite;
+    background: var(--world-terracotta-mid);
+    border-radius: 50% 50% 10% 10% / 40% 40% 10% 10%;
+    box-shadow:
+        inset -8px -8px 15px var(--world-terracotta-dark),
+        inset 8px 8px 10px var(--world-terracotta-light),
+        0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Compass needle */
-.theme-world_history .elem-3::after {
-    content: '';
-    position: absolute;
-    width: 7px;
-    height: 45px;
-    top: 7.5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background:
-        linear-gradient(180deg,
-            #F44336 0%, #F44336 50%,
-            #ECEFF1 50%, #ECEFF1 100%);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    filter: drop-shadow(0 0 12px rgba(244, 67, 54, 0.6));
-    animation: compass-needle-wobble 2.5s ease-in-out infinite;
-}
-
-@keyframes compass-explorer-float {
-    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
-    50% { transform: translateY(-10px) scale(1.04) rotate(5deg); }
-}
-
-@keyframes compass-golden-shine {
-    0%, 90%, 100% {
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35))
-                drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
-    }
-    95% {
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35))
-                drop-shadow(0 0 50px rgba(255, 215, 0, 1)) brightness(1.4);
-    }
-}
-
-@keyframes compass-needle-wobble {
-    0%, 100% { transform: translateX(-50%) rotate(0deg) scale(1); }
-    50% { transform: translateX(-50%) rotate(3deg) scale(1.02); }
-}
-
-/* === ELEMENT 4: GREEK COLUMN === */
-.theme-world_history .elem-4 {
-    position: absolute;
-    bottom: 18%;
-    right: 22%;
-    width: 28px;
-    height: 75px;
-    z-index: 8;
-    pointer-events: none;
-    animation: column-ancient-stand 9s ease-in-out infinite;
-}
-
-/* Column shaft with fluting */
-.theme-world_history .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 60px;
-    background:
-        linear-gradient(90deg, #E0E0E0 0%, #FAFAFA 50%, #E0E0E0 100%),
-        repeating-linear-gradient(180deg,
-            transparent 0px, transparent 9px,
-            rgba(189, 189, 189, 0.25) 9px, rgba(189, 189, 189, 0.25) 10px
-        );
-    bottom: 0;
-    left: 3px;
-    border-radius: 3px;
-    filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, 0.25))
-            drop-shadow(0 0 20px rgba(224, 224, 224, 0.4));
-    animation: column-marble-shimmer 7s ease-in-out infinite;
-}
-
-/* Column capital (top) */
+/* Colosseum arches using box-shadow */
 .theme-world_history .elem-4::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 14px;
-    background:
-        linear-gradient(180deg, #BDBDBD 0%, #E0E0E0 100%);
-    top: 2px;
-    border-radius: 3px;
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+    top: 15px;
+    left: 8px;
+    width: 8px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50% 50% 0 0;
+    box-shadow:
+        /* Row 1 arches */
+        14px 0 0 0 rgba(0, 0, 0, 0.4),
+        28px 0 0 0 rgba(0, 0, 0, 0.4),
+        42px 0 0 0 rgba(0, 0, 0, 0.4),
+        /* Row 2 arches */
+        0 18px 0 0 rgba(0, 0, 0, 0.35),
+        14px 18px 0 0 rgba(0, 0, 0, 0.35),
+        28px 18px 0 0 rgba(0, 0, 0, 0.35),
+        42px 18px 0 0 rgba(0, 0, 0, 0.35);
+    animation: world-colosseum-glow 10s ease-in-out infinite;
 }
 
-@keyframes column-ancient-stand {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+@keyframes world-colosseum-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
-@keyframes column-marble-shimmer {
-    0%, 100% {
-        filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, 0.25))
-                drop-shadow(0 0 20px rgba(224, 224, 224, 0.4));
-    }
-    50% {
-        filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, 0.25))
-                drop-shadow(0 0 35px rgba(224, 224, 224, 0.7)) brightness(1.15);
-    }
-}
-
-/* === ELEMENT 5: EXPLORER SHIP === */
+/* === ELEMENT 5: MEDIEVAL CASTLE === */
 .theme-world_history .elem-5 {
-    position: absolute;
-    bottom: 32%;
-    left: 38%;
-    width: 65px;
+    top: 8%;
+    right: 10%;
+    width: 80px;
+    height: 70px;
+    z-index: 14;
+}
+
+/* Castle main body */
+.theme-world_history .elem-5::before {
+    bottom: 0;
+    left: 5px;
+    width: 70px;
+    height: 50px;
+    background: linear-gradient(180deg,
+        var(--world-stone-light) 0%,
+        var(--world-stone-mid) 50%,
+        var(--world-stone-dark) 100%);
+    box-shadow:
+        inset -5px -5px 10px rgba(69, 90, 100, 0.5),
+        inset 5px 5px 8px rgba(144, 164, 174, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Castle towers using border triangles */
+.theme-world_history .elem-5::after {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid var(--world-stone-dark);
+    box-shadow:
+        /* Tower 2 */
+        28px 0 0 0 var(--world-stone-dark),
+        /* Tower 3 */
+        56px 0 0 0 var(--world-stone-dark),
+        /* Tower bases */
+        0 20px 0 8px var(--world-stone-mid),
+        28px 20px 0 8px var(--world-stone-mid),
+        56px 20px 0 8px var(--world-stone-mid);
+    animation: world-castle-float 12s ease-in-out infinite;
+}
+
+@keyframes world-castle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* === DEER LEGS: CASTLE FLAG === */
+.theme-world_history .deer-legs {
+    top: 15%;
+    right: 12%;
+    width: 20px;
+    height: 15px;
+    background: #C62828;
+    clip-path: polygon(0 0, 100% 0, 80% 50%, 100% 100%, 0 100%);
+    z-index: 15;
+    animation: world-flag-wave 2s ease-in-out infinite;
+}
+
+/* Flag pole */
+.theme-world_history .deer-legs::before {
+    left: -3px;
+    top: -5px;
+    width: 3px;
+    height: 25px;
+    background: var(--world-stone-dark);
+}
+
+@keyframes world-flag-wave {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(0.9) skewY(3deg); }
+}
+
+/* === ELEMENT 6: ANCIENT SHIP === */
+.theme-world_history .elem-6 {
+    bottom: 12%;
+    left: 35%;
+    width: 70px;
     height: 55px;
-    z-index: 9;
-    pointer-events: none;
-    animation: ship-voyage-waves 15s ease-in-out infinite,
-               ship-rock 4s ease-in-out infinite;
+    z-index: 10;
+    animation: world-ship-sail 15s ease-in-out infinite;
 }
 
 /* Ship hull */
-.theme-world_history .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 55px;
-    height: 28px;
+.theme-world_history .elem-6::before {
     bottom: 0;
     left: 5px;
-    background:
-        radial-gradient(ellipse at 50% 30%, #5D4037, #4E342E 60%, #3E2723);
-    border-radius: 42% 42% 52% 52% / 32% 32% 72% 72%;
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4))
-            drop-shadow(0 0 25px rgba(93, 64, 55, 0.4));
+    width: 55px;
+    height: 25px;
+    background: linear-gradient(180deg,
+        var(--world-wood-light) 0%,
+        var(--world-wood-mid) 50%,
+        var(--world-wood-dark) 100%);
+    border-radius: 5px 5px 50% 50% / 5px 5px 100% 100%;
+    box-shadow:
+        inset -5px -5px 10px rgba(62, 39, 35, 0.6),
+        inset 5px 5px 8px rgba(141, 110, 99, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Ship sail */
-.theme-world_history .elem-5::after {
-    content: '';
-    position: absolute;
-    width: 32px;
-    height: 38px;
-    left: 16.5px;
-    top: 6px;
-    background:
-        linear-gradient(125deg, #ECEFF1 0%, #CFD8DC 55%, #B0BEC5 100%);
-    clip-path: polygon(6% 6%, 94% 6%, 88% 94%, 12% 94%);
-    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.25))
-            drop-shadow(0 0 20px rgba(236, 239, 241, 0.5));
-    animation: ship-sail-billow 3s ease-in-out infinite;
+/* Ship sail using border triangle */
+.theme-world_history .elem-6::after {
+    bottom: 25px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 35px solid #ECEFF1;
+    box-shadow:
+        0 0 20px rgba(236, 239, 241, 0.5);
+    animation: world-sail-billow 3s ease-in-out infinite;
 }
 
-@keyframes ship-voyage-waves {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(18px) rotate(3deg); }
-    50% { transform: translateX(38px) rotate(0deg); }
-    75% { transform: translateX(22px) rotate(-2deg); }
+@keyframes world-ship-sail {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(15px) translateY(-5px); }
+    50% { transform: translateX(30px) translateY(0); }
+    75% { transform: translateX(15px) translateY(-3px); }
 }
 
-@keyframes ship-rock {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-6px) rotate(-4deg); }
-    75% { transform: translateY(-4px) rotate(4deg); }
-}
-
-@keyframes ship-sail-billow {
+@keyframes world-sail-billow {
     0%, 100% { transform: scaleX(1); }
     50% { transform: scaleX(1.1); }
 }
 
-/* === DAY/NIGHT ATMOSPHERIC CYCLE === */
-.theme-world_history .scene-background {
-    animation: world-day-night 80s ease-in-out infinite;
+/* === ELEMENT 7: COMPASS ROSE === */
+.theme-world_history .elem-7 {
+    top: 48%;
+    left: 10%;
+    width: 65px;
+    height: 65px;
+    z-index: 14;
+    animation: world-compass-float 10s ease-in-out infinite;
 }
 
-@keyframes world-day-night {
-    0%, 100% { filter: brightness(1) sepia(0.18) saturate(1.05); }
-    25% { filter: brightness(1.12) sepia(0.22) saturate(1.15) hue-rotate(6deg); }
-    50% { filter: brightness(0.58) sepia(0.48) saturate(0.88) hue-rotate(-14deg); }
-    75% { filter: brightness(0.82) sepia(0.32) saturate(0.92) hue-rotate(-7deg); }
+/* Compass outer ring */
+.theme-world_history .elem-7::before {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 35% 30%,
+        var(--world-gold-light) 0%,
+        var(--world-gold-mid) 50%,
+        var(--world-gold-dark) 100%);
+    border-radius: 50%;
+    box-shadow:
+        inset -8px -8px 15px rgba(184, 134, 11, 0.7),
+        inset 8px 8px 12px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.6),
+        0 0 80px rgba(218, 165, 32, 0.3);
+}
+
+/* Compass needle (N-S) using border triangle */
+.theme-world_history .elem-7::after {
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 25px solid #D32F2F;
+    box-shadow:
+        0 25px 0 0 #ECEFF1,
+        0 0 10px rgba(211, 47, 47, 0.6);
+    animation: world-needle-spin 8s linear infinite;
+}
+
+@keyframes world-compass-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes world-needle-spin {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* === TURBINE BLADES: COMPASS E-W POINTER === */
+.theme-world_history .turbine-blades {
+    top: 50%;
+    left: 12%;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 25px solid var(--world-gold-mid);
+    z-index: 15;
+    transform: translateY(-50%);
+    box-shadow:
+        -25px 0 0 0 var(--world-gold-dark);
+    animation: world-needle-spin 8s linear infinite;
+}
+
+/* === ELEMENT 8: FLOATING SCROLLS === */
+.theme-world_history .elem-8 {
+    top: 30%;
+    left: 60%;
+    width: 40px;
+    height: 50px;
+    z-index: 9;
+    animation: world-scroll-float 12s ease-in-out infinite;
+}
+
+/* Main scroll */
+.theme-world_history .elem-8::before {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+        var(--world-parchment-light) 0%,
+        var(--world-parchment-mid) 100%);
+    border-radius: 5px;
+    box-shadow:
+        inset -3px -3px 8px rgba(139, 90, 43, 0.3),
+        inset 3px 3px 6px rgba(245, 222, 179, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        /* Scroll roll ends */
+        -3px 0 0 3px var(--world-parchment-mid),
+        -3px 45px 0 3px var(--world-parchment-mid),
+        43px 0 0 3px var(--world-parchment-mid),
+        43px 45px 0 3px var(--world-parchment-mid);
+}
+
+/* Scroll text lines */
+.theme-world_history .elem-8::after {
+    top: 8px;
+    left: 5px;
+    width: 30px;
+    height: 2px;
+    background: rgba(139, 90, 43, 0.4);
+    box-shadow:
+        0 8px 0 0 rgba(139, 90, 43, 0.35),
+        0 16px 0 0 rgba(139, 90, 43, 0.3),
+        0 24px 0 0 rgba(139, 90, 43, 0.35),
+        0 32px 0 0 rgba(139, 90, 43, 0.3);
+}
+
+@keyframes world-scroll-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(8deg); }
+    50% { transform: translateY(-35px) rotate(-5deg); }
+    75% { transform: translateY(-15px) rotate(10deg); }
+}
+
+/* === ELEMENT 9: FLYING BIRDS === */
+.theme-world_history .elem-9 {
+    top: 25%;
+    left: 20%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 4px solid rgba(26, 35, 126, 0.6);
+    z-index: 8;
+    box-shadow:
+        30px 12px 0 0 rgba(26, 35, 126, 0.5),
+        55px 5px 0 0 rgba(26, 35, 126, 0.55),
+        80px 18px 0 0 rgba(26, 35, 126, 0.45);
+    animation: world-birds-fly 20s linear infinite;
+}
+
+.theme-world_history .elem-9::before {
+    top: 80px;
+    left: 150px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 3px solid rgba(26, 35, 126, 0.5);
+    box-shadow:
+        20px 8px 0 0 rgba(26, 35, 126, 0.45),
+        45px 3px 0 0 rgba(26, 35, 126, 0.5);
+}
+
+@keyframes world-birds-fly {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+/* === BIRDS-2: MORE FLYING BIRDS === */
+.theme-world_history .birds-2 {
+    top: 35%;
+    right: 30%;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 3px solid rgba(57, 73, 171, 0.5);
+    z-index: 7;
+    box-shadow:
+        25px 10px 0 0 rgba(57, 73, 171, 0.45),
+        50px 4px 0 0 rgba(57, 73, 171, 0.5);
+    animation: world-birds-fly-2 25s linear infinite 5s;
+}
+
+@keyframes world-birds-fly-2 {
+    0% { transform: translateX(-50px); }
+    100% { transform: translateX(calc(100vw + 50px)); }
+}
+
+/* === GRASS: ANCIENT GRASS/BUSHES === */
+.theme-world_history .grass {
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 16;
+}
+
+/* Grass tufts using border triangles */
+.theme-world_history .grass::before {
+    bottom: 0;
+    left: 5%;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 15px solid var(--world-parchment-dark);
+    box-shadow:
+        12px 3px 0 0 var(--world-parchment-dark),
+        25px -2px 0 0 var(--world-parchment-dark),
+        40px 4px 0 0 var(--world-parchment-dark),
+        55px 0 0 0 var(--world-parchment-dark),
+        70px 3px 0 0 var(--world-parchment-dark),
+        90px -1px 0 0 var(--world-parchment-dark),
+        110px 4px 0 0 var(--world-parchment-dark),
+        130px 2px 0 0 var(--world-parchment-dark),
+        150px -2px 0 0 var(--world-parchment-dark),
+        170px 3px 0 0 var(--world-parchment-dark),
+        190px 0 0 0 var(--world-parchment-dark),
+        210px 4px 0 0 var(--world-parchment-dark),
+        230px -1px 0 0 var(--world-parchment-dark),
+        250px 2px 0 0 var(--world-parchment-dark),
+        270px 3px 0 0 var(--world-parchment-dark);
+    animation: world-grass-sway 5s ease-in-out infinite;
+}
+
+@keyframes world-grass-sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* === SCENE PARTICLES: GOLDEN DUST === */
+.theme-world_history .scene-particles {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 18;
+    pointer-events: none;
+}
+
+.theme-world_history .scene-particles::before {
+    top: 20%;
+    left: 15%;
+    width: 3px;
+    height: 3px;
+    background: var(--world-gold-light);
+    border-radius: 50%;
+    box-shadow:
+        50px 30px 0 0 var(--world-gold-mid),
+        120px -20px 0 0 var(--world-gold-light),
+        180px 50px 0 0 var(--world-gold-dark),
+        250px 10px 0 0 var(--world-gold-mid),
+        40px 100px 0 0 var(--world-gold-light),
+        150px 80px 0 0 var(--world-gold-mid),
+        220px 120px 0 0 var(--world-gold-dark),
+        80px 150px 0 0 var(--world-gold-light),
+        200px 160px 0 0 var(--world-gold-mid),
+        /* Glowing particles */
+        0 0 8px 2px rgba(255, 215, 0, 0.5),
+        50px 30px 8px 2px rgba(218, 165, 32, 0.4),
+        120px -20px 8px 2px rgba(255, 215, 0, 0.5),
+        180px 50px 8px 2px rgba(184, 134, 11, 0.4);
+    animation: world-dust-float 15s ease-in-out infinite;
+}
+
+@keyframes world-dust-float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-15px) translateX(10px);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-25px) translateX(-5px);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-10px) translateX(12px);
+        opacity: 0.85;
+    }
+}
+
+/* === DEPTH FOG === */
+.theme-world_history .depth-fog {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(197, 202, 233, 0.1) 50%,
+        rgba(197, 202, 233, 0.3) 100%);
+    z-index: 17;
+    pointer-events: none;
+}
+
+/* === CLOUD-2: FLOATING CLOUDS === */
+.theme-world_history .cloud-2 {
+    top: 15%;
+    left: -100px;
+    width: 80px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    z-index: 6;
+    box-shadow:
+        20px -12px 0 5px rgba(255, 255, 255, 0.5),
+        45px -8px 0 8px rgba(255, 255, 255, 0.55),
+        65px -5px 0 3px rgba(255, 255, 255, 0.5);
+    animation: world-cloud-drift 60s linear infinite;
+}
+
+.theme-world_history .cloud-3 {
+    top: 22%;
+    left: -150px;
+    width: 60px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    z-index: 5;
+    box-shadow:
+        15px -10px 0 4px rgba(255, 255, 255, 0.45),
+        35px -6px 0 6px rgba(255, 255, 255, 0.5);
+    animation: world-cloud-drift 80s linear infinite 10s;
+}
+
+@keyframes world-cloud-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 200px)); }
+}
+
+/* === ATMOSPHERIC LIGHTING === */
+.theme-world_history .scene-background {
+    animation: world-time-cycle 60s ease-in-out infinite;
+}
+
+@keyframes world-time-cycle {
+    0%, 100% { filter: brightness(1) saturate(1.1) sepia(0.1); }
+    25% { filter: brightness(1.1) saturate(1.2) sepia(0.15); }
+    50% { filter: brightness(0.85) saturate(0.95) sepia(0.25); }
+    75% { filter: brightness(0.95) saturate(1.05) sepia(0.2); }
 }
 
 /* === MASCOT ANIMATIONS === */
@@ -440,13 +892,13 @@
 .theme-world_history .owl-character.happy,
 .theme-world_history .cat-character.happy,
 .theme-world_history .robot-character.happy {
-    animation: world-happy-discover 2.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: world-happy-discover 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes world-happy-discover {
     0% { transform: scale(1) translateY(0) rotate(0deg); }
-    20% { transform: scale(1.14) translateY(-18px) rotate(-12deg); }
-    40% { transform: scale(1.24) translateY(-28px) rotate(12deg); }
+    20% { transform: scale(1.15) translateY(-18px) rotate(-12deg); }
+    40% { transform: scale(1.25) translateY(-30px) rotate(12deg); }
     60% { transform: scale(1.18) translateY(-24px) rotate(-8deg); }
     80% { transform: scale(1.08) translateY(-12px) rotate(4deg); }
     100% { transform: scale(1) translateY(0) rotate(0deg); }
@@ -454,13 +906,13 @@
 
 .theme-world_history .robot-character.excited,
 .theme-world_history .owl-character.excited {
-    animation: world-epic-discovery 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: world-epic-discovery 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes world-epic-discovery {
     0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-    25% { transform: translateY(-24px) rotate(20deg) scale(1.15); }
-    50% { transform: translateY(-14px) rotate(-15deg) scale(1.18); }
+    25% { transform: translateY(-25px) rotate(20deg) scale(1.15); }
+    50% { transform: translateY(-15px) rotate(-15deg) scale(1.2); }
     75% { transform: translateY(-28px) rotate(8deg) scale(1.12); }
 }
 
@@ -469,13 +921,13 @@
 .theme-world_history .owl-character.sad,
 .theme-world_history .cat-character.sad,
 .theme-world_history .robot-character.sad {
-    animation: world-sad-lost 2.6s ease-out forwards;
+    animation: world-sad-lost 2.8s ease-out forwards;
 }
 
 @keyframes world-sad-lost {
     0% { transform: scale(1) translateY(0); filter: brightness(1) saturate(1) sepia(0); }
     50% { transform: scale(0.88) translateY(12px); filter: brightness(0.78) saturate(0.65) sepia(0.25); }
-    100% { transform: scale(0.82) translateY(18px); filter: brightness(0.58) saturate(0.5) sepia(0.42); }
+    100% { transform: scale(0.82) translateY(18px); filter: brightness(0.6) saturate(0.5) sepia(0.4); }
 }
 
 .theme-world_history .owl-character.idle {
@@ -486,4 +938,42 @@
     0%, 100% { transform: rotate(0deg) scale(1); }
     30% { transform: rotate(-12deg) scale(1.05); }
     70% { transform: rotate(12deg) scale(1.03); }
+}
+
+.theme-world_history .bunny-character.idle {
+    animation: world-bunny-explore 5s ease-in-out infinite;
+}
+
+@keyframes world-bunny-explore {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(8px) rotate(5deg); }
+    75% { transform: translateX(-8px) rotate(-5deg); }
+}
+
+.theme-world_history .cat-character.idle {
+    animation: world-cat-curious 4.5s ease-in-out infinite;
+}
+
+@keyframes world-cat-curious {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(3deg); }
+}
+
+.theme-world_history .robot-character.idle {
+    animation: world-robot-scan 5.5s ease-in-out infinite;
+}
+
+@keyframes world-robot-scan {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.theme-world_history .worm-character.idle {
+    animation: world-worm-wiggle 4s ease-in-out infinite;
+}
+
+@keyframes world-worm-wiggle {
+    0%, 100% { transform: rotate(0deg) scaleX(1); }
+    25% { transform: rotate(3deg) scaleX(1.02); }
+    75% { transform: rotate(-3deg) scaleX(0.98); }
 }

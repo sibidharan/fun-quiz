@@ -1,626 +1,1099 @@
 /* ============================================
-   INVENTIONS THEME - Premium Cinematic Edition
-   Bright yellow/orange innovation wonderland
-   Glowing light bulb, turning gears, rocket, wheel
-   Eureka rays, spark particles, atmospheric effects
+   INVENTIONS THEME - JULIA MIOCENE STYLE
+   Vintage Inventor's Workshop
+   Edison bulb, gears, telescope, steam engine
+   Biplane, rotary phone, blueprints, eureka sparks
    ============================================ */
 
-/* === LAYERED GRADIENT BACKGROUND === */
+:root {
+    /* Workshop sky/atmosphere */
+    --inv-sky-top: #FFB74D;
+    --inv-sky-mid: #FF9800;
+    --inv-sky-warm: #F57C00;
+    --inv-horizon: #CD853F;
+
+    /* Workshop ground */
+    --inv-ground-light: #8B6914;
+    --inv-ground-mid: #6F4E37;
+    --inv-ground-dark: #3E2723;
+
+    /* Brass/Gold metals */
+    --inv-brass-light: #DAA520;
+    --inv-brass: #B8860B;
+    --inv-brass-dark: #8B6914;
+
+    /* Copper metals */
+    --inv-copper-light: #D2691E;
+    --inv-copper: #CD853F;
+    --inv-copper-dark: #8B4513;
+
+    /* Iron/Steel */
+    --inv-iron-light: #757575;
+    --inv-iron: #424242;
+    --inv-iron-dark: #212121;
+
+    /* Light/Glow */
+    --inv-glow-bright: #FFD700;
+    --inv-glow: #FFC107;
+    --inv-glow-soft: #FFECB3;
+
+    /* Blueprint */
+    --inv-blueprint: #4169E1;
+    --inv-blueprint-paper: #E8F4F8;
+}
+
+/* === BASE SETUP === */
 .theme-inventions .scene-background {
-    background:
-        /* Top eureka glow */
-        radial-gradient(ellipse 800px 400px at 50% 0%, rgba(255, 235, 59, 0.4) 0%, transparent 60%),
-        /* Left orange innovation burst */
-        radial-gradient(ellipse 600px 600px at 0% 50%, rgba(255, 152, 0, 0.35) 0%, transparent 50%),
-        /* Right gear dust */
-        radial-gradient(ellipse 500px 500px at 100% 40%, rgba(120, 144, 156, 0.25) 0%, transparent 55%),
-        /* Bottom workshop glow */
-        radial-gradient(ellipse 900px 300px at 50% 100%, rgba(255, 193, 7, 0.3) 0%, transparent 50%),
-        /* Main gradient - warm industrial workshop */
-        linear-gradient(180deg,
-            #FFB74D 0%,
-            #FFA726 8%,
-            #FF9800 15%,
-            #FB8C00 25%,
-            #F57C00 35%,
-            #EF6C00 45%,
-            #E65100 55%,
-            #BF360C 65%,
-            #8D6E63 75%,
-            #6D4C41 85%,
-            #5D4037 95%,
-            #4E342E 100%);
+    background: linear-gradient(180deg,
+        var(--inv-sky-top) 0%,
+        var(--inv-sky-mid) 25%,
+        var(--inv-sky-warm) 40%,
+        var(--inv-horizon) 55%,
+        var(--inv-ground-light) 55%,
+        var(--inv-ground-mid) 75%,
+        var(--inv-ground-dark) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === BLUEPRINT GRID PATTERN === */
-.theme-inventions .scene-background::before {
+.theme-inventions .scene-background *,
+.theme-inventions .scene-background *::before,
+.theme-inventions .scene-background *::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(90deg, rgba(255, 193, 7, 0.08) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 193, 7, 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: inventions-grid-shimmer 8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 1;
 }
 
-@keyframes inventions-grid-shimmer {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+/* === WORKSHOP BUILDINGS SILHOUETTE (BORDER TECHNIQUE) === */
+/* Main factory building - left */
+.theme-inventions .elem-0-ultra {
+    bottom: 45%;
+    left: 5%;
+    width: 120px;
+    height: 80px;
+    background: var(--inv-ground-dark);
+    z-index: 5;
 }
 
-/* === WORKSHOP DUST OVERLAY === */
-.theme-inventions .scene-background::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(2px 2px at 15% 25%, rgba(255, 193, 7, 0.4) 50%, transparent 51%),
-        radial-gradient(1px 1px at 45% 15%, rgba(255, 152, 0, 0.5) 50%, transparent 51%),
-        radial-gradient(2px 2px at 75% 35%, rgba(255, 235, 59, 0.4) 50%, transparent 51%),
-        radial-gradient(1px 1px at 25% 65%, rgba(255, 193, 7, 0.3) 50%, transparent 51%),
-        radial-gradient(2px 2px at 85% 75%, rgba(255, 152, 0, 0.4) 50%, transparent 51%),
-        radial-gradient(1px 1px at 55% 85%, rgba(255, 235, 59, 0.5) 50%, transparent 51%);
-    animation: inventions-dust-float 12s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
+/* Factory roof peak using border triangle */
+.theme-inventions .elem-0-ultra::before {
+    bottom: 100%;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 40px solid var(--inv-ground-dark);
 }
 
-@keyframes inventions-dust-float {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translateY(-20px);
-        opacity: 1;
-    }
+/* Tall chimney stack */
+.theme-inventions .elem-0-ultra::after {
+    bottom: 100%;
+    right: 15px;
+    width: 20px;
+    height: 70px;
+    background: linear-gradient(90deg,
+        var(--inv-iron) 0%,
+        var(--inv-iron-dark) 50%,
+        var(--inv-iron) 100%);
+    border-radius: 2px 2px 0 0;
 }
 
-/* === ELEMENT 1: GLOWING LIGHT BULB === */
+/* Second workshop building - right */
+.theme-inventions .elem-0-far {
+    bottom: 45%;
+    right: 8%;
+    width: 100px;
+    height: 70px;
+    background: rgba(62, 39, 35, 0.9);
+    z-index: 5;
+}
+
+/* Workshop roof */
+.theme-inventions .elem-0-far::before {
+    bottom: 100%;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 35px solid rgba(62, 39, 35, 0.9);
+}
+
+/* Workshop window glow */
+.theme-inventions .elem-0-far::after {
+    top: 20px;
+    left: 20px;
+    width: 25px;
+    height: 30px;
+    background: rgba(255, 193, 7, 0.6);
+    border-radius: 3px;
+    box-shadow:
+        40px 0 0 0 rgba(255, 193, 7, 0.5),
+        0 0 15px 5px rgba(255, 193, 7, 0.4),
+        40px 0 15px 5px rgba(255, 193, 7, 0.3);
+}
+
+/* === EDISON LIGHT BULB (MAIN CENTERPIECE) === */
 .theme-inventions .elem-1 {
-    position: absolute;
-    top: 12%;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 100px;
-    z-index: 15;
-    animation: inventions-bulb-eureka 3.5s ease-in-out infinite;
-    pointer-events: none;
+    width: 70px;
+    height: 90px;
+    z-index: 20;
+    animation: inventions-bulb-glow 4s ease-in-out infinite;
 }
 
-/* Bulb glass */
+/* Bulb glass - oval shape */
 .theme-inventions .elem-1::before {
-    content: '';
-    position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
-    height: 70px;
-    background:
-        /* Filament glow */
-        radial-gradient(ellipse 6px 25px at 50% 50%, #FFD700 0%, #FFA000 100%),
-        /* Inner glow */
-        radial-gradient(ellipse at 50% 50%, rgba(255, 235, 59, 0.9) 0%, rgba(255, 235, 59, 0.5) 35%, transparent 65%),
-        /* Glass shine */
-        radial-gradient(ellipse at 25% 20%, rgba(255, 255, 255, 0.7) 0%, transparent 30%),
-        /* Glass body */
-        radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(230, 230, 230, 0.9) 100%);
-    border-radius: 50% 50% 48% 48%;
+    height: 75px;
+    background: radial-gradient(ellipse at 50% 40%,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 200, 0.9) 40%,
+        rgba(255, 236, 179, 0.85) 100%);
+    border-radius: 50% 50% 45% 45%;
     box-shadow:
-        inset 0 -8px 20px rgba(0, 0, 0, 0.1),
-        0 0 40px rgba(255, 235, 59, 0.8),
-        0 0 80px rgba(255, 193, 7, 0.5);
-    filter: drop-shadow(0 0 15px rgba(255, 235, 59, 0.7));
+        inset -5px -5px 15px rgba(255, 255, 255, 0.5),
+        inset 5px 5px 15px rgba(255, 215, 0, 0.3),
+        0 0 40px 15px rgba(255, 215, 0, 0.6),
+        0 0 80px 30px rgba(255, 193, 7, 0.4),
+        0 0 120px 50px rgba(255, 152, 0, 0.2);
 }
 
-/* Bulb base */
+/* Bulb metal screw base */
 .theme-inventions .elem-1::after {
-    content: '';
-    position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 30px;
-    height: 30px;
-    background:
-        /* Screw threads */
-        repeating-linear-gradient(180deg,
-            #CFD8DC 0px,
-            #CFD8DC 4px,
-            #B0BEC5 4px,
-            #B0BEC5 5px,
-            #90A4AE 5px,
-            #90A4AE 9px),
-        /* Base gradient */
-        linear-gradient(180deg, #ECEFF1 0%, #78909C 100%);
-    border-radius: 4px 4px 10px 10px;
+    height: 22px;
+    background: repeating-linear-gradient(180deg,
+        var(--inv-iron-light) 0px,
+        var(--inv-iron-light) 3px,
+        var(--inv-iron) 3px,
+        var(--inv-iron) 5px);
+    border-radius: 3px 3px 8px 8px;
     box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.3),
-        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+        inset 2px 2px 5px rgba(255, 255, 255, 0.3),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes inventions-bulb-eureka {
+@keyframes inventions-bulb-glow {
     0%, 100% {
-        transform: translateX(-50%) scale(1);
         filter: brightness(1);
     }
-    15% {
-        transform: translateX(-50%) scale(0.98);
-    }
-    30%, 70% {
-        transform: translateX(-50%) scale(1.15);
-        filter: brightness(1.6);
-    }
-    85% {
-        transform: translateX(-50%) scale(1.05);
-        filter: brightness(1.2);
+    50% {
+        filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
     }
 }
 
-/* === ELEMENT 2: TURNING GEARS === */
+/* === BULB FILAMENT (INSIDE BULB) === */
+.theme-inventions .elem-1-fg {
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 40px;
+    z-index: 21;
+}
+
+/* Filament coil - zigzag using box-shadow */
+.theme-inventions .elem-1-fg::before {
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 25px;
+    background: var(--inv-glow-bright);
+    box-shadow:
+        -4px 5px 0 0 var(--inv-glow-bright),
+        4px 10px 0 0 var(--inv-glow-bright),
+        -4px 15px 0 0 var(--inv-glow-bright),
+        4px 20px 0 0 var(--inv-glow-bright),
+        0 0 8px 2px var(--inv-glow);
+    animation: inventions-filament-flicker 0.5s ease-in-out infinite;
+}
+
+/* Filament support wires */
+.theme-inventions .elem-1-fg::after {
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 15px;
+    background: var(--inv-brass-dark);
+    box-shadow:
+        -6px 0 0 0 var(--inv-brass-dark),
+        6px 0 0 0 var(--inv-brass-dark);
+}
+
+@keyframes inventions-filament-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+/* === LARGE BRASS GEAR (BOX-SHADOW TEETH) === */
 .theme-inventions .elem-2 {
-    position: absolute;
-    bottom: 28%;
+    bottom: 20%;
     right: 12%;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at 40% 40%,
+        var(--inv-brass-light) 0%,
+        var(--inv-brass) 50%,
+        var(--inv-brass-dark) 100%);
+    border-radius: 50%;
     z-index: 12;
-    pointer-events: none;
+    animation: inventions-gear-spin 15s linear infinite;
+    box-shadow:
+        inset -5px -5px 15px rgba(0, 0, 0, 0.4),
+        inset 3px 3px 10px rgba(255, 215, 0, 0.3),
+        4px 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Large gear */
+/* Gear center hub */
 .theme-inventions .elem-2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 70px;
-    height: 70px;
-    background:
-        /* Center hole */
-        radial-gradient(circle at 50% 50%, transparent 0%, transparent 22%, #455A64 23%, #455A64 100%),
-        /* Gear teeth - 8 teeth */
-        conic-gradient(from 0deg,
-            #78909C 0deg, #78909C 18deg, transparent 18deg, transparent 27deg,
-            #78909C 45deg, #78909C 63deg, transparent 63deg, transparent 72deg,
-            #78909C 90deg, #78909C 108deg, transparent 108deg, transparent 117deg,
-            #78909C 135deg, #78909C 153deg, transparent 153deg, transparent 162deg,
-            #78909C 180deg, #78909C 198deg, transparent 198deg, transparent 207deg,
-            #78909C 225deg, #78909C 243deg, transparent 243deg, transparent 252deg,
-            #78909C 270deg, #78909C 288deg, transparent 288deg, transparent 297deg,
-            #78909C 315deg, #78909C 333deg, transparent 333deg, transparent 342deg,
-            #78909C 342deg, #78909C 360deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle,
+        var(--inv-brass-dark) 0%,
+        var(--inv-iron-dark) 100%);
     border-radius: 50%;
-    animation: inventions-gear-spin-cw 8s linear infinite;
-    box-shadow:
-        inset 0 0 15px rgba(0, 0, 0, 0.4),
-        inset -5px -5px 10px rgba(0, 0, 0, 0.3),
-        inset 3px 3px 8px rgba(255, 255, 255, 0.2),
-        4px 4px 15px rgba(0, 0, 0, 0.4);
-    filter: drop-shadow(0 0 8px rgba(120, 144, 156, 0.5));
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
 
-/* Small gear */
+/* Gear teeth using box-shadow multiplication (8 teeth) */
 .theme-inventions .elem-2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background:
-        /* Center hole */
-        radial-gradient(circle at 50% 50%, transparent 0%, transparent 24%, #546E7A 25%, #546E7A 100%),
-        /* Gear teeth - 6 teeth */
-        conic-gradient(from 0deg,
-            #607D8B 0deg, #607D8B 25deg, transparent 25deg, transparent 35deg,
-            #607D8B 60deg, #607D8B 85deg, transparent 85deg, transparent 95deg,
-            #607D8B 120deg, #607D8B 145deg, transparent 145deg, transparent 155deg,
-            #607D8B 180deg, #607D8B 205deg, transparent 205deg, transparent 215deg,
-            #607D8B 240deg, #607D8B 265deg, transparent 265deg, transparent 275deg,
-            #607D8B 300deg, #607D8B 325deg, transparent 325deg, transparent 335deg,
-            #607D8B 335deg, #607D8B 360deg);
-    border-radius: 50%;
-    animation: inventions-gear-spin-ccw 5.5s linear infinite;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--inv-brass);
+    border-radius: 2px;
     box-shadow:
-        inset 0 0 12px rgba(0, 0, 0, 0.4),
-        inset -3px -3px 8px rgba(0, 0, 0, 0.3),
-        inset 2px 2px 6px rgba(255, 255, 255, 0.2),
-        3px 3px 12px rgba(0, 0, 0, 0.4);
-    filter: drop-shadow(0 0 6px rgba(96, 125, 139, 0.5));
+        /* Top teeth */
+        0 88px 0 0 var(--inv-brass),
+        /* Right teeth */
+        44px 44px 0 0 var(--inv-brass),
+        /* Left teeth */
+        -44px 44px 0 0 var(--inv-brass),
+        /* Diagonal teeth */
+        31px 12px 0 0 var(--inv-brass),
+        -31px 12px 0 0 var(--inv-brass),
+        31px 76px 0 0 var(--inv-brass),
+        -31px 76px 0 0 var(--inv-brass);
 }
 
-@keyframes inventions-gear-spin-cw {
+@keyframes inventions-gear-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-@keyframes inventions-gear-spin-ccw {
+/* === SMALL COPPER GEAR (INTERLOCKING) === */
+.theme-inventions .deer-legs {
+    bottom: 28%;
+    right: 22%;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 35% 35%,
+        var(--inv-copper-light) 0%,
+        var(--inv-copper) 50%,
+        var(--inv-copper-dark) 100%);
+    border-radius: 50%;
+    z-index: 13;
+    animation: inventions-gear-spin-reverse 10s linear infinite;
+    box-shadow:
+        inset -3px -3px 10px rgba(0, 0, 0, 0.4),
+        inset 2px 2px 8px rgba(255, 160, 122, 0.3);
+}
+
+/* Small gear hub */
+.theme-inventions .deer-legs::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background: var(--inv-iron-dark);
+    border-radius: 50%;
+}
+
+/* Small gear teeth (6 teeth) */
+.theme-inventions .deer-legs::after {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--inv-copper);
+    border-radius: 2px;
+    box-shadow:
+        0 56px 0 0 var(--inv-copper),
+        28px 28px 0 0 var(--inv-copper),
+        -28px 28px 0 0 var(--inv-copper),
+        14px 5px 0 0 var(--inv-copper),
+        -14px 5px 0 0 var(--inv-copper);
+}
+
+@keyframes inventions-gear-spin-reverse {
     0% { transform: rotate(360deg); }
     100% { transform: rotate(0deg); }
 }
 
-/* === ELEMENT 3: FLYING ROCKET === */
+/* === BRASS TELESCOPE (BORDER + BOX-SHADOW) === */
 .theme-inventions .elem-3 {
-    position: absolute;
-    top: 22%;
-    right: 18%;
-    width: 60px;
-    height: 80px;
+    top: 35%;
+    left: 6%;
+    width: 120px;
+    height: 25px;
     z-index: 14;
-    animation: inventions-rocket-soar 6.5s ease-in-out infinite;
-    pointer-events: none;
+    animation: inventions-telescope-scan 10s ease-in-out infinite;
+    transform-origin: right center;
 }
 
-/* Rocket body */
+/* Telescope main tube */
 .theme-inventions .elem-3::before {
-    content: '';
-    position: absolute;
-    bottom: 20px;
+    top: 0;
+    left: 15px;
+    width: 90px;
+    height: 25px;
+    background: linear-gradient(180deg,
+        var(--inv-brass-light) 0%,
+        var(--inv-brass) 30%,
+        var(--inv-brass-dark) 70%,
+        var(--inv-brass) 100%);
+    border-radius: 4px;
+    box-shadow:
+        inset 0 3px 8px rgba(255, 215, 0, 0.3),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.3),
+        3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Telescope lens (circle) */
+.theme-inventions .elem-3::after {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle at 35% 35%,
+        rgba(173, 216, 230, 0.6) 0%,
+        rgba(135, 206, 235, 0.4) 50%,
+        transparent 70%),
+        radial-gradient(circle,
+        transparent 60%,
+        var(--inv-brass-dark) 62%,
+        var(--inv-brass) 75%,
+        var(--inv-brass-light) 85%,
+        var(--inv-brass-dark) 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(184, 134, 11, 0.4);
+}
+
+@keyframes inventions-telescope-scan {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+}
+
+/* === STEAM ENGINE BOILER === */
+.theme-inventions .elem-4 {
+    bottom: 12%;
+    left: 20%;
+    width: 70px;
+    height: 50px;
+    background: linear-gradient(180deg,
+        var(--inv-iron-light) 0%,
+        var(--inv-iron) 40%,
+        var(--inv-iron-dark) 100%);
+    border-radius: 10px;
+    z-index: 11;
+    box-shadow:
+        inset -4px -4px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 8px rgba(255, 255, 255, 0.2),
+        4px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Engine rivets using box-shadow */
+.theme-inventions .elem-4::before {
+    top: 15px;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--inv-iron-dark);
+    border-radius: 50%;
+    box-shadow:
+        15px 0 0 0 var(--inv-iron-dark),
+        30px 0 0 0 var(--inv-iron-dark),
+        45px 0 0 0 var(--inv-iron-dark),
+        0 20px 0 0 var(--inv-iron-dark),
+        15px 20px 0 0 var(--inv-iron-dark),
+        30px 20px 0 0 var(--inv-iron-dark),
+        45px 20px 0 0 var(--inv-iron-dark);
+}
+
+/* Engine smokestack */
+.theme-inventions .elem-4::after {
+    bottom: 100%;
+    left: 25px;
+    width: 18px;
+    height: 40px;
+    background: linear-gradient(90deg,
+        var(--inv-iron-light) 0%,
+        var(--inv-iron) 50%,
+        var(--inv-iron-light) 100%);
+    border-radius: 3px 3px 0 0;
+    box-shadow:
+        inset -2px 0 6px rgba(0, 0, 0, 0.4),
+        2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* === STEAM PUFFS (CIRCLES WITH BOX-SHADOW) === */
+.theme-inventions .butterfly-2 {
+    bottom: 28%;
+    left: 28%;
+    width: 25px;
+    height: 25px;
+    background: rgba(240, 240, 240, 0.7);
+    border-radius: 50%;
+    z-index: 15;
+    animation: inventions-steam-rise 4s ease-out infinite;
+}
+
+/* Multiple steam puffs */
+.theme-inventions .butterfly-2::before {
+    top: -15px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    background: rgba(230, 230, 230, 0.6);
+    border-radius: 50%;
+    box-shadow:
+        15px -20px 0 5px rgba(220, 220, 220, 0.5),
+        -5px -35px 0 8px rgba(210, 210, 210, 0.4),
+        20px -45px 0 3px rgba(200, 200, 200, 0.3);
+}
+
+.theme-inventions .butterfly-2::after {
+    top: -60px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: rgba(200, 200, 200, 0.3);
+    border-radius: 50%;
+    animation: inventions-steam-fade 4s ease-out infinite;
+}
+
+@keyframes inventions-steam-rise {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-60px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes inventions-steam-fade {
+    0%, 30% { opacity: 0; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0; }
+}
+
+/* === WRIGHT BROTHERS BIPLANE === */
+.theme-inventions .elem-5 {
+    top: 18%;
+    right: 18%;
+    width: 90px;
+    height: 35px;
+    z-index: 16;
+    animation: inventions-plane-fly 12s ease-in-out infinite;
+}
+
+/* Plane fuselage */
+.theme-inventions .elem-5::before {
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 55px;
+    height: 10px;
+    background: linear-gradient(180deg,
+        var(--inv-copper-dark) 0%,
+        #654321 50%,
+        var(--inv-copper-dark) 100%);
+    border-radius: 5px 2px 2px 5px;
+    box-shadow:
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+        2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Wings (double - biplane style) */
+.theme-inventions .elem-5::after {
+    top: 5px;
+    left: 25px;
+    width: 60px;
+    height: 6px;
+    background: linear-gradient(180deg,
+        #F5DEB3 0%,
+        #D2B48C 100%);
+    border-radius: 15px;
+    box-shadow:
+        /* Bottom wing */
+        0 20px 0 0 #D2B48C,
+        /* Wing struts */
+        15px 10px 0 -2px var(--inv-copper-dark),
+        35px 10px 0 -2px var(--inv-copper-dark),
+        /* Wing shadows */
+        0 2px 6px rgba(0, 0, 0, 0.2),
+        0 22px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes inventions-plane-fly {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-25px) translateX(-15px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-10px) translateX(10px) rotate(3deg);
+    }
+    75% {
+        transform: translateY(-30px) translateX(-5px) rotate(-3deg);
+    }
+}
+
+/* === PROPELLER (SPINNING) === */
+.theme-inventions .butterfly-3 {
+    top: 20%;
+    right: 26%;
+    width: 3px;
+    height: 22px;
+    background: linear-gradient(180deg,
+        var(--inv-copper-dark) 0%,
+        #654321 50%,
+        var(--inv-copper-dark) 100%);
+    border-radius: 50%;
+    z-index: 17;
+    animation: inventions-propeller-spin 0.15s linear infinite,
+               inventions-plane-fly 12s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+@keyframes inventions-propeller-spin {
+    0% { transform: scaleX(1); }
+    25% { transform: scaleX(0.2); }
+    50% { transform: scaleX(1); }
+    75% { transform: scaleX(0.2); }
+    100% { transform: scaleX(1); }
+}
+
+/* === ROTARY TELEPHONE === */
+.theme-inventions .elem-6 {
+    bottom: 30%;
+    left: 32%;
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(180deg,
+        #2c2c2c 0%,
+        #1a1a1a 100%);
+    border-radius: 8px;
+    z-index: 10;
+    animation: inventions-phone-ring 6s ease-in-out infinite;
+    box-shadow:
+        inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+        inset 2px 2px 6px rgba(80, 80, 80, 0.3),
+        3px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Rotary dial */
+.theme-inventions .elem-6::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle,
+        #0a0a0a 0%,
+        #0a0a0a 35%,
+        #2a2a2a 36%,
+        #1a1a1a 100%);
+    border-radius: 50%;
+    box-shadow:
+        /* Dial holes using box-shadow */
+        0 -10px 0 -3px #0a0a0a,
+        7px -7px 0 -3px #0a0a0a,
+        10px 0 0 -3px #0a0a0a,
+        7px 7px 0 -3px #0a0a0a,
+        0 10px 0 -3px #0a0a0a,
+        -7px 7px 0 -3px #0a0a0a,
+        -10px 0 0 -3px #0a0a0a,
+        -7px -7px 0 -3px #0a0a0a;
+}
+
+/* Handset */
+.theme-inventions .elem-6::after {
+    top: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 35px;
-    height: 50px;
-    background:
-        /* Window */
-        radial-gradient(circle 10px at 50% 30%, #81D4FA 0%, #29B6F6 100%),
-        /* Body gradient */
-        linear-gradient(180deg, #F44336 0%, #E53935 40%, #D32F2F 100%);
-    border-radius: 18px 18px 6px 6px;
+    width: 45px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        #2c2c2c 0%,
+        #1a1a1a 50%,
+        #2c2c2c 100%);
+    border-radius: 10px;
     box-shadow:
-        inset -4px -4px 12px rgba(0, 0, 0, 0.3),
-        inset 2px 2px 8px rgba(255, 255, 255, 0.2),
-        3px 4px 12px rgba(244, 67, 54, 0.5);
-    filter: drop-shadow(0 0 10px rgba(244, 67, 54, 0.4));
+        inset 0 -2px 5px rgba(0, 0, 0, 0.4),
+        2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Rocket nose cone */
-.theme-inventions .elem-3::after {
-    content: '';
-    position: absolute;
+@keyframes inventions-phone-ring {
+    0%, 85%, 100% { transform: rotate(0deg); }
+    88%, 92%, 96% { transform: rotate(-3deg); }
+    90%, 94%, 98% { transform: rotate(3deg); }
+}
+
+/* === BLUEPRINT PAPER === */
+.theme-inventions .elem-7 {
+    bottom: 25%;
+    right: 25%;
+    width: 90px;
+    height: 70px;
+    background:
+        /* Grid lines */
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 9px,
+            rgba(100, 149, 237, 0.15) 9px,
+            rgba(100, 149, 237, 0.15) 10px),
+        repeating-linear-gradient(180deg,
+            transparent 0px,
+            transparent 9px,
+            rgba(100, 149, 237, 0.15) 9px,
+            rgba(100, 149, 237, 0.15) 10px),
+        /* Paper color */
+        linear-gradient(135deg,
+            var(--inv-blueprint-paper) 0%,
+            #D0E8F0 100%);
+    border-radius: 2px;
+    z-index: 9;
+    box-shadow:
+        3px 4px 10px rgba(0, 0, 0, 0.3),
+        inset 0 0 15px rgba(255, 255, 255, 0.5);
+    animation: inventions-blueprint-float 8s ease-in-out infinite;
+}
+
+/* Blueprint technical drawing lines */
+.theme-inventions .elem-7::before {
+    top: 15px;
+    left: 15px;
+    width: 60px;
+    height: 40px;
+    background:
+        /* Horizontal lines */
+        linear-gradient(180deg,
+            transparent 0%, transparent 20%,
+            var(--inv-blueprint) 20%, var(--inv-blueprint) 22%,
+            transparent 22%, transparent 45%,
+            var(--inv-blueprint) 45%, var(--inv-blueprint) 47%,
+            transparent 47%, transparent 70%,
+            var(--inv-blueprint) 70%, var(--inv-blueprint) 72%,
+            transparent 72%, transparent 100%),
+        /* Vertical lines */
+        linear-gradient(90deg,
+            transparent 0%, transparent 25%,
+            var(--inv-blueprint) 25%, var(--inv-blueprint) 27%,
+            transparent 27%, transparent 70%,
+            var(--inv-blueprint) 70%, var(--inv-blueprint) 72%,
+            transparent 72%, transparent 100%);
+    animation: inventions-draw-lines 8s ease-in-out infinite;
+}
+
+/* Blueprint corner curl (border triangle) */
+.theme-inventions .elem-7::after {
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid rgba(100, 149, 237, 0.25);
+}
+
+@keyframes inventions-blueprint-float {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg) translateY(-5px); }
+}
+
+@keyframes inventions-draw-lines {
+    0% { clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+/* === EUREKA LIGHT RAYS (BORDER TRIANGLES) === */
+.theme-inventions .elem-8 {
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 150px;
+    z-index: 18;
+    animation: inventions-eureka-pulse 4s ease-in-out infinite;
+}
+
+/* Light ray 1 - center */
+.theme-inventions .elem-8::before {
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 17.5px solid transparent;
-    border-right: 17.5px solid transparent;
-    border-bottom: 28px solid #EF5350;
-    filter:
-        drop-shadow(0 -3px 6px rgba(239, 83, 80, 0.5))
-        drop-shadow(0 0 8px rgba(239, 83, 80, 0.3));
-}
-
-@keyframes inventions-rocket-soar {
-    0%, 100% {
-        transform: translateY(0) translateX(0) rotate(-8deg);
-    }
-    25% {
-        transform: translateY(-35px) translateX(-15px) rotate(5deg);
-    }
-    50% {
-        transform: translateY(-20px) translateX(10px) rotate(-3deg);
-    }
-    75% {
-        transform: translateY(-30px) translateX(-8px) rotate(7deg);
-    }
-}
-
-/* === ELEMENT 4: SPINNING WHEEL === */
-.theme-inventions .elem-4 {
-    position: absolute;
-    top: 38%;
-    left: 15%;
-    width: 65px;
-    height: 65px;
-    z-index: 11;
-    animation: inventions-wheel-roll 7s linear infinite;
-    pointer-events: none;
-}
-
-/* Wheel rim */
-.theme-inventions .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 65px;
-    height: 65px;
-    background:
-        /* Hub */
-        radial-gradient(circle at 50% 50%, #5D4037 0%, #5D4037 20%, transparent 21%, transparent 100%),
-        /* Spokes */
-        linear-gradient(0deg, transparent 48%, #6D4C41 49%, #6D4C41 51%, transparent 52%),
-        linear-gradient(45deg, transparent 48%, #6D4C41 49%, #6D4C41 51%, transparent 52%),
-        linear-gradient(90deg, transparent 48%, #6D4C41 49%, #6D4C41 51%, transparent 52%),
-        linear-gradient(135deg, transparent 48%, #6D4C41 49%, #6D4C41 51%, transparent 52%),
-        /* Outer rim */
-        radial-gradient(circle at 50% 50%, transparent 0%, transparent 75%, #8D6E63 76%, #795548 85%, transparent 86%),
-        /* Center */
-        radial-gradient(circle at 50% 50%, rgba(141, 110, 99, 0.5) 0%, rgba(93, 64, 55, 0.6) 100%);
-    border-radius: 50%;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 80px solid rgba(255, 215, 0, 0.4);
     box-shadow:
-        inset 0 0 15px rgba(0, 0, 0, 0.4),
-        3px 3px 15px rgba(0, 0, 0, 0.5);
-    filter: drop-shadow(0 0 8px rgba(141, 110, 99, 0.4));
+        /* Additional rays */
+        -40px 10px 0 0 rgba(255, 215, 0, 0.3),
+        40px 10px 0 0 rgba(255, 215, 0, 0.3),
+        -70px 25px 0 0 rgba(255, 193, 7, 0.25),
+        70px 25px 0 0 rgba(255, 193, 7, 0.25);
 }
 
-@keyframes inventions-wheel-roll {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
-}
-
-/* === ELEMENT 5: COMPASS === */
-.theme-inventions .elem-5 {
-    position: absolute;
-    bottom: 40%;
-    left: 28%;
-    width: 55px;
-    height: 55px;
-    z-index: 10;
-    animation: inventions-compass-rotate 15s linear infinite;
-    pointer-events: none;
-}
-
-/* Compass body */
-.theme-inventions .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background:
-        /* Cardinal marks */
-        linear-gradient(0deg, transparent 43%, #D32F2F 45%, #D32F2F 55%, transparent 57%),
-        linear-gradient(90deg, transparent 43%, #78909C 45%, #78909C 55%, transparent 57%),
-        /* Outer ring */
-        radial-gradient(circle at 50% 50%, transparent 0%, transparent 78%, #90A4AE 79%, #607D8B 83%, transparent 84%),
-        /* Inner face */
-        radial-gradient(circle at 50% 50%, #ECEFF1 0%, #CFD8DC 60%, #B0BEC5 100%);
-    border-radius: 50%;
-    box-shadow:
-        inset 0 3px 10px rgba(0, 0, 0, 0.2),
-        0 4px 12px rgba(0, 0, 0, 0.4);
-    filter: drop-shadow(0 0 6px rgba(120, 144, 156, 0.3));
-}
-
-/* Compass needle */
-.theme-inventions .elem-5::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 5px;
-    height: 35px;
-    background:
-        linear-gradient(180deg, #F44336 0%, #F44336 50%, #ECEFF1 50%, #ECEFF1 100%);
-    clip-path: polygon(50% 0%, 0% 48%, 50% 100%, 100% 48%);
-    animation: inventions-needle-point 3.5s ease-in-out infinite;
-}
-
-@keyframes inventions-compass-rotate {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.95;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
-}
-
-@keyframes inventions-needle-point {
-    0%, 100% { transform: translate(-50%, -50%) rotate(-5deg); }
-    50% { transform: translate(-50%, -50%) rotate(5deg); }
-}
-
-/* === EUREKA RAYS === */
-.theme-inventions .eureka-rays {
-    position: absolute;
-    top: 12%;
+/* Sparkle dots */
+.theme-inventions .elem-8::after {
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    z-index: 14;
-    pointer-events: none;
+    width: 6px;
+    height: 6px;
+    background: var(--inv-glow-bright);
+    border-radius: 50%;
+    box-shadow:
+        -30px 20px 0 2px var(--inv-glow),
+        30px 15px 0 1px var(--inv-glow-bright),
+        -50px 40px 0 1px var(--inv-glow),
+        50px 35px 0 2px var(--inv-glow-bright),
+        -20px 50px 0 1px var(--inv-glow),
+        25px 55px 0 1px var(--inv-glow-bright),
+        0 0 10px 3px var(--inv-glow);
+    animation: inventions-sparkle-twinkle 1s ease-in-out infinite;
 }
 
-.theme-inventions .eureka-rays::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(0deg, transparent 48%, rgba(255, 235, 59, 0.4) 50%, transparent 52%),
-        linear-gradient(30deg, transparent 48%, rgba(255, 235, 59, 0.3) 50%, transparent 52%),
-        linear-gradient(60deg, transparent 48%, rgba(255, 235, 59, 0.35) 50%, transparent 52%),
-        linear-gradient(90deg, transparent 48%, rgba(255, 235, 59, 0.3) 50%, transparent 52%),
-        linear-gradient(120deg, transparent 48%, rgba(255, 235, 59, 0.35) 50%, transparent 52%),
-        linear-gradient(150deg, transparent 48%, rgba(255, 235, 59, 0.3) 50%, transparent 52%);
-    animation: inventions-rays-pulse 3.5s ease-in-out infinite;
-}
-
-@keyframes inventions-rays-pulse {
+@keyframes inventions-eureka-pulse {
     0%, 100% {
-        transform: scale(1) rotate(0deg);
         opacity: 0.3;
+        transform: translateX(-50%) scale(0.9);
     }
-    30%, 70% {
-        transform: scale(1.5) rotate(10deg);
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+@keyframes inventions-sparkle-twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* === SUN/WORKSHOP GLOW === */
+.theme-inventions .elem-9 {
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle,
+        rgba(255, 215, 0, 0.5) 0%,
+        rgba(255, 193, 7, 0.3) 30%,
+        rgba(255, 152, 0, 0.15) 50%,
+        transparent 70%);
+    border-radius: 50%;
+    z-index: 6;
+    animation: inventions-ambient-glow 4s ease-in-out infinite;
+    filter: blur(10px);
+}
+
+@keyframes inventions-ambient-glow {
+    0%, 100% {
+        transform: translateX(-50%) scale(0.9);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2);
         opacity: 0.8;
     }
 }
 
-/* === SPARK PARTICLES === */
-.theme-inventions .spark-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 13;
-}
-
-.theme-inventions .spark-particles::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    box-shadow:
-        15% 25% 0 2px rgba(255, 235, 59, 0.8),
-        35% 45% 0 1px rgba(255, 193, 7, 0.7),
-        55% 20% 0 2px rgba(255, 152, 0, 0.8),
-        70% 60% 0 1px rgba(255, 235, 59, 0.6),
-        85% 35% 0 2px rgba(255, 193, 7, 0.7),
-        20% 70% 0 1px rgba(255, 152, 0, 0.8),
-        45% 15% 0 2px rgba(255, 235, 59, 0.7),
-        65% 80% 0 1px rgba(255, 193, 7, 0.6),
-        80% 50% 0 2px rgba(255, 152, 0, 0.7),
-        25% 40% 0 1px rgba(255, 235, 59, 0.8),
-        50% 65% 0 2px rgba(255, 193, 7, 0.7),
-        75% 25% 0 1px rgba(255, 152, 0, 0.6),
-        90% 75% 0 2px rgba(255, 235, 59, 0.8),
-        40% 55% 0 1px rgba(255, 193, 7, 0.7),
-        60% 85% 0 2px rgba(255, 152, 0, 0.6);
-    animation: inventions-sparks-crackle 4s ease-in-out infinite;
-}
-
-@keyframes inventions-sparks-crackle {
-    0%, 100% {
-        opacity: 0.4;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.6);
-    }
-}
-
-/* === ROCKET EXHAUST FLAMES === */
-.theme-inventions .rocket-flames {
-    position: absolute;
-    top: 22%;
-    right: 18%;
-    width: 60px;
-    height: 80px;
-    z-index: 13;
-    pointer-events: none;
-}
-
-.theme-inventions .rocket-flames::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 25px;
-    height: 30px;
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 152, 0, 0.9) 0%, transparent 70%),
-        radial-gradient(ellipse at 30% 10%, rgba(255, 87, 34, 0.8) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 10%, rgba(255, 193, 7, 0.85) 0%, transparent 65%);
-    animation: inventions-flame-flicker 0.2s ease-in-out infinite;
-}
-
-@keyframes inventions-flame-flicker {
-    0%, 100% {
-        transform: translateX(-50%) scaleY(1);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateX(-50%) scaleY(1.2);
-        opacity: 1;
-    }
-}
-
-/* === INNOVATION PULSE === */
-.theme-inventions .innovation-pulse {
-    position: absolute;
+/* === CLOUDS (SOFT CIRCLES) === */
+.theme-inventions .cloud-2 {
     top: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 235, 59, 0.5) 0%, transparent 70%);
-    animation: inventions-pulse-expand 3.5s ease-out infinite;
-    pointer-events: none;
+    left: 10%;
+    width: 80px;
+    height: 35px;
+    background: rgba(255, 224, 178, 0.5);
+    border-radius: 35px;
+    z-index: 4;
+    animation: inventions-cloud-drift 30s linear infinite;
+}
+
+.theme-inventions .cloud-2::before {
+    top: -12px;
+    left: 20px;
+    width: 40px;
+    height: 28px;
+    background: rgba(255, 224, 178, 0.5);
+    border-radius: 28px;
+}
+
+.theme-inventions .cloud-2::after {
+    top: -8px;
+    left: 45px;
+    width: 30px;
+    height: 22px;
+    background: rgba(255, 224, 178, 0.5);
+    border-radius: 22px;
+}
+
+.theme-inventions .cloud-3 {
+    top: 20%;
+    right: 5%;
+    width: 70px;
+    height: 30px;
+    background: rgba(255, 236, 179, 0.4);
+    border-radius: 30px;
+    z-index: 4;
+    animation: inventions-cloud-drift 25s linear infinite reverse;
+}
+
+.theme-inventions .cloud-3::before {
+    top: -10px;
+    left: 15px;
+    width: 35px;
+    height: 25px;
+    background: rgba(255, 236, 179, 0.4);
+    border-radius: 25px;
+}
+
+@keyframes inventions-cloud-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+/* === PINE FOREST - WORKSHOP WORKBENCH === */
+.theme-inventions .pine-forest {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        var(--inv-ground-light) 0%,
+        var(--inv-ground-mid) 50%,
+        var(--inv-ground-dark) 100%);
     z-index: 8;
 }
 
-@keyframes inventions-pulse-expand {
-    0% {
-        transform: translateX(-50%) scale(0.5);
-        opacity: 0;
-    }
-    30%, 70% {
-        transform: translateX(-50%) scale(1.3);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateX(-50%) scale(2);
-        opacity: 0;
-    }
+/* Workbench surface */
+.theme-inventions .pine-forest::before {
+    bottom: 30%;
+    left: 5%;
+    width: 40%;
+    height: 8px;
+    background: linear-gradient(180deg,
+        var(--inv-copper-dark) 0%,
+        #654321 50%,
+        #4A3728 100%);
+    border-radius: 2px;
+    box-shadow:
+        /* Workbench legs */
+        20px 60px 0 -3px #4A3728,
+        calc(40% - 30px) 60px 0 -3px #4A3728,
+        3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* === GEAR DUST === */
-.theme-inventions .gear-dust {
-    position: absolute;
+/* Tools on workbench (using box-shadow) */
+.theme-inventions .pine-forest::after {
+    bottom: 32%;
+    left: 10%;
+    width: 8px;
+    height: 25px;
+    background: var(--inv-iron);
+    border-radius: 2px;
+    box-shadow:
+        /* Hammer */
+        0 -8px 0 5px var(--inv-iron-dark),
+        /* Wrench */
+        30px 0 0 0 var(--inv-iron-light),
+        30px -5px 0 2px var(--inv-iron),
+        /* Screwdriver */
+        60px 5px 0 0 var(--inv-brass),
+        60px -10px 0 1px #654321;
+}
+
+/* === GRASS - METAL SHAVINGS === */
+.theme-inventions .grass {
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 8%;
+    z-index: 25;
+}
+
+/* Metal shavings (curved lines) */
+.theme-inventions .grass::before {
+    bottom: 5px;
+    left: 15%;
+    width: 15px;
+    height: 3px;
+    background: var(--inv-brass);
+    border-radius: 50%;
+    transform: rotate(15deg);
+    box-shadow:
+        25px 3px 0 0 var(--inv-copper),
+        50px -2px 0 0 var(--inv-brass-dark),
+        80px 5px 0 0 var(--inv-copper-light),
+        120px 2px 0 0 var(--inv-brass),
+        160px -3px 0 0 var(--inv-copper),
+        200px 4px 0 0 var(--inv-brass-light),
+        250px 0 0 0 var(--inv-copper-dark);
+}
+
+/* === SCENE PARTICLES - FLOATING SPARKS === */
+.theme-inventions .scene-particles {
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 22;
     pointer-events: none;
-    z-index: 9;
 }
 
-.theme-inventions .gear-dust::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 3px;
+.theme-inventions .scene-particles::before {
+    top: 20%;
+    left: 10%;
+    width: 4px;
+    height: 4px;
+    background: var(--inv-glow-bright);
     border-radius: 50%;
     box-shadow:
-        12% 28% 0 1px rgba(120, 144, 156, 0.5),
-        28% 52% 0 2px rgba(96, 125, 139, 0.4),
-        45% 18% 0 1px rgba(144, 164, 174, 0.5),
-        62% 72% 0 2px rgba(120, 144, 156, 0.4),
-        78% 38% 0 1px rgba(96, 125, 139, 0.5),
-        88% 65% 0 2px rgba(144, 164, 174, 0.4),
-        18% 82% 0 1px rgba(120, 144, 156, 0.5),
-        38% 45% 0 2px rgba(96, 125, 139, 0.4),
-        58% 15% 0 1px rgba(144, 164, 174, 0.5),
-        72% 88% 0 2px rgba(120, 144, 156, 0.4),
-        25% 58% 0 1px rgba(96, 125, 139, 0.5),
-        52% 35% 0 2px rgba(144, 164, 174, 0.4);
-    animation: inventions-dust-drift 15s linear infinite;
+        calc(20vw) calc(15vh) 0 1px var(--inv-glow),
+        calc(40vw) calc(30vh) 0 2px var(--inv-glow-bright),
+        calc(60vw) calc(10vh) 0 1px var(--inv-glow),
+        calc(80vw) calc(40vh) 0 2px var(--inv-glow-bright),
+        calc(15vw) calc(60vh) 0 1px var(--inv-glow),
+        calc(70vw) calc(55vh) 0 2px var(--inv-glow-bright),
+        calc(35vw) calc(75vh) 0 1px var(--inv-glow),
+        calc(55vw) calc(20vh) 0 2px var(--inv-glow-bright);
+    animation: inventions-sparks-float 6s ease-in-out infinite;
 }
 
-@keyframes inventions-dust-drift {
-    0% {
+.theme-inventions .scene-particles::after {
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    background: var(--inv-brass-light);
+    border-radius: 50%;
+    box-shadow:
+        calc(25vw) calc(25vh) 0 1px var(--inv-copper-light),
+        calc(45vw) calc(45vh) 0 1px var(--inv-brass-light),
+        calc(75vw) calc(20vh) 0 1px var(--inv-copper-light),
+        calc(10vw) calc(70vh) 0 1px var(--inv-brass-light),
+        calc(85vw) calc(65vh) 0 1px var(--inv-copper-light),
+        calc(50vw) calc(80vh) 0 1px var(--inv-brass-light);
+    animation: inventions-brass-drift 10s linear infinite;
+}
+
+@keyframes inventions-sparks-float {
+    0%, 100% {
         transform: translateY(0);
-        opacity: 0.6;
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-30px);
+        opacity: 1;
+    }
+}
+
+@keyframes inventions-brass-drift {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.5;
     }
     100% {
-        transform: translateY(120px);
-        opacity: 0.2;
+        transform: translateY(-100px) translateX(30px);
+        opacity: 0;
     }
+}
+
+/* === DEPTH FOG (ATMOSPHERIC) === */
+.theme-inventions .depth-fog {
+    bottom: 40%;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(255, 183, 77, 0.15) 50%,
+        rgba(205, 133, 63, 0.2) 100%);
+    z-index: 7;
+    pointer-events: none;
+}
+
+.theme-inventions .depth-fog::before {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        rgba(139, 105, 20, 0.1) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(139, 105, 20, 0.1) 100%);
+}
+
+/* === BIRDS FLOCK === */
+.theme-inventions .birds-2 {
+    top: 25%;
+    left: -50px;
+    z-index: 23;
+    animation: inventions-birds-fly 20s linear infinite;
+}
+
+/* Bird shapes using border triangles (V shape) */
+.theme-inventions .birds-2::before {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 5px solid var(--inv-ground-dark);
+    box-shadow:
+        25px 8px 0 0 var(--inv-ground-dark),
+        45px -5px 0 0 var(--inv-ground-dark),
+        65px 12px 0 0 var(--inv-ground-dark);
+    animation: inventions-bird-flap 0.4s ease-in-out infinite;
+}
+
+@keyframes inventions-birds-fly {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 150px)); }
+}
+
+@keyframes inventions-bird-flap {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.6); }
 }
 
 /* === MASCOT HAPPY ANIMATIONS === */
@@ -638,20 +1111,20 @@
         filter: brightness(1);
     }
     15% {
-        transform: scale(0.92) translateY(8px) rotate(0deg);
+        transform: scale(0.9) translateY(12px);
     }
     35% {
-        transform: scale(1.35) translateY(-45px) rotate(-12deg);
-        filter: brightness(1.4) drop-shadow(0 0 20px rgba(255, 235, 59, 0.8));
+        transform: scale(1.4) translateY(-50px) rotate(-10deg);
+        filter: brightness(1.5) drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
     }
     50% {
-        transform: scale(1.28) translateY(-40px) rotate(15deg);
+        transform: scale(1.32) translateY(-45px) rotate(12deg);
     }
     65% {
-        transform: scale(1.2) translateY(-32px) rotate(-8deg);
+        transform: scale(1.22) translateY(-35px) rotate(-6deg);
     }
     80% {
-        transform: scale(1.1) translateY(-15px) rotate(5deg);
+        transform: scale(1.1) translateY(-18px) rotate(4deg);
     }
     100% {
         transform: scale(1) translateY(0) rotate(0deg);
@@ -665,25 +1138,25 @@
 .theme-inventions .owl-character.excited,
 .theme-inventions .cat-character.excited,
 .theme-inventions .robot-character.excited {
-    animation: inventions-excited-invent 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    animation: inventions-excited-invent 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 
 @keyframes inventions-excited-invent {
     0%, 100% {
-        transform: translateY(0) rotate(0deg);
-        filter: hue-rotate(0deg) brightness(1);
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: brightness(1);
     }
     25% {
-        transform: translateY(-25px) rotate(-8deg);
-        filter: hue-rotate(20deg) brightness(1.3);
+        transform: translateY(-28px) rotate(-10deg) scale(1.1);
+        filter: brightness(1.35) drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
     }
     50% {
-        transform: translateY(-18px) rotate(5deg);
-        filter: hue-rotate(-20deg) brightness(1.4);
+        transform: translateY(-22px) rotate(6deg) scale(1.15);
+        filter: brightness(1.45) drop-shadow(0 0 20px rgba(255, 193, 7, 0.7));
     }
     75% {
-        transform: translateY(-30px) rotate(10deg);
-        filter: hue-rotate(15deg) brightness(1.3);
+        transform: translateY(-32px) rotate(12deg) scale(1.08);
+        filter: brightness(1.38) drop-shadow(0 0 18px rgba(255, 215, 0, 0.65));
     }
 }
 
@@ -693,28 +1166,101 @@
 .theme-inventions .owl-character.sad,
 .theme-inventions .cat-character.sad,
 .theme-inventions .robot-character.sad {
-    animation: inventions-sad-malfunction 2.2s ease-out forwards;
+    animation: inventions-sad-malfunction 2.4s ease-out forwards;
 }
 
 @keyframes inventions-sad-malfunction {
     0% {
         transform: scale(1) translateY(0);
-        filter: brightness(1) saturate(1);
+        filter: brightness(1) grayscale(0);
     }
-    25% {
-        transform: scale(0.95) translateX(-5px) translateY(3px);
-        filter: brightness(0.85) saturate(0.8);
+    20% {
+        transform: scale(0.96) translateX(-6px) translateY(5px);
+        filter: brightness(0.88) grayscale(0.1);
     }
-    50% {
-        transform: scale(0.88) translateX(5px) translateY(10px);
-        filter: brightness(0.7) saturate(0.5);
+    45% {
+        transform: scale(0.9) translateX(6px) translateY(12px);
+        filter: brightness(0.72) grayscale(0.25);
     }
-    75% {
-        transform: scale(0.82) translateX(-3px) translateY(16px);
-        filter: brightness(0.6) saturate(0.3);
+    70% {
+        transform: scale(0.84) translateX(-4px) translateY(18px);
+        filter: brightness(0.58) grayscale(0.4);
     }
     100% {
-        transform: scale(0.78) translateY(22px);
-        filter: brightness(0.45) saturate(0.2) grayscale(0.3);
+        transform: scale(0.78) translateY(25px);
+        filter: brightness(0.4) grayscale(0.55);
+    }
+}
+
+/* === MASCOT IDLE ANIMATIONS === */
+.theme-inventions .worm-character.idle,
+.theme-inventions .bunny-character.idle,
+.theme-inventions .owl-character.idle,
+.theme-inventions .cat-character.idle,
+.theme-inventions .robot-character.idle {
+    animation: inventions-idle-think 4s ease-in-out infinite;
+}
+
+@keyframes inventions-idle-think {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+    75% {
+        transform: translateY(-3px) rotate(-1deg);
+    }
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 600px) {
+    .theme-inventions .elem-1 {
+        top: 3%;
+        width: 50px;
+        height: 65px;
+    }
+
+    .theme-inventions .elem-1::before {
+        width: 45px;
+        height: 55px;
+    }
+
+    .theme-inventions .elem-2 {
+        width: 50px;
+        height: 50px;
+        right: 8%;
+    }
+
+    .theme-inventions .elem-3 {
+        width: 80px;
+    }
+
+    .theme-inventions .elem-5 {
+        width: 60px;
+        height: 25px;
+    }
+
+    .theme-inventions .elem-6 {
+        width: 45px;
+        height: 30px;
+    }
+
+    .theme-inventions .elem-7 {
+        width: 60px;
+        height: 45px;
+    }
+
+    .theme-inventions .elem-8 {
+        width: 120px;
+        height: 100px;
+    }
+
+    .theme-inventions .elem-0-ultra,
+    .theme-inventions .elem-0-far {
+        display: none;
     }
 }

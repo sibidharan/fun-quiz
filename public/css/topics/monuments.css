@@ -1,453 +1,865 @@
 /* ============================================
-   MONUMENTS THEME - CINEMATIC PREMIUM
-   World Wonders, Taj Mahal, Eiffel Tower, Pyramids
-   Stone Gray/Golden with Majestic Atmosphere
+   MONUMENTS & WONDERS - JULIA MIOCENE STYLE
+   World Tour of Iconic Landmarks at Twilight
+   Pyramids, Eiffel Tower, Taj Mahal, Big Ben
+   Statue of Liberty, Colosseum, Great Wall
    ============================================ */
 
-/* === LAYERED BACKGROUND - GOLDEN HOUR === */
+:root {
+    /* Twilight sky */
+    --mon-sky-top: #0a0e27;
+    --mon-sky-upper: #1a1f45;
+    --mon-sky-mid: #2d3561;
+    --mon-sky-lower: #4a5480;
+    --mon-sky-horizon: #7a6f8f;
+
+    /* Sunset/Ground */
+    --mon-sunset: #b89968;
+    --mon-ground: #d4a574;
+    --mon-sand: #c4a76c;
+
+    /* Monument colors */
+    --mon-stone-light: #e8dcc8;
+    --mon-stone: #c8b899;
+    --mon-stone-dark: #8b7355;
+    --mon-metal-dark: #3a3a3a;
+    --mon-metal: #5a5a5a;
+    --mon-patina: #7c9c8f;
+
+    /* Accent */
+    --mon-moon: #fff9e6;
+    --mon-star: #ffffff;
+    --mon-glow: #ffeb99;
+}
+
+/* === BASE SETUP === */
 .theme-monuments .scene-background {
-    background:
-        /* Golden hour glow layers */
-        radial-gradient(ellipse 70% 45% at 50% 25%, rgba(255, 193, 7, 0.35) 0%, transparent 52%),
-        radial-gradient(ellipse 55% 35% at 20% 45%, rgba(255, 152, 0, 0.2) 0%, transparent 48%),
-        radial-gradient(ellipse 60% 38% at 80% 50%, rgba(121, 85, 72, 0.18) 0%, transparent 45%),
-        radial-gradient(ellipse 45% 30% at 50% 80%, rgba(244, 67, 54, 0.12) 0%, transparent 40%),
-        /* Majestic gradient base */
-        linear-gradient(180deg,
-            #FF6F00 0%,
-            #FF8F00 10%,
-            #FFA000 18%,
-            #FFB300 26%,
-            #FFCA28 34%,
-            #FFD54F 42%,
-            #FFE082 50%,
-            #FFECB3 58%,
-            #FFF8E1 66%,
-            #EFEBE9 74%,
-            #D7CCC8 82%,
-            #BCAAA4 90%,
-            #8D6E63 100%);
+    background: linear-gradient(180deg,
+        var(--mon-sky-top) 0%,
+        var(--mon-sky-upper) 15%,
+        var(--mon-sky-mid) 30%,
+        var(--mon-sky-lower) 50%,
+        var(--mon-sky-horizon) 70%,
+        var(--mon-sunset) 85%,
+        var(--mon-ground) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === STONE GROUND FOUNDATION === */
-.theme-monuments .scene-background::before {
+.theme-monuments .scene-background *,
+.theme-monuments .scene-background *::before,
+.theme-monuments .scene-background *::after {
     content: '';
     position: absolute;
+}
+
+/* === MOON (CIRCLE WITH GLOW) === */
+.theme-monuments .elem-5 {
+    top: 8%;
+    right: 12%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%,
+        var(--mon-moon) 0%,
+        #f0e68c 100%);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow:
+        0 0 30px rgba(255, 255, 200, 0.5),
+        0 0 60px rgba(255, 255, 200, 0.3),
+        inset -8px -8px 15px rgba(200, 200, 150, 0.3);
+    animation: monuments-moon-glow 10s ease-in-out infinite;
+}
+
+@keyframes monuments-moon-glow {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* === STARS (BOX-SHADOW MULTIPLICATION) === */
+.theme-monuments .scene-particles {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.theme-monuments .scene-particles::before {
+    top: 10%;
+    left: 5%;
+    width: 2px;
+    height: 2px;
+    background: var(--mon-star);
+    border-radius: 50%;
+    box-shadow:
+        calc(15vw) calc(8vh) 0 0 var(--mon-star),
+        calc(25vw) calc(15vh) 0 1px var(--mon-star),
+        calc(40vw) calc(5vh) 0 0 var(--mon-star),
+        calc(55vw) calc(20vh) 0 1px var(--mon-star),
+        calc(70vw) calc(12vh) 0 0 var(--mon-star),
+        calc(85vw) calc(18vh) 0 1px var(--mon-star),
+        calc(10vw) calc(25vh) 0 0 var(--mon-star),
+        calc(30vw) calc(30vh) 0 1px var(--mon-star),
+        calc(60vw) calc(28vh) 0 0 var(--mon-star),
+        calc(80vw) calc(8vh) 0 1px var(--mon-star),
+        calc(45vw) calc(35vh) 0 0 var(--mon-star),
+        calc(20vw) calc(40vh) 0 0 var(--mon-star);
+    animation: monuments-twinkle 4s ease-in-out infinite;
+}
+
+@keyframes monuments-twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* === GREAT PYRAMID OF GIZA (BORDER TRIANGLE) === */
+.theme-monuments .elem-1 {
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 140px solid var(--mon-sand);
+    z-index: 12;
+    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* Pyramid shadow side */
+.theme-monuments .elem-1::before {
+    bottom: -140px;
+    left: -80px;
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-bottom: 140px solid rgba(100, 80, 50, 0.35);
+}
+
+/* Second smaller pyramid */
+.theme-monuments .elem-1-fg {
+    bottom: 20%;
+    left: calc(50% + 90px);
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 55px solid transparent;
+    border-bottom: 100px solid #b8985c;
+    z-index: 11;
+    filter: drop-shadow(-4px 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+/* Third smallest pyramid */
+.theme-monuments .elem-1-fg::before {
+    bottom: -100px;
+    left: -145px;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid #a88a4f;
+    filter: drop-shadow(-3px 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* === SPHINX (SIMPLIFIED SILHOUETTE) === */
+.theme-monuments .deer-legs {
+    bottom: 20%;
+    left: calc(50% + 100px);
+    width: 50px;
+    height: 25px;
+    background: linear-gradient(180deg,
+        #d4b883 0%,
+        var(--mon-sand) 100%);
+    border-radius: 5px 5px 0 0;
+    z-index: 13;
+}
+
+/* Sphinx head */
+.theme-monuments .deer-legs::before {
+    top: -18px;
+    left: 8px;
+    width: 25px;
+    height: 22px;
+    background: #d4b883;
+    border-radius: 5px 5px 3px 3px;
+}
+
+/* === EIFFEL TOWER (STACKED BORDER TRIANGLES) === */
+.theme-monuments .elem-2 {
+    bottom: 20%;
+    left: 8%;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 90px solid var(--mon-metal-dark);
+    z-index: 14;
+    opacity: 0.9;
+}
+
+/* Tower middle section */
+.theme-monuments .elem-2::before {
+    bottom: 80px;
+    left: -25px;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 70px solid var(--mon-metal);
+}
+
+/* Tower spire */
+.theme-monuments .elem-2::after {
+    bottom: 145px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 55px solid var(--mon-metal);
+}
+
+/* === EIFFEL TOWER LIGHTS (BOX-SHADOW) === */
+.theme-monuments .butterfly-2 {
+    bottom: 22%;
+    left: calc(8% + 30px);
+    width: 3px;
+    height: 3px;
+    background: var(--mon-glow);
+    border-radius: 50%;
+    z-index: 15;
+    box-shadow:
+        0 0 6px var(--mon-glow),
+        -8px 20px 0 0 var(--mon-glow),
+        8px 20px 0 0 var(--mon-glow),
+        -12px 45px 0 0 var(--mon-glow),
+        12px 45px 0 0 var(--mon-glow),
+        -18px 75px 0 0 var(--mon-glow),
+        18px 75px 0 0 var(--mon-glow),
+        0 0 10px 2px var(--mon-glow);
+    animation: monuments-tower-twinkle 2s ease-in-out infinite;
+}
+
+@keyframes monuments-tower-twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* === STATUE OF LIBERTY (SHAPES + BORDER) === */
+.theme-monuments .elem-3 {
+    bottom: 20%;
+    right: 8%;
+    z-index: 14;
+}
+
+/* Statue robe (triangle) */
+.theme-monuments .elem-3::before {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 100px solid var(--mon-patina);
+}
+
+/* Statue torso */
+.theme-monuments .elem-3::after {
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 45px;
+    background: linear-gradient(180deg,
+        #8fb5a3 0%,
+        var(--mon-patina) 100%);
+    border-radius: 3px;
+}
+
+/* === STATUE HEAD & CROWN === */
+.theme-monuments .butterfly-3 {
+    bottom: calc(20% + 130px);
+    right: calc(8% - 5px);
+    width: 18px;
+    height: 22px;
+    background: #8fb5a3;
+    border-radius: 50% 50% 45% 45%;
+    z-index: 15;
+}
+
+/* Crown spikes (using box-shadow) */
+.theme-monuments .butterfly-3::before {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 3px;
+    background: #9fc5b3;
+    box-shadow:
+        -8px -4px 0 0 #9fc5b3,
+        8px -4px 0 0 #9fc5b3,
+        -4px -6px 0 0 #9fc5b3,
+        4px -6px 0 0 #9fc5b3,
+        0 -8px 0 0 #9fc5b3;
+}
+
+/* Torch arm and flame */
+.theme-monuments .butterfly-3::after {
+    top: 15px;
+    right: -20px;
+    width: 3px;
+    height: 45px;
+    background: #8fb5a3;
+    transform: rotate(-30deg);
+    box-shadow:
+        /* Flame */
+        0 -20px 8px 5px rgba(255, 235, 59, 0.7),
+        0 -25px 15px 8px rgba(255, 152, 0, 0.5);
+}
+
+/* === BIG BEN CLOCK TOWER === */
+.theme-monuments .elem-4 {
+    bottom: 18%;
+    left: 22%;
+    width: 35px;
+    height: 140px;
+    background: linear-gradient(90deg,
+        var(--mon-stone-dark) 0%,
+        #a68968 50%,
+        var(--mon-stone-dark) 100%);
+    border-radius: 2px 2px 0 0;
+    z-index: 13;
+}
+
+/* Tower top spire (border triangle) */
+.theme-monuments .elem-4::before {
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #6d5d4b;
+}
+
+/* Clock face */
+.theme-monuments .elem-4::after {
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle,
+        #f5f5dc 55%,
+        var(--mon-stone-dark) 58%,
+        var(--mon-stone-dark) 65%,
+        transparent 67%);
+    border-radius: 50%;
+    border: 2px solid #4a4a4a;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* === CLOCK HANDS === */
+.theme-monuments .elem-6 {
+    bottom: calc(18% + 70px);
+    left: calc(22% + 17px);
+    width: 2px;
+    height: 10px;
+    background: #2a2a2a;
+    z-index: 14;
+    transform-origin: bottom center;
+    animation: monuments-hour-hand 120s linear infinite;
+}
+
+.theme-monuments .elem-6::before {
+    bottom: 0;
+    left: 0;
+    width: 1.5px;
+    height: 12px;
+    background: #1a1a1a;
+    transform-origin: bottom center;
+    animation: monuments-minute-hand 10s linear infinite;
+}
+
+@keyframes monuments-hour-hand {
+    0% { transform: rotate(45deg); }
+    100% { transform: rotate(405deg); }
+}
+
+@keyframes monuments-minute-hand {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === LEANING TOWER OF PISA === */
+.theme-monuments .elem-7 {
+    bottom: 22%;
+    left: 68%;
+    width: 30px;
+    height: 120px;
+    background: repeating-linear-gradient(180deg,
+        var(--mon-stone-light) 0px,
+        var(--mon-stone-light) 16px,
+        #d4c4b0 16px,
+        #d4c4b0 18px);
+    border-radius: 3px 3px 0 0;
+    z-index: 12;
+    transform: rotate(5deg);
+    transform-origin: bottom center;
+    animation: monuments-tower-wobble 8s ease-in-out infinite;
+}
+
+/* Tower dome top */
+.theme-monuments .elem-7::before {
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    height: 15px;
+    background: radial-gradient(ellipse at top,
+        #f5ead8 0%,
+        var(--mon-stone-light) 100%);
+    border-radius: 50% 50% 0 0;
+}
+
+/* Tower column lines */
+.theme-monuments .elem-7::after {
+    top: 25px;
+    left: 4px;
+    width: 22px;
+    height: 70px;
+    background: repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 4px,
+        rgba(100, 80, 60, 0.25) 4px,
+        rgba(100, 80, 60, 0.25) 5px);
+}
+
+@keyframes monuments-tower-wobble {
+    0%, 100% { transform: rotate(5deg); }
+    50% { transform: rotate(5.5deg); }
+}
+
+/* === COLOSSEUM (ARCHED STRUCTURE) === */
+.theme-monuments .elem-8 {
+    bottom: 20%;
+    right: 42%;
+    width: 90px;
+    height: 60px;
+    background: linear-gradient(180deg,
+        var(--mon-stone) 0%,
+        #b5a688 100%);
+    border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+    z-index: 11;
+}
+
+/* Colosseum arches (box-shadow dots pattern) */
+.theme-monuments .elem-8::before {
+    bottom: 8px;
+    left: 10px;
+    width: 6px;
+    height: 12px;
+    background: rgba(60, 45, 30, 0.5);
+    border-radius: 6px 6px 0 0;
+    box-shadow:
+        12px 0 0 0 rgba(60, 45, 30, 0.5),
+        24px 0 0 0 rgba(60, 45, 30, 0.5),
+        36px 0 0 0 rgba(60, 45, 30, 0.5),
+        48px 0 0 0 rgba(60, 45, 30, 0.5),
+        60px 0 0 0 rgba(60, 45, 30, 0.5),
+        /* Second row */
+        0 -18px 0 0 rgba(50, 35, 20, 0.5),
+        12px -18px 0 0 rgba(50, 35, 20, 0.5),
+        24px -18px 0 0 rgba(50, 35, 20, 0.5),
+        36px -18px 0 0 rgba(50, 35, 20, 0.5),
+        48px -18px 0 0 rgba(50, 35, 20, 0.5),
+        60px -18px 0 0 rgba(50, 35, 20, 0.5);
+}
+
+/* Colosseum broken edge */
+.theme-monuments .elem-8::after {
+    top: 5px;
+    right: 0;
+    width: 20px;
+    height: 55px;
+    background: linear-gradient(135deg,
+        transparent 0%, transparent 40%,
+        rgba(139, 119, 101, 0.4) 40%, rgba(139, 119, 101, 0.4) 50%,
+        transparent 50%);
+    border-radius: 0 45% 0 0;
+}
+
+/* === GREAT WALL OF CHINA === */
+.theme-monuments .elem-9 {
+    bottom: 18%;
+    right: 22%;
+    width: 140px;
+    height: 50px;
+    z-index: 10;
+}
+
+/* Wall path (wavy clip-path) */
+.theme-monuments .elem-9::before {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 28%;
-    background:
-        repeating-linear-gradient(90deg,
-            #A1887F 0px,
-            #A1887F 35px,
-            #8D6E63 35px,
-            #8D6E63 70px),
-        linear-gradient(180deg, #8D6E63 0%, #6D4C41 100%);
-    box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.22);
-    animation: monuments-ground-glow 15.7s ease-in-out infinite;
-    pointer-events: none;
+    height: 100%;
+    background: linear-gradient(180deg,
+        #7a7a7a 0%,
+        #5a5a5a 100%);
+    clip-path: polygon(
+        0% 65%, 12% 55%, 25% 45%, 38% 50%, 50% 38%,
+        62% 42%, 75% 48%, 88% 42%, 100% 52%,
+        100% 100%, 0% 100%
+    );
+}
+
+/* Wall battlements (box-shadow rectangles) */
+.theme-monuments .elem-9::after {
+    bottom: 32px;
+    left: 12px;
+    width: 6px;
+    height: 10px;
+    background: #8a8a8a;
+    box-shadow:
+        18px 8px 0 0 #8a8a8a,
+        38px 18px 0 0 #8a8a8a,
+        55px 25px 0 0 #8a8a8a,
+        75px 20px 0 0 #8a8a8a,
+        95px 16px 0 0 #8a8a8a,
+        110px 22px 0 0 #8a8a8a;
+}
+
+/* === WATCH TOWER ON WALL === */
+.theme-monuments .birds-2 {
+    bottom: calc(18% + 28px);
+    right: calc(22% + 55px);
+    width: 16px;
+    height: 35px;
+    background: linear-gradient(180deg,
+        #8a8a8a 0%,
+        #6a6a6a 100%);
+    z-index: 11;
+}
+
+/* Tower roof */
+.theme-monuments .birds-2::before {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 12px solid #9a9a9a;
+}
+
+/* === TAJ MAHAL SILHOUETTE (FAR BACKGROUND) === */
+.theme-monuments .elem-0-ultra {
+    bottom: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 50px;
+    background: rgba(60, 50, 70, 0.35);
     z-index: 4;
 }
 
-@keyframes monuments-ground-glow {
-    0%, 100% {
-        box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.22);
-        filter: brightness(1);
-    }
-    50% {
-        box-shadow:
-            inset 0 6px 18px rgba(0, 0, 0, 0.18),
-            inset 0 -4px 12px rgba(255, 193, 7, 0.12);
-        filter: brightness(1.06);
-    }
+/* Taj Mahal dome */
+.theme-monuments .elem-0-ultra::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 40px;
+    background: rgba(60, 50, 70, 0.4);
+    border-radius: 50% 50% 0 0;
 }
 
-/* === DISTANT CITY SILHOUETTE === */
-.theme-monuments .scene-background::after {
-    content: '';
-    position: absolute;
-    bottom: 28%;
+/* Taj Mahal minarets */
+.theme-monuments .elem-0-ultra::after {
+    bottom: 0;
+    left: -15px;
+    width: 8px;
+    height: 70px;
+    background: rgba(60, 50, 70, 0.3);
+    border-radius: 2px;
+    box-shadow: 95px 0 0 0 rgba(60, 50, 70, 0.3);
+}
+
+/* === FAR MOUNTAIN/HILLS SILHOUETTE === */
+.theme-monuments .elem-0-far {
+    bottom: 35%;
     left: 0;
     width: 100%;
-    height: 18%;
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(93, 64, 55, 0.32) 8%,
-            rgba(93, 64, 55, 0.42) 18%,
-            rgba(93, 64, 55, 0.32) 32%,
-            transparent 48%,
-            rgba(93, 64, 55, 0.32) 62%,
-            rgba(93, 64, 55, 0.42) 78%,
-            rgba(93, 64, 55, 0.32) 88%,
-            transparent 100%);
-    clip-path: polygon(
-        0% 100%, 4% 62%, 8% 78%, 12% 45%, 16% 72%,
-        20% 52%, 24% 35%, 28% 58%, 32% 48%, 36% 68%,
-        40% 38%, 44% 66%, 48% 42%, 52% 72%, 56% 48%,
-        60% 32%, 64% 58%, 68% 38%, 72% 70%, 76% 52%,
-        80% 28%, 84% 56%, 88% 42%, 92% 68%, 96% 52%, 100% 100%);
-    animation: monuments-city-haze 18.3s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 5;
+    height: 80px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(60, 50, 70, 0.2) 100%);
+    z-index: 3;
 }
 
-@keyframes monuments-city-haze {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.72;
-    }
-}
-
-/* === ELEMENT 1: TAJ MAHAL === */
-.theme-monuments .elem-1 {
-    position: absolute;
-    top: 18%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 105px;
-    z-index: 12;
-    animation: monuments-taj-shimmer 8.5s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes monuments-taj-shimmer {
-    0%, 100% {
-        filter: brightness(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
-    }
-    50% {
-        filter: brightness(1.18) drop-shadow(0 0 25px rgba(255, 255, 255, 0.55));
-    }
-}
-
-.theme-monuments .elem-1::before {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 50px;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background:
-        /* Spire */
-        radial-gradient(ellipse 4px 20px at 50% -14px, #E0E0E0 0%, #CFD8DC 100%),
-        /* Highlight */
-        radial-gradient(ellipse at 32% 28%, rgba(255, 255, 255, 0.7) 0%, transparent 45%),
-        /* Main dome */
-        linear-gradient(180deg, #FAFAFA 0%, #F5F5F5 35%, #ECEFF1 65%, #CFD8DC 100%);
-    border-radius: 50% 50% 0 0;
+/* Distant hills using border triangles */
+.theme-monuments .elem-0-far::before {
+    bottom: 0;
+    left: 5%;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 60px solid rgba(50, 45, 60, 0.25);
     box-shadow:
-        inset -4px -4px 14px rgba(0, 0, 0, 0.12),
-        0 0 30px rgba(255, 255, 255, 0.7);
+        180px 15px 0 0 rgba(50, 45, 60, 0.2),
+        calc(100vw - 250px) 10px 0 0 rgba(50, 45, 60, 0.22);
 }
 
-.theme-monuments .elem-1::after {
-    content: '';
-    position: absolute;
+/* === CLOUDS (CIRCLES WITH BOX-SHADOW) === */
+.theme-monuments .cloud-2 {
+    top: 32%;
+    left: 10%;
     width: 90px;
-    height: 52px;
-    top: 46px;
-    left: 50%;
-    transform: translateX(-50%);
-    background:
-        /* Left minaret */
-        linear-gradient(180deg, #F5F5F5 0%, #E0E0E0 100%) no-repeat 0px 0px / 14px 60px,
-        /* Right minaret */
-        linear-gradient(180deg, #F5F5F5 0%, #E0E0E0 100%) no-repeat 76px 0px / 14px 60px,
-        /* Main arch entrance */
-        radial-gradient(ellipse 20px 28px at 50% 48%, rgba(0, 0, 0, 0.22) 0%, transparent 100%),
-        /* Building body */
-        linear-gradient(180deg, #ECEFF1 0%, #E0E0E0 45%, #CFD8DC 75%, #B0BEC5 100%);
-    border-radius: 10px 10px 0 0;
-    box-shadow:
-        inset 0 6px 18px rgba(255, 255, 255, 0.45),
-        0 8px 22px rgba(0, 0, 0, 0.28);
+    height: 35px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 35px;
+    z-index: 6;
+    animation: monuments-cloud-drift 80s linear infinite;
 }
 
-/* === ELEMENT 2: EIFFEL TOWER === */
-.theme-monuments .elem-2 {
-    position: absolute;
-    top: 24%;
-    left: 15%;
-    width: 50px;
-    height: 95px;
-    z-index: 11;
-    animation: monuments-eiffel-sway 10.3s ease-in-out infinite;
-    pointer-events: none;
+.theme-monuments .cloud-2::before {
+    top: -12px;
+    left: 20px;
+    width: 45px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
 }
 
-@keyframes monuments-eiffel-sway {
-    0%, 100% {
-        transform: rotate(0deg) translateY(0);
-    }
-    25% {
-        transform: rotate(-2.5deg) translateY(-6px);
-    }
-    50% {
-        transform: rotate(0deg) translateY(0);
-    }
-    75% {
-        transform: rotate(2.5deg) translateY(-4px);
-    }
+.theme-monuments .cloud-2::after {
+    top: -8px;
+    left: 50px;
+    width: 35px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
 }
 
-.theme-monuments .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(180deg, #6D4C41 0%, #5D4037 100%);
-    clip-path: polygon(
-        50% 0%, 48% 22%, 45% 27%, 42% 32%,
-        38% 32%, 40% 38%, 35% 48%, 37% 53%,
-        32% 53%, 36% 63%, 30% 68%, 33% 78%,
-        27% 78%, 32% 88%, 25% 100%,
-        75% 100%, 68% 88%, 73% 78%,
-        67% 78%, 64% 68%, 70% 63%,
-        68% 53%, 63% 53%, 65% 48%,
-        60% 38%, 62% 32%, 58% 32%,
-        55% 27%, 52% 22%);
-    box-shadow:
-        inset -3px -3px 18px rgba(0, 0, 0, 0.32),
-        4px 4px 18px rgba(0, 0, 0, 0.42);
-    animation: monuments-eiffel-glow 7.8s ease-in-out infinite;
-}
-
-@keyframes monuments-eiffel-glow {
-    0%, 100% {
-        filter: brightness(1);
-    }
-    50% {
-        filter: brightness(1.08);
-    }
-}
-
-.theme-monuments .elem-2::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Platform 1 */
-        linear-gradient(90deg, #8D6E63 28%, #795548 50%, #8D6E63 72%) no-repeat 25% 32% / 50% 4px,
-        /* Platform 2 */
-        linear-gradient(90deg, #8D6E63 25%, #795548 50%, #8D6E63 75%) no-repeat 22% 53% / 56% 4px,
-        /* Platform 3 */
-        linear-gradient(90deg, #8D6E63 22%, #795548 50%, #8D6E63 78%) no-repeat 18% 78% / 64% 4px;
-}
-
-/* === ELEMENT 3: PYRAMID === */
-.theme-monuments .elem-3 {
-    position: absolute;
-    bottom: 32%;
-    right: 18%;
-    width: 85px;
-    height: 68px;
-    z-index: 10;
-    animation: monuments-pyramid-glow 11.5s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes monuments-pyramid-glow {
-    0%, 100% {
-        filter: brightness(1) drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.35));
-    }
-    50% {
-        filter: brightness(1.15) drop-shadow(0 0 18px rgba(218, 165, 32, 0.45));
-    }
-}
-
-.theme-monuments .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 42px solid transparent;
-    border-right: 42px solid transparent;
-    border-bottom: 66px solid #DAA520;
-    filter:
-        drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4))
-        drop-shadow(-2px -2px 8px rgba(255, 215, 0, 0.25));
-}
-
-.theme-monuments .elem-3::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 0px solid transparent;
-    border-right: 42px solid transparent;
-    border-bottom: 66px solid #B8860B;
-    top: 0;
-    left: 42px;
-}
-
-/* === ELEMENT 4: FLOATING CLOUD === */
-.theme-monuments .elem-4 {
-    position: absolute;
-    top: 12%;
-    right: 8%;
+.theme-monuments .cloud-3 {
+    top: 25%;
+    right: 20%;
     width: 110px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    z-index: 6;
+    animation: monuments-cloud-drift 100s linear infinite reverse;
+}
+
+.theme-monuments .cloud-3::before {
+    top: -15px;
+    left: 25px;
+    width: 50px;
     height: 45px;
-    z-index: 8;
-    animation: monuments-cloud-drift 28.7s ease-in-out infinite;
-    pointer-events: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
 }
 
 @keyframes monuments-cloud-drift {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-        opacity: 0.7;
-    }
-    25% {
-        transform: translateX(25px) translateY(-10px);
-        opacity: 0.85;
-    }
-    50% {
-        transform: translateX(45px) translateY(-5px);
-        opacity: 0.75;
-    }
-    75% {
-        transform: translateX(20px) translateY(-12px);
-        opacity: 0.8;
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 150px)); }
 }
 
-.theme-monuments .elem-4::before {
-    content: '';
-    position: absolute;
+/* === GROUND/HORIZON === */
+.theme-monuments .pine-forest {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(180deg,
+        var(--mon-sunset) 0%,
+        var(--mon-ground) 100%);
+    z-index: 8;
+}
+
+/* Sand texture pattern */
+.theme-monuments .pine-forest::before {
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(ellipse 35px 18px at 25% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 65%, transparent 75%),
-        radial-gradient(ellipse 40px 20px at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.55) 65%, transparent 75%),
-        radial-gradient(ellipse 32px 16px at 75% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.45) 65%, transparent 75%);
-    border-radius: 50%;
-    filter: blur(2px);
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 3px,
+            rgba(180, 150, 110, 0.1) 3px,
+            rgba(180, 150, 110, 0.1) 4px);
 }
 
-.theme-monuments .elem-4::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(ellipse 30px 15px at 35% 55%, rgba(255, 255, 255, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 28px 14px at 65% 55%, rgba(255, 255, 255, 0.55) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(1px);
-}
-
-/* === ELEMENT 5: FLYING BIRD SILHOUETTE === */
-.theme-monuments .elem-5 {
-    position: absolute;
-    top: 28%;
-    left: 8%;
-    width: 30px;
-    height: 12px;
-    z-index: 13;
-    animation: monuments-bird-fly 32.5s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes monuments-bird-fly {
-    0% {
-        transform: translate(0, 0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.7;
-    }
-    90% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translate(calc(100vw - 30px), -60px);
-        opacity: 0;
-    }
-}
-
-.theme-monuments .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Left wing */
-        radial-gradient(ellipse 12px 8px at 30% 50%, rgba(66, 66, 66, 0.75) 0%, transparent 100%),
-        /* Body */
-        radial-gradient(ellipse 6px 5px at 50% 50%, rgba(66, 66, 66, 0.8) 0%, transparent 100%),
-        /* Right wing */
-        radial-gradient(ellipse 12px 8px at 70% 50%, rgba(66, 66, 66, 0.75) 0%, transparent 100%);
-    animation: monuments-wing-flap 1.2s ease-in-out infinite;
-}
-
-@keyframes monuments-wing-flap {
-    0%, 100% {
-        transform: scaleY(1);
-    }
-    50% {
-        transform: scaleY(0.7);
-    }
-}
-
-.theme-monuments .elem-5::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    filter: blur(0.5px);
-}
-
-/* === ATMOSPHERIC PARTICLES - GOLDEN DUST === */
-.theme-monuments .particle-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* Horizon line */
+.theme-monuments .pine-forest::after {
     top: 0;
     left: 0;
-    pointer-events: none;
-    z-index: 14;
-    background:
-        radial-gradient(circle at 15% 22%, rgba(255, 193, 7, 0.6) 0%, rgba(255, 193, 7, 0.6) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 82% 18%, rgba(255, 152, 0, 0.55) 0%, rgba(255, 152, 0, 0.55) 1.2px, transparent 2.2px),
-        radial-gradient(circle at 32% 48%, rgba(218, 165, 32, 0.65) 0%, rgba(218, 165, 32, 0.65) 1.8px, transparent 2.8px),
-        radial-gradient(circle at 68% 52%, rgba(255, 193, 7, 0.58) 0%, rgba(255, 193, 7, 0.58) 1.3px, transparent 2.3px),
-        radial-gradient(circle at 12% 68%, rgba(255, 152, 0, 0.62) 0%, rgba(255, 152, 0, 0.62) 1.4px, transparent 2.4px),
-        radial-gradient(circle at 88% 72%, rgba(218, 165, 32, 0.6) 0%, rgba(218, 165, 32, 0.6) 1.6px, transparent 2.6px),
-        radial-gradient(circle at 42% 12%, rgba(255, 193, 7, 0.64) 0%, rgba(255, 193, 7, 0.64) 1.2px, transparent 2.2px),
-        radial-gradient(circle at 58% 85%, rgba(255, 152, 0, 0.57) 0%, rgba(255, 152, 0, 0.57) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 25% 35%, rgba(218, 165, 32, 0.59) 0%, rgba(218, 165, 32, 0.59) 1.1px, transparent 2.1px),
-        radial-gradient(circle at 75% 42%, rgba(255, 193, 7, 0.63) 0%, rgba(255, 193, 7, 0.63) 1.7px, transparent 2.7px),
-        radial-gradient(circle at 48% 58%, rgba(255, 152, 0, 0.61) 0%, rgba(255, 152, 0, 0.61) 1.3px, transparent 2.3px),
-        radial-gradient(circle at 8% 78%, rgba(218, 165, 32, 0.56) 0%, rgba(218, 165, 32, 0.56) 1.4px, transparent 2.4px);
-    animation: monuments-dust-shimmer 12.5s ease-in-out infinite;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(139, 119, 101, 0.4) 20%,
+        rgba(139, 119, 101, 0.6) 50%,
+        rgba(139, 119, 101, 0.4) 80%,
+        transparent 100%);
 }
 
-@keyframes monuments-dust-shimmer {
+/* === GRASS/SAND DUNES === */
+.theme-monuments .grass {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    z-index: 20;
+}
+
+/* Sand ripples */
+.theme-monuments .grass::before {
+    bottom: 10px;
+    left: 10%;
+    width: 60px;
+    height: 3px;
+    background: rgba(180, 150, 110, 0.3);
+    border-radius: 50%;
+    box-shadow:
+        80px 5px 0 0 rgba(180, 150, 110, 0.25),
+        180px -3px 0 0 rgba(180, 150, 110, 0.3),
+        280px 8px 0 0 rgba(180, 150, 110, 0.2),
+        400px 2px 0 0 rgba(180, 150, 110, 0.25);
+}
+
+/* === FLOATING DUST PARTICLES === */
+.theme-monuments .depth-fog {
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    z-index: 7;
+    pointer-events: none;
+}
+
+.theme-monuments .depth-fog::before {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(180, 160, 140, 0.05) 50%,
+        rgba(200, 180, 160, 0.1) 100%);
+}
+
+/* Dust particles */
+.theme-monuments .depth-fog::after {
+    top: 30%;
+    left: 15%;
+    width: 2px;
+    height: 2px;
+    background: rgba(220, 190, 150, 0.5);
+    border-radius: 50%;
+    box-shadow:
+        calc(20vw) calc(5vh) 0 0 rgba(210, 180, 140, 0.4),
+        calc(40vw) calc(15vh) 0 0 rgba(200, 170, 130, 0.5),
+        calc(60vw) calc(8vh) 0 0 rgba(190, 160, 120, 0.4),
+        calc(75vw) calc(20vh) 0 0 rgba(220, 190, 150, 0.5),
+        calc(30vw) calc(25vh) 0 0 rgba(210, 180, 140, 0.4),
+        calc(85vw) calc(12vh) 0 0 rgba(200, 170, 130, 0.5);
+    animation: monuments-dust-float 20s ease-in-out infinite;
+}
+
+@keyframes monuments-dust-float {
     0%, 100% {
-        opacity: 0.4;
-        transform: translateY(0);
-    }
-    25% {
-        opacity: 0.7;
-        transform: translateY(-15px);
+        transform: translateY(0) translateX(0);
+        opacity: 0.6;
     }
     50% {
-        opacity: 0.6;
-        transform: translateY(-25px);
+        transform: translateY(-15px) translateX(10px);
+        opacity: 1;
     }
-    75% {
-        opacity: 0.75;
-        transform: translateY(-12px);
-    }
+}
+
+/* === FIREWORK BURSTS (BOX-SHADOW EXPLOSION) === */
+.theme-monuments .turbine-blades {
+    top: 18%;
+    left: 25%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    z-index: 18;
+    animation: monuments-firework-1 8s ease-out infinite;
+}
+
+.theme-monuments .turbine-blades::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px 2px #ff1744,
+        15px 0 6px 1px #ff1744,
+        -15px 0 6px 1px #ff1744,
+        0 15px 6px 1px #ff1744,
+        0 -15px 6px 1px #ff1744,
+        10px 10px 6px 1px #ff1744,
+        -10px -10px 6px 1px #ff1744,
+        10px -10px 6px 1px #ff1744,
+        -10px 10px 6px 1px #ff1744;
+}
+
+/* Second firework */
+.theme-monuments .turbine-blades::after {
+    top: -5%;
+    left: calc(35vw);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px 2px #76ff03,
+        15px 0 6px 1px #76ff03,
+        -15px 0 6px 1px #76ff03,
+        0 15px 6px 1px #76ff03,
+        0 -15px 6px 1px #76ff03,
+        10px 10px 6px 1px #76ff03,
+        -10px -10px 6px 1px #76ff03,
+        10px -10px 6px 1px #76ff03,
+        -10px 10px 6px 1px #76ff03;
+    animation: monuments-firework-2 8s ease-out 2s infinite;
+}
+
+@keyframes monuments-firework-1 {
+    0% { opacity: 0; transform: scale(0); }
+    5% { opacity: 1; transform: scale(1); }
+    15% { opacity: 1; transform: scale(1.5); }
+    25% { opacity: 0; transform: scale(2); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+@keyframes monuments-firework-2 {
+    0% { opacity: 0; transform: scale(0); }
+    5% { opacity: 1; transform: scale(1); }
+    15% { opacity: 1; transform: scale(1.5); }
+    25% { opacity: 0; transform: scale(2); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+/* === LIGHT RAYS FROM HORIZON === */
+.theme-monuments .elem-0-ultra::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 40px;
+    background: rgba(60, 50, 70, 0.4);
+    border-radius: 50% 50% 0 0;
 }
 
 /* === MASCOT HAPPY ANIMATIONS === */
@@ -456,50 +868,61 @@
 .theme-monuments .owl-character.happy,
 .theme-monuments .cat-character.happy,
 .theme-monuments .robot-character.happy {
-    animation: monuments-happy-explore 2.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: monuments-happy-celebrate 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes monuments-happy-explore {
+@keyframes monuments-happy-celebrate {
     0% {
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0) rotate(0deg);
+        filter: brightness(1);
     }
     15% {
-        transform: scale(0.92) translateY(8px);
+        transform: scale(0.9) translateY(10px);
     }
     35% {
-        transform: scale(1.25) translateY(-35px) rotate(-12deg);
+        transform: scale(1.35) translateY(-45px) rotate(-8deg);
+        filter: brightness(1.4) drop-shadow(0 0 20px rgba(255, 235, 153, 0.8));
     }
-    52% {
-        transform: scale(1.22) translateY(-32px) rotate(14deg);
+    50% {
+        transform: scale(1.28) translateY(-40px) rotate(10deg);
     }
-    68% {
-        transform: scale(1.18) translateY(-26px) rotate(-8deg);
+    65% {
+        transform: scale(1.2) translateY(-30px) rotate(-5deg);
     }
-    82% {
-        transform: scale(1.1) translateY(-15px) rotate(5deg);
+    80% {
+        transform: scale(1.1) translateY(-15px) rotate(3deg);
     }
     100% {
         transform: scale(1) translateY(0) rotate(0deg);
+        filter: brightness(1);
     }
 }
 
+/* === MASCOT EXCITED ANIMATIONS === */
+.theme-monuments .worm-character.excited,
+.theme-monuments .bunny-character.excited,
 .theme-monuments .owl-character.excited,
-.theme-monuments .cat-character.excited {
-    animation: monuments-tourist-excited 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+.theme-monuments .cat-character.excited,
+.theme-monuments .robot-character.excited {
+    animation: monuments-excited-explore 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 
-@keyframes monuments-tourist-excited {
+@keyframes monuments-excited-explore {
     0%, 100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: brightness(1);
     }
     25% {
-        transform: translateY(-28px) rotate(12deg);
+        transform: translateY(-25px) rotate(-8deg) scale(1.1);
+        filter: brightness(1.3) drop-shadow(0 0 12px rgba(255, 200, 100, 0.6));
     }
     50% {
-        transform: translateY(-22px) rotate(-18deg);
+        transform: translateY(-20px) rotate(5deg) scale(1.15);
+        filter: brightness(1.4) drop-shadow(0 0 15px rgba(255, 180, 80, 0.7));
     }
     75% {
-        transform: translateY(-26px) rotate(8deg);
+        transform: translateY(-28px) rotate(10deg) scale(1.08);
+        filter: brightness(1.35) drop-shadow(0 0 14px rgba(255, 190, 90, 0.65));
     }
 }
 
@@ -509,51 +932,98 @@
 .theme-monuments .owl-character.sad,
 .theme-monuments .cat-character.sad,
 .theme-monuments .robot-character.sad {
-    animation: monuments-sad-lost 2.5s ease-out forwards;
+    animation: monuments-sad-crumble 2.4s ease-out forwards;
 }
 
-@keyframes monuments-sad-lost {
+@keyframes monuments-sad-crumble {
     0% {
-        transform: scale(1);
-        filter: brightness(1) sepia(0);
+        transform: scale(1) translateY(0);
+        filter: brightness(1) grayscale(0);
     }
-    40% {
-        transform: scale(0.9) translateY(10px);
-        filter: brightness(0.82) sepia(0.25);
+    20% {
+        transform: scale(0.96) translateX(-5px) translateY(5px);
+        filter: brightness(0.9) grayscale(0.1);
+    }
+    45% {
+        transform: scale(0.9) translateX(5px) translateY(12px);
+        filter: brightness(0.75) grayscale(0.25);
+    }
+    70% {
+        transform: scale(0.85) translateX(-3px) translateY(18px);
+        filter: brightness(0.6) grayscale(0.4);
     }
     100% {
-        transform: scale(0.82) translateY(22px);
-        filter: brightness(0.52) sepia(0.55) saturate(0.38);
+        transform: scale(0.8) translateY(25px);
+        filter: brightness(0.45) grayscale(0.5);
     }
 }
 
-/* === OWL SPECIAL - HISTORIAN === */
-.theme-monuments .owl-character.idle {
-    animation: monuments-owl-observe 5.5s ease-in-out infinite;
+/* === MASCOT IDLE ANIMATIONS === */
+.theme-monuments .worm-character.idle,
+.theme-monuments .bunny-character.idle,
+.theme-monuments .owl-character.idle,
+.theme-monuments .cat-character.idle,
+.theme-monuments .robot-character.idle {
+    animation: monuments-idle-gaze 5s ease-in-out infinite;
 }
 
-@keyframes monuments-owl-observe {
+@keyframes monuments-idle-gaze {
     0%, 100% {
-        transform: rotate(0deg);
+        transform: translateY(0) rotate(0deg);
     }
     25% {
-        transform: rotate(-12deg) scale(1.03);
-    }
-    75% {
-        transform: rotate(12deg) scale(1.03);
-    }
-}
-
-/* === WORM SPECIAL - HERITAGE GLOW === */
-.theme-monuments .worm-character.idle {
-    animation: monuments-worm-heritage 4.2s ease-in-out infinite;
-}
-
-@keyframes monuments-worm-heritage {
-    0%, 100% {
-        filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.35));
+        transform: translateY(-3px) rotate(-2deg);
     }
     50% {
-        filter: drop-shadow(0 0 16px rgba(218, 165, 32, 0.65));
+        transform: translateY(-6px) rotate(2deg);
+    }
+    75% {
+        transform: translateY(-2px) rotate(-1deg);
+    }
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 600px) {
+    .theme-monuments .elem-1 {
+        border-left-width: 50px;
+        border-right-width: 50px;
+        border-bottom-width: 90px;
+    }
+
+    .theme-monuments .elem-1-fg {
+        border-left-width: 35px;
+        border-right-width: 35px;
+        border-bottom-width: 65px;
+    }
+
+    .theme-monuments .elem-2,
+    .theme-monuments .elem-3,
+    .theme-monuments .elem-4 {
+        transform: scale(0.7);
+    }
+
+    .theme-monuments .elem-7,
+    .theme-monuments .elem-8,
+    .theme-monuments .elem-9 {
+        transform: scale(0.8);
+    }
+
+    .theme-monuments .turbine-blades {
+        display: none;
+    }
+
+    .theme-monuments .elem-5 {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* === ACCESSIBILITY - REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    .theme-monuments .scene-background *,
+    .theme-monuments .scene-background *::before,
+    .theme-monuments .scene-background *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }

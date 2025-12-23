@@ -1,584 +1,893 @@
 /* ============================================
-   MATHEMATICS THEME - PREMIUM CINEMATIC
-   Abstract mathematical wonderland
-   Purple/pink palette with geometric elegance
+   MATHEMATICS THEME - JULIA MIOCENE STYLE
+   Mathematical wonderland with pure CSS art
+   Border triangles & box-shadow multiplication
    ============================================ */
 
-/* === LAYERED CHALKBOARD BACKGROUND === */
+:root {
+    /* Deep purple sky gradient */
+    --math-sky-top: #1A0F2E;
+    --math-sky-mid: #2A1F52;
+    --math-sky-lower: #473888;
+    --math-sky-bottom: #755CD0;
+
+    /* Golden accent colors */
+    --math-gold-light: #FFD700;
+    --math-gold-mid: #FFC107;
+    --math-gold-dark: #FF8F00;
+
+    /* Purple/violet spectrum */
+    --math-purple-dark: #6A1B9A;
+    --math-purple-mid: #9C27B0;
+    --math-purple-light: #BA68C8;
+    --math-purple-glow: #E040FB;
+
+    /* Pink/magenta accents */
+    --math-pink-light: #F48FB1;
+    --math-pink-mid: #EC407A;
+    --math-pink-dark: #AD1457;
+
+    /* Orange accents */
+    --math-orange-light: #FFB74D;
+    --math-orange-mid: #FF9800;
+    --math-orange-dark: #E65100;
+
+    /* Metal colors for tools */
+    --math-metal-light: #90A4AE;
+    --math-metal-mid: #607D8B;
+    --math-metal-dark: #455A64;
+}
+
+/* === BASE SCENE SETUP === */
 .theme-mathematics .scene-background {
-    background:
-        /* Top ethereal glow */
-        radial-gradient(ellipse 850px 420px at 50% 0%, rgba(156, 39, 176, 0.12) 0%, transparent 50%),
-        /* Geometric glow spots */
-        radial-gradient(ellipse 580px 580px at 18% 40%, rgba(236, 64, 122, 0.1) 0%, transparent 55%),
-        radial-gradient(ellipse 620px 620px at 82% 58%, rgba(103, 58, 183, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 480px 480px at 50% 78%, rgba(156, 39, 176, 0.08) 0%, transparent 50%),
-        /* Academic gradient */
-        linear-gradient(180deg,
-            #1a1625 0%,
-            #221c30 12%,
-            #2a233c 24%,
-            #332a48 36%,
-            #3d3154 48%,
-            #473860 60%,
-            #52406d 72%,
-            #5d497a 84%,
-            #695287 96%,
-            #755b94 100%);
+    background: linear-gradient(180deg,
+        var(--math-sky-top) 0%,
+        var(--math-sky-mid) 35%,
+        var(--math-sky-lower) 65%,
+        var(--math-sky-bottom) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === GRAPH PAPER GRID === */
-.theme-mathematics .scene-background::before {
+/* Universal element setup - Miocene technique */
+.theme-mathematics .scene-background *,
+.theme-mathematics .scene-background *::before,
+.theme-mathematics .scene-background *::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image:
-        /* Major grid lines */
-        repeating-linear-gradient(0deg, transparent 0px, transparent 49px, rgba(236, 64, 122, 0.15) 49px, rgba(236, 64, 122, 0.15) 51px),
-        repeating-linear-gradient(90deg, transparent 0px, transparent 49px, rgba(156, 39, 176, 0.15) 49px, rgba(156, 39, 176, 0.15) 51px),
-        /* Minor grid lines */
-        repeating-linear-gradient(0deg, transparent 0px, transparent 24px, rgba(255, 255, 255, 0.05) 24px, rgba(255, 255, 255, 0.05) 25px),
-        repeating-linear-gradient(90deg, transparent 0px, transparent 24px, rgba(255, 255, 255, 0.05) 24px, rgba(255, 255, 255, 0.05) 25px);
-    background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
-    opacity: 0.4;
-    animation: math-grid-drift 45s linear infinite;
-    pointer-events: none;
+}
+
+/* === GOLDEN STARS (background) === */
+.theme-mathematics .scene-background::before {
+    width: 3px;
+    height: 3px;
+    top: 5%;
+    left: 10%;
+    background: var(--math-gold-light);
+    border-radius: 50%;
+    box-shadow:
+        /* Bright gold stars */
+        40px 15px 0 0 var(--math-gold-light),
+        100px 25px 0 1px var(--math-gold-mid),
+        170px 10px 0 0 #FFFFFF,
+        240px 35px 0 0 var(--math-gold-light),
+        320px 8px 0 1px var(--math-gold-mid),
+        400px 28px 0 0 var(--math-gold-light),
+        480px 18px 0 0 #FFFFFF,
+        560px 40px 0 1px var(--math-gold-mid),
+        /* Dimmer stars */
+        60px 55px 0 -1px rgba(255, 215, 0, 0.6),
+        130px 70px 0 0 rgba(255, 255, 255, 0.5),
+        210px 60px 0 -1px var(--math-purple-glow),
+        290px 75px 0 0 rgba(255, 215, 0, 0.7),
+        370px 50px 0 -1px rgba(255, 255, 255, 0.6),
+        450px 65px 0 0 var(--math-purple-light),
+        530px 80px 0 -1px rgba(255, 215, 0, 0.5),
+        /* Scattered */
+        80px 100px 0 0 rgba(255, 255, 255, 0.4),
+        160px 90px 0 -1px var(--math-gold-light),
+        250px 105px 0 0 rgba(255, 215, 0, 0.6),
+        340px 95px 0 -1px var(--math-purple-glow),
+        430px 110px 0 0 rgba(255, 255, 255, 0.5),
+        520px 85px 0 -1px var(--math-gold-mid),
+        600px 100px 0 0 rgba(255, 215, 0, 0.7),
+        680px 25px 0 0 var(--math-gold-light);
+    animation: math-stars-twinkle 4s ease-in-out infinite;
     z-index: 1;
 }
 
-@keyframes math-grid-drift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
+@keyframes math-stars-twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
 }
 
-/* === FLOATING SYMBOL PARTICLES === */
-.theme-mathematics .symbol-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
+/* === MATHEMATICAL GRID (perspective) === */
+.theme-mathematics .scene-background::after {
+    bottom: 0;
     left: 0;
-    pointer-events: none;
-    z-index: 15;
-    font-family: 'Times New Roman', serif;
-    font-size: 28px;
-    color: rgba(236, 64, 122, 0.4);
-    text-shadow: 0 0 15px rgba(236, 64, 122, 0.6);
+    width: 100%;
+    height: 50%;
+    background-image:
+        /* Major grid lines - golden */
+        repeating-linear-gradient(0deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(255, 193, 7, 0.15) 48px,
+            rgba(255, 193, 7, 0.15) 50px),
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(255, 193, 7, 0.12) 48px,
+            rgba(255, 193, 7, 0.12) 50px),
+        /* Minor grid - purple */
+        repeating-linear-gradient(0deg,
+            transparent 0px,
+            transparent 23px,
+            rgba(156, 39, 176, 0.08) 23px,
+            rgba(156, 39, 176, 0.08) 25px),
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 23px,
+            rgba(156, 39, 176, 0.06) 23px,
+            rgba(156, 39, 176, 0.06) 25px);
+    transform: perspective(500px) rotateX(40deg);
+    transform-origin: bottom center;
+    mask-image: linear-gradient(to top, black 0%, transparent 100%);
+    z-index: 2;
+    animation: math-grid-drift 60s linear infinite;
 }
 
-.theme-mathematics .symbol-particles::before {
-    content: 'π ∞ Σ';
-    position: absolute;
-    top: 22%;
-    left: 18%;
-    letter-spacing: 25px;
-    animation: math-symbol-float-1 14s ease-in-out infinite;
+@keyframes math-grid-drift {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 50px 50px, 50px 50px, 25px 25px, 25px 25px; }
 }
 
-.theme-mathematics .symbol-particles::after {
-    content: '∫ √ Δ';
-    position: absolute;
-    top: 65%;
-    left: 70%;
-    letter-spacing: 20px;
-    color: rgba(156, 39, 176, 0.35);
-    text-shadow: 0 0 15px rgba(156, 39, 176, 0.5);
-    animation: math-symbol-float-2 16s ease-in-out infinite 3s;
+/* === PYRAMID (elem-0-ultra) - using border triangle === */
+.theme-mathematics .elem-0-ultra {
+    bottom: 20%;
+    left: 8%;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid var(--math-gold-dark);
+    z-index: 8;
+    filter: drop-shadow(0 0 30px rgba(255, 152, 0, 0.5));
+    animation: math-pyramid-glow 6s ease-in-out infinite;
 }
 
-@keyframes math-symbol-float-1 {
-    0%, 100% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.4;
-    }
-    50% {
-        transform: translateY(-30px) translateX(15px) rotate(10deg);
-        opacity: 0.7;
-    }
+/* Pyramid shine */
+.theme-mathematics .elem-0-ultra::before {
+    bottom: -100px;
+    left: -30px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid var(--math-gold-mid);
+    opacity: 0.7;
 }
 
-@keyframes math-symbol-float-2 {
-    0%, 100% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.35;
-    }
-    50% {
-        transform: translateY(-25px) translateX(-12px) rotate(-8deg);
-        opacity: 0.65;
-    }
+/* Pyramid eye */
+.theme-mathematics .elem-0-ultra::after {
+    bottom: -55px;
+    left: -10px;
+    width: 20px;
+    height: 15px;
+    background: radial-gradient(circle,
+        var(--math-gold-light) 0%,
+        var(--math-gold-mid) 50%,
+        transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.6);
+    animation: math-eye-glow 3s ease-in-out infinite;
 }
 
-/* === ELEMENT 1: PI SYMBOL === */
-.theme-mathematics .elem-1 {
-    position: absolute;
-    top: 15%;
-    left: 12%;
+@keyframes math-pyramid-glow {
+    0%, 100% { filter: drop-shadow(0 0 30px rgba(255, 152, 0, 0.5)); }
+    50% { filter: drop-shadow(0 0 50px rgba(255, 152, 0, 0.8)); }
+}
+
+@keyframes math-eye-glow {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.6); }
+    50% { transform: scale(1.2); box-shadow: 0 0 30px 12px rgba(255, 215, 0, 0.9); }
+}
+
+/* === SPHERE (elem-0-far) - 3D ball === */
+.theme-mathematics .elem-0-far {
+    bottom: 15%;
+    right: 20%;
     width: 70px;
-    height: 80px;
-    z-index: 12;
-    animation: math-pi-float 9.5s ease-in-out infinite;
-    filter: drop-shadow(0 5px 18px rgba(156, 39, 176, 0.5));
-    pointer-events: none;
+    height: 70px;
+    background: radial-gradient(circle at 30% 30%,
+        var(--math-purple-light) 0%,
+        var(--math-purple-mid) 40%,
+        var(--math-purple-dark) 100%);
+    border-radius: 50%;
+    z-index: 9;
+    box-shadow:
+        inset -10px -10px 20px rgba(0, 0, 0, 0.3),
+        0 0 40px 10px rgba(156, 39, 176, 0.4);
+    animation: math-sphere-float 8s ease-in-out infinite;
+}
+
+/* Sphere highlight */
+.theme-mathematics .elem-0-far::before {
+    top: 12px;
+    left: 15px;
+    width: 18px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: rotate(-30deg);
+}
+
+/* Latitude line */
+.theme-mathematics .elem-0-far::after {
+    top: 50%;
+    left: 5%;
+    width: 90%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translateY(-50%) scaleY(0.3);
+}
+
+@keyframes math-sphere-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+/* === PI SYMBOL (elem-1) - main element === */
+.theme-mathematics .elem-1 {
+    top: 10%;
+    left: 12%;
+    width: 90px;
+    height: 100px;
+    z-index: 20;
+    animation: math-pi-float 9s ease-in-out infinite;
 }
 
 /* Pi top bar */
 .theme-mathematics .elem-1::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 10px;
-    top: 18px;
-    background:
-        /* Highlight */
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.2) 20%,
-            rgba(255, 255, 255, 0.1) 50%,
-            transparent 100%),
-        /* Main gradient */
-        linear-gradient(90deg,
-            transparent 0%,
-            #E040FB 8%,
-            #D500F9 50%,
-            #AA00FF 92%,
-            transparent 100%);
-    border-radius: 5px 5px 0 0;
+    top: 20px;
+    left: 0;
+    width: 90px;
+    height: 12px;
+    background: linear-gradient(90deg,
+        rgba(255, 193, 7, 0) 0%,
+        var(--math-gold-light) 15%,
+        var(--math-gold-mid) 50%,
+        var(--math-gold-light) 85%,
+        rgba(255, 193, 7, 0) 100%);
+    border-radius: 6px;
     box-shadow:
-        0 0 25px rgba(224, 64, 251, 0.6),
-        inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+        0 0 30px 10px rgba(255, 193, 7, 0.6),
+        0 0 60px 20px rgba(255, 193, 7, 0.3);
 }
 
-/* Pi legs */
+/* Pi legs using box-shadow */
 .theme-mathematics .elem-1::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Left leg */
-        linear-gradient(180deg,
-            rgba(224, 64, 251, 0) 0%,
-            rgba(224, 64, 251, 1) 35%,
-            rgba(213, 0, 249, 1) 60%,
-            rgba(170, 0, 255, 1) 100%) 18% 30% / 22% 70% no-repeat,
-        /* Right leg */
-        linear-gradient(180deg,
-            rgba(224, 64, 251, 0) 0%,
-            rgba(224, 64, 251, 1) 35%,
-            rgba(213, 0, 249, 1) 60%,
-            rgba(170, 0, 255, 1) 100%) 60% 30% / 22% 70% no-repeat;
+    top: 30px;
+    left: 20px;
+    width: 12px;
+    height: 60px;
+    background: linear-gradient(180deg,
+        var(--math-gold-light) 0%,
+        var(--math-gold-mid) 50%,
+        var(--math-gold-dark) 100%);
+    border-radius: 0 0 4px 4px;
     box-shadow:
-        0 0 30px rgba(224, 64, 251, 0.5);
-    animation: math-pi-glow 3.8s ease-in-out infinite;
+        /* Right leg */
+        38px 0 0 0 var(--math-gold-light),
+        38px 30px 0 0 var(--math-gold-mid),
+        38px 60px 0 0 var(--math-gold-dark),
+        /* Glow */
+        0 0 25px 8px rgba(255, 193, 7, 0.5),
+        38px 0 25px 8px rgba(255, 193, 7, 0.5);
 }
 
 @keyframes math-pi-float {
-    0%, 100% { transform: translateY(0) rotate(-3deg) scale(1); }
-    33% { transform: translateY(-15px) rotate(4deg) scale(1.05); }
-    66% { transform: translateY(-8px) rotate(-5deg) scale(1.03); }
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-18px) rotate(3deg); }
 }
 
-@keyframes math-pi-glow {
-    0%, 100% {
-        filter: brightness(1) drop-shadow(0 0 20px rgba(224, 64, 251, 0.5));
-    }
-    50% {
-        filter: brightness(1.3) drop-shadow(0 0 35px rgba(224, 64, 251, 0.8));
-    }
-}
-
-/* === ELEMENT 2: ROTATING CUBE === */
+/* === CUBE (elem-2) - isometric cube === */
 .theme-mathematics .elem-2 {
-    position: absolute;
-    top: 18%;
+    top: 12%;
     right: 15%;
-    width: 90px;
-    height: 90px;
-    z-index: 13;
-    perspective: 800px;
-    animation: math-cube-hover 10.5s ease-in-out infinite;
-    pointer-events: none;
+    width: 60px;
+    height: 70px;
+    z-index: 18;
+    animation: math-cube-rotate 12s ease-in-out infinite;
 }
 
-/* Cube face */
+/* Top face (diamond shape using borders) */
 .theme-mathematics .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 65px;
-    height: 65px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateX(30deg) rotateY(45deg);
-    background:
-        /* Grid lines */
-        linear-gradient(90deg, transparent 31%, rgba(255, 255, 255, 0.3) 32%, rgba(255, 255, 255, 0.3) 34%, transparent 35%),
-        linear-gradient(90deg, transparent 64%, rgba(255, 255, 255, 0.3) 65%, rgba(255, 255, 255, 0.3) 67%, transparent 68%),
-        linear-gradient(0deg, transparent 31%, rgba(255, 255, 255, 0.3) 32%, rgba(255, 255, 255, 0.3) 34%, transparent 35%),
-        linear-gradient(0deg, transparent 64%, rgba(255, 255, 255, 0.3) 65%, rgba(255, 255, 255, 0.3) 67%, transparent 68%),
-        /* Face gradient */
-        linear-gradient(135deg,
-            rgba(103, 58, 183, 0.7) 0%,
-            rgba(156, 39, 176, 0.8) 50%,
-            rgba(103, 58, 183, 0.7) 100%);
-    border: 2px solid rgba(186, 104, 200, 0.8);
-    box-shadow:
-        0 0 30px rgba(156, 39, 176, 0.5),
-        inset 0 0 25px rgba(255, 255, 255, 0.1);
-    animation: math-cube-spin 8s linear infinite;
-}
-
-/* Triangle overlay */
-.theme-mathematics .elem-2::after {
-    content: '';
-    position: absolute;
+    top: 0;
+    left: 15px;
     width: 0;
     height: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-left: 32px solid transparent;
-    border-right: 32px solid transparent;
-    border-bottom: 55px solid rgba(236, 64, 122, 0.6);
-    filter: drop-shadow(0 0 18px rgba(236, 64, 122, 0.7));
-    animation: math-triangle-pulse 4.5s ease-in-out infinite;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 18px solid var(--math-purple-light);
+    filter: drop-shadow(0 0 15px rgba(186, 104, 200, 0.6));
 }
 
-@keyframes math-cube-hover {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-18px) scale(1.08); }
+/* Side faces */
+.theme-mathematics .elem-2::after {
+    top: 18px;
+    left: 15px;
+    width: 30px;
+    height: 40px;
+    background: linear-gradient(135deg,
+        var(--math-purple-mid) 0%,
+        var(--math-purple-dark) 100%);
+    box-shadow:
+        /* Right face */
+        30px 0 0 0 var(--math-purple-dark),
+        /* Grid lines on faces */
+        10px 13px 0 -9px rgba(255, 255, 255, 0.3),
+        20px 13px 0 -9px rgba(255, 255, 255, 0.3),
+        40px 13px 0 -9px rgba(255, 255, 255, 0.2),
+        50px 13px 0 -9px rgba(255, 255, 255, 0.2),
+        10px 26px 0 -9px rgba(255, 255, 255, 0.3),
+        20px 26px 0 -9px rgba(255, 255, 255, 0.3),
+        /* Glow */
+        15px 20px 20px 5px rgba(156, 39, 176, 0.4);
 }
 
-@keyframes math-cube-spin {
-    0%, 100% {
-        transform: translate(-50%, -50%) rotateX(30deg) rotateY(45deg);
-        opacity: 0.8;
-    }
-    50% {
-        transform: translate(-50%, -50%) rotateX(30deg) rotateY(45deg) scale(1.1);
-        opacity: 1;
-    }
+@keyframes math-cube-rotate {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
 }
 
-@keyframes math-triangle-pulse {
-    0%, 100% {
-        opacity: 0.6;
-        filter: drop-shadow(0 0 18px rgba(236, 64, 122, 0.7));
-    }
-    50% {
-        opacity: 1;
-        filter: drop-shadow(0 0 30px rgba(236, 64, 122, 1));
-    }
-}
-
-/* === ELEMENT 3: CALCULATOR === */
+/* === INFINITY SYMBOL (elem-3) === */
 .theme-mathematics .elem-3 {
-    position: absolute;
-    bottom: 25%;
-    right: 18%;
-    width: 48px;
-    height: 65px;
-    z-index: 11;
-    animation: math-calc-bounce 6.5s ease-in-out infinite;
-    filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.35));
-    pointer-events: none;
-}
-
-/* Calculator body */
-.theme-mathematics .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Screen */
-        linear-gradient(180deg,
-            rgba(76, 175, 80, 0.9) 0%,
-            rgba(56, 142, 60, 1) 100%) 6% 10% / 88% 22% no-repeat,
-        /* Button grid - row 1 */
-        radial-gradient(circle 4px at 20% 42%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 42% 42%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 64% 42%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 86% 42%, #FFC107 0%, #FFA000 100%),
-        /* Button grid - row 2 */
-        radial-gradient(circle 4px at 20% 58%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 42% 58%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 64% 58%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 86% 58%, #FFC107 0%, #FFA000 100%),
-        /* Button grid - row 3 */
-        radial-gradient(circle 4px at 20% 74%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 42% 74%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 64% 74%, #ECEFF1 0%, #CFD8DC 100%),
-        radial-gradient(circle 4px at 86% 74%, #FFC107 0%, #FFA000 100%),
-        /* Body gradient */
-        linear-gradient(180deg,
-            #78909C 0%,
-            #607D8B 50%,
-            #546E7A 100%);
-    border-radius: 8px;
-    border: 2px solid #90A4AE;
-    box-shadow:
-        inset 0 2px 6px rgba(255, 255, 255, 0.2),
-        inset 0 -2px 8px rgba(0, 0, 0, 0.2),
-        0 6px 18px rgba(0, 0, 0, 0.3);
-}
-
-/* Screen glow */
-.theme-mathematics .elem-3::after {
-    content: '';
-    position: absolute;
-    width: 42px;
-    height: 14px;
-    top: 6.5px;
-    left: 3px;
-    background: linear-gradient(180deg,
-        rgba(76, 175, 80, 0.4) 0%,
-        rgba(76, 175, 80, 0.7) 100%);
-    border-radius: 2px;
-    box-shadow:
-        0 0 15px rgba(76, 175, 80, 0.6),
-        inset 0 -2px 5px rgba(0, 0, 0, 0.2);
-    animation: math-screen-flash 3.5s ease-in-out infinite;
-}
-
-@keyframes math-calc-bounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    15% { transform: translateY(-6px) scale(1.02); }
-    30% { transform: translateY(0) scale(1); }
-    45% { transform: translateY(-4px) scale(1.015); }
-}
-
-@keyframes math-screen-flash {
-    0%, 88%, 100% { opacity: 1; }
-    92%, 96% { opacity: 0.7; }
-}
-
-/* === ELEMENT 4: INFINITY SYMBOL === */
-.theme-mathematics .elem-4 {
-    position: absolute;
     bottom: 35%;
-    left: 28%;
-    width: 95px;
+    left: 25%;
+    width: 100px;
     height: 45px;
-    z-index: 10;
-    animation: math-infinity-morph 11.5s ease-in-out infinite;
-    pointer-events: none;
+    z-index: 15;
+    animation: math-infinity-pulse 8s ease-in-out infinite;
 }
 
 /* Left loop */
-.theme-mathematics .elem-4::before {
-    content: '';
-    position: absolute;
+.theme-mathematics .elem-3::before {
+    top: 0;
+    left: 0;
     width: 40px;
     height: 40px;
-    top: 2.5px;
-    left: 0;
-    border: 5px solid transparent;
-    border-image: linear-gradient(135deg,
-        #FF9800 0%,
-        #FF6F00 50%,
-        #E65100 100%) 1;
+    border: 5px solid var(--math-orange-mid);
     border-radius: 50%;
     box-shadow:
-        0 0 20px rgba(255, 152, 0, 0.6),
+        0 0 25px 8px rgba(255, 152, 0, 0.5),
         inset 0 0 15px rgba(255, 152, 0, 0.3);
-    animation: math-loop-left 6.5s ease-in-out infinite;
 }
 
 /* Right loop */
-.theme-mathematics .elem-4::after {
-    content: '';
-    position: absolute;
+.theme-mathematics .elem-3::after {
+    top: 0;
+    right: 0;
     width: 40px;
     height: 40px;
-    top: 2.5px;
-    right: 0;
-    border: 5px solid transparent;
-    border-image: linear-gradient(135deg,
-        #FF9800 0%,
-        #FF6F00 50%,
-        #E65100 100%) 1;
+    border: 5px solid var(--math-orange-mid);
     border-radius: 50%;
     box-shadow:
-        0 0 20px rgba(255, 152, 0, 0.6),
+        0 0 25px 8px rgba(255, 152, 0, 0.5),
         inset 0 0 15px rgba(255, 152, 0, 0.3);
-    animation: math-loop-right 6.5s ease-in-out infinite;
 }
 
-@keyframes math-infinity-morph {
-    0%, 100% { transform: scaleX(1) translateY(0); }
-    50% { transform: scaleX(1.2) translateY(-10px); }
+@keyframes math-infinity-pulse {
+    0%, 100% { transform: scaleX(1); filter: brightness(1); }
+    50% { transform: scaleX(1.15); filter: brightness(1.3); }
 }
 
-@keyframes math-loop-left {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-        box-shadow:
-            0 0 20px rgba(255, 152, 0, 0.6),
-            inset 0 0 15px rgba(255, 152, 0, 0.3);
-    }
-    50% {
-        transform: rotate(-12deg) scale(1.1);
-        box-shadow:
-            0 0 35px rgba(255, 152, 0, 0.9),
-            inset 0 0 20px rgba(255, 152, 0, 0.5);
-    }
+/* === CALCULATOR (elem-4) === */
+.theme-mathematics .elem-4 {
+    bottom: 20%;
+    right: 12%;
+    width: 55px;
+    height: 75px;
+    background: linear-gradient(180deg,
+        var(--math-metal-light) 0%,
+        var(--math-metal-mid) 50%,
+        var(--math-metal-dark) 100%);
+    border-radius: 8px;
+    z-index: 16;
+    box-shadow:
+        inset 0 2px 5px rgba(255, 255, 255, 0.2),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+    animation: math-calc-bounce 6s ease-in-out infinite;
 }
 
-@keyframes math-loop-right {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-        box-shadow:
-            0 0 20px rgba(255, 152, 0, 0.6),
-            inset 0 0 15px rgba(255, 152, 0, 0.3);
-    }
-    50% {
-        transform: rotate(12deg) scale(1.1);
-        box-shadow:
-            0 0 35px rgba(255, 152, 0, 0.9),
-            inset 0 0 20px rgba(255, 152, 0, 0.5);
-    }
+/* Display screen */
+.theme-mathematics .elem-4::before {
+    top: 8px;
+    left: 6px;
+    width: 43px;
+    height: 15px;
+    background: linear-gradient(180deg,
+        #4CAF50 0%,
+        #388E3C 100%);
+    border-radius: 3px;
+    box-shadow:
+        0 0 15px 5px rgba(76, 175, 80, 0.5),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+    animation: math-display-blink 4s ease-in-out infinite;
 }
 
-/* === ELEMENT 5: NUMBER CASCADE === */
+/* Button grid using box-shadow */
+.theme-mathematics .elem-4::after {
+    top: 30px;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    background: #ECEFF1;
+    border-radius: 2px;
+    box-shadow:
+        /* Row 1 */
+        12px 0 0 0 #ECEFF1,
+        24px 0 0 0 #ECEFF1,
+        36px 0 0 0 var(--math-gold-mid),
+        /* Row 2 */
+        0 12px 0 0 #ECEFF1,
+        12px 12px 0 0 #ECEFF1,
+        24px 12px 0 0 #ECEFF1,
+        36px 12px 0 0 var(--math-gold-mid),
+        /* Row 3 */
+        0 24px 0 0 #ECEFF1,
+        12px 24px 0 0 #ECEFF1,
+        24px 24px 0 0 #ECEFF1,
+        36px 24px 0 0 var(--math-orange-mid),
+        /* Row 4 */
+        0 36px 0 0 #ECEFF1,
+        12px 36px 0 0 #ECEFF1,
+        24px 36px 0 0 #ECEFF1,
+        36px 36px 0 0 #FF5722;
+}
+
+@keyframes math-calc-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes math-display-blink {
+    0%, 90%, 100% { opacity: 1; }
+    95% { opacity: 0.5; }
+}
+
+/* === COMPASS (elem-5) === */
 .theme-mathematics .elem-5 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 14;
-    font-family: 'Courier New', monospace;
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.theme-mathematics .elem-5::before {
-    content: '1 3 5 7';
-    position: absolute;
-    top: 35%;
+    top: 50%;
     right: 30%;
-    color: rgba(156, 39, 176, 0.5);
-    text-shadow: 0 0 12px rgba(156, 39, 176, 0.8);
-    letter-spacing: 12px;
-    animation: math-numbers-glow-1 5.5s ease-in-out infinite;
+    width: 60px;
+    height: 80px;
+    z-index: 14;
+    animation: math-compass-sway 10s ease-in-out infinite;
 }
 
+/* Compass pivot point */
+.theme-mathematics .elem-5::before {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle,
+        var(--math-metal-light) 0%,
+        var(--math-metal-mid) 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px 3px rgba(96, 125, 139, 0.5),
+        /* Left leg */
+        -12px 65px 0 -3px var(--math-metal-mid),
+        -12px 55px 0 -3px var(--math-metal-light),
+        -12px 45px 0 -3px var(--math-metal-mid),
+        -12px 35px 0 -3px var(--math-metal-light),
+        -12px 25px 0 -3px var(--math-metal-mid),
+        -12px 15px 0 -3px var(--math-metal-light),
+        /* Right leg */
+        12px 65px 0 -3px var(--math-metal-dark),
+        12px 55px 0 -3px var(--math-metal-mid),
+        12px 45px 0 -3px var(--math-metal-dark),
+        12px 35px 0 -3px var(--math-metal-mid),
+        12px 25px 0 -3px var(--math-metal-dark),
+        12px 15px 0 -3px var(--math-metal-mid);
+}
+
+/* Pencil tip */
 .theme-mathematics .elem-5::after {
-    content: '2 4 6 8';
-    position: absolute;
-    top: 30%;
-    right: 32%;
-    color: rgba(236, 64, 122, 0.45);
-    text-shadow: 0 0 12px rgba(236, 64, 122, 0.7);
-    letter-spacing: 12px;
-    animation: math-numbers-glow-2 6.5s ease-in-out infinite 2s;
+    bottom: 0;
+    left: calc(50% + 9px);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 10px solid #37474F;
 }
 
-@keyframes math-numbers-glow-1 {
-    0%, 100% {
-        opacity: 0.5;
-        transform: translateY(0) scale(1);
-        text-shadow: 0 0 12px rgba(156, 39, 176, 0.8);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(-10px) scale(1.08);
-        text-shadow:
-            0 0 20px rgba(156, 39, 176, 1),
-            0 0 40px rgba(103, 58, 183, 0.6);
-    }
+@keyframes math-compass-sway {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
 }
 
-@keyframes math-numbers-glow-2 {
-    0%, 100% {
-        opacity: 0.45;
-        transform: translateY(0) scale(1);
-        text-shadow: 0 0 12px rgba(236, 64, 122, 0.7);
-    }
-    50% {
-        opacity: 0.95;
-        transform: translateY(-8px) scale(1.06);
-        text-shadow:
-            0 0 18px rgba(236, 64, 122, 0.95),
-            0 0 35px rgba(233, 30, 99, 0.5);
-    }
+/* === SINE WAVE (elem-6) === */
+.theme-mathematics .elem-6 {
+    bottom: 25%;
+    left: 10%;
+    width: 120px;
+    height: 50px;
+    z-index: 12;
 }
 
-/* === GEOMETRIC PARTICLE STREAM === */
-.theme-mathematics .geometric-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* X/Y axes */
+.theme-mathematics .elem-6::before {
     top: 0;
     left: 0;
-    pointer-events: none;
-    z-index: 4;
-}
-
-.theme-mathematics .geometric-particles::before {
-    content: '';
-    position: absolute;
     width: 100%;
     height: 100%;
-    background:
+    border-left: 2px solid rgba(186, 104, 200, 0.5);
+    border-bottom: 2px solid rgba(186, 104, 200, 0.5);
+}
+
+/* Wave dots using box-shadow multiplication */
+.theme-mathematics .elem-6::after {
+    top: 25px;
+    left: 10px;
+    width: 4px;
+    height: 4px;
+    background: var(--math-gold-light);
+    border-radius: 50%;
+    box-shadow:
+        /* Sine wave points */
+        8px -12px 0 0 var(--math-gold-light),
+        16px -18px 0 0 var(--math-gold-mid),
+        24px -20px 0 0 var(--math-gold-light),
+        32px -18px 0 0 var(--math-gold-mid),
+        40px -12px 0 0 var(--math-gold-light),
+        48px 0 0 0 var(--math-gold-mid),
+        56px 12px 0 0 var(--math-gold-light),
+        64px 18px 0 0 var(--math-gold-mid),
+        72px 20px 0 0 var(--math-gold-light),
+        80px 18px 0 0 var(--math-gold-mid),
+        88px 12px 0 0 var(--math-gold-light),
+        96px 0 0 0 var(--math-gold-mid),
+        /* Glows */
+        24px -20px 10px 2px rgba(255, 193, 7, 0.4),
+        72px 20px 10px 2px rgba(255, 193, 7, 0.4);
+    animation: math-wave-animate 4s ease-in-out infinite;
+}
+
+@keyframes math-wave-animate {
+    0%, 100% { transform: translateX(0); opacity: 0.8; }
+    50% { transform: translateX(5px); opacity: 1; }
+}
+
+/* === GOLDEN RATIO SPIRAL (elem-7) === */
+.theme-mathematics .elem-7 {
+    top: 5%;
+    right: 8%;
+    width: 120px;
+    height: 120px;
+    z-index: 10;
+    animation: math-spiral-rotate 60s linear infinite;
+    opacity: 0.4;
+}
+
+/* Fibonacci rectangles using borders */
+.theme-mathematics .elem-7::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--math-gold-mid);
+    border-radius: 0;
+    box-shadow:
+        /* Nested rectangles */
+        inset 30px 0 0 0 transparent,
+        inset 30px 0 0 2px var(--math-gold-light),
+        inset 30px 30px 0 0 transparent,
+        inset 30px 30px 0 2px rgba(255, 193, 7, 0.7),
+        inset 50px 30px 0 0 transparent,
+        inset 50px 30px 0 2px rgba(255, 193, 7, 0.5),
+        inset 50px 50px 0 0 transparent,
+        inset 50px 50px 0 2px rgba(255, 193, 7, 0.3);
+}
+
+/* Phi symbol */
+.theme-mathematics .elem-7::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Times New Roman', serif;
+    font-size: 32px;
+    font-style: italic;
+    color: var(--math-gold-light);
+    text-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+}
+
+@keyframes math-spiral-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === FLOATING NUMBERS (pine-forest) === */
+.theme-mathematics .pine-forest {
+    top: 20%;
+    left: 30%;
+    font-family: 'Courier New', monospace;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--math-gold-light);
+    text-shadow:
+        0 0 20px rgba(255, 193, 7, 0.8),
+        0 0 40px rgba(255, 193, 7, 0.4);
+    z-index: 11;
+    animation: math-number-float-1 8s ease-in-out infinite;
+}
+
+.theme-mathematics .pine-forest::before {
+    top: 80px;
+    left: 150px;
+    font-family: 'Courier New', monospace;
+    font-size: 45px;
+    font-weight: bold;
+    color: var(--math-purple-light);
+    text-shadow:
+        0 0 20px rgba(186, 104, 200, 0.8),
+        0 0 40px rgba(156, 39, 176, 0.4);
+    animation: math-number-float-2 9s ease-in-out infinite;
+}
+
+@keyframes math-number-float-1 {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-25px) rotate(10deg); opacity: 0.9; }
+}
+
+@keyframes math-number-float-2 {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+    50% { transform: translateY(-20px) rotate(-8deg); opacity: 0.85; }
+}
+
+/* === EQUATION E=mc² (elem-1-fg) === */
+.theme-mathematics .elem-1-fg {
+    top: 45%;
+    left: 40%;
+    font-family: 'Times New Roman', serif;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--math-purple-light);
+    text-shadow:
+        0 0 25px rgba(186, 104, 200, 0.9),
+        0 0 50px rgba(156, 39, 176, 0.5);
+    z-index: 17;
+    animation: math-equation-drift 10s ease-in-out infinite;
+}
+
+@keyframes math-equation-drift {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.7; }
+    50% { transform: translateY(-15px) translateX(10px); opacity: 1; }
+}
+
+/* === MATH SYMBOLS (deer-legs) === */
+.theme-mathematics .deer-legs {
+    top: 30%;
+    left: 18%;
+    font-family: 'Times New Roman', serif;
+    font-size: 28px;
+    color: var(--math-pink-mid);
+    text-shadow: 0 0 15px rgba(236, 64, 122, 0.7);
+    letter-spacing: 15px;
+    z-index: 10;
+    animation: math-symbols-float 11s ease-in-out infinite;
+}
+
+.theme-mathematics .deer-legs::after {
+    top: 120px;
+    right: -200px;
+    font-family: 'Times New Roman', serif;
+    font-size: 26px;
+    color: var(--math-purple-mid);
+    text-shadow: 0 0 15px rgba(156, 39, 176, 0.6);
+    letter-spacing: 12px;
+    animation: math-symbols-float-2 12s ease-in-out infinite;
+}
+
+@keyframes math-symbols-float {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(-20px); opacity: 0.7; }
+}
+
+@keyframes math-symbols-float-2 {
+    0%, 100% { transform: translateY(0); opacity: 0.35; }
+    50% { transform: translateY(-18px); opacity: 0.65; }
+}
+
+/* === TRIANGLE (elem-8) === */
+.theme-mathematics .elem-8 {
+    bottom: 30%;
+    right: 45%;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid var(--math-pink-mid);
+    z-index: 13;
+    filter: drop-shadow(0 0 20px rgba(236, 64, 122, 0.6));
+    animation: math-triangle-pulse 5s ease-in-out infinite;
+}
+
+/* Inner triangle */
+.theme-mathematics .elem-8::before {
+    bottom: -45px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid var(--math-pink-light);
+    opacity: 0.6;
+}
+
+/* Right angle marker */
+.theme-mathematics .elem-8::after {
+    bottom: -55px;
+    left: 20px;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+@keyframes math-triangle-pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(236, 64, 122, 0.6)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 35px rgba(236, 64, 122, 0.9)); }
+}
+
+/* === PLUS/MINUS (elem-9) === */
+.theme-mathematics .elem-9 {
+    top: 60%;
+    left: 55%;
+    width: 30px;
+    height: 6px;
+    background: var(--math-gold-light);
+    border-radius: 3px;
+    z-index: 11;
+    box-shadow:
+        0 0 15px 5px rgba(255, 193, 7, 0.5),
+        /* Vertical bar for plus */
+        0 -12px 0 0 var(--math-gold-light),
+        0 12px 0 0 var(--math-gold-light);
+    animation: math-plus-rotate 8s ease-in-out infinite;
+}
+
+.theme-mathematics .elem-9::before {
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 30px;
+    background: var(--math-gold-light);
+    border-radius: 3px;
+}
+
+/* Multiplication sign nearby */
+.theme-mathematics .elem-9::after {
+    top: 50px;
+    left: 60px;
+    width: 25px;
+    height: 5px;
+    background: var(--math-orange-mid);
+    border-radius: 2px;
+    transform: rotate(45deg);
+    box-shadow:
+        0 0 10px 3px rgba(255, 152, 0, 0.4);
+}
+
+@keyframes math-plus-rotate {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg); }
+}
+
+/* === CLOUDS (cloud-2, cloud-3) === */
+.theme-mathematics .cloud-2 {
+    top: 15%;
+    left: 50%;
+    width: 70px;
+    height: 25px;
+    background: rgba(186, 104, 200, 0.3);
+    border-radius: 25px;
+    z-index: 4;
+    animation: math-cloud-drift-1 45s linear infinite;
+}
+
+.theme-mathematics .cloud-2::before {
+    top: -12px;
+    left: 12px;
+    width: 35px;
+    height: 20px;
+    background: rgba(186, 104, 200, 0.35);
+    border-radius: 20px;
+}
+
+.theme-mathematics .cloud-3 {
+    top: 22%;
+    left: 20%;
+    width: 55px;
+    height: 20px;
+    background: rgba(156, 39, 176, 0.25);
+    border-radius: 20px;
+    z-index: 4;
+    animation: math-cloud-drift-2 55s linear infinite;
+}
+
+@keyframes math-cloud-drift-1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+@keyframes math-cloud-drift-2 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 80px)); }
+}
+
+/* === FLOATING PARTICLES (scene-particles) === */
+.theme-mathematics .scene-particles {
+    top: 15%;
+    left: 15%;
+    width: 4px;
+    height: 4px;
+    background: var(--math-gold-light);
+    border-radius: 50%;
+    z-index: 7;
+    animation: math-particles-float 12s ease-in-out infinite;
+    box-shadow:
+        /* Golden particles */
+        60px 30px 0 0 var(--math-gold-mid),
+        130px -15px 0 -1px var(--math-gold-light),
+        210px 45px 0 0 var(--math-gold-mid),
+        290px 10px 0 -1px var(--math-gold-light),
         /* Purple particles */
-        radial-gradient(circle 3px at 22% 28%, rgba(156, 39, 176, 0.7) 0%, rgba(156, 39, 176, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 2.5px at 45% 18%, rgba(186, 104, 200, 0.6) 0%, rgba(186, 104, 200, 0.6) 70%, transparent 100%),
-        radial-gradient(circle 3.5px at 68% 35%, rgba(156, 39, 176, 0.65) 0%, rgba(156, 39, 176, 0.65) 70%, transparent 100%),
+        80px 80px 0 0 var(--math-purple-light),
+        170px 100px 0 -1px var(--math-purple-glow),
+        260px 70px 0 0 var(--math-purple-light),
+        350px 95px 0 -1px var(--math-purple-mid),
         /* Pink particles */
-        radial-gradient(circle 2.5px at 15% 55%, rgba(236, 64, 122, 0.7) 0%, rgba(236, 64, 122, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 3px at 38% 65%, rgba(233, 30, 99, 0.65) 0%, rgba(233, 30, 99, 0.65) 70%, transparent 100%),
-        radial-gradient(circle 2px at 62% 72%, rgba(236, 64, 122, 0.6) 0%, rgba(236, 64, 122, 0.6) 70%, transparent 100%),
-        /* Orange particles */
-        radial-gradient(circle 2.5px at 88% 48%, rgba(255, 152, 0, 0.7) 0%, rgba(255, 152, 0, 0.7) 70%, transparent 100%),
-        radial-gradient(circle 3px at 12% 82%, rgba(255, 193, 7, 0.65) 0%, rgba(255, 193, 7, 0.65) 70%, transparent 100%);
-    animation: math-particle-drift 17s ease-in-out infinite;
+        40px 130px 0 0 var(--math-pink-light),
+        120px 150px 0 -1px var(--math-pink-mid),
+        200px 140px 0 0 var(--math-pink-light),
+        /* Glows */
+        60px 30px 8px 2px rgba(255, 193, 7, 0.4),
+        210px 45px 8px 2px rgba(255, 193, 7, 0.4),
+        80px 80px 8px 2px rgba(186, 104, 200, 0.4),
+        170px 100px 8px 2px rgba(224, 64, 251, 0.4);
 }
 
-@keyframes math-particle-drift {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.6;
-    }
-    33% {
-        transform: translate(10px, -28px) scale(1.15);
-        opacity: 0.9;
-    }
-    66% {
-        transform: translate(-8px, -35px) scale(1.08);
-        opacity: 0.8;
-    }
+@keyframes math-particles-float {
+    0%, 100% { transform: translate(0, 0); opacity: 0.6; }
+    33% { transform: translate(15px, -25px); opacity: 0.9; }
+    66% { transform: translate(-10px, -35px); opacity: 0.8; }
 }
 
-/* === AMBIENT EQUATION FIELD === */
-.theme-mathematics .equation-field {
-    position: absolute;
+/* === AMBIENT GLOW (depth-fog) === */
+.theme-mathematics .depth-fog {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 42%;
-    pointer-events: none;
-    z-index: 2;
+    height: 40%;
     background:
-        radial-gradient(ellipse 720px 380px at 22% 100%, rgba(156, 39, 176, 0.14) 0%, transparent 58%),
-        radial-gradient(ellipse 680px 420px at 52% 100%, rgba(236, 64, 122, 0.16) 0%, transparent 62%),
-        radial-gradient(ellipse 640px 380px at 78% 100%, rgba(103, 58, 183, 0.12) 0%, transparent 55%);
-    animation: math-field-pulse 14s ease-in-out infinite;
+        radial-gradient(ellipse 600px 300px at 20% 100%, rgba(156, 39, 176, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 700px 350px at 50% 100%, rgba(255, 193, 7, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 600px 300px at 80% 100%, rgba(236, 64, 122, 0.12) 0%, transparent 60%);
+    z-index: 3;
+    animation: math-field-pulse 10s ease-in-out infinite;
 }
 
 @keyframes math-field-pulse {
-    0%, 100% {
-        opacity: 0.55;
-        transform: scaleY(1);
-    }
-    50% {
-        opacity: 0.82;
-        transform: scaleY(1.18);
-    }
+    0%, 100% { opacity: 0.6; transform: scaleY(1); }
+    50% { opacity: 0.9; transform: scaleY(1.15); }
 }
 
 /* === MASCOT ANIMATIONS === */
@@ -587,38 +896,37 @@
 .theme-mathematics .owl-character.happy,
 .theme-mathematics .cat-character.happy,
 .theme-mathematics .robot-character.happy {
-    animation: math-happy-solved 2.6s ease-out;
+    animation: math-mascot-eureka 2.8s ease-out;
 }
 
-@keyframes math-happy-solved {
+@keyframes math-mascot-eureka {
     0% { transform: scale(1) translateY(0) rotate(0deg); }
-    12% { transform: scale(0.96) translateY(4px) rotate(-2deg); }
-    24% { transform: scale(1.15) translateY(-22px) rotate(8deg); }
-    36% { transform: scale(1.26) translateY(-38px) rotate(-10deg); }
-    48% { transform: scale(1.3) translateY(-42px) rotate(12deg); }
-    60% { transform: scale(1.22) translateY(-32px) rotate(-6deg); }
-    72% { transform: scale(1.12) translateY(-20px) rotate(4deg); }
-    84% { transform: scale(1.06) translateY(-10px) rotate(-2deg); }
+    15% { transform: scale(0.94) translateY(6px) rotate(-3deg); }
+    30% { transform: scale(1.2) translateY(-28px) rotate(12deg); }
+    45% { transform: scale(1.35) translateY(-45px) rotate(-15deg); }
+    60% { transform: scale(1.38) translateY(-48px) rotate(18deg); }
+    75% { transform: scale(1.25) translateY(-35px) rotate(-8deg); }
+    90% { transform: scale(1.1) translateY(-15px) rotate(3deg); }
     100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 
 .theme-mathematics .robot-character.excited,
 .theme-mathematics .owl-character.excited {
-    animation: math-breakthrough 2.2s ease-out;
+    animation: math-breakthrough 2.5s ease-out;
 }
 
 @keyframes math-breakthrough {
     0%, 100% {
         transform: translateY(0) scale(1);
-        filter: brightness(1) drop-shadow(0 5px 12px rgba(156, 39, 176, 0.4));
+        filter: brightness(1) drop-shadow(0 6px 15px rgba(156, 39, 176, 0.5));
     }
-    30% {
-        transform: translateY(-32px) scale(1.28);
-        filter: brightness(1.5) drop-shadow(0 16px 32px rgba(224, 64, 251, 0.9));
+    35% {
+        transform: translateY(-38px) scale(1.32);
+        filter: brightness(1.6) drop-shadow(0 20px 40px rgba(255, 193, 7, 1));
     }
-    60% {
-        transform: translateY(-22px) scale(1.16) rotate(14deg);
-        filter: brightness(1.35) drop-shadow(0 12px 24px rgba(236, 64, 122, 0.7));
+    65% {
+        transform: translateY(-25px) scale(1.18) rotate(18deg);
+        filter: brightness(1.45) drop-shadow(0 15px 30px rgba(236, 64, 122, 0.8));
     }
 }
 
@@ -627,41 +935,41 @@
 .theme-mathematics .owl-character.sad,
 .theme-mathematics .cat-character.sad,
 .theme-mathematics .robot-character.sad {
-    animation: math-sad-error 2.4s ease-out forwards;
+    animation: math-miscalculation 2.6s ease-out forwards;
 }
 
-@keyframes math-sad-error {
+@keyframes math-miscalculation {
     0% {
         transform: scale(1) translateY(0);
         filter: brightness(1) saturate(1);
     }
-    22% {
-        transform: scale(0.96) translateY(4px) translateX(-4px);
-        filter: brightness(0.9) saturate(0.8);
+    25% {
+        transform: scale(0.94) translateY(5px) translateX(-5px);
+        filter: brightness(0.88) saturate(0.75);
     }
-    44% {
-        transform: scale(0.9) translateY(10px) translateX(5px);
-        filter: brightness(0.75) saturate(0.5);
+    50% {
+        transform: scale(0.88) translateY(12px) translateX(6px);
+        filter: brightness(0.72) saturate(0.45);
     }
-    66% {
-        transform: scale(0.86) translateY(15px) translateX(-3px);
-        filter: brightness(0.62) saturate(0.35);
+    75% {
+        transform: scale(0.84) translateY(18px) translateX(-4px);
+        filter: brightness(0.58) saturate(0.3);
     }
     100% {
-        transform: scale(0.82) translateY(20px);
-        filter: brightness(0.52) saturate(0.25) hue-rotate(30deg);
+        transform: scale(0.8) translateY(24px);
+        filter: brightness(0.48) saturate(0.2) hue-rotate(35deg);
     }
 }
 
 .theme-mathematics .robot-character.idle {
-    animation: math-robot-compute 4s ease-in-out infinite;
+    animation: math-robot-calculate 4.5s ease-in-out infinite;
 }
 
-@keyframes math-robot-compute {
+@keyframes math-robot-calculate {
     0%, 100% {
-        filter: hue-rotate(0deg) drop-shadow(0 5px 10px rgba(156, 39, 176, 0.4)) brightness(1);
+        filter: hue-rotate(0deg) drop-shadow(0 6px 12px rgba(156, 39, 176, 0.5)) brightness(1);
     }
     50% {
-        filter: hue-rotate(25deg) drop-shadow(0 8px 20px rgba(236, 64, 122, 0.6)) brightness(1.18);
+        filter: hue-rotate(30deg) drop-shadow(0 10px 25px rgba(255, 193, 7, 0.7)) brightness(1.25);
     }
 }

@@ -99,18 +99,10 @@ if ($score === $total && $total > 0) {
     </div>
 
     <?php if ($percentage >= 80): ?>
+    <script src="/js/confetti.js"></script>
     <script>
         // Celebration confetti for high scores
-        for (let i = 0; i < 50; i++) {
-            setTimeout(() => {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#a78bfa', '#34d399'][Math.floor(Math.random() * 5)];
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
-            }, i * 50);
-        }
+        showCelebrationConfetti(50, 50);
     </script>
     <?php endif; ?>
 </body>

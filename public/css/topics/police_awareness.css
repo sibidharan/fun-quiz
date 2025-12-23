@@ -1,0 +1,1146 @@
+/* ============================================
+   POLICE & SAFETY AWARENESS - CINEMATIC THEME
+   Premium CSS-only animations
+   Guardian Force: Protecting the Community
+   ============================================ */
+
+/* === DEEP BLUE AUTHORITY GRADIENT BACKGROUND === */
+.theme-police_awareness .scene-background {
+    background:
+        /* Top spotlight glow */
+        radial-gradient(ellipse 800px 400px at 50% -10%, rgba(13, 71, 161, 0.25) 0%, transparent 60%),
+        /* Emergency light reflections - enhanced */
+        radial-gradient(ellipse 500px 500px at 15% 30%, rgba(244, 67, 54, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 500px 500px at 85% 40%, rgba(33, 150, 243, 0.08) 0%, transparent 50%),
+        /* Rotating blue light effects */
+        radial-gradient(circle 300px at 75% 35%, rgba(33, 150, 243, 0.12) 0%, transparent 60%),
+        radial-gradient(circle 250px at 25% 38%, rgba(13, 71, 161, 0.1) 0%, transparent 55%),
+        /* Badge emblem watermark - center */
+        radial-gradient(circle 3px at 50% 42%, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.15) 20%, transparent 21%),
+        conic-gradient(from 0deg at 50% 42%,
+            rgba(255, 215, 0, 0.08) 0deg, rgba(255, 215, 0, 0.08) 36deg,
+            transparent 36deg, transparent 72deg,
+            rgba(255, 215, 0, 0.08) 72deg, rgba(255, 215, 0, 0.08) 108deg,
+            transparent 108deg, transparent 144deg,
+            rgba(255, 215, 0, 0.08) 144deg, rgba(255, 215, 0, 0.08) 180deg,
+            transparent 180deg, transparent 216deg,
+            rgba(255, 215, 0, 0.08) 216deg, rgba(255, 215, 0, 0.08) 252deg,
+            transparent 252deg, transparent 288deg,
+            rgba(255, 215, 0, 0.08) 288deg, rgba(255, 215, 0, 0.08) 324deg,
+            transparent 324deg) 0 0 / 120px 120px no-repeat,
+        /* Patrol car silhouette - left side */
+        linear-gradient(180deg, transparent 68%, rgba(25, 50, 90, 0.25) 68%, rgba(25, 50, 90, 0.25) 76%, transparent 76%) 8% 0 / 100px 100% no-repeat,
+        linear-gradient(90deg, transparent 0%, rgba(25, 50, 90, 0.4) 15%, rgba(25, 50, 90, 0.4) 35%, transparent 50%) 5% 72% / 140px 18% no-repeat,
+        radial-gradient(circle 12px at 22% 88%, rgba(50, 50, 50, 0.5) 0%, transparent 100%),
+        radial-gradient(circle 12px at 30% 88%, rgba(50, 50, 50, 0.5) 0%, transparent 100%),
+        /* Patrol car silhouette - right side */
+        linear-gradient(180deg, transparent 70%, rgba(30, 55, 95, 0.22) 70%, rgba(30, 55, 95, 0.22) 77%, transparent 77%) 85% 0 / 90px 100% no-repeat,
+        linear-gradient(90deg, transparent 50%, rgba(30, 55, 95, 0.35) 65%, rgba(30, 55, 95, 0.35) 85%, transparent 100%) 82% 74% / 130px 16% no-repeat,
+        radial-gradient(circle 11px at 88% 89%, rgba(45, 45, 45, 0.4) 0%, transparent 100%),
+        radial-gradient(circle 11px at 95% 89%, rgba(45, 45, 45, 0.4) 0%, transparent 100%),
+        /* Police station silhouette - central horizon */
+        linear-gradient(180deg, transparent 52%, rgba(20, 40, 80, 0.35) 52%, rgba(20, 40, 80, 0.35) 54%, transparent 54%) 45% 0 / 80px 100% no-repeat,
+        linear-gradient(180deg, transparent 48%, rgba(20, 40, 80, 0.4) 48%, rgba(20, 40, 80, 0.4) 52%, transparent 52%) 50% 0 / 60px 100% no-repeat,
+        linear-gradient(180deg, transparent 55%, rgba(20, 40, 80, 0.3) 55%, rgba(20, 40, 80, 0.3) 58%, transparent 58%) 55% 0 / 40px 100% no-repeat,
+        /* Station entrance door */
+        linear-gradient(180deg, transparent 54%, rgba(255, 215, 0, 0.2) 54%, rgba(255, 215, 0, 0.2) 58%, transparent 58%) 50% 0 / 15px 100% no-repeat,
+        /* City skyline - left section */
+        linear-gradient(180deg, transparent 58%, rgba(15, 35, 70, 0.3) 58%, rgba(15, 35, 70, 0.3) 65%, transparent 65%) 10% 0 / 120px 100% no-repeat,
+        linear-gradient(180deg, transparent 60%, rgba(15, 35, 70, 0.25) 60%, rgba(15, 35, 70, 0.25) 66%, transparent 66%) 20% 0 / 100px 100% no-repeat,
+        linear-gradient(180deg, transparent 56%, rgba(15, 35, 70, 0.28) 56%, rgba(15, 35, 70, 0.28) 64%, transparent 64%) 28% 0 / 80px 100% no-repeat,
+        /* City skyline - right section */
+        linear-gradient(180deg, transparent 59%, rgba(18, 38, 75, 0.28) 59%, rgba(18, 38, 75, 0.28) 66%, transparent 66%) 68% 0 / 110px 100% no-repeat,
+        linear-gradient(180deg, transparent 57%, rgba(18, 38, 75, 0.32) 57%, rgba(18, 38, 75, 0.32) 64%, transparent 64%) 75% 0 / 90px 100% no-repeat,
+        linear-gradient(180deg, transparent 61%, rgba(18, 38, 75, 0.25) 61%, rgba(18, 38, 75, 0.25) 67%, transparent 67%) 82% 0 / 95px 100% no-repeat,
+        /* Building windows (tiny lights) */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 30px,
+            rgba(255, 215, 0, 0.15) 30px, rgba(255, 215, 0, 0.15) 32px) 0 60% / 100% 1.5px no-repeat,
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 30px,
+            rgba(255, 215, 0, 0.12) 30px, rgba(255, 215, 0, 0.12) 32px) 0 62% / 100% 1.5px no-repeat,
+        /* Emergency blue light beams */
+        radial-gradient(ellipse 400px 600px at 90% 40%, rgba(33, 150, 243, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 350px 550px at 10% 45%, rgba(13, 71, 161, 0.06) 0%, transparent 65%),
+        /* Authority ambience */
+        radial-gradient(ellipse 600px 600px at 50% 70%, rgba(21, 101, 192, 0.12) 0%, transparent 60%),
+        /* Protective atmosphere glow */
+        radial-gradient(ellipse 900px 400px at 50% 55%, rgba(25, 80, 150, 0.08) 0%, transparent 75%),
+        /* Deep authority gradient */
+        linear-gradient(180deg,
+            #0a0d15 0%,
+            #0d1120 8%,
+            #10152a 16%,
+            #131a35 24%,
+            #161f40 32%,
+            #19244b 40%,
+            #1c2956 48%,
+            #1f2e61 56%,
+            #22336c 64%,
+            #253877 72%,
+            #283d82 80%,
+            #2b428d 88%,
+            #2e4798 96%,
+            #3149a3 100%);
+    overflow: hidden;
+    position: relative;
+    animation: background-protective-pulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes background-protective-pulse {
+    0% {
+        filter: brightness(1);
+    }
+    100% {
+        filter: brightness(1.05);
+    }
+}
+
+/* === BADGE PATTERN OVERLAY WITH SHIELD ELEMENTS === */
+.theme-police_awareness .scene-background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Badge star pattern */
+        radial-gradient(circle 2px at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 100%),
+        /* Shield protection symbols */
+        radial-gradient(circle 1.5px at 50% 50%, rgba(33, 150, 243, 0.06) 0%, transparent 100%);
+    background-size: 80px 80px, 120px 120px;
+    background-position: 0 0, 40px 40px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+    animation: pattern-shift 20s linear infinite;
+}
+
+@keyframes pattern-shift {
+    0% {
+        background-position: 0 0, 40px 40px;
+    }
+    100% {
+        background-position: 80px 80px, 160px 160px;
+    }
+}
+
+/* === ROTATING EMERGENCY LIGHT BEAMS === */
+.theme-police_awareness .scene-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        /* Red rotating beam from left */
+        linear-gradient(105deg,
+            transparent 0%, transparent 48%,
+            rgba(244, 67, 54, 0.12) 48%, rgba(244, 67, 54, 0.18) 49%,
+            rgba(244, 67, 54, 0.15) 50%, rgba(244, 67, 54, 0.08) 51%,
+            transparent 52%, transparent 100%) 5% 75% / 600px 400px no-repeat,
+        /* Blue rotating beam from right */
+        linear-gradient(75deg,
+            transparent 0%, transparent 48%,
+            rgba(33, 150, 243, 0.12) 48%, rgba(33, 150, 243, 0.18) 49%,
+            rgba(33, 150, 243, 0.15) 50%, rgba(33, 150, 243, 0.08) 51%,
+            transparent 52%, transparent 100%) 85% 75% / 600px 400px no-repeat,
+        /* Secondary red beam */
+        linear-gradient(115deg,
+            transparent 0%, transparent 49%,
+            rgba(244, 67, 54, 0.08) 49%, rgba(244, 67, 54, 0.12) 50%,
+            rgba(244, 67, 54, 0.06) 51%, transparent 52%, transparent 100%) 10% 72% / 500px 350px no-repeat,
+        /* Secondary blue beam */
+        linear-gradient(65deg,
+            transparent 0%, transparent 49%,
+            rgba(33, 150, 243, 0.08) 49%, rgba(33, 150, 243, 0.12) 50%,
+            rgba(33, 150, 243, 0.06) 51%, transparent 52%, transparent 100%) 82% 72% / 500px 350px no-repeat;
+    animation: emergency-light-sweep 3s ease-in-out infinite;
+}
+
+@keyframes emergency-light-sweep {
+    0% {
+        opacity: 0.8;
+        transform: rotate(0deg);
+    }
+    25% {
+        opacity: 1;
+        transform: rotate(2deg);
+    }
+    50% {
+        opacity: 0.6;
+        transform: rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+        transform: rotate(-2deg);
+    }
+    100% {
+        opacity: 0.8;
+        transform: rotate(0deg);
+    }
+}
+
+/* === ELEMENT 1: DETAILED POLICE BADGE === */
+.theme-police_awareness .elem-1 {
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    width: 100px;
+    height: 120px;
+    z-index: 15;
+    animation: badge-prestigious-shine 10s ease-in-out infinite;
+    filter: drop-shadow(0 10px 40px rgba(255, 193, 7, 0.6));
+    pointer-events: none;
+}
+
+/* Badge shield body with star */
+.theme-police_awareness .elem-1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Center star - detailed 5-point */
+        conic-gradient(from 0deg at 50% 42%,
+            #0D47A1 0deg, #0D47A1 36deg,
+            transparent 36deg, transparent 72deg,
+            #0D47A1 72deg, #0D47A1 108deg,
+            transparent 108deg, transparent 144deg,
+            #0D47A1 144deg, #0D47A1 180deg,
+            transparent 180deg, transparent 216deg,
+            #0D47A1 216deg, #0D47A1 252deg,
+            transparent 252deg, transparent 288deg,
+            #0D47A1 288deg, #0D47A1 324deg,
+            transparent 324deg, transparent 360deg),
+        /* Inner star glow */
+        radial-gradient(circle 18px at 50% 42%, rgba(13, 71, 161, 0.9) 0%, transparent 100%),
+        /* Metallic badge gradient */
+        linear-gradient(135deg,
+            #FFE082 0%,
+            #FFD54F 10%,
+            #FFCA28 20%,
+            #FFC107 30%,
+            #FFB300 40%,
+            #FFA726 50%,
+            #FF9800 60%,
+            #FB8C00 70%,
+            #F57C00 80%,
+            #EF6C00 90%,
+            #E65100 100%);
+    clip-path: polygon(
+        /* Top point */
+        50% 0%,
+        /* Top right curve */
+        57% 10%, 62% 18%, 68% 22%,
+        /* Upper right shoulder */
+        78% 24%, 85% 28%,
+        /* Right side curve */
+        88% 35%, 90% 42%, 90% 50%,
+        /* Lower right */
+        88% 58%, 84% 66%, 78% 73%,
+        /* Right bottom curve */
+        72% 78%, 65% 82%,
+        /* Bottom right point */
+        58% 88%, 54% 95%, 50% 100%,
+        /* Bottom left point */
+        46% 95%, 42% 88%,
+        /* Left bottom curve */
+        35% 82%, 28% 78%, 22% 73%,
+        /* Lower left */
+        16% 66%, 12% 58%, 10% 50%,
+        /* Left side curve */
+        10% 42%, 12% 35%, 15% 28%,
+        /* Upper left shoulder */
+        22% 24%, 32% 22%,
+        /* Top left curve */
+        38% 18%, 43% 10%
+    );
+    box-shadow:
+        0 0 40px rgba(255, 193, 7, 0.8),
+        0 5px 20px rgba(0, 0, 0, 0.4),
+        inset 0 -15px 30px rgba(0, 0, 0, 0.3),
+        inset 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Badge text ribbon */
+.theme-police_awareness .elem-1::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 18px;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    background:
+        /* Text lines simulation */
+        linear-gradient(90deg,
+            transparent 10%, rgba(255, 215, 0, 0.8) 10%, rgba(255, 215, 0, 0.8) 12%,
+            transparent 12%, transparent 20%, rgba(255, 215, 0, 0.8) 20%, rgba(255, 215, 0, 0.8) 22%,
+            transparent 22%, transparent 78%, rgba(255, 215, 0, 0.8) 78%, rgba(255, 215, 0, 0.8) 80%,
+            transparent 80%, transparent 88%, rgba(255, 215, 0, 0.8) 88%, rgba(255, 215, 0, 0.8) 90%,
+            transparent 90%) 0 50% / 100% 3px no-repeat,
+        /* Ribbon background */
+        linear-gradient(180deg, #1565C0 0%, #0D47A1 50%, #01579B 100%);
+    border-radius: 4px;
+    border: 2px solid #FFD54F;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes badge-prestigious-shine {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+        filter: drop-shadow(0 10px 40px rgba(255, 193, 7, 0.6));
+    }
+    25% {
+        transform: rotate(-5deg) scale(1.02);
+        filter: drop-shadow(0 12px 50px rgba(255, 193, 7, 0.9)) brightness(1.1);
+    }
+    50% {
+        transform: rotate(3deg) scale(1.05);
+        filter: drop-shadow(0 15px 60px rgba(255, 193, 7, 1)) brightness(1.2);
+    }
+    75% {
+        transform: rotate(-2deg) scale(1.02);
+        filter: drop-shadow(0 12px 50px rgba(255, 193, 7, 0.9)) brightness(1.1);
+    }
+}
+
+/* === ELEMENT 2: POLICE CAR WITH FLASHING LIGHTS === */
+.theme-police_awareness .elem-2 {
+    position: absolute;
+    bottom: 15%;
+    right: 8%;
+    width: 140px;
+    height: 70px;
+    z-index: 14;
+    animation: police-car-patrol 12s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Car body with detailed design */
+.theme-police_awareness .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Front window */
+        linear-gradient(135deg, rgba(100, 181, 246, 0.7) 0%, rgba(66, 165, 245, 0.5) 100%) 15% 8% / 20% 38% no-repeat,
+        /* Back window */
+        linear-gradient(135deg, rgba(100, 181, 246, 0.7) 0%, rgba(66, 165, 245, 0.5) 100%) 58% 8% / 25% 38% no-repeat,
+        /* Door line */
+        linear-gradient(90deg, transparent 46%, rgba(0, 0, 0, 0.4) 46%, rgba(0, 0, 0, 0.4) 48%, transparent 48%) 0 45% / 100% 100% no-repeat,
+        /* White stripe with "POLICE" pattern */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 8px,
+            rgba(255, 215, 0, 0.3) 8px, rgba(255, 215, 0, 0.3) 12px) 0 52% / 100% 16% no-repeat,
+        linear-gradient(180deg, #fff 0%, #f0f0f0 100%) 0 48% / 100% 20% no-repeat,
+        /* Car body - white top, blue bottom */
+        linear-gradient(180deg,
+            #ffffff 0%,
+            #f5f5f5 25%,
+            #eeeeee 45%,
+            #1976D2 45%,
+            #1565C0 60%,
+            #0D47A1 80%,
+            #01579B 100%);
+    border-radius: 12px 12px 6px 6px;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Emergency light bar on top */
+.theme-police_awareness .elem-2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 16px;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background:
+        /* Red light dome */
+        radial-gradient(ellipse 8px 6px at 22% 50%, #F44336 0%, #D32F2F 60%, rgba(244, 67, 54, 0.4) 100%),
+        /* Blue light dome */
+        radial-gradient(ellipse 8px 6px at 78% 50%, #2196F3 0%, #1976D2 60%, rgba(33, 150, 243, 0.4) 100%),
+        /* Light bar body */
+        linear-gradient(180deg, #455A64 0%, #37474F 50%, #263238 100%);
+    border-radius: 6px;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    animation: police-emergency-lights 0.6s ease-in-out infinite alternate;
+}
+
+/* Car wheels */
+.theme-police_awareness .elem-2 .wheel-front,
+.theme-police_awareness .elem-2 .wheel-back {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    bottom: -8px;
+    background:
+        radial-gradient(circle 4px at 50% 50%, #37474F 0%, #37474F 100%),
+        radial-gradient(circle 7px at 50% 50%, #212121 0%, #000 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.theme-police_awareness .elem-2 .wheel-front {
+    left: 20%;
+}
+
+.theme-police_awareness .elem-2 .wheel-back {
+    right: 20%;
+}
+
+@keyframes police-car-patrol {
+    0%, 100% {
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        transform: translateX(-50px) scale(0.98);
+    }
+}
+
+@keyframes police-emergency-lights {
+    0% {
+        background:
+            radial-gradient(ellipse 10px 8px at 22% 50%, #F44336 0%, #E53935 50%, rgba(244, 67, 54, 0.8) 100%),
+            radial-gradient(ellipse 8px 6px at 78% 50%, rgba(33, 150, 243, 0.3) 0%, transparent 100%),
+            linear-gradient(180deg, #455A64 0%, #37474F 50%, #263238 100%);
+        box-shadow:
+            -15px -5px 30px rgba(244, 67, 54, 0.8),
+            0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        background:
+            radial-gradient(ellipse 8px 6px at 22% 50%, rgba(244, 67, 54, 0.3) 0%, transparent 100%),
+            radial-gradient(ellipse 10px 8px at 78% 50%, #2196F3 0%, #1E88E5 50%, rgba(33, 150, 243, 0.8) 100%),
+            linear-gradient(180deg, #455A64 0%, #37474F 50%, #263238 100%);
+        box-shadow:
+            15px -5px 30px rgba(33, 150, 243, 0.8),
+            0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* === ELEMENT 3: TRAFFIC LIGHT WITH WORKING SIGNALS === */
+.theme-police_awareness .elem-3 {
+    position: absolute;
+    top: 20%;
+    right: 18%;
+    width: 35px;
+    height: 90px;
+    z-index: 13;
+    animation: traffic-light-sway 8s ease-in-out infinite;
+    pointer-events: none;
+    transform-origin: top center;
+}
+
+/* Traffic light housing */
+.theme-police_awareness .elem-3::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Red light */
+        radial-gradient(circle 10px at 50% 18%, transparent 0%, transparent 100%),
+        /* Yellow light */
+        radial-gradient(circle 10px at 50% 50%, transparent 0%, transparent 100%),
+        /* Green light - active initially */
+        radial-gradient(circle 10px at 50% 82%, #4CAF50 0%, #388E3C 70%, #2E7D32 100%),
+        /* Housing */
+        linear-gradient(180deg, #37474F 0%, #263238 100%);
+    border-radius: 8px;
+    border: 3px solid #1A1A1A;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    animation: traffic-signal-cycle 9s ease-in-out infinite;
+}
+
+/* Light pole */
+.theme-police_awareness .elem-3::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 60px;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #37474F 0%, #263238 100%);
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes traffic-light-sway {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+}
+
+@keyframes traffic-signal-cycle {
+    0%, 30% {
+        /* Green */
+        background:
+            radial-gradient(circle 8px at 50% 18%, rgba(244, 67, 54, 0.2) 0%, transparent 100%),
+            radial-gradient(circle 8px at 50% 50%, rgba(255, 235, 59, 0.2) 0%, transparent 100%),
+            radial-gradient(circle 12px at 50% 82%, #4CAF50 0%, #388E3C 60%, #2E7D32 100%),
+            linear-gradient(180deg, #37474F 0%, #263238 100%);
+        box-shadow:
+            0 5px 20px rgba(0, 0, 0, 0.5),
+            0 25px 40px rgba(76, 175, 80, 0.6);
+    }
+    33%, 63% {
+        /* Yellow */
+        background:
+            radial-gradient(circle 8px at 50% 18%, rgba(244, 67, 54, 0.2) 0%, transparent 100%),
+            radial-gradient(circle 12px at 50% 50%, #FFEB3B 0%, #FDD835 60%, #FBC02D 100%),
+            radial-gradient(circle 8px at 50% 82%, rgba(76, 175, 80, 0.2) 0%, transparent 100%),
+            linear-gradient(180deg, #37474F 0%, #263238 100%);
+        box-shadow:
+            0 5px 20px rgba(0, 0, 0, 0.5),
+            0 25px 40px rgba(255, 235, 59, 0.6);
+    }
+    66%, 96% {
+        /* Red */
+        background:
+            radial-gradient(circle 12px at 50% 18%, #F44336 0%, #E53935 60%, #D32F2F 100%),
+            radial-gradient(circle 8px at 50% 50%, rgba(255, 235, 59, 0.2) 0%, transparent 100%),
+            radial-gradient(circle 8px at 50% 82%, rgba(76, 175, 80, 0.2) 0%, transparent 100%),
+            linear-gradient(180deg, #37474F 0%, #263238 100%);
+        box-shadow:
+            0 5px 20px rgba(0, 0, 0, 0.5),
+            0 25px 40px rgba(244, 67, 54, 0.6);
+    }
+}
+
+/* === ELEMENT 4: POLICE WHISTLE WITH SOUND WAVES === */
+.theme-police_awareness .elem-4 {
+    position: absolute;
+    top: 45%;
+    left: 15%;
+    width: 45px;
+    height: 20px;
+    z-index: 12;
+    animation: whistle-blow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Whistle body */
+.theme-police_awareness .elem-4::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Mouthpiece */
+        radial-gradient(circle 8px at 15% 50%, #C0C0C0 0%, #9E9E9E 100%),
+        /* Air hole */
+        radial-gradient(circle 3px at 70% 50%, #212121 0%, #424242 100%),
+        /* Whistle body */
+        linear-gradient(90deg,
+            #E0E0E0 0%,
+            #BDBDBD 30%,
+            #9E9E9E 50%,
+            #757575 70%,
+            #616161 100%);
+    border-radius: 10px;
+    border: 2px solid #757575;
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Sound waves */
+.theme-police_awareness .elem-4::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    background:
+        radial-gradient(circle, transparent 20px, rgba(255, 235, 59, 0.3) 20px, rgba(255, 235, 59, 0.3) 22px, transparent 22px),
+        radial-gradient(circle, transparent 30px, rgba(255, 235, 59, 0.25) 30px, rgba(255, 235, 59, 0.25) 32px, transparent 32px),
+        radial-gradient(circle, transparent 40px, rgba(255, 235, 59, 0.2) 40px, rgba(255, 235, 59, 0.2) 42px, transparent 42px);
+    border-radius: 50%;
+    animation: sound-waves-pulse 1.5s ease-out infinite;
+}
+
+@keyframes whistle-blow {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: translateX(-5px) rotate(-10deg);
+    }
+}
+
+@keyframes sound-waves-pulse {
+    0% {
+        transform: translateY(-50%) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50%) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* === ELEMENT 5: HELPING HAND === */
+.theme-police_awareness .elem-5 {
+    position: absolute;
+    bottom: 35%;
+    left: 25%;
+    width: 60px;
+    height: 70px;
+    z-index: 11;
+    animation: helping-hand-reach 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Hand palm and fingers */
+.theme-police_awareness .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Thumb */
+        linear-gradient(135deg, #FFB74D 0%, #FF9800 100%) 8% 35% / 18% 35% no-repeat,
+        /* Index finger */
+        linear-gradient(180deg, #FFB74D 0%, #FF9800 100%) 30% 0% / 15% 45% no-repeat,
+        /* Middle finger */
+        linear-gradient(180deg, #FFB74D 0%, #FF9800 100%) 48% 0% / 15% 50% no-repeat,
+        /* Ring finger */
+        linear-gradient(180deg, #FFB74D 0%, #FF9800 100%) 66% 5% / 15% 45% no-repeat,
+        /* Pinky */
+        linear-gradient(180deg, #FFB74D 0%, #FF9800 100%) 82% 12% / 12% 38% no-repeat,
+        /* Palm */
+        radial-gradient(ellipse 70% 80% at 50% 65%, #FFCC80 0%, #FFB74D 50%, #FFA726 100%);
+    clip-path: ellipse(45% 40% at 50% 60%);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+/* Arm/sleeve */
+.theme-police_awareness .elem-5::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #1565C0 0%, #0D47A1 100%);
+    border-radius: 0 0 8px 8px;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.3),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes helping-hand-reach {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-10deg);
+    }
+}
+
+/* === ELEMENT 6: EMERGENCY PHONE (100/112) === */
+.theme-police_awareness .elem-6 {
+    position: absolute;
+    top: 55%;
+    right: 28%;
+    width: 50px;
+    height: 80px;
+    z-index: 10;
+    animation: emergency-phone-ring 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Phone body */
+.theme-police_awareness .elem-6::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* 100 display */
+        linear-gradient(90deg,
+            transparent 15%, #4CAF50 15%, #4CAF50 22%,
+            transparent 22%, transparent 36%, #4CAF50 36%, #4CAF50 43%,
+            transparent 43%, transparent 57%, #4CAF50 57%, #4CAF50 64%,
+            transparent 64%, transparent 78%, #4CAF50 78%, #4CAF50 85%,
+            transparent 85%) 0 28% / 100% 8px no-repeat,
+        linear-gradient(90deg,
+            transparent 15%, #4CAF50 15%, #4CAF50 22%,
+            transparent 22%, transparent 36%, #4CAF50 36%, #4CAF50 43%,
+            transparent 43%, transparent 57%, #4CAF50 57%, #4CAF50 64%,
+            transparent 64%, transparent 78%, #4CAF50 78%, #4CAF50 85%,
+            transparent 85%) 0 36% / 100% 8px no-repeat,
+        /* Screen */
+        linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%) 8% 20% / 84% 30% no-repeat,
+        /* Phone body */
+        linear-gradient(180deg, #F44336 0%, #E53935 50%, #D32F2F 100%);
+    border-radius: 12px;
+    border: 3px solid #B71C1C;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2),
+        0 0 30px rgba(76, 175, 80, 0.4);
+}
+
+/* Ring waves - multiple rings */
+.theme-police_awareness .elem-6::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background:
+        radial-gradient(circle, transparent 35%, rgba(76, 175, 80, 0.4) 35%, rgba(76, 175, 80, 0.4) 36%, transparent 36%),
+        radial-gradient(circle, transparent 45%, rgba(76, 175, 80, 0.3) 45%, rgba(76, 175, 80, 0.3) 46%, transparent 46%),
+        radial-gradient(circle, transparent 55%, rgba(76, 175, 80, 0.2) 55%, rgba(76, 175, 80, 0.2) 56%, transparent 56%);
+    border-radius: 50%;
+    animation: emergency-ring-waves 2s ease-out infinite;
+}
+
+@keyframes emergency-phone-ring {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(-12deg); }
+    20%, 40% { transform: rotate(12deg); }
+    50%, 60% { transform: rotate(0deg); }
+}
+
+@keyframes emergency-ring-waves {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* === ELEMENT 7: SAFE CROSSWALK WITH WALKING FIGURE === */
+.theme-police_awareness .elem-7 {
+    position: absolute;
+    bottom: 12%;
+    left: 35%;
+    width: 120px;
+    height: 80px;
+    z-index: 9;
+    pointer-events: none;
+}
+
+/* Zebra crossing stripes */
+.theme-police_awareness .elem-7::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(90deg,
+            #FFFFFF 0px, #FFFFFF 15px,
+            transparent 15px, transparent 20px);
+    opacity: 0.9;
+}
+
+/* Walking figure */
+.theme-police_awareness .elem-7::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    bottom: 40px;
+    left: 10%;
+    background:
+        /* Head */
+        radial-gradient(circle 8px at 50% 20%, #FFB74D 0%, #FFA726 100%),
+        /* Body */
+        linear-gradient(180deg, #2196F3 35%, #2196F3 65%) 35% 30% / 30% 35% no-repeat,
+        /* Left leg */
+        linear-gradient(135deg, #1976D2 0%, #1565C0 100%) 30% 60% / 20% 40% no-repeat,
+        /* Right leg */
+        linear-gradient(45deg, #1976D2 0%, #1565C0 100%) 50% 60% / 20% 40% no-repeat,
+        /* Left arm */
+        linear-gradient(135deg, #42A5F5 0%, #2196F3 100%) 20% 35% / 15% 30% no-repeat,
+        /* Right arm */
+        linear-gradient(45deg, #42A5F5 0%, #2196F3 100%) 65% 35% / 15% 30% no-repeat;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+    animation: crosswalk-walking 2s steps(4) infinite;
+}
+
+@keyframes crosswalk-walking {
+    0% { left: 10%; }
+    100% { left: 75%; }
+}
+
+/* === ELEMENT 8: COMMUNITY PEOPLE (PROTECTED CITIZENS) === */
+.theme-police_awareness .elem-8 {
+    position: absolute;
+    bottom: 22%;
+    right: 35%;
+    width: 100px;
+    height: 60px;
+    z-index: 8;
+    pointer-events: none;
+    animation: community-gather 8s ease-in-out infinite;
+}
+
+/* Person 1 - Adult */
+.theme-police_awareness .elem-8::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 55px;
+    left: 0;
+    background:
+        /* Head */
+        radial-gradient(circle 9px at 50% 18%, #FFCC80 0%, #FFB74D 100%),
+        /* Body */
+        linear-gradient(180deg, #FF5722 38%, #E64A19 70%) 25% 32% / 50% 40% no-repeat,
+        /* Legs */
+        linear-gradient(180deg, #424242 0%, #212121 100%) 20% 68% / 25% 32% no-repeat,
+        linear-gradient(180deg, #424242 0%, #212121 100%) 55% 68% / 25% 32% no-repeat;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Person 2 - Child */
+.theme-police_awareness .elem-8::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 45px;
+    left: 35px;
+    background:
+        /* Head */
+        radial-gradient(circle 7px at 50% 20%, #FFCC80 0%, #FFB74D 100%),
+        /* Body */
+        linear-gradient(180deg, #4CAF50 42%, #388E3C 75%) 25% 38% / 50% 38% no-repeat,
+        /* Legs */
+        linear-gradient(180deg, #1976D2 0%, #1565C0 100%) 20% 72% / 25% 28% no-repeat,
+        linear-gradient(180deg, #1976D2 0%, #1565C0 100%) 55% 72% / 25% 28% no-repeat;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes community-gather {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(-10px);
+        opacity: 1;
+    }
+}
+
+/* === PROTECTIVE SHIELD OVERLAY === */
+.theme-police_awareness .protective-shield {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 240px;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.08;
+    background:
+        linear-gradient(180deg,
+            rgba(33, 150, 243, 0.3) 0%,
+            rgba(13, 71, 161, 0.2) 100%);
+    clip-path: polygon(
+        50% 0%, 65% 8%, 80% 12%, 90% 20%, 95% 35%,
+        95% 50%, 90% 65%, 80% 78%, 65% 88%, 50% 100%,
+        35% 88%, 20% 78%, 10% 65%, 5% 50%, 5% 35%,
+        10% 20%, 20% 12%, 35% 8%
+    );
+    animation: shield-pulse 6s ease-in-out infinite;
+}
+
+@keyframes shield-pulse {
+    0%, 100% {
+        opacity: 0.08;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.15;
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+/* === ROAD GROUND WITH MARKINGS === */
+.theme-police_awareness .road-ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 22%;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        /* Yellow center line */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 50px,
+            #FFD54F 50px, #FFD54F 90px) 0 45% / 100% 6px no-repeat,
+        /* White edge line */
+        linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 100%) 0 80% / 100% 3px no-repeat,
+        /* Road surface texture */
+        repeating-linear-gradient(90deg,
+            rgba(0, 0, 0, 0.1) 0px, transparent 2px, transparent 40px),
+        /* Road gradient */
+        linear-gradient(180deg,
+            #455A64 0%,
+            #37474F 40%,
+            #263238 100%);
+    box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* === STARS/TRUST SYMBOLS === */
+.theme-police_awareness .trust-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.theme-police_awareness .trust-stars::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 15%;
+    right: 12%;
+    background: #FFD54F;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+        2% 35%, 39% 35%
+    );
+    animation: star-twinkle 3s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.theme-police_awareness .trust-stars::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    bottom: 40%;
+    left: 8%;
+    background: #4CAF50;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+        2% 35%, 39% 35%
+    );
+    animation: star-twinkle 4s ease-in-out 1s infinite;
+    opacity: 0.5;
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+/* === MASCOT ANIMATIONS === */
+.theme-police_awareness .worm-character.happy,
+.theme-police_awareness .bunny-character.happy,
+.theme-police_awareness .owl-character.happy,
+.theme-police_awareness .cat-character.happy,
+.theme-police_awareness .robot-character.happy {
+    animation: police-salute-celebration 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes police-salute-celebration {
+    0% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        filter: brightness(1);
+    }
+    15% {
+        transform: scale(1.05) translateY(-8px) rotate(-5deg);
+        filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 193, 7, 0.5));
+    }
+    30% {
+        transform: scale(1.15) translateY(-20px) rotate(5deg);
+        filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 193, 7, 0.7));
+    }
+    45% {
+        transform: scale(1.25) translateY(-35px) rotate(-3deg);
+        filter: brightness(1.3) drop-shadow(0 0 35px rgba(255, 193, 7, 0.9));
+    }
+    60% {
+        transform: scale(1.2) translateY(-30px) rotate(2deg);
+        filter: brightness(1.25) drop-shadow(0 0 30px rgba(255, 193, 7, 0.8));
+    }
+    75% {
+        transform: scale(1.1) translateY(-15px) rotate(0deg);
+        filter: brightness(1.15) drop-shadow(0 0 20px rgba(255, 193, 7, 0.6));
+    }
+    90% {
+        transform: scale(1.05) translateY(-5px) rotate(0deg);
+        filter: brightness(1.05) drop-shadow(0 0 10px rgba(255, 193, 7, 0.4));
+    }
+    100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        filter: brightness(1);
+    }
+}
+
+.theme-police_awareness .worm-character.sad,
+.theme-police_awareness .bunny-character.sad,
+.theme-police_awareness .owl-character.sad,
+.theme-police_awareness .cat-character.sad,
+.theme-police_awareness .robot-character.sad {
+    animation: police-concern-sink 2s ease-out forwards;
+}
+
+@keyframes police-concern-sink {
+    0% {
+        transform: translateY(0);
+        filter: brightness(1) saturate(1);
+    }
+    25% {
+        transform: translateY(5px);
+        filter: brightness(0.9) saturate(0.85);
+    }
+    50% {
+        transform: translateY(12px);
+        filter: brightness(0.75) saturate(0.65) grayscale(0.3);
+    }
+    75% {
+        transform: translateY(18px);
+        filter: brightness(0.6) saturate(0.45) grayscale(0.6);
+    }
+    100% {
+        transform: translateY(22px);
+        filter: brightness(0.5) saturate(0.3) grayscale(0.8);
+    }
+}
+
+/* === AMBIENT LIGHT EFFECTS === */
+.theme-police_awareness .ambient-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 5;
+    background:
+        radial-gradient(ellipse 600px 300px at 20% 80%, rgba(244, 67, 54, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse 600px 300px at 80% 80%, rgba(33, 150, 243, 0.03) 0%, transparent 50%);
+    animation: emergency-ambient-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes emergency-ambient-pulse {
+    0% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* === STREET LAMPS SILHOUETTES === */
+.theme-police_awareness .street-lamps {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 6;
+    background:
+        /* Street lamp 1 - left side */
+        linear-gradient(180deg, rgba(70, 70, 70, 0.3) 0%, rgba(50, 50, 50, 0.3) 100%) 18% 48% / 4px 18% no-repeat,
+        radial-gradient(ellipse 20px 8px at 50% 48%, rgba(255, 200, 0, 0.25) 0%, transparent 100%) 18% 0 / 40px 100% no-repeat,
+        radial-gradient(circle 6px at 50% 50%, rgba(80, 80, 80, 0.4) 0%, rgba(60, 60, 60, 0.3) 100%) 18% 47% / 100px 100% no-repeat,
+        /* Street lamp 2 - right side */
+        linear-gradient(180deg, rgba(70, 70, 70, 0.3) 0%, rgba(50, 50, 50, 0.3) 100%) 78% 50% / 4px 16% no-repeat,
+        radial-gradient(ellipse 18px 7px at 50% 50%, rgba(255, 200, 0, 0.22) 0%, transparent 100%) 78% 0 / 38px 100% no-repeat,
+        radial-gradient(circle 5px at 50% 50%, rgba(80, 80, 80, 0.4) 0%, rgba(60, 60, 60, 0.3) 100%) 78% 49% / 100px 100% no-repeat,
+        /* Street lamp 3 - center left */
+        linear-gradient(180deg, rgba(65, 65, 65, 0.25) 0%, rgba(45, 45, 45, 0.25) 100%) 35% 52% / 3px 14% no-repeat,
+        radial-gradient(ellipse 16px 6px at 50% 52%, rgba(255, 200, 0, 0.2) 0%, transparent 100%) 35% 0 / 35px 100% no-repeat,
+        radial-gradient(circle 5px at 50% 50%, rgba(75, 75, 75, 0.35) 0%, rgba(55, 55, 55, 0.25) 100%) 35% 51% / 100px 100% no-repeat;
+    animation: lamp-flicker 8s ease-in-out infinite;
+}
+
+@keyframes lamp-flicker {
+    0%, 100% {
+        opacity: 0.85;
+    }
+    15%, 35%, 65%, 85% {
+        opacity: 0.9;
+    }
+    20%, 40%, 70%, 90% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
+/* === POLICE STATION ANTENNA === */
+.theme-police_awareness .station-antenna {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 7;
+    background:
+        /* Antenna main pole */
+        linear-gradient(180deg, rgba(120, 120, 120, 0.4) 0%, rgba(90, 90, 90, 0.3) 100%) 50% 40% / 2px 8% no-repeat,
+        /* Antenna top red light */
+        radial-gradient(circle 3px at 50% 40%, rgba(244, 67, 54, 0.9) 0%, rgba(244, 67, 54, 0.4) 60%, transparent 100%),
+        /* Antenna cross bars */
+        linear-gradient(90deg, transparent 48%, rgba(100, 100, 100, 0.35) 48%, rgba(100, 100, 100, 0.35) 52%, transparent 52%) 50% 43% / 30px 100% no-repeat,
+        linear-gradient(90deg, transparent 46%, rgba(95, 95, 95, 0.3) 46%, rgba(95, 95, 95, 0.3) 54%, transparent 54%) 50% 45% / 40px 100% no-repeat,
+        /* Radio signal waves */
+        radial-gradient(ellipse 50px 30px at 50% 42%, transparent 15px, rgba(33, 150, 243, 0.15) 15px, rgba(33, 150, 243, 0.15) 16px, transparent 16px),
+        radial-gradient(ellipse 70px 40px at 50% 42%, transparent 25px, rgba(33, 150, 243, 0.1) 25px, rgba(33, 150, 243, 0.1) 26px, transparent 26px),
+        radial-gradient(ellipse 90px 50px at 50% 42%, transparent 35px, rgba(33, 150, 243, 0.08) 35px, rgba(33, 150, 243, 0.08) 36px, transparent 36px);
+    animation: antenna-signal-pulse 3s ease-in-out infinite;
+}
+
+@keyframes antenna-signal-pulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}

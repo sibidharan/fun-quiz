@@ -19,13 +19,21 @@ $topicCartoons = [
     'environment' => ['🌳', '🌍', '♻️', '🌊', '🦋'],
     'famous_people' => ['👨‍🔬', '🎨', '📚', '🎭', '🏅'],
     'current_affairs' => ['📰', '🌐', '📺', '🗞️', '📡'],
-    'mythology' => ['🏹', '🐒', '🦚', '🐘', '⚡'],
     'literature' => ['📚', '✍️', '📖', '🎭', '📝'],
     'music_arts' => ['🎵', '🎨', '🎸', '🎹', '🎻'],
     'animals' => ['🦁', '🐘', '🦋', '🐬', '🦅'],
     'food_nutrition' => ['🍎', '🥗', '🍚', '🥛', '🥕'],
     'inventions' => ['💡', '⚙️', '🔧', '🚂', '✈️'],
-    'monuments' => ['🏰', '🗽', '🕌', '🏯', '🗿']
+    'monuments' => ['🏰', '🗽', '🕌', '🏯', '🗿'],
+    // Cyber Security & Police Topics
+    'cyber_security' => ['🔒', '🛡️', '🔐', '🔑', '🏰'],
+    'internet_safety' => ['🛡️', '✅', '🌐', '👁️', '🔒'],
+    'cyber_crime_awareness' => ['⚠️', '🚨', '👤', '🎣', '🐛'],
+    'online_fraud_awareness' => ['🚨', '💳', '📱', '💸', '🎭'],
+    'police_awareness' => ['👮', '🚔', '🏅', '📞', '🚧'],
+    'digital_literacy' => ['💻', '⌨️', '🖱️', '💡', '📚'],
+    'network_basics' => ['📡', '📶', '🔌', '🌐', '📦'],
+    'safe_online_culture' => ['🌐', '💙', '🤝', '⭐', '✅']
 ];
 ?>
 <!DOCTYPE html>
@@ -36,14 +44,159 @@ $topicCartoons = [
     <div class="worm-animation-layer" id="worm-animation-layer">
         <!-- Full-page scene background -->
         <div class="scene-background" id="scene-background">
-            <div class="scene-element elem-1"></div>
-            <div class="scene-element elem-2"></div>
-            <div class="scene-element elem-3"></div>
-            <div class="scene-element elem-4"></div>
-            <div class="scene-element elem-5"></div>
+            <!-- Background layers (theme-specific elements) -->
+            <div class="server-horizon"></div>
+            <div class="hex-mesh"></div>
+            <div class="fortress-shield"></div>
+            <div class="circuit-traces"></div>
+
+            <!-- Ultra-distant and far background layers -->
+            <div class="elem-0-ultra"></div>
+            <div class="elem-0-far"></div>
+
+            <!-- Animated scene elements -->
+            <div class="scene-element elem-1">
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+            <div class="elem-1-fg"></div>
+            <div class="scene-element elem-2">
+                <div></div><div></div>
+            </div>
+            <div class="elem-2-valley"></div>
+            <div class="scene-element elem-3">
+                <div></div>
+            </div>
+            <div class="scene-element elem-4">
+                <div></div>
+            </div>
+            <div class="scene-element elem-5">
+                <div></div><div></div><div></div>
+            </div>
+            <div class="elem-5-globe"></div>
+            <div class="elem-5-globe-stand"></div>
+            <div class="elem-5-rope"></div>
+            <div class="elem-5-rope"></div>
+            <div class="elem-5-rope"></div>
             <div class="scene-element elem-6"></div>
+            <div class="elem-6-low"></div>
             <div class="scene-element elem-7"></div>
             <div class="scene-element elem-8"></div>
+            <div class="scene-element elem-9"></div>
+
+            <!-- Additional atmospheric elements -->
+            <div class="depth-fog"></div>
+            <div class="scene-particles"></div>
+            <div class="community-ground"></div>
+
+            <!-- Cyber security elements -->
+            <div class="check-3"></div>
+            <div class="binary-stream-2"></div>
+            <div class="protective-aura"></div>
+
+            <!-- Internet safety elements -->
+            <div class="scene-element elem-9"></div>
+            <div class="scene-element elem-10"></div>
+            <div class="safe-ground"></div>
+
+            <!-- Network basics elements -->
+            <div class="datacenter-skyline"></div>
+            <div class="network-topology"></div>
+            <div class="network-switch"></div>
+            <div class="small-router"></div>
+            <div class="data-packet-trails"></div>
+            <div class="global-connections"></div>
+            <div class="antenna-tower"></div>
+            <div class="network-floor"></div>
+
+            <!-- Theme-specific atmospheric elements -->
+            <div class="alert-particles"></div>
+            <div class="ambient-glow"></div>
+            <div class="ambient-particles"></div>
+            <div class="atmosphere"></div>
+            <div class="atmosphere-particles"></div>
+            <div class="atmosphere-sparkles"></div>
+            <div class="background-gears"></div>
+            <div class="birds-1"></div>
+            <div class="birds-2"></div>
+            <div class="blueprint-grid-overlay"></div>
+            <div class="blueprint-paper"></div>
+            <div class="brass-shimmer"></div>
+            <div class="bulb-glow-aura"></div>
+            <div class="butterfly-1"></div>
+            <div class="butterfly-2"></div>
+            <div class="camera-flash"></div>
+            <div class="chandelier-glow"></div>
+            <div class="clouds-layer"></div>
+            <div class="counter-silhouette"></div>
+            <div class="danger-ground"></div>
+            <div class="data-stream"></div>
+            <div class="deer-legs"></div>
+            <div class="desk-ground"></div>
+            <div class="dishware-layer"></div>
+            <div class="distant-clouds"></div>
+            <div class="dust-motes"></div>
+            <div class="energy-burst-1"></div>
+            <div class="energy-burst-2"></div>
+            <div class="energy-field"></div>
+            <div class="energy-nodes"></div>
+            <div class="eureka-burst"></div>
+            <div class="fibonacci-overlay"></div>
+            <div class="floating-equations"></div>
+            <div class="floating-ingredients"></div>
+            <div class="floating-pages"></div>
+            <div class="floating-papers"></div>
+            <div class="fraction-bar"></div>
+            <div class="fresh-sparkles"></div>
+            <div class="glitter-particle"></div>
+            <div class="golden-spiral"></div>
+            <div class="grass"></div>
+            <div class="grid-overlay"></div>
+            <div class="heat-shimmer"></div>
+            <div class="herb-particles"></div>
+            <div class="idea-particles"></div>
+            <div class="ink-drops"></div>
+            <div class="knowledge-aura"></div>
+            <div class="leaf-particles"></div>
+            <div class="light-particles"></div>
+            <div class="light-rays"></div>
+            <div class="magic-sparkles"></div>
+            <div class="magic-trails"></div>
+            <div class="math-field"></div>
+            <div class="math-symbols"></div>
+            <div class="more-equations"></div>
+            <div class="more-fruits"></div>
+            <div class="music-sparkles"></div>
+            <div class="news-icons"></div>
+            <div class="news-ticker"></div>
+            <div class="number-particles"></div>
+            <div class="nutrition-aura"></div>
+            <div class="paint-particles"></div>
+            <div class="particle-stream"></div>
+            <div class="propeller"></div>
+            <div class="protective-shield"></div>
+            <div class="rhythm-waves"></div>
+            <div class="road-ground"></div>
+            <div class="scan-beams"></div>
+            <div class="scan-effect"></div>
+            <div class="signal-waves"></div>
+            <div class="sparkle-layer"></div>
+            <div class="sparkle-particles"></div>
+            <div class="spotlight"></div>
+            <div class="spotlight-sweep"></div>
+            <div class="stadium-lights"></div>
+            <div class="station-antenna"></div>
+            <div class="steam-layer-1"></div>
+            <div class="steam-layer-2"></div>
+            <div class="steam-puffs"></div>
+            <div class="street-lamps"></div>
+            <div class="trust-stars"></div>
+            <div class="turbine-blades"></div>
+            <div class="vitamin-glow"></div>
+            <div class="warning-particles"></div>
+            <div class="workshop-glow"></div>
+            <div class="workshop-silhouette"></div>
+            <div class="workshop-steam"></div>
+            <div class="animation-layer"></div>
         </div>
 
         <!-- The worm character (default active mascot) -->
@@ -282,451 +435,158 @@ $topicCartoons = [
         </div>
     </div>
 
+    <!-- External JS Files -->
+    <script src="/js/confetti.js"></script>
+    <script src="/js/quiz-game.js"></script>
     <script>
         // Topic data from PHP
         const topicsData = <?= json_encode($topics) ?>;
         const topicCartoons = <?= json_encode($topicCartoons) ?>;
 
-        // Map inconsistent DB topic names to valid CSS theme names
-        const topicMapping = {
-            // Space variants
-            'space': 'space_astronomy',
-            'space_earth': 'space_astronomy',
-            'space_india': 'space_astronomy',
-            'space_physics': 'space_astronomy',
-            // Science variants
-            'human_body': 'science_nature',
-            'human body': 'science_nature',
-            'human_organs': 'science_nature',
-            'biology': 'science_nature',
-            'chemistry': 'science_nature',
-            'physics': 'science_nature',
-            'photosynthesis': 'science_nature',
-            'science_general': 'science_nature',
-            'science_history': 'science_nature',
-            'science_india': 'science_nature',
-            // Nature/Environment variants
-            'nature': 'environment',
-            'nature in India': 'environment',
-            'plants': 'environment',
-            'plants_india': 'environment',
-            'plants_animals': 'animals',
-            'earth_science': 'geography',
-            'earth_science_india': 'geography',
-            'electricity_magnets': 'technology',
-            // Animals variants
-            'animals_india': 'animals',
-            // Sports variants (all individual sports -> sports)
-            'cricket': 'sports',
-            'football': 'sports',
-            'kabaddi': 'sports',
-            'olympics': 'sports',
-            'paralympics': 'sports',
-            'sports events': 'sports',
-            'sports general': 'sports',
-            'hockey': 'sports',
-            'badminton': 'sports',
-            'tennis': 'sports',
-            'swimming': 'sports',
-            'athletics': 'sports',
-            'archery': 'sports',
-            'boxing': 'sports',
-            'chess': 'sports',
-            'volleyball': 'sports',
-            'wrestling': 'sports',
-            'shooting': 'sports',
-            'snooker': 'sports',
-            'motorsport': 'sports',
-            'martial arts': 'sports',
-            'winter sports': 'sports',
-            // Technology variants
-            'computers': 'technology',
-            'internet': 'technology',
-            'gadgets': 'technology',
-            // Monuments variants
-            'monuments_wonders': 'monuments',
-            'monuments-wonders': 'monuments'
-        };
-
-        // Normalize topic slug: handles hyphens and maps variants to valid themes
-        function normalizeTopicSlug(slug) {
-            // First convert hyphens to underscores
-            let normalized = slug.replace(/-/g, '_');
-            // Then check if there's a mapping for this topic
-            if (topicMapping[normalized]) {
-                normalized = topicMapping[normalized];
-            }
-            // Also check original slug in case it has spaces
-            if (topicMapping[slug]) {
-                normalized = topicMapping[slug];
-            }
-            return normalized;
-        }
-
-        // Quiz state
-        let currentQuestion = 0;
-        let score = 0;
-        let questions = [];
-        let selectedAnswer = null;
-        let timer = null;
-        let timeLeft = 30;
-        let answeredIds = [];
-        let currentTopic = null;
-        let isGenerating = false;
-
-        // Load questions from API with mixed topics
-        async function loadQuestions() {
-            try {
-                const response = await fetch('/api/quiz/questions?count=10&mixed=1');
-                const data = await response.json();
-
-                if (!data.success) {
-                    if (data.redirect) {
-                        window.location.href = data.redirect;
-                    }
-                    return;
-                }
-
-                questions = data.questions;
-
-                if (questions.length === 0) {
-                    // No questions available, trigger generation
-                    showGenerationStatus('No questions found. Generating new ones...');
-                    await triggerQuestionGeneration();
-                    return;
-                }
-
-                // Show quiz container
-                document.getElementById('loading-container').style.display = 'none';
-                document.getElementById('quiz-container').style.display = 'flex';
-
-                showQuestion();
-
-                // Start background generation if we have few questions
-                if (questions.length < 10) {
-                    triggerBackgroundGeneration();
-                }
-            } catch (error) {
-                console.error('Error loading questions:', error);
-                showGenerationStatus('Loading failed. Retrying...');
-                setTimeout(loadQuestions, 2000);
-            }
-        }
-
-        // Trigger Python CLI to generate questions
-        async function triggerQuestionGeneration() {
-            showGenerationStatus('AI is creating questions for you...');
-            try {
-                const response = await fetch('/api/quiz/generate', { method: 'POST' });
-                const data = await response.json();
-                if (data.success) {
-                    hideGenerationStatus();
-                    loadQuestions();
-                }
-            } catch (error) {
-                console.error('Generation error:', error);
-                hideGenerationStatus();
-            }
-        }
-
-        // Background generation
-        async function triggerBackgroundGeneration() {
-            if (isGenerating) return;
-            isGenerating = true;
-            showGenerationStatus('Preparing more questions...');
-
-            try {
-                await fetch('/api/quiz/generate?background=1', { method: 'POST' });
-            } catch (error) {
-                console.error('Background generation error:', error);
-            }
-
-            isGenerating = false;
-            hideGenerationStatus();
-        }
-
-        function showGenerationStatus(text) {
-            const status = document.getElementById('generation-status');
-            document.getElementById('status-text').textContent = text;
-            status.style.display = 'flex';
-        }
-
-        function hideGenerationStatus() {
-            document.getElementById('generation-status').style.display = 'none';
-        }
-
-        // Update cartoon elements based on topic
-        function updateCartoons(topicSlug) {
-            const cartoons = topicCartoons[topicSlug] || ['❓', '❗', '💭', '✨', '🌟'];
-            for (let i = 1; i <= 5; i++) {
-                const el = document.getElementById(`cartoon-${i}`);
-                if (el) {
-                    el.textContent = cartoons[i - 1] || cartoons[0];
-                    // Randomize position slightly
-                    el.style.animationDelay = `${Math.random() * 3}s`;
-                }
-            }
-        }
-
-        // Apply topic theme to quiz
-        function applyTopicTheme(topicSlug, topicInfo) {
-            // Normalize topic slug using the mapping function
-            const normalizedSlug = normalizeTopicSlug(topicSlug);
-
-            const container = document.getElementById('quiz-container');
-            const animationLayer = document.getElementById('worm-animation-layer');
-
-            // Remove previous theme classes from all elements
-            container.className = container.className.replace(/theme-\S+/g, '');
-            container.classList.add(`theme-${normalizedSlug}`);
-
-            // Apply theme to body for CSS scene selectors
-            document.body.className = document.body.className.replace(/theme-\S+/g, '').trim();
-            document.body.classList.add(`theme-${normalizedSlug}`);
-
-            // Apply theme to animation layer for scene backgrounds
-            if (animationLayer) {
-                animationLayer.className = animationLayer.className.replace(/theme-\S+/g, '').trim();
-                animationLayer.classList.add('worm-animation-layer', `theme-${normalizedSlug}`);
-            }
-
-            // Update topic badge - use topicInfo if available, or lookup from normalized slug
-            const displayInfo = topicInfo || topicsData[normalizedSlug];
-            if (displayInfo) {
-                document.getElementById('topic-icon').textContent = displayInfo.icon || '📚';
-                document.getElementById('topic-name').textContent = displayInfo.name || normalizedSlug;
-            } else {
-                // Fallback for unmapped topics
-                document.getElementById('topic-icon').textContent = '📚';
-                document.getElementById('topic-name').textContent = topicSlug.replace(/[_-]/g, ' ');
-            }
-
-            // Update cartoon elements
-            updateCartoons(normalizedSlug);
-
-            // Update worm character scene (if initialized)
-            if (typeof wormCharacter !== 'undefined' && wormCharacter) {
-                wormCharacter.updateScene(normalizedSlug);
-            }
-        }
-
-        function showQuestion() {
-            if (currentQuestion >= questions.length) {
-                finishQuiz();
-                return;
-            }
-
-            const q = questions[currentQuestion];
-
-            // Each question can have different topic!
-            // Normalize topic slug using the mapping function
-            const normalizedTopic = normalizeTopicSlug(q.topic);
-            if (q.topic !== currentTopic) {
-                currentTopic = q.topic;
-                const topicInfo = topicsData[normalizedTopic];
-                applyTopicTheme(q.topic, topicInfo);
-            }
-
-            document.getElementById('question').textContent = q.question;
-            document.getElementById('question-num').textContent = `${currentQuestion + 1}/${questions.length}`;
-            document.getElementById('progress').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
-
-            // Show difficulty with fun styling
-            const diffBadge = document.getElementById('difficulty-badge');
-            const diffText = diffBadge.querySelector('.difficulty-text');
-            if (diffText) {
-                diffText.textContent = q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1);
-            }
-            diffBadge.className = `difficulty-badge ${q.difficulty}`;
-
-            const optionsContainer = document.getElementById('options');
-            optionsContainer.innerHTML = '';
-
-            q.options.forEach((option, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'option';
-                btn.textContent = option;
-                btn.onclick = () => selectOption(index);
-                optionsContainer.appendChild(btn);
-            });
-
-            // Hide explanation
-            document.getElementById('explanation-box').classList.remove('show');
-
-            selectedAnswer = null;
-            document.getElementById('next-btn').disabled = true;
-            startTimer();
-        }
-
-        function selectOption(index) {
-            if (selectedAnswer !== null) return;
-
-            selectedAnswer = index;
-            const options = document.querySelectorAll('.option');
-            const q = questions[currentQuestion];
-
-            options.forEach((opt, i) => {
-                opt.classList.remove('selected');
-                if (i === index) {
-                    opt.classList.add('selected');
-                }
-            });
-
-            // Check answer after short delay
-            setTimeout(() => {
-                stopTimer();
-                options.forEach((opt, i) => {
-                    if (i === q.correct) {
-                        opt.classList.add('correct');
-                    } else if (i === index && i !== q.correct) {
-                        opt.classList.add('incorrect');
-                    }
-                    opt.disabled = true;
-                });
-
-                if (index === q.correct) {
-                    score++;
-                    showConfetti();
-                    // Worm celebrates!
-                    if (typeof wormCharacter !== 'undefined' && wormCharacter) {
-                        wormCharacter.reactHappy(currentTopic);
-                    }
-                } else {
-                    // Worm is sad
-                    if (typeof wormCharacter !== 'undefined' && wormCharacter) {
-                        wormCharacter.reactSad(currentTopic);
-                    }
-                }
-
-                // Track answered question
-                answeredIds.push(q.id);
-
-                // Show explanation if available
-                if (q.explanation) {
-                    document.getElementById('explanation-text').textContent = q.explanation;
-                    document.getElementById('explanation-box').classList.add('show');
-                }
-
-                document.getElementById('next-btn').disabled = false;
-            }, 400);
-        }
-
-        function nextQuestion() {
-            currentQuestion++;
-            showQuestion();
-        }
-
-        function skipQuestion() {
-            stopTimer();
-            const q = questions[currentQuestion];
-            answeredIds.push(q.id);
-            currentQuestion++;
-            showQuestion();
-        }
-
-        const TIMER_DURATION = 30;
-        const TIMER_CIRCUMFERENCE = 2 * Math.PI * 25; // 157
-
-        function startTimer() {
-            timeLeft = TIMER_DURATION;
-            updateTimerDisplay();
-
-            // Reset progress bars
-            const timerRing = document.getElementById('timer-ring');
-            if (timerRing) {
-                timerRing.style.strokeDashoffset = '0';
-                timerRing.classList.remove('warning', 'danger');
-            }
-
-            timer = setInterval(() => {
-                timeLeft--;
-                updateTimerDisplay();
-                if (timeLeft <= 0) {
-                    stopTimer();
-                    // Auto-skip on timeout - worm is sad
-                    if (typeof wormCharacter !== 'undefined' && wormCharacter) {
-                        wormCharacter.reactSad(currentTopic);
-                    }
-                    const q = questions[currentQuestion];
-                    answeredIds.push(q.id);
-                    currentQuestion++;
-                    showQuestion();
-                }
-            }, 1000);
-        }
-
-        function stopTimer() {
-            if (timer) {
-                clearInterval(timer);
-                timer = null;
-            }
-        }
-
-        function updateTimerDisplay() {
-            const timerEl = document.getElementById('timer');
-            const timerRing = document.getElementById('timer-ring');
-
-            // Update number display
-            timerEl.textContent = timeLeft;
-            timerEl.className = 'timer';
-
-            // Calculate progress (0 = full, 1 = empty)
-            const progress = 1 - (timeLeft / TIMER_DURATION);
-
-            // Update circular ring
-            if (timerRing) {
-                const offset = progress * TIMER_CIRCUMFERENCE;
-                timerRing.style.strokeDashoffset = offset;
-                timerRing.classList.remove('warning', 'danger');
-            }
-
-            // Warning states
-            if (timeLeft <= 10) {
-                timerEl.classList.add('warning');
-                if (timerRing) timerRing.classList.add('warning');
-            }
-            if (timeLeft <= 5) {
-                timerEl.classList.add('danger');
-                if (timerRing) timerRing.classList.add('danger');
-            }
-        }
-
-        function showConfetti() {
-            const colors = ['#ff6b6b', '#ffa94d', '#ffd43b', '#51cf66', '#4dabf7', '#da77f2', '#f783ac'];
-            for (let i = 0; i < 30; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.animationDelay = Math.random() * 0.3 + 's';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
-            }
-        }
-
-        async function finishQuiz() {
-            stopTimer();
-            try {
-                const formData = new FormData();
-                formData.append('topic', 'mixed');
-                formData.append('score', score);
-                formData.append('total', questions.length);
-                formData.append('answered_ids', JSON.stringify(answeredIds));
-
-                await fetch('/api/quiz/submit', {
-                    method: 'POST',
-                    body: formData
-                });
-                window.location.href = `/results?score=${score}&total=${questions.length}&topic=mixed`;
-            } catch (error) {
-                window.location.href = `/results?score=${score}&total=${questions.length}&topic=mixed`;
-            }
-        }
-
-        // Start the quiz
-        loadQuestions();
+        // Initialize and start the quiz
+        quizGame = new QuizGame(topicsData, topicCartoons);
+        quizGame.loadQuestions();
     </script>
     <!-- Mascot Controller - Manages all quiz mascots -->
     <script src="/js/mascot-controller.js"></script>
+
+    <!-- Debug Panel for Theme Testing -->
+    <div id="debug-panel" style="display:none; position:fixed; bottom:10px; right:10px; background:rgba(0,0,0,0.9); padding:15px; border-radius:8px; z-index:10000; max-height:400px; overflow-y:auto; font-family:monospace; font-size:12px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #444; padding-bottom:8px;">
+            <strong style="color:#0f0;">🎨 Theme Debug</strong>
+            <button onclick="debugPanel.hide()" style="background:#f44; color:#fff; border:none; padding:2px 8px; border-radius:4px; cursor:pointer;">✕</button>
+        </div>
+        <div style="margin-bottom:10px;">
+            <label style="color:#aaa;">Select Theme:</label>
+            <select id="debug-theme-select" onchange="debugPanel.setTheme(this.value)" style="width:100%; padding:5px; margin-top:5px; background:#333; color:#fff; border:1px solid #555; border-radius:4px;">
+                <option value="">-- Select Theme --</option>
+            </select>
+        </div>
+        <div id="debug-info" style="color:#aaa; font-size:11px; margin-top:10px;"></div>
+    </div>
+
+    <script>
+    // Debug Panel for Theme Testing
+    const debugPanel = {
+        panel: null,
+        select: null,
+        info: null,
+
+        init() {
+            this.panel = document.getElementById('debug-panel');
+            this.select = document.getElementById('debug-theme-select');
+            this.info = document.getElementById('debug-info');
+
+            // Populate theme dropdown
+            const themes = Object.keys(topicsData);
+            themes.forEach(theme => {
+                const option = document.createElement('option');
+                option.value = theme;
+                option.textContent = topicsData[theme].name || theme;
+                this.select.appendChild(option);
+            });
+
+            console.log('%c[Debug] Theme debugger initialized. Press Ctrl+Shift+D to toggle.', 'color: #0f0');
+        },
+
+        show() {
+            this.panel.style.display = 'block';
+            this.updateInfo();
+        },
+
+        hide() {
+            this.panel.style.display = 'none';
+        },
+
+        toggle() {
+            if (this.panel.style.display === 'none') {
+                this.show();
+            } else {
+                this.hide();
+            }
+        },
+
+        setTheme(theme) {
+            if (!theme) return;
+
+            // Remove all theme classes from body
+            document.body.className = document.body.className.replace(/theme-\S+/g, '').trim();
+            document.body.classList.add('theme-' + theme);
+
+            // Update animation layer
+            const animLayer = document.getElementById('worm-animation-layer');
+            if (animLayer) {
+                animLayer.className = animLayer.className.replace(/theme-\S+/g, '').trim();
+                animLayer.classList.add('worm-animation-layer', 'theme-' + theme);
+            }
+
+            console.log('%c[Debug] Theme set to: ' + theme, 'color: #0f0; font-weight: bold');
+            this.updateInfo();
+            this.logSceneElements();
+        },
+
+        updateInfo() {
+            const bodyClasses = document.body.className;
+            const animLayer = document.getElementById('worm-animation-layer');
+            const animClasses = animLayer ? animLayer.className : 'N/A';
+            const sceneEl = document.querySelectorAll('.scene-background > *').length;
+
+            this.info.innerHTML = `
+                <div><strong>Body:</strong> ${bodyClasses}</div>
+                <div><strong>Anim Layer:</strong> ${animClasses}</div>
+                <div><strong>Scene Elements:</strong> ${sceneEl}</div>
+            `;
+        },
+
+        logSceneElements() {
+            const sceneBackground = document.querySelector('.scene-background');
+            if (!sceneBackground) {
+                console.warn('[Debug] No .scene-background found');
+                return;
+            }
+
+            const elements = Array.from(sceneBackground.children);
+            const visibleElements = elements.filter(el => {
+                const style = window.getComputedStyle(el);
+                return style.display !== 'none' && style.opacity !== '0' && style.visibility !== 'hidden';
+            });
+
+            console.group('%c[Debug] Scene Elements Analysis', 'color: #ff0');
+            console.log('Total elements:', elements.length);
+            console.log('Visible elements:', visibleElements.length);
+
+            visibleElements.forEach(el => {
+                const style = window.getComputedStyle(el);
+                const hasContent = style.content && style.content !== 'none' && style.content !== '""';
+                const hasBg = style.background && style.background !== 'none' && !style.background.includes('rgba(0, 0, 0, 0)');
+                const hasPseudo = style.getPropertyValue('--has-pseudo') || 'unknown';
+
+                if (hasBg || hasContent || el.children.length > 0) {
+                    console.log(`%c${el.className}`, 'color: #0ff', {
+                        width: style.width,
+                        height: style.height,
+                        position: style.position,
+                        background: style.background?.substring(0, 50) + '...'
+                    });
+                }
+            });
+            console.groupEnd();
+        }
+    };
+
+    // Initialize debug panel
+    document.addEventListener('DOMContentLoaded', () => debugPanel.init());
+
+    // Keyboard shortcut: Ctrl+Shift+D to toggle debug panel
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+            e.preventDefault();
+            debugPanel.toggle();
+        }
+    });
+
+    // Global function to set theme from console
+    window.setTheme = (theme) => debugPanel.setTheme(theme);
+    </script>
 </body>
 </html>

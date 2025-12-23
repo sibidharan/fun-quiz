@@ -1,667 +1,881 @@
 /* ============================================
-   LITERATURE THEME - PREMIUM CINEMATIC
-   Magical library filled with stories and wonder
-   Warm sepia, floating books, quills, vintage charm
+   LITERATURE THEME - JULIA MIOCENE STYLE
+   Magical library with floating books,
+   quill pen, lamp, and golden dust motes
    ============================================ */
 
-/* === MAIN LAYERED BACKGROUND === */
+:root {
+    /* Library warm tones */
+    --lit-bg-dark: #1C0E08;
+    --lit-bg-mid: #3E2723;
+    --lit-bg-warm: #5D4037;
+    --lit-bg-light: #8D6E63;
+    --lit-paper: #FFF8DC;
+    --lit-paper-shadow: #F5F5DC;
+
+    /* Wood/leather colors */
+    --lit-wood-dark: #4E342E;
+    --lit-wood-mid: #6D4C41;
+    --lit-wood-light: #8D6E63;
+
+    /* Accent colors */
+    --lit-gold: #FFD700;
+    --lit-gold-soft: #FFE082;
+    --lit-ink-blue: #0D47A1;
+    --lit-red-leather: #B71C1C;
+    --lit-green-leather: #2E7D32;
+    --lit-blue-leather: #1565C0;
+
+    /* Lamp/candlelight */
+    --lit-lamp-glow: rgba(255, 193, 7, 0.4);
+    --lit-candle: #FFC107;
+}
+
+/* === BASE SETUP === */
 .theme-literature .scene-background {
-    background:
-        /* Magical golden light rays */
-        radial-gradient(ellipse 600px 400px at 75% 15%, rgba(255, 215, 0, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 500px 350px at 25% 85%, rgba(255, 193, 7, 0.12) 0%, transparent 55%),
-        radial-gradient(ellipse 450px 300px at 50% 50%, rgba(139, 69, 19, 0.08) 0%, transparent 50%),
-        /* Warm ambient glow */
-        radial-gradient(ellipse at 20% 30%, rgba(255, 193, 7, 0.25) 0%, transparent 35%),
-        radial-gradient(ellipse at 80% 70%, rgba(205, 133, 63, 0.2) 0%, transparent 40%),
-        /* Rich library gradient - warm sepia tones */
-        linear-gradient(180deg,
-            #2C1810 0%,
-            #3E2723 8%,
-            #4E342E 15%,
-            #5D4037 25%,
-            #6D4C41 35%,
-            #795548 45%,
-            #8D6E63 55%,
-            #A1887F 65%,
-            #BCAAA4 75%,
-            #D7CCC8 85%,
-            #EFEBE9 92%,
-            #FFF8E1 100%);
+    background: linear-gradient(180deg,
+        var(--lit-bg-dark) 0%,
+        var(--lit-bg-mid) 20%,
+        var(--lit-bg-warm) 40%,
+        var(--lit-bg-light) 60%,
+        #BCAAA4 80%,
+        #EFEBE9 95%,
+        var(--lit-paper) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === VINTAGE PAPER TEXTURE OVERLAY === */
-.theme-literature .scene-background::before {
+.theme-literature .scene-background *,
+.theme-literature .scene-background *::before,
+.theme-literature .scene-background *::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 69, 19, 0.02) 2px, rgba(139, 69, 19, 0.02) 4px),
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 69, 19, 0.02) 2px, rgba(139, 69, 19, 0.02) 4px);
-    opacity: 0.4;
+}
+
+/* === WARM CANDLELIGHT GLOW OVERLAY === */
+.theme-literature .scene-background::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 15% 25%, var(--lit-lamp-glow) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 75%, rgba(255, 152, 0, 0.25) 0%, transparent 35%);
     pointer-events: none;
     z-index: 1;
-    animation: literature-texture-shimmer 12s ease-in-out infinite alternate;
+    animation: lit-ambient-flicker 8s ease-in-out infinite;
 }
 
-@keyframes literature-texture-shimmer {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.5; }
+@keyframes lit-ambient-flicker {
+    0%, 100% { opacity: 0.6; }
+    25% { opacity: 0.85; }
+    50% { opacity: 0.5; }
+    75% { opacity: 0.75; }
 }
 
-/* === ATMOSPHERIC CANDLELIGHT GLOW === */
-.theme-literature .scene-background::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 800px 600px at 85% 25%, rgba(255, 193, 7, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 700px 500px at 15% 75%, rgba(255, 152, 0, 0.06) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 2;
-    animation: literature-ambient-flicker 8.5s ease-in-out infinite;
+/* === BOOKSHELF SILHOUETTE (Background) === */
+.theme-literature .elem-0-ultra {
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: var(--lit-bg-mid);
+    clip-path: polygon(
+        0% 100%,
+        0% 70%, 3% 70%, 3% 50%, 6% 50%, 6% 60%,
+        9% 60%, 9% 40%, 14% 40%, 14% 55%,
+        17% 55%, 17% 30%, 22% 30%, 22% 50%,
+        25% 50%, 25% 45%, 30% 45%, 30% 65%,
+        33% 65%, 33% 35%, 38% 35%, 38% 55%,
+        42% 55%, 42% 25%, 48% 25%, 48% 45%,
+        52% 45%, 52% 50%, 58% 50%, 58% 40%,
+        62% 40%, 62% 60%, 68% 60%, 68% 30%,
+        74% 30%, 74% 50%, 78% 50%, 78% 45%,
+        84% 45%, 84% 55%, 90% 55%, 90% 35%,
+        95% 35%, 95% 60%, 100% 60%, 100% 100%
+    );
+    opacity: 0.7;
+    z-index: 3;
 }
 
-@keyframes literature-ambient-flicker {
-    0%, 100% { opacity: 0.6; filter: brightness(1); }
-    25% { opacity: 0.8; filter: brightness(1.1); }
-    50% { opacity: 0.5; filter: brightness(0.95); }
-    75% { opacity: 0.75; filter: brightness(1.05); }
+/* Book spine texture on shelf */
+.theme-literature .elem-0-ultra::before {
+    bottom: 0;
+    left: 5%;
+    width: 4px;
+    height: 60px;
+    background: var(--lit-red-leather);
+    box-shadow:
+        /* Row of book spines */
+        8px 10px 0 0 var(--lit-blue-leather),
+        16px 5px 0 0 var(--lit-green-leather),
+        24px 15px 0 0 #7B1FA2,
+        32px 0 0 0 var(--lit-red-leather),
+        40px 8px 0 0 var(--lit-wood-dark),
+        48px 12px 0 0 var(--lit-blue-leather),
+        /* Second section */
+        120px -10px 0 0 var(--lit-green-leather),
+        128px 0 0 0 var(--lit-red-leather),
+        136px 5px 0 0 #7B1FA2,
+        144px -5px 0 0 var(--lit-blue-leather),
+        /* Third section */
+        220px 10px 0 0 var(--lit-red-leather),
+        228px 0 0 0 var(--lit-green-leather),
+        236px 15px 0 0 var(--lit-blue-leather);
 }
 
-/* === ELEMENT 1: FLOATING OPEN BOOK (Large Center) === */
+/* === READING LAMP (Left Side) === */
 .theme-literature .elem-1 {
-    position: absolute;
+    top: 10%;
+    left: 12%;
+    width: 70px;
+    height: 100px;
+    z-index: 15;
+    animation: lit-lamp-sway 10s ease-in-out infinite;
+}
+
+/* Lamp shade using border triangle */
+.theme-literature .elem-1::before {
+    top: 0;
+    left: 5px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 45px solid var(--lit-green-leather);
+    box-shadow:
+        inset 0 10px 20px rgba(255, 215, 0, 0.4);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* Lamp pole */
+.theme-literature .elem-1::after {
+    top: 42px;
+    left: 33px;
+    width: 5px;
+    height: 55px;
+    background: linear-gradient(90deg,
+        var(--lit-wood-dark) 0%,
+        var(--lit-wood-mid) 50%,
+        var(--lit-wood-dark) 100%);
+    border-radius: 2px;
+}
+
+/* Light beam from lamp */
+.theme-literature .elem-1-fg {
+    top: 45px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 120px solid rgba(255, 215, 0, 0.15);
+    z-index: 4;
+    animation: lit-light-pulse 4s ease-in-out infinite;
+}
+
+@keyframes lit-lamp-sway {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+}
+
+@keyframes lit-light-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+/* === OPEN BOOK (Center) === */
+.theme-literature .elem-2 {
     bottom: 28%;
     left: 50%;
     transform: translateX(-50%);
     width: 140px;
     height: 90px;
     z-index: 20;
-    animation: literature-book-levitate 6.8s ease-in-out infinite;
-    filter: drop-shadow(0 8px 25px rgba(139, 69, 19, 0.4));
+    animation: lit-book-float 9s ease-in-out infinite;
 }
 
 /* Left page */
-.theme-literature .elem-1::before {
-    content: '';
-    position: absolute;
+.theme-literature .elem-2::before {
+    bottom: 0;
+    left: 0;
     width: 65px;
     height: 85px;
-    left: 2px;
-    bottom: 0;
-    background:
-        /* Text lines illusion */
-        repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(0,0,0,0.08) 6px, rgba(0,0,0,0.08) 7px),
-        /* Page gradient */
-        linear-gradient(90deg, #F5F5DC 0%, #FFFEF0 40%, #FFF8DC 100%);
-    border-radius: 4px 0 0 4px;
+    background: linear-gradient(90deg,
+        var(--lit-paper-shadow) 0%,
+        var(--lit-paper) 100%);
+    border-radius: 3px 0 0 3px;
     box-shadow:
-        -4px 6px 20px rgba(0,0,0,0.35),
-        inset 4px 0 12px rgba(139, 69, 19, 0.15);
+        -5px 5px 15px rgba(0, 0, 0, 0.3),
+        inset 5px 0 10px rgba(139, 69, 19, 0.15);
     transform-origin: right center;
-    animation: literature-page-flutter-left 6.8s ease-in-out infinite;
+    animation: lit-page-left 9s ease-in-out infinite;
 }
 
 /* Right page */
-.theme-literature .elem-1::after {
-    content: '';
-    position: absolute;
+.theme-literature .elem-2::after {
+    bottom: 0;
+    right: 0;
     width: 65px;
     height: 85px;
-    right: 2px;
-    bottom: 0;
-    background:
-        /* Text lines illusion */
-        repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(0,0,0,0.08) 6px, rgba(0,0,0,0.08) 7px),
-        /* Page gradient */
-        linear-gradient(90deg, #FFF8DC 0%, #FFFEF0 60%, #F5F5DC 100%);
-    border-radius: 0 4px 4px 0;
+    background: linear-gradient(90deg,
+        var(--lit-paper) 0%,
+        var(--lit-paper-shadow) 100%);
+    border-radius: 0 3px 3px 0;
     box-shadow:
-        4px 6px 20px rgba(0,0,0,0.35),
-        inset -4px 0 12px rgba(139, 69, 19, 0.15);
+        5px 5px 15px rgba(0, 0, 0, 0.3),
+        inset -5px 0 10px rgba(139, 69, 19, 0.15);
     transform-origin: left center;
-    animation: literature-page-flutter-right 6.8s ease-in-out infinite;
+    animation: lit-page-right 9s ease-in-out infinite;
 }
 
-@keyframes literature-book-levitate {
-    0%, 100% {
-        transform: translateX(-50%) translateY(0) scale(1);
-        filter: drop-shadow(0 8px 25px rgba(139, 69, 19, 0.4));
-    }
-    33% {
-        transform: translateX(-50%) translateY(-15px) scale(1.05);
-        filter: drop-shadow(0 12px 35px rgba(255, 193, 7, 0.5));
-    }
-    66% {
-        transform: translateX(-50%) translateY(-22px) scale(1.08);
-        filter: drop-shadow(0 15px 40px rgba(255, 193, 7, 0.6));
-    }
+/* Book spine */
+.theme-literature .pine-forest {
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 85px;
+    background: linear-gradient(90deg,
+        var(--lit-wood-dark) 0%,
+        var(--lit-wood-mid) 50%,
+        var(--lit-wood-dark) 100%);
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 21;
 }
 
-@keyframes literature-page-flutter-left {
-    0%, 100% { transform: perspective(800px) rotateY(0deg); }
-    33% { transform: perspective(800px) rotateY(-12deg); }
-    66% { transform: perspective(800px) rotateY(-8deg); }
-}
-
-@keyframes literature-page-flutter-right {
-    0%, 100% { transform: perspective(800px) rotateY(0deg); }
-    33% { transform: perspective(800px) rotateY(12deg); }
-    66% { transform: perspective(800px) rotateY(8deg); }
-}
-
-/* === ELEMENT 2: ORNATE QUILL PEN === */
-.theme-literature .elem-2 {
-    position: absolute;
-    top: 22%;
-    right: 18%;
-    width: 80px;
-    height: 90px;
-    z-index: 18;
-    animation: literature-quill-write 7.2s ease-in-out infinite;
-}
-
-/* Feather plume - elegant curve */
-.theme-literature .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 35px;
-    height: 70px;
-    left: 15px;
-    top: 0;
-    background:
-        linear-gradient(135deg,
-            rgba(255,255,255,0.4) 0%,
-            transparent 30%),
-        linear-gradient(135deg,
-            #CD853F 0%,
-            #8B6914 40%,
-            #5D4037 100%);
-    border-radius: 60% 60% 50% 0;
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 92%);
+/* Text lines on pages using box-shadow */
+.theme-literature .pine-forest::before {
+    top: 15px;
+    left: -50px;
+    width: 40px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
     box-shadow:
-        0 4px 15px rgba(0,0,0,0.3),
-        inset -3px -3px 10px rgba(0,0,0,0.25);
-    transform: rotate(-35deg);
-    transform-origin: bottom center;
+        0 8px 0 0 rgba(0, 0, 0, 0.1),
+        0 16px 0 0 rgba(0, 0, 0, 0.1),
+        0 24px 0 0 rgba(0, 0, 0, 0.1),
+        0 32px 0 0 rgba(0, 0, 0, 0.1),
+        0 40px 0 0 rgba(0, 0, 0, 0.1),
+        0 48px 0 0 rgba(0, 0, 0, 0.1),
+        /* Right page text */
+        20px 0 0 0 rgba(0, 0, 0, 0.1),
+        20px 8px 0 0 rgba(0, 0, 0, 0.1),
+        20px 16px 0 0 rgba(0, 0, 0, 0.1),
+        20px 24px 0 0 rgba(0, 0, 0, 0.1),
+        20px 32px 0 0 rgba(0, 0, 0, 0.1),
+        20px 40px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-/* Quill shaft/nib */
-.theme-literature .elem-2::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 65px;
-    left: 38px;
-    top: 12px;
-    background: linear-gradient(180deg, #6D4C41 0%, #4E342E 50%, #3E2723 100%);
-    border-radius: 3px 3px 0 0;
-    transform: rotate(-35deg);
-    box-shadow:
-        0 3px 10px rgba(0,0,0,0.4),
-        inset 1px 0 2px rgba(255,255,255,0.2);
-}
-
-@keyframes literature-quill-write {
+@keyframes lit-book-float {
     0%, 100% {
-        transform: translateX(0) translateY(0) rotate(-5deg);
-        opacity: 0.95;
+        transform: translateX(-50%) translateY(0);
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
     }
-    20% {
-        transform: translateX(15px) translateY(-8px) rotate(-12deg);
-        opacity: 1;
-    }
-    40% {
-        transform: translateX(25px) translateY(-12px) rotate(-8deg);
-        opacity: 1;
-    }
-    60% {
-        transform: translateX(18px) translateY(-6px) rotate(-15deg);
-        opacity: 0.98;
-    }
-    80% {
-        transform: translateX(8px) translateY(-3px) rotate(-10deg);
-        opacity: 0.97;
+    50% {
+        transform: translateX(-50%) translateY(-20px);
+        filter: drop-shadow(0 20px 30px rgba(255, 193, 7, 0.5));
     }
 }
 
-/* === ELEMENT 3: VINTAGE INK BOTTLE === */
+@keyframes lit-page-left {
+    0%, 100% { transform: perspective(500px) rotateY(0deg); }
+    50% { transform: perspective(500px) rotateY(-10deg); }
+}
+
+@keyframes lit-page-right {
+    0%, 100% { transform: perspective(500px) rotateY(0deg); }
+    50% { transform: perspective(500px) rotateY(10deg); }
+}
+
+/* === QUILL PEN === */
 .theme-literature .elem-3 {
-    position: absolute;
-    bottom: 35%;
-    left: 22%;
-    width: 45px;
-    height: 55px;
-    z-index: 16;
-    animation: literature-inkwell-shimmer 5.5s ease-in-out infinite;
+    top: 18%;
+    right: 15%;
+    width: 80px;
+    height: 100px;
+    z-index: 18;
+    animation: lit-quill-write 10s ease-in-out infinite;
 }
 
-/* Bottle body */
+/* Feather plume using border */
 .theme-literature .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 42px;
-    height: 48px;
-    bottom: 0;
-    background:
-        radial-gradient(ellipse at 35% 25%, rgba(100, 181, 246, 0.3) 0%, transparent 40%),
-        linear-gradient(180deg, #1A237E 0%, #0D47A1 30%, #01579B 60%, #1A237E 100%);
-    border-radius: 12px 12px 18px 18px;
-    box-shadow:
-        0 6px 20px rgba(0,0,0,0.5),
-        inset -4px -4px 12px rgba(0,0,0,0.5),
-        inset 4px 4px 12px rgba(100, 181, 246, 0.25);
+    top: 0;
+    left: 15px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 70px solid #CD853F;
+    transform: rotate(-35deg);
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
 }
 
-/* Bottle neck/cork */
+/* Quill shaft */
 .theme-literature .elem-3::after {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 15px;
+    top: 45px;
+    left: 38px;
+    width: 4px;
+    height: 55px;
+    background: linear-gradient(180deg,
+        #B8860B 0%,
+        #8B6914 50%,
+        var(--lit-wood-dark) 100%);
+    border-radius: 2px;
+    transform: rotate(-35deg);
+    transform-origin: top center;
+}
+
+@keyframes lit-quill-write {
+    0%, 100% { transform: translateX(0) rotate(-5deg); }
+    25% { transform: translateX(15px) translateY(-8px) rotate(-15deg); }
+    50% { transform: translateX(25px) translateY(-12px) rotate(-8deg); }
+    75% { transform: translateX(10px) translateY(-5px) rotate(-12deg); }
+}
+
+/* === INKWELL === */
+.theme-literature .elem-4 {
+    bottom: 35%;
+    left: 18%;
+    width: 45px;
+    height: 50px;
+    z-index: 16;
+    animation: lit-inkwell-shimmer 8s ease-in-out infinite;
+}
+
+/* Inkwell body */
+.theme-literature .elem-4::before {
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 45px;
+    background: radial-gradient(ellipse at 30% 25%,
+        rgba(100, 181, 246, 0.3) 0%,
+        transparent 40%),
+        linear-gradient(180deg,
+            rgba(176, 190, 197, 0.5) 0%,
+            rgba(120, 144, 156, 0.7) 100%);
+    border-radius: 10px 10px 15px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 -20px 20px rgba(13, 71, 161, 0.8);
+}
+
+/* Cork stopper */
+.theme-literature .elem-4::after {
     top: 0;
     left: 12px;
-    background: linear-gradient(180deg, #8D6E63 0%, #6D4C41 100%);
+    width: 16px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        #A1887F 0%,
+        var(--lit-wood-mid) 100%);
     border-radius: 4px 4px 0 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes literature-inkwell-shimmer {
+@keyframes lit-inkwell-shimmer {
     0%, 100% {
-        transform: scale(1) translateY(0);
-        filter: drop-shadow(0 0 8px rgba(13, 71, 161, 0.3));
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(13, 71, 161, 0.3));
     }
     50% {
-        transform: scale(1.08) translateY(-5px);
-        filter: drop-shadow(0 0 18px rgba(66, 165, 245, 0.6));
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 15px rgba(66, 165, 245, 0.6));
     }
 }
 
-/* === ELEMENT 4: STACK OF VINTAGE BOOKS === */
-.theme-literature .elem-4 {
-    position: absolute;
-    bottom: 32%;
-    right: 22%;
-    width: 75px;
-    height: 60px;
-    z-index: 17;
-    animation: literature-books-wobble 5.8s ease-in-out infinite;
-}
-
-/* Bottom book (red) */
-.theme-literature .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 68px;
-    height: 16px;
-    bottom: 0;
-    left: 4px;
-    background:
-        linear-gradient(90deg,
-            rgba(255,255,255,0.2) 0%,
-            transparent 15%,
-            transparent 85%,
-            rgba(0,0,0,0.2) 100%),
-        linear-gradient(180deg, #C62828 0%, #B71C1C 50%, #8B0000 100%);
-    border-radius: 2px;
-    box-shadow:
-        0 4px 12px rgba(0,0,0,0.4),
-        inset -3px -2px 6px rgba(0,0,0,0.35),
-        inset 2px 1px 4px rgba(255,255,255,0.15);
-}
-
-/* Middle & top books (blue & green) stacked */
-.theme-literature .elem-4::after {
-    content: '';
-    position: absolute;
-    width: 65px;
-    height: 16px;
-    bottom: 16px;
-    left: 0;
-    background:
-        linear-gradient(90deg,
-            rgba(255,255,255,0.2) 0%,
-            transparent 15%,
-            transparent 85%,
-            rgba(0,0,0,0.2) 100%),
-        linear-gradient(180deg, #1976D2 0%, #1565C0 50%, #0D47A1 100%);
-    border-radius: 2px;
-    box-shadow:
-        0 4px 12px rgba(0,0,0,0.4),
-        inset -3px -2px 6px rgba(0,0,0,0.35),
-        /* Top green book */
-        3px 16px 0 0 #388E3C,
-        3px 16px 0 1px #2E7D32,
-        3px 20px 12px 0 rgba(0,0,0,0.4);
-}
-
-@keyframes literature-books-wobble {
-    0%, 100% { transform: rotate(-4deg) translateY(0); }
-    25% { transform: rotate(-1deg) translateY(-6px); }
-    50% { transform: rotate(4deg) translateY(-10px); }
-    75% { transform: rotate(1deg) translateY(-4px); }
-}
-
-/* === ELEMENT 5: FLYING PAGE === */
+/* === STACKED BOOKS === */
 .theme-literature .elem-5 {
-    position: absolute;
-    top: 35%;
-    left: 15%;
-    width: 50px;
-    height: 65px;
-    z-index: 15;
-    animation: literature-page-fly 9.5s ease-in-out infinite;
+    bottom: 25%;
+    right: 18%;
+    width: 75px;
+    height: 70px;
+    z-index: 17;
+    animation: lit-books-wobble 8s ease-in-out infinite;
 }
 
+/* Bottom book - red */
 .theme-literature .elem-5::before {
-    content: '';
-    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 18px;
+    background: linear-gradient(180deg,
+        #C62828 0%,
+        var(--lit-red-leather) 100%);
+    border-radius: 2px;
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.4),
+        inset -3px -2px 5px rgba(0, 0, 0, 0.3),
+        /* Middle book - blue */
+        3px -18px 0 -1px var(--lit-blue-leather),
+        3px -18px 10px 0 rgba(0, 0, 0, 0.3),
+        /* Top book - green */
+        -2px -36px 0 -2px var(--lit-green-leather),
+        -2px -36px 10px 0 rgba(0, 0, 0, 0.3),
+        /* Small purple book on top */
+        5px -52px 0 -4px #7B1FA2,
+        5px -52px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Book spine details */
+.theme-literature .elem-5::after {
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    height: 18px;
+    background: #8B0000;
+    border-radius: 2px 0 0 2px;
+    box-shadow:
+        /* Spine highlights */
+        3px -18px 0 -1px #0D47A1,
+        -2px -36px 0 -2px #1B5E20,
+        5px -52px 0 -4px #4A148C;
+}
+
+@keyframes lit-books-wobble {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg) translateY(-5px); }
+}
+
+/* === BOOKMARK RIBBON === */
+.theme-literature .elem-6 {
+    top: 30%;
+    left: 52%;
+    width: 18px;
+    height: 80px;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.2) 100%),
+        linear-gradient(180deg,
+            #D32F2F 0%,
+            #C62828 50%,
+            var(--lit-red-leather) 100%);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    z-index: 22;
+    animation: lit-bookmark-sway 7s ease-in-out infinite;
+}
+
+/* Ribbon V-cut tail using border */
+.theme-literature .elem-6::after {
+    bottom: -15px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 9px solid var(--lit-red-leather);
+    border-right: 9px solid var(--lit-red-leather);
+    border-bottom: 15px solid transparent;
+}
+
+@keyframes lit-bookmark-sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(4deg) translateX(2px); }
+}
+
+/* === READING GLASSES === */
+.theme-literature .elem-7 {
+    bottom: 38%;
+    left: 35%;
+    width: 80px;
+    height: 32px;
+    z-index: 14;
+    animation: lit-glasses-glint 9s ease-in-out infinite;
+}
+
+/* Left lens */
+.theme-literature .elem-7::before {
+    bottom: 0;
+    left: 0;
+    width: 32px;
+    height: 28px;
+    background: radial-gradient(ellipse at 30% 30%,
+        rgba(255, 255, 255, 0.5) 0%,
+        transparent 40%),
+        radial-gradient(ellipse,
+            rgba(176, 190, 197, 0.3) 0%,
+            rgba(144, 164, 174, 0.2) 100%);
+    border: 3px solid var(--lit-wood-dark);
+    border-radius: 50%;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.3),
+        /* Right lens */
+        40px 0 0 0 rgba(176, 190, 197, 0.3),
+        40px 0 0 3px var(--lit-wood-dark),
+        40px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Bridge connecting lenses */
+.theme-literature .elem-7::after {
+    bottom: 12px;
+    left: 32px;
+    width: 12px;
+    height: 4px;
+    background: var(--lit-wood-mid);
+    border-radius: 2px;
+}
+
+@keyframes lit-glasses-glint {
+    0%, 100% {
+        transform: rotate(-5deg);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    }
+    50% {
+        transform: rotate(-3deg);
+        filter: drop-shadow(0 0 15px rgba(100, 181, 246, 0.5));
+    }
+}
+
+/* === FLOATING LETTERS (Box-shadow multiplication) === */
+.theme-literature .elem-8 {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background:
-        repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(0,0,0,0.06) 5px, rgba(0,0,0,0.06) 6px),
-        linear-gradient(135deg, #FFFEF0 0%, #FFF8DC 50%, #F5F5DC 100%);
-    border-radius: 3px;
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.25),
-        inset -2px -2px 8px rgba(139, 69, 19, 0.1);
-    transform-origin: center center;
-}
-
-@keyframes literature-page-fly {
-    0%, 100% {
-        transform: translateX(0) translateY(0) rotate(-5deg);
-        opacity: 0.85;
-    }
-    25% {
-        transform: translateX(30px) translateY(-25px) rotate(15deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translateX(50px) translateY(-40px) rotate(-10deg);
-        opacity: 0.95;
-    }
-    75% {
-        transform: translateX(25px) translateY(-20px) rotate(20deg);
-        opacity: 0.9;
-    }
-}
-
-/* === ATMOSPHERIC FLOATING PAGES (Multiple) === */
-.theme-literature .floating-pages {
-    position: absolute;
-    inset: 0;
     pointer-events: none;
     z-index: 12;
-    overflow: hidden;
 }
 
-.theme-literature .floating-pages::before {
-    content: '';
-    position: absolute;
+/* Multiple floating letters simulated as circles with text-like appearance */
+.theme-literature .elem-8::before {
+    top: 15%;
+    left: 20%;
+    width: 20px;
+    height: 25px;
+    background: rgba(139, 69, 19, 0.3);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow:
+        /* Scattered "letters" */
+        40vw 10vh 0 0 rgba(139, 69, 19, 0.25),
+        65vw 25vh 0 2px rgba(139, 69, 19, 0.35),
+        25vw 50vh 0 -2px rgba(139, 69, 19, 0.2),
+        75vw 45vh 0 0 rgba(139, 69, 19, 0.3),
+        50vw 70vh 0 2px rgba(139, 69, 19, 0.25),
+        85vw 60vh 0 -2px rgba(139, 69, 19, 0.35);
+    animation: lit-letters-float 25s linear infinite;
+}
+
+@keyframes lit-letters-float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.4; }
+    100% {
+        transform: translateY(-50vh) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+/* === GOLDEN DUST MOTES === */
+.theme-literature .scene-particles {
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    background: var(--lit-gold);
+    border-radius: 50%;
+    box-shadow:
+        /* Scattered golden particles */
+        12vw 18vh 0 1px var(--lit-gold-soft),
+        25vw 32vh 0 0 var(--lit-gold),
+        38vw 12vh 0 1px var(--lit-gold-soft),
+        52vw 45vh 0 0 var(--lit-gold),
+        68vw 25vh 0 1px var(--lit-gold-soft),
+        82vw 38vh 0 0 var(--lit-gold),
+        15vw 58vh 0 1px var(--lit-gold-soft),
+        35vw 72vh 0 0 var(--lit-gold),
+        55vw 62vh 0 1px var(--lit-gold-soft),
+        75vw 78vh 0 0 var(--lit-gold),
+        8vw 82vh 0 1px var(--lit-gold-soft),
+        92vw 52vh 0 0 var(--lit-gold);
+    animation: lit-dust-drift 30s linear infinite;
+    z-index: 25;
+}
+
+@keyframes lit-dust-drift {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-25px) translateX(15px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.4;
+    }
+}
+
+/* === FLOATING MANUSCRIPT PAGES === */
+.theme-literature .depth-fog {
+    top: 20%;
+    left: 10%;
     width: 35px;
     height: 45px;
-    background: linear-gradient(135deg, rgba(255, 248, 225, 0.9), rgba(255, 253, 231, 0.75));
+    background: linear-gradient(135deg,
+        var(--lit-paper) 0%,
+        var(--lit-paper-shadow) 100%);
     border-radius: 2px;
     box-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.2),
-        /* Additional pages scattered */
-        40vw 15vh 0 -3px rgba(255, 248, 225, 0.85),
-        40vw 15vh 12px 0 rgba(0, 0, 0, 0.15),
-        72vw 55vh 0 -5px rgba(255, 248, 225, 0.8),
-        72vw 55vh 10px 0 rgba(0, 0, 0, 0.12),
-        18vw 70vh 0 -4px rgba(255, 248, 225, 0.82),
-        18vw 70vh 11px 0 rgba(0, 0, 0, 0.13);
-    animation: literature-pages-drift 28s linear infinite;
+        0 5px 12px rgba(0, 0, 0, 0.25),
+        /* More floating pages */
+        50vw 15vh 0 -3px var(--lit-paper),
+        50vw 15vh 10px 0 rgba(0, 0, 0, 0.2),
+        70vw 55vh 0 -5px var(--lit-paper),
+        70vw 55vh 8px 0 rgba(0, 0, 0, 0.18),
+        25vw 70vh 0 -4px var(--lit-paper),
+        25vw 70vh 9px 0 rgba(0, 0, 0, 0.2);
+    animation: lit-pages-flutter 20s ease-in-out infinite;
+    z-index: 11;
 }
 
-@keyframes literature-pages-drift {
-    0% {
-        transform: translate(-5vw, -12vh) rotate(0deg);
-        opacity: 0;
+/* Text lines on floating page */
+.theme-literature .depth-fog::before {
+    top: 8px;
+    left: 5px;
+    width: 25px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 6px 0 0 rgba(0, 0, 0, 0.1),
+        0 12px 0 0 rgba(0, 0, 0, 0.1),
+        0 18px 0 0 rgba(0, 0, 0, 0.1),
+        0 24px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@keyframes lit-pages-flutter {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
     }
-    10% { opacity: 0.9; }
+    25% {
+        transform: translateY(-20px) rotate(3deg);
+    }
     50% {
-        transform: translate(8vw, 55vh) rotate(-8deg) scale(1.1);
-        opacity: 0.7;
+        transform: translateY(-35px) rotate(-8deg);
     }
-    90% { opacity: 0.5; }
-    100% {
-        transform: translate(-3vw, 115vh) rotate(12deg) scale(0.9);
+    75% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* === MAGIC SPARKLES FROM BOOK === */
+.theme-literature .grass {
+    bottom: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: var(--lit-gold);
+    border-radius: 50%;
+    box-shadow:
+        /* Sparkle burst pattern */
+        -20px -25px 0 1px var(--lit-gold),
+        -20px -25px 5px 3px rgba(255, 215, 0, 0.5),
+        20px -30px 0 0 #FFF,
+        20px -30px 5px 2px rgba(255, 255, 255, 0.4),
+        -30px -15px 0 1px var(--lit-gold),
+        30px -20px 0 0 var(--lit-gold),
+        -15px -35px 0 0 #FFF,
+        15px -40px 0 1px var(--lit-gold),
+        0 -45px 0 0 #FFF,
+        0 -45px 5px 3px rgba(255, 255, 255, 0.5),
+        -25px -40px 0 0 var(--lit-gold),
+        25px -35px 0 1px #FFF;
+    animation: lit-magic-sparkle 12s ease-in-out infinite;
+    z-index: 23;
+}
+
+@keyframes lit-magic-sparkle {
+    0%, 100% {
         opacity: 0;
+        transform: translateX(-50%) scale(0.3);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.5) rotate(30deg);
     }
 }
 
-/* === INK DROPLET EFFECTS === */
-.theme-literature .ink-drops {
-    position: absolute;
-    inset: 0;
+/* === INK SPLATTER EFFECTS === */
+.theme-literature .cloud-2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: 13;
+    z-index: 10;
 }
 
-.theme-literature .ink-drops::before {
-    content: '';
-    position: absolute;
+.theme-literature .cloud-2::before {
+    top: 30%;
+    left: 25%;
     width: 10px;
     height: 10px;
     background: transparent;
     border-radius: 50%;
     box-shadow:
-        18vw 28vh 0 3px rgba(13, 71, 161, 0.25),
-        18vw 28vh 5px 5px rgba(13, 71, 161, 0.12),
-        38vw 52vh 0 2px rgba(13, 71, 161, 0.2),
-        38vw 52vh 4px 4px rgba(13, 71, 161, 0.1),
-        65vw 35vh 0 4px rgba(13, 71, 161, 0.3),
-        65vw 35vh 6px 6px rgba(13, 71, 161, 0.15),
-        82vw 72vh 0 2px rgba(13, 71, 161, 0.22),
-        82vw 72vh 4px 4px rgba(13, 71, 161, 0.11);
-    animation: literature-ink-spread 18s ease-in-out infinite;
+        0 0 0 3px rgba(13, 71, 161, 0.25),
+        0 0 8px 5px rgba(13, 71, 161, 0.12),
+        35vw 20vh 0 4px rgba(13, 71, 161, 0.3),
+        35vw 20vh 10px 6px rgba(13, 71, 161, 0.15),
+        60vw 50vh 0 3px rgba(13, 71, 161, 0.2),
+        60vw 50vh 8px 5px rgba(13, 71, 161, 0.1),
+        15vw 65vh 0 5px rgba(13, 71, 161, 0.28),
+        15vw 65vh 12px 7px rgba(13, 71, 161, 0.14);
+    animation: lit-ink-spread 15s ease-in-out infinite;
 }
 
-@keyframes literature-ink-spread {
+@keyframes lit-ink-spread {
     0%, 100% {
         opacity: 0;
-        transform: scale(0.3);
+        transform: scale(0.5);
     }
-    15% {
+    20% {
         opacity: 1;
         transform: scale(1);
     }
-    85% {
-        opacity: 0.8;
+    80% {
+        opacity: 0.7;
         transform: scale(1.8);
     }
 }
 
-/* === MAGICAL LETTERS PARTICLES === */
-.theme-literature .letter-particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 14;
-    font-family: 'Georgia', 'Garamond', serif;
-    font-size: 18px;
-    color: rgba(139, 69, 19, 0.35);
-    font-weight: 600;
+/* === CANDLE FLAME === */
+.theme-literature .elem-9 {
+    top: 15%;
+    right: 8%;
+    width: 12px;
+    height: 25px;
+    z-index: 13;
 }
 
-.theme-literature .letter-particles::before {
-    content: 'A';
-    position: absolute;
-    top: 18%;
-    left: 28%;
-    animation: literature-letter-float-1 24s linear infinite;
+/* Candle body */
+.theme-literature .elem-9::before {
+    bottom: -40px;
+    left: -2px;
+    width: 16px;
+    height: 40px;
+    background: linear-gradient(90deg,
+        #F5F5DC 0%,
+        #FFFEF0 50%,
+        #F5F5DC 100%);
+    border-radius: 2px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-.theme-literature .letter-particles::after {
-    content: 'Q';
-    position: absolute;
-    top: 65%;
-    right: 32%;
-    animation: literature-letter-float-2 26s linear infinite;
+/* Flame using border */
+.theme-literature .elem-9::after {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 20px solid var(--lit-candle);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.8));
+    animation: lit-flame-flicker 0.5s ease-in-out infinite alternate;
 }
 
-@keyframes literature-letter-float-1 {
+@keyframes lit-flame-flicker {
     0% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 0;
+        transform: scaleY(1) scaleX(1);
+        filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.8));
     }
-    15% { opacity: 0.6; }
-    85% { opacity: 0.4; }
     100% {
-        transform: translateY(85vh) rotate(-12deg) scale(1.3);
-        opacity: 0;
+        transform: scaleY(1.1) scaleX(0.9);
+        filter: drop-shadow(0 0 12px rgba(255, 152, 0, 1));
     }
 }
 
-@keyframes literature-letter-float-2 {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 0;
-    }
-    12% { opacity: 0.5; }
-    88% { opacity: 0.35; }
-    100% {
-        transform: translateY(-90vh) rotate(8deg) scale(1.2);
-        opacity: 0;
-    }
-}
-
-/* === WARM DUST MOTES IN CANDLELIGHT === */
-.theme-literature .dust-motes {
-    position: absolute;
-    inset: 0;
+/* === VINTAGE PAPER TEXTURE OVERLAY === */
+.theme-literature .butterfly-2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 3px,
+            rgba(139, 69, 19, 0.02) 3px,
+            rgba(139, 69, 19, 0.02) 6px),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 3px,
+            rgba(139, 69, 19, 0.02) 3px,
+            rgba(139, 69, 19, 0.02) 6px);
     pointer-events: none;
-    z-index: 11;
+    z-index: 26;
+    opacity: 0.5;
 }
 
-.theme-literature .dust-motes::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    border-radius: 50%;
-    box-shadow:
-        15vw 22vh 0 1px rgba(255, 193, 7, 0.5),
-        28vw 38vh 0 0.5px rgba(255, 193, 7, 0.4),
-        42vw 18vh 0 1px rgba(255, 193, 7, 0.55),
-        58vw 52vh 0 0.5px rgba(255, 193, 7, 0.45),
-        72vw 32vh 0 1px rgba(255, 193, 7, 0.5),
-        85vw 48vh 0 0.5px rgba(255, 193, 7, 0.4),
-        12vw 68vh 0 1px rgba(255, 193, 7, 0.52),
-        35vw 75vh 0 0.5px rgba(255, 193, 7, 0.48),
-        55vw 65vh 0 1px rgba(255, 193, 7, 0.5),
-        75vw 78vh 0 0.5px rgba(255, 193, 7, 0.45),
-        90vw 58vh 0 1px rgba(255, 193, 7, 0.5),
-        8vw 85vh 0 0.5px rgba(255, 193, 7, 0.42);
-    animation: literature-dust-drift 32s linear infinite;
-}
-
-@keyframes literature-dust-drift {
-    0% { transform: translateY(0) translateX(0); opacity: 0.4; }
-    50% { transform: translateY(-25px) translateX(15px); opacity: 0.7; }
-    100% { transform: translateY(0) translateX(0); opacity: 0.4; }
-}
-
-/* === GOLDEN SPARKLE TRAIL (Magic) === */
-.theme-literature .magic-sparkles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 19;
-}
-
-.theme-literature .magic-sparkles::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: transparent;
-    box-shadow:
-        20vw 25vh 0 2px rgba(255, 215, 0, 0.95),
-        20vw 25vh 3px 4px rgba(255, 215, 0, 0.5),
-        25vw 30vh 0 1px rgba(255, 255, 255, 0.9),
-        30vw 28vh 0 2px rgba(255, 215, 0, 0.85),
-        35vw 35vh 0 1px rgba(255, 255, 255, 0.8),
-        68vw 40vh 0 2px rgba(255, 215, 0, 0.9),
-        68vw 40vh 3px 4px rgba(255, 215, 0, 0.45),
-        73vw 45vh 0 1px rgba(255, 255, 255, 0.85),
-        78vw 43vh 0 2px rgba(255, 215, 0, 0.88);
-    animation: literature-sparkle-shine 16s ease-in-out infinite;
-}
-
-@keyframes literature-sparkle-shine {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(0.4) rotate(0deg);
-    }
-    12% {
-        opacity: 1;
-        transform: scale(1) rotate(60deg);
-    }
-    88% {
-        opacity: 1;
-        transform: scale(1.3) rotate(340deg);
-    }
-}
-
-/* === MASCOT HAPPY ANIMATIONS === */
+/* === MASCOT ANIMATIONS === */
 .theme-literature .worm-character.happy,
 .theme-literature .bunny-character.happy,
 .theme-literature .owl-character.happy,
 .theme-literature .cat-character.happy,
 .theme-literature .robot-character.happy {
-    animation: literature-happy-eureka 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: lit-happy-eureka 2.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes literature-happy-eureka {
+@keyframes lit-happy-eureka {
     0% { transform: scale(1) translateY(0) rotate(0deg); }
-    18% { transform: scale(0.92) translateY(8px) rotate(0deg); }
-    35% { transform: scale(1.25) translateY(-35px) rotate(-8deg); filter: brightness(1.25); }
-    55% { transform: scale(1.2) translateY(-30px) rotate(12deg); }
-    75% { transform: scale(1.12) translateY(-18px) rotate(-6deg); }
-    100% { transform: scale(1) translateY(0) rotate(0deg); filter: brightness(1); }
+    15% { transform: scale(0.9) translateY(10px) rotate(0deg); }
+    35% { transform: scale(1.25) translateY(-40px) rotate(-10deg); }
+    55% { transform: scale(1.2) translateY(-32px) rotate(12deg); }
+    75% { transform: scale(1.1) translateY(-20px) rotate(-5deg); }
+    100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 
 .theme-literature .owl-character.excited {
-    animation: literature-owl-wisdom 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: lit-owl-wisdom 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes literature-owl-wisdom {
+@keyframes lit-owl-wisdom {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    30% { transform: translateY(-25px) rotate(-12deg); }
-    60% { transform: translateY(-18px) rotate(18deg); }
-    85% { transform: translateY(-30px) rotate(-8deg); }
+    30% { transform: translateY(-28px) rotate(-12deg); }
+    60% { transform: translateY(-20px) rotate(15deg); }
+    85% { transform: translateY(-32px) rotate(-8deg); }
 }
 
-/* === MASCOT SAD ANIMATIONS === */
 .theme-literature .worm-character.sad,
 .theme-literature .bunny-character.sad,
 .theme-literature .owl-character.sad,
 .theme-literature .cat-character.sad,
 .theme-literature .robot-character.sad {
-    animation: literature-sad-lost 2.2s ease-out forwards;
+    animation: lit-sad-lost 2.5s ease-out forwards;
 }
 
-@keyframes literature-sad-lost {
+@keyframes lit-sad-lost {
     0% { transform: scale(1); filter: brightness(1) sepia(0); }
-    55% { transform: scale(0.88) translateY(12px); filter: brightness(0.75) sepia(0.35); }
-    100% { transform: scale(0.82) translateY(22px); filter: brightness(0.5) sepia(0.55); }
+    50% { transform: scale(0.88) translateY(12px); filter: brightness(0.75) sepia(0.3); }
+    100% { transform: scale(0.8) translateY(25px); filter: brightness(0.5) sepia(0.5); }
 }
 
-/* === DAY/NIGHT AMBIENT CYCLE === */
-.theme-literature .scene-background {
-    animation: literature-ambient-cycle 90s ease-in-out infinite;
+.theme-literature .worm-character.idle,
+.theme-literature .bunny-character.idle,
+.theme-literature .owl-character.idle,
+.theme-literature .cat-character.idle,
+.theme-literature .robot-character.idle {
+    animation: lit-idle-reading 5s ease-in-out infinite;
 }
 
-@keyframes literature-ambient-cycle {
-    0%, 100% { filter: brightness(1) contrast(1) saturate(1); }
-    25% { filter: brightness(1.12) contrast(1.05) saturate(1.1); }
-    50% { filter: brightness(0.65) contrast(0.95) saturate(0.85); }
-    75% { filter: brightness(0.88) contrast(1.02) saturate(0.95); }
+@keyframes lit-idle-reading {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(2deg); }
 }

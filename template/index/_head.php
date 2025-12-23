@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="/css/app.css">
+    <!-- Howler.js for Audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <!-- Mascot Base Animations (includes original Worm design) -->
     <link rel="stylesheet" href="/css/worm-animations.css">
     <!-- Individual Mascot CSS Files (Worm is in worm-animations.css) -->
@@ -21,7 +23,15 @@
     <link rel="stylesheet" href="/css/topics/indian_history.css">
     <link rel="stylesheet" href="/css/topics/tamil_history.css">
     <link rel="stylesheet" href="/css/topics/world_history.css">
-    <link rel="stylesheet" href="/css/topics/mythology.css">
+    <!-- Cyber Security & Police Topics (Tamil Nadu Police Event) -->
+    <link rel="stylesheet" href="/css/topics/cyber_security.css">
+    <link rel="stylesheet" href="/css/topics/internet_safety.css">
+    <link rel="stylesheet" href="/css/topics/cyber_crime_awareness.css">
+    <link rel="stylesheet" href="/css/topics/online_fraud_awareness.css">
+    <link rel="stylesheet" href="/css/topics/police_awareness.css">
+    <link rel="stylesheet" href="/css/topics/digital_literacy.css">
+    <link rel="stylesheet" href="/css/topics/network_basics.css">
+    <link rel="stylesheet" href="/css/topics/safe_online_culture.css">
     <link rel="stylesheet" href="/css/topics/sports.css">
     <link rel="stylesheet" href="/css/topics/science_nature.css">
     <link rel="stylesheet" href="/css/topics/geography.css">

@@ -1,624 +1,941 @@
 /* ============================================
-   ANIMALS THEME - PREMIUM CINEMATIC
-   Warm savanna safari with majestic wildlife
-   Golden oranges, sunset warmth, earthy tones
+   ANIMALS THEME - JULIA MIOCENE STYLE
+   African Safari with pure CSS art
+   Box-shadow multiplication for grass & trees
    ============================================ */
 
-/* === LAYERED BACKGROUND WITH GRADIENTS === */
+:root {
+    /* Sky sunset colors */
+    --safari-sky-top: #BF360C;
+    --safari-sky-mid: #FF8F00;
+    --safari-horizon: #FFF8E1;
+    --safari-ground: #7CB342;
+    --safari-earth: #33691E;
+
+    /* Sun colors */
+    --sun-core: #FFEB3B;
+    --sun-mid: #FFC107;
+    --sun-outer: #FF9800;
+
+    /* Mountain colors */
+    --mountain-far: rgba(62, 39, 35, 0.5);
+    --mountain-mid: rgba(78, 52, 46, 0.7);
+    --mountain-near: rgba(93, 64, 55, 0.85);
+
+    /* Tree colors */
+    --tree-trunk: #5D4037;
+    --tree-foliage-dark: #556B2F;
+    --tree-foliage-light: #6B8E23;
+
+    /* Animal colors */
+    --lion-mane: #FF5722;
+    --lion-body: #FFCA28;
+    --elephant-body: #9E9E9E;
+    --elephant-dark: #616161;
+    --giraffe-body: #FFD54F;
+    --giraffe-spots: #8D6E63;
+
+    /* Water colors */
+    --water-blue: rgba(100, 149, 237, 0.4);
+    --water-reflect: rgba(135, 206, 235, 0.3);
+}
+
+/* === SAVANNA SUNSET BASE === */
 .theme-animals .scene-background {
-    background:
-        /* Atmospheric depth layers */
-        radial-gradient(ellipse at 80% 90%, rgba(255, 152, 0, 0.25) 0%, transparent 35%),
-        radial-gradient(ellipse at 20% 80%, rgba(255, 193, 7, 0.2) 0%, transparent 30%),
-        radial-gradient(ellipse at 50% 50%, rgba(255, 167, 38, 0.15) 0%, transparent 40%),
-        /* Savanna sunset gradient - warm and magical */
-        linear-gradient(180deg,
-            #BF360C 0%,
-            #D84315 5%,
-            #E64A19 10%,
-            #F4511E 15%,
-            #FF5722 20%,
-            #FF6F00 25%,
-            #FF8F00 30%,
-            #FFA000 35%,
-            #FFB300 40%,
-            #FFC107 45%,
-            #FFD54F 50%,
-            #FFE082 55%,
-            #FFECB3 60%,
-            #C5E1A5 65%,
-            #AED581 70%,
-            #9CCC65 75%,
-            #7CB342 80%,
-            #689F38 85%,
-            #558B2F 90%,
-            #33691E 95%,
-            #1B5E20 100%);
+    background: linear-gradient(180deg,
+        var(--safari-sky-top) 0%,
+        #E64A19 8%,
+        #FF5722 15%,
+        var(--safari-sky-mid) 25%,
+        #FFCC80 35%,
+        var(--safari-horizon) 50%,
+        #F0F4C3 58%,
+        var(--safari-ground) 75%,
+        var(--safari-earth) 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === SAVANNA GRASS (SWAYING) === */
-.theme-animals .elem-1 {
+/* === UNIVERSAL ELEMENT SETUP - MIOCENE STYLE === */
+.theme-animals .scene-background *,
+.theme-animals .scene-background *::before,
+.theme-animals .scene-background *::after {
+    content: '';
     position: absolute;
-    bottom: 0;
+}
+
+/* === AFRICAN SUN WITH RAYS === */
+.theme-animals .scene-background::before {
+    top: 6%;
+    right: 12%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle,
+        #FFF9C4 0%,
+        var(--sun-core) 30%,
+        var(--sun-mid) 50%,
+        var(--sun-outer) 70%,
+        transparent 85%);
+    border-radius: 50%;
+    box-shadow:
+        /* Sun glow */
+        0 0 80px 40px rgba(255, 235, 59, 0.6),
+        0 0 150px 70px rgba(255, 193, 7, 0.4),
+        /* Sun rays using box-shadow */
+        100px 0 0 -48px var(--sun-mid),
+        -100px 0 0 -48px var(--sun-mid),
+        0 100px 0 -48px var(--sun-mid),
+        0 -100px 0 -48px var(--sun-mid),
+        70px 70px 0 -49px var(--sun-outer),
+        -70px 70px 0 -49px var(--sun-outer),
+        70px -70px 0 -49px var(--sun-outer),
+        -70px -70px 0 -49px var(--sun-outer);
+    animation: animals-sun-pulse 10s ease-in-out infinite;
+    z-index: 3;
+}
+
+/* === DISTANT MOUNTAINS USING BORDER TRIANGLES === */
+.theme-animals .scene-background::after {
+    bottom: 40%;
     left: 0;
-    width: 100%;
-    height: 30%;
+    width: 0;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-bottom: 80px solid var(--mountain-far);
+    box-shadow:
+        /* Multiple mountain peaks using box-shadow */
+        180px 10px 0 0 var(--mountain-mid),
+        350px 5px 0 0 var(--mountain-far),
+        500px 15px 0 0 var(--mountain-mid),
+        650px 8px 0 0 var(--mountain-far),
+        800px 12px 0 0 var(--mountain-mid);
+    z-index: 2;
+}
+
+@keyframes animals-sun-pulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.08); filter: brightness(1.15); }
+}
+
+/* === ELEM-0-ULTRA: FAR MOUNTAIN RANGE === */
+.theme-animals .elem-0-ultra {
+    bottom: 42%;
+    left: 15%;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 70px solid var(--mountain-far);
+    z-index: 2;
+}
+
+.theme-animals .elem-0-ultra::before {
+    bottom: -70px;
+    left: 200px;
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 55px solid var(--mountain-mid);
+}
+
+.theme-animals .elem-0-ultra::after {
+    bottom: -70px;
+    left: 380px;
+    width: 0;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 65px solid var(--mountain-far);
+}
+
+/* === ELEM-0-FAR: WATERING HOLE === */
+.theme-animals .elem-0-far {
+    bottom: 32%;
+    left: 25%;
+    width: 180px;
+    height: 30px;
+    background: var(--water-blue);
+    border-radius: 50%;
+    box-shadow:
+        /* Water reflections */
+        0 0 30px 10px var(--water-reflect),
+        inset 0 5px 15px rgba(255, 255, 255, 0.3),
+        /* Sparkles on water */
+        30px 5px 0 -1px rgba(255, 255, 255, 0.6),
+        80px 8px 0 -1px rgba(255, 255, 255, 0.5),
+        130px 3px 0 -1px rgba(255, 255, 255, 0.6);
+    animation: animals-water-shimmer 6s ease-in-out infinite;
     z-index: 8;
-    pointer-events: none;
 }
 
+@keyframes animals-water-shimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* === ELEM-1: ACACIA TREE - BORDER TRIANGLES === */
+.theme-animals .elem-1 {
+    bottom: 28%;
+    left: 8%;
+    width: 10px;
+    height: 120px;
+    background: linear-gradient(90deg,
+        var(--tree-trunk) 0%,
+        #8D6E63 50%,
+        var(--tree-trunk) 100%);
+    border-radius: 5px;
+    box-shadow:
+        inset -3px 0 8px rgba(0, 0, 0, 0.3),
+        3px 8px 15px rgba(0, 0, 0, 0.4);
+    animation: animals-tree-sway 12s ease-in-out infinite;
+    z-index: 5;
+}
+
+/* Acacia canopy - flat-topped using multiple triangles */
 .theme-animals .elem-1::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        repeating-linear-gradient(87deg,
-            transparent 0px,
-            transparent 1.5px,
-            rgba(139, 195, 74, 0.7) 1.5px,
-            rgba(139, 195, 74, 0.7) 3px,
-            transparent 3px,
-            transparent 6px),
-        repeating-linear-gradient(93deg,
-            transparent 0px,
-            transparent 2px,
-            rgba(104, 159, 56, 0.6) 2px,
-            rgba(104, 159, 56, 0.6) 4px,
-            transparent 4px,
-            transparent 8px),
-        repeating-linear-gradient(90deg,
-            transparent 0px,
-            transparent 2.5px,
-            rgba(124, 179, 66, 0.65) 2.5px,
-            rgba(124, 179, 66, 0.65) 5px,
-            transparent 5px,
-            transparent 10px),
-        linear-gradient(180deg,
-            rgba(139, 195, 74, 0) 0%,
-            rgba(139, 195, 74, 0.5) 30%,
-            rgba(104, 159, 56, 0.8) 60%,
-            rgba(85, 139, 47, 1) 100%);
-    animation: animals-grass-sway 7.5s ease-in-out infinite;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 35px solid var(--tree-foliage-dark);
+    box-shadow:
+        /* Multiple canopy layers */
+        0 5px 0 0 var(--tree-foliage-light),
+        -20px 8px 0 0 var(--tree-foliage-dark),
+        20px 8px 0 0 var(--tree-foliage-dark),
+        0 12px 20px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes animals-grass-sway {
-    0%, 100% { transform: skewX(0deg) scaleY(1); }
-    25% { transform: skewX(2deg) scaleY(1.02); }
-    50% { transform: skewX(0deg) scaleY(1.04); }
-    75% { transform: skewX(-2deg) scaleY(1.02); }
+/* Additional foliage details */
+.theme-animals .elem-1::after {
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 8px;
+    background: var(--tree-foliage-light);
+    border-radius: 50%;
 }
 
-/* === LION SILHOUETTE === */
+@keyframes animals-tree-sway {
+    0%, 100% { transform: skewX(0deg); }
+    25% { transform: skewX(1deg); }
+    75% { transform: skewX(-1deg); }
+}
+
+/* === ELEM-2: SECOND ACACIA TREE === */
 .theme-animals .elem-2 {
-    position: absolute;
-    bottom: 20%;
-    left: 12%;
-    width: 90px;
-    height: 60px;
-    z-index: 12;
-    pointer-events: none;
-    animation: animals-lion-prowl 14.5s ease-in-out infinite;
+    bottom: 32%;
+    right: 28%;
+    width: 8px;
+    height: 70px;
+    background: var(--tree-trunk);
+    border-radius: 4px;
+    box-shadow:
+        inset -2px 0 5px rgba(0, 0, 0, 0.3),
+        2px 5px 10px rgba(0, 0, 0, 0.35);
+    animation: animals-tree-sway 10s ease-in-out infinite reverse;
+    z-index: 5;
 }
 
-/* Lion body */
 .theme-animals .elem-2::before {
-    content: '';
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    width: 60px;
-    height: 35px;
-    background:
-        linear-gradient(180deg,
-            #FFB74D 0%,
-            #FFA726 30%,
-            #FF9800 60%,
-            #FB8C00 100%);
-    border-radius: 30px 30px 18px 18px;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 20px solid var(--tree-foliage-dark);
+    box-shadow:
+        0 3px 0 0 var(--tree-foliage-light),
+        -12px 5px 0 0 var(--tree-foliage-dark),
+        12px 5px 0 0 var(--tree-foliage-dark);
+}
+
+.theme-animals .elem-2::after {
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 25px;
+    background: radial-gradient(ellipse 35px 12px at 50% 100%, var(--tree-foliage-dark) 0%, transparent 70%),
+                radial-gradient(ellipse 25px 10px at 30% 80%, var(--tree-foliage-light) 0%, transparent 70%),
+                radial-gradient(ellipse 25px 10px at 70% 80%, var(--tree-foliage-light) 0%, transparent 70%),
+                radial-gradient(ellipse 20px 8px at 20% 60%, var(--tree-foliage-dark) 0%, transparent 70%),
+                radial-gradient(ellipse 20px 8px at 80% 60%, var(--tree-foliage-dark) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* === ELEM-3: LION === */
+.theme-animals .elem-3 {
+    bottom: 28%;
+    left: 16%;
+    width: 55px;
+    height: 32px;
+    background: linear-gradient(180deg,
+        #FFD54F 0%,
+        var(--lion-body) 50%,
+        #FFB300 100%);
+    border-radius: 28px 28px 12px 12px;
     box-shadow:
         inset -8px -4px 15px rgba(0, 0, 0, 0.25),
-        inset 4px 2px 10px rgba(255, 255, 255, 0.15),
-        4px 8px 20px rgba(0, 0, 0, 0.35);
-    animation: animals-lion-breathe 3.2s ease-in-out infinite;
+        inset 5px 3px 10px rgba(255, 255, 255, 0.15),
+        4px 8px 20px rgba(0, 0, 0, 0.35),
+        /* Legs using box-shadow */
+        -12px 22px 0 -2px #FFB300,
+        -2px 25px 0 -2px #FFA000,
+        18px 22px 0 -2px #FFB300,
+        28px 25px 0 -2px #FFA000;
+    animation: animals-lion-breathe 4s ease-in-out infinite;
+    z-index: 12;
 }
 
-/* Lion head with majestic mane */
-.theme-animals .elem-2::after {
-    content: '';
-    position: absolute;
-    bottom: 35px;
-    left: 0;
-    width: 45px;
-    height: 45px;
-    background:
-        /* Eyes */
-        radial-gradient(circle at 52% 42%, #212121 0%, #212121 5%, transparent 6%),
-        radial-gradient(circle at 68% 42%, #212121 0%, #212121 4%, transparent 5%),
-        /* Nose */
-        radial-gradient(ellipse at 60% 60%, #5D4037 0%, #5D4037 8%, transparent 9%),
-        /* Mane layers - outer to inner */
-        radial-gradient(circle at 50% 50%,
-            transparent 0%,
-            transparent 45%,
-            #D84315 45%,
-            #E64A19 52%,
-            #FF6F00 58%,
-            #FF8F00 65%,
-            transparent 70%),
-        radial-gradient(circle at 50% 50%,
-            transparent 0%,
-            transparent 38%,
-            #FFB74D 38%,
-            #FFA726 42%,
-            transparent 45%);
+/* Lion head with mane */
+.theme-animals .elem-3::before {
+    top: -8px;
+    left: -5px;
+    width: 38px;
+    height: 38px;
+    background: radial-gradient(circle,
+        #FFE082 0%,
+        #FFD54F 40%,
+        transparent 45%);
     border-radius: 50%;
-    filter: drop-shadow(3px 6px 15px rgba(0, 0, 0, 0.4));
-    animation: animals-mane-glow 5.5s ease-in-out infinite;
+    box-shadow:
+        /* Mane layers */
+        0 0 0 7px var(--lion-mane),
+        0 0 0 12px #FF6F00,
+        0 0 0 16px #FF8F00,
+        0 0 15px 18px rgba(255, 87, 34, 0.3),
+        /* Eyes */
+        6px 0px 0 -16px #212121,
+        16px 0px 0 -16px #212121,
+        /* Nose */
+        11px 6px 0 -17px #5D4037;
+    animation: animals-mane-breathe 8s ease-in-out infinite;
 }
 
-@keyframes animals-lion-prowl {
-    0%, 100% { transform: translateX(0) scaleX(1); }
-    15% { transform: translateX(15px) scaleX(1); }
-    30% { transform: translateX(30px) scaleX(1); }
-    45% { transform: translateX(35px) scaleX(-1); }
-    60% { transform: translateX(20px) scaleX(-1); }
-    75% { transform: translateX(10px) scaleX(1); }
+/* Tail */
+.theme-animals .elem-3::after {
+    top: 5px;
+    right: -25px;
+    width: 30px;
+    height: 4px;
+    background: var(--lion-body);
+    border-radius: 2px;
+    transform-origin: left center;
+    animation: animals-tail-wag 3s ease-in-out infinite;
 }
 
 @keyframes animals-lion-breathe {
     0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.98); }
+    50% { transform: scaleY(0.97); }
 }
 
-@keyframes animals-mane-glow {
-    0%, 100% { filter: drop-shadow(3px 6px 15px rgba(0, 0, 0, 0.4)) brightness(1); }
-    50% { filter: drop-shadow(3px 6px 20px rgba(255, 143, 0, 0.5)) brightness(1.1); }
+@keyframes animals-mane-breathe {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.05); filter: brightness(1.1); }
 }
 
-/* === ELEPHANT === */
-.theme-animals .elem-3 {
-    position: absolute;
-    bottom: 18%;
-    right: 15%;
-    width: 110px;
-    height: 80px;
-    z-index: 11;
-    pointer-events: none;
-    animation: animals-elephant-walk 16.3s ease-in-out infinite;
+@keyframes animals-tail-wag {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
 }
 
-/* Elephant body */
-.theme-animals .elem-3::before {
-    content: '';
-    position: absolute;
-    bottom: 25px;
-    right: 20px;
-    width: 75px;
-    height: 55px;
-    background:
-        linear-gradient(180deg,
-            #BDBDBD 0%,
-            #9E9E9E 30%,
-            #757575 70%,
-            #616161 100%);
-    border-radius: 40px 40px 22px 22px;
-    box-shadow:
-        inset -12px -6px 20px rgba(0, 0, 0, 0.35),
-        inset 6px 3px 12px rgba(255, 255, 255, 0.15),
-        5px 10px 25px rgba(0, 0, 0, 0.4);
-    animation: animals-elephant-body 2.9s ease-in-out infinite;
-}
-
-/* Elephant head with trunk */
-.theme-animals .elem-3::after {
-    content: '';
-    position: absolute;
-    bottom: 50px;
-    right: 0;
-    width: 42px;
+/* === ELEM-4: ELEPHANT === */
+.theme-animals .elem-4 {
+    bottom: 27%;
+    right: 18%;
+    width: 70px;
     height: 48px;
-    background:
-        /* Eye */
-        radial-gradient(circle at 72% 32%, #212121 0%, #212121 5%, transparent 6%),
+    background: linear-gradient(180deg,
+        #BDBDBD 0%,
+        var(--elephant-body) 50%,
+        var(--elephant-dark) 100%);
+    border-radius: 35px 35px 18px 18px;
+    box-shadow:
+        inset -10px -5px 18px rgba(0, 0, 0, 0.35),
+        inset 5px 3px 10px rgba(255, 255, 255, 0.12),
+        4px 8px 20px rgba(0, 0, 0, 0.4),
+        /* Legs */
+        -18px 35px 0 -3px var(--elephant-dark),
+        -6px 38px 0 -3px #757575,
+        14px 35px 0 -3px var(--elephant-dark),
+        26px 38px 0 -3px #757575;
+    animation: animals-elephant-walk 8s ease-in-out infinite;
+    z-index: 11;
+}
+
+/* Elephant head with trunk and ear */
+.theme-animals .elem-4::before {
+    top: -12px;
+    right: -8px;
+    width: 35px;
+    height: 40px;
+    background: linear-gradient(180deg,
+        #BDBDBD 0%,
+        var(--elephant-body) 50%,
+        #757575 100%);
+    border-radius: 50% 50% 40% 40%;
+    box-shadow:
         /* Ear */
-        radial-gradient(ellipse at 85% 52%,
-            rgba(158, 158, 158, 0.8) 0%,
-            rgba(158, 158, 158, 0.8) 42%,
-            transparent 43%),
-        /* Trunk curve */
-        radial-gradient(ellipse at 20% 95%,
-            #757575 0%,
-            #757575 35%,
-            transparent 36%) 0 0 / 100% 100%,
-        /* Head */
-        linear-gradient(180deg,
-            #BDBDBD 0%,
-            #9E9E9E 50%,
-            #757575 100%);
-    border-radius: 50% 50% 35% 35%;
-    box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.3);
-    animation: animals-trunk-swing 4.1s ease-in-out infinite;
+        22px 8px 0 8px rgba(158, 158, 158, 0.7),
+        /* Eye */
+        8px 6px 0 -15px #212121,
+        /* Trunk */
+        -4px 30px 0 -13px #757575,
+        -6px 38px 0 -14px var(--elephant-body),
+        -5px 45px 0 -15px #9E9E9E;
+    animation: animals-trunk-swing 5s ease-in-out infinite;
+}
+
+/* Tusk */
+.theme-animals .elem-4::after {
+    top: 22px;
+    right: -3px;
+    width: 4px;
+    height: 14px;
+    background: #FFF8E1;
+    border-radius: 2px 2px 50% 50%;
+    transform: rotate(-15deg);
 }
 
 @keyframes animals-elephant-walk {
-    0%, 100% { transform: translateX(0) translateY(0); }
-    20% { transform: translateX(-12px) translateY(-3px); }
-    40% { transform: translateX(-25px) translateY(0); }
-    60% { transform: translateX(-35px) translateY(-3px); }
-    80% { transform: translateX(-20px) translateY(0); }
-}
-
-@keyframes animals-elephant-body {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.97); }
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
 }
 
 @keyframes animals-trunk-swing {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(6deg); }
-    75% { transform: rotate(-6deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
 }
 
-/* === BIRDS FLYING === */
-.theme-animals .elem-4 {
-    position: absolute;
+/* === ELEM-5: GIRAFFE === */
+.theme-animals .elem-5 {
+    bottom: 25%;
+    left: 42%;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(180deg,
+        #FFE082 0%,
+        var(--giraffe-body) 50%,
+        #FFB300 100%);
+    border-radius: 35%;
+    box-shadow:
+        inset -6px -3px 12px rgba(0, 0, 0, 0.25),
+        inset 4px 2px 8px rgba(255, 255, 255, 0.15),
+        4px 6px 15px rgba(0, 0, 0, 0.3),
+        /* Spots */
+        -8px -5px 0 3px var(--giraffe-spots),
+        5px 8px 0 2px #6D4C41,
+        15px -3px 0 3px var(--giraffe-spots),
+        /* Legs */
+        -10px 35px 0 -5px #FFB300,
+        0px 38px 0 -5px var(--giraffe-body),
+        15px 35px 0 -5px #FFB300,
+        25px 38px 0 -5px var(--giraffe-body);
+    z-index: 10;
+}
+
+/* Giraffe neck and head */
+.theme-animals .elem-5::before {
+    bottom: 35px;
+    left: 0;
+    width: 15px;
+    height: 100px;
+    background: linear-gradient(90deg,
+        #FFE082 0%,
+        var(--giraffe-body) 50%,
+        #FFCA28 100%);
+    border-radius: 8px;
+    box-shadow:
+        /* Neck spots */
+        3px 20px 0 1px var(--giraffe-spots),
+        -2px 40px 0 1px #6D4C41,
+        4px 60px 0 1px var(--giraffe-spots),
+        -1px 80px 0 1px #6D4C41,
+        /* Head */
+        0 -12px 0 4px var(--giraffe-body),
+        /* Ossicones */
+        -4px -20px 0 -3px #8D6E63,
+        8px -20px 0 -3px #8D6E63,
+        /* Ears */
+        -8px -12px 0 -2px #FFB300,
+        12px -12px 0 -2px #FFB300,
+        /* Eye */
+        5px -8px 0 -5px #212121;
+    animation: animals-giraffe-eat 9s ease-in-out infinite;
+}
+
+@keyframes animals-giraffe-eat {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+/* === ELEM-6: FLYING BIRDS V-FORMATION === */
+.theme-animals .elem-6 {
     top: 15%;
     left: -80px;
-    width: 50px;
-    height: 30px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 5px solid #455A64;
+    box-shadow:
+        /* V formation birds using box-shadow */
+        /* Left wing */
+        -25px 12px 0 0 #455A64,
+        -50px 24px 0 0 #546E7A,
+        -75px 36px 0 0 #607D8B,
+        /* Right wing */
+        25px 12px 0 0 #455A64,
+        50px 24px 0 0 #546E7A,
+        75px 36px 0 0 #607D8B;
+    animation: animals-birds-fly 18s linear infinite;
     z-index: 20;
-    pointer-events: none;
-    animation: animals-birds-migrate 22.5s linear infinite;
 }
 
-/* Bird 1 */
-.theme-animals .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(138deg,
-            transparent 0%,
-            transparent 46%,
-            #37474F 46%,
-            #37474F 48%,
-            transparent 48%) 0% 40% / 18px 12px,
-        linear-gradient(222deg,
-            transparent 0%,
-            transparent 46%,
-            #37474F 46%,
-            #37474F 48%,
-            transparent 48%) 0% 40% / 18px 12px;
-    background-repeat: no-repeat;
-    background-position: left center, right center;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
-    animation: animals-wing-flap 0.6s ease-in-out infinite alternate;
+/* Second row of birds */
+.theme-animals .elem-6::before {
+    top: 50px;
+    left: -30px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 4px solid #546E7A;
+    box-shadow:
+        -20px 10px 0 0 #607D8B,
+        -40px 20px 0 0 #78909C,
+        20px 10px 0 0 #607D8B,
+        40px 20px 0 0 #78909C;
 }
 
-/* Bird 2 */
-.theme-animals .elem-4::after {
-    content: '';
-    position: absolute;
-    left: 35px;
-    top: 8px;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(138deg,
-            transparent 0%,
-            transparent 46%,
-            #455A64 46%,
-            #455A64 48%,
-            transparent 48%) 0% 40% / 16px 10px,
-        linear-gradient(222deg,
-            transparent 0%,
-            transparent 46%,
-            #455A64 46%,
-            #455A64 48%,
-            transparent 48%) 0% 40% / 16px 10px;
-    background-repeat: no-repeat;
-    background-position: left center, right center;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
-    animation: animals-wing-flap 0.6s ease-in-out infinite alternate 0.3s;
-}
-
-@keyframes animals-birds-migrate {
-    0% { transform: translate(0, 0); opacity: 0; }
+@keyframes animals-birds-fly {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 0;
+    }
     5% { opacity: 1; }
     95% { opacity: 1; }
-    100% { transform: translate(calc(100vw + 100px), -50px); opacity: 0; }
+    100% {
+        transform: translateX(calc(100vw + 200px)) translateY(-40px);
+        opacity: 0;
+    }
 }
 
-@keyframes animals-wing-flap {
-    0% { transform: scaleY(1); }
-    100% { transform: scaleY(0.7); }
+/* === ELEM-7: BUTTERFLY === */
+.theme-animals .elem-7 {
+    top: 38%;
+    left: 28%;
+    width: 5px;
+    height: 25px;
+    background: linear-gradient(180deg,
+        #212121 0%,
+        #37474F 50%,
+        #212121 100%);
+    border-radius: 3px;
+    animation: animals-butterfly-float 12s ease-in-out infinite;
+    z-index: 18;
 }
 
-/* === PAW PRINTS === */
-.theme-animals .elem-5 {
-    position: absolute;
-    bottom: 10%;
+/* Butterfly wings */
+.theme-animals .elem-7::before {
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow:
+        /* Upper wings */
+        -12px -5px 0 8px #E91E63,
+        -14px -7px 0 4px #9C27B0,
+        12px -5px 0 8px #E91E63,
+        14px -7px 0 4px #9C27B0,
+        /* Lower wings */
+        -10px 8px 0 6px #FF9800,
+        -12px 6px 0 3px #FF5722,
+        10px 8px 0 6px #FF9800,
+        12px 6px 0 3px #FF5722;
+    animation: animals-butterfly-wings 0.6s ease-in-out infinite alternate;
+}
+
+/* Antennae */
+.theme-animals .elem-7::after {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 8px;
+    background: #212121;
+    box-shadow:
+        5px 0 0 0 #212121,
+        -5px 0 0 0 #212121,
+        5px -3px 0 1px #212121,
+        -5px -3px 0 1px #212121;
+}
+
+@keyframes animals-butterfly-float {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(30px, -15px); }
+    40% { transform: translate(60px, 10px); }
+    60% { transform: translate(40px, 25px); }
+    80% { transform: translate(20px, 5px); }
+}
+
+@keyframes animals-butterfly-wings {
+    0% { transform: translateX(-50%) scaleX(1); }
+    100% { transform: translateX(-50%) scaleX(0.7); }
+}
+
+/* === ELEM-8: ZEBRA === */
+.theme-animals .elem-8 {
+    bottom: 28%;
+    left: 58%;
+    width: 50px;
+    height: 30px;
+    background: repeating-linear-gradient(90deg,
+        #FFFFFF 0px,
+        #FFFFFF 4px,
+        #212121 4px,
+        #212121 8px);
+    border-radius: 25px 25px 12px 12px;
+    box-shadow:
+        inset -5px -3px 10px rgba(0, 0, 0, 0.2),
+        3px 5px 12px rgba(0, 0, 0, 0.3),
+        /* Legs */
+        -12px 22px 0 -4px #212121,
+        -4px 25px 0 -4px #FFFFFF,
+        12px 22px 0 -4px #212121,
+        20px 25px 0 -4px #FFFFFF;
+    z-index: 9;
+}
+
+/* Zebra head and neck */
+.theme-animals .elem-8::before {
+    top: -25px;
+    left: -8px;
+    width: 12px;
+    height: 35px;
+    background: repeating-linear-gradient(90deg,
+        #FFFFFF 0px,
+        #FFFFFF 3px,
+        #212121 3px,
+        #212121 6px);
+    border-radius: 6px;
+    box-shadow:
+        /* Head */
+        0 -10px 0 3px #FFFFFF,
+        /* Mane */
+        3px -5px 0 1px #212121,
+        3px 5px 0 1px #212121,
+        3px 15px 0 1px #212121,
+        /* Ears */
+        -3px -18px 0 -1px #FFFFFF,
+        5px -18px 0 -1px #FFFFFF,
+        /* Eye */
+        -2px -8px 0 -3px #212121;
+}
+
+/* Tail */
+.theme-animals .elem-8::after {
+    top: 8px;
+    right: -15px;
+    width: 20px;
+    height: 3px;
+    background: #212121;
+    border-radius: 2px;
+    box-shadow:
+        15px 5px 0 2px #212121;
+}
+
+/* === PINE-FOREST: GRASS BLADES === */
+.theme-animals .pine-forest {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 35px solid #7CB342;
+    box-shadow:
+        /* Grass blades using box-shadow multiplication */
+        15px 5px 0 0 #8BC34A,
+        30px 3px 0 0 #689F38,
+        45px 8px 0 0 #7CB342,
+        60px 2px 0 0 #8BC34A,
+        75px 6px 0 0 #689F38,
+        90px 4px 0 0 #7CB342,
+        105px 7px 0 0 #8BC34A,
+        120px 3px 0 0 #689F38,
+        135px 5px 0 0 #7CB342,
+        150px 8px 0 0 #8BC34A,
+        165px 2px 0 0 #689F38,
+        180px 6px 0 0 #7CB342,
+        195px 4px 0 0 #8BC34A,
+        210px 7px 0 0 #689F38,
+        225px 3px 0 0 #7CB342,
+        240px 5px 0 0 #8BC34A,
+        255px 8px 0 0 #689F38,
+        270px 2px 0 0 #7CB342,
+        285px 6px 0 0 #8BC34A,
+        300px 4px 0 0 #689F38,
+        315px 7px 0 0 #7CB342,
+        330px 3px 0 0 #8BC34A,
+        345px 5px 0 0 #689F38,
+        360px 8px 0 0 #7CB342,
+        375px 2px 0 0 #8BC34A,
+        390px 6px 0 0 #689F38,
+        405px 4px 0 0 #7CB342,
+        420px 7px 0 0 #8BC34A,
+        435px 3px 0 0 #689F38,
+        450px 5px 0 0 #7CB342,
+        465px 8px 0 0 #8BC34A,
+        480px 2px 0 0 #689F38,
+        495px 6px 0 0 #7CB342,
+        510px 4px 0 0 #8BC34A,
+        525px 7px 0 0 #689F38,
+        540px 3px 0 0 #7CB342,
+        555px 5px 0 0 #8BC34A,
+        570px 8px 0 0 #689F38,
+        585px 2px 0 0 #7CB342,
+        600px 6px 0 0 #8BC34A,
+        615px 4px 0 0 #689F38,
+        630px 7px 0 0 #7CB342,
+        645px 3px 0 0 #8BC34A,
+        660px 5px 0 0 #689F38,
+        675px 8px 0 0 #7CB342,
+        690px 2px 0 0 #8BC34A,
+        705px 6px 0 0 #689F38,
+        720px 4px 0 0 #7CB342,
+        735px 7px 0 0 #8BC34A,
+        750px 3px 0 0 #689F38,
+        765px 5px 0 0 #7CB342,
+        780px 8px 0 0 #8BC34A,
+        795px 2px 0 0 #689F38,
+        810px 6px 0 0 #7CB342,
+        825px 4px 0 0 #8BC34A,
+        840px 7px 0 0 #689F38,
+        855px 3px 0 0 #7CB342,
+        870px 5px 0 0 #8BC34A,
+        885px 8px 0 0 #689F38,
+        900px 2px 0 0 #7CB342;
+    animation: animals-grass-wave 8s ease-in-out infinite;
+    z-index: 15;
+}
+
+/* Second row of grass */
+.theme-animals .pine-forest::before {
+    bottom: -30px;
+    left: 8px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 28px solid #558B2F;
+    box-shadow:
+        12px 4px 0 0 #689F38,
+        24px 2px 0 0 #558B2F,
+        36px 6px 0 0 #689F38,
+        48px 3px 0 0 #558B2F,
+        60px 5px 0 0 #689F38,
+        72px 2px 0 0 #558B2F,
+        84px 6px 0 0 #689F38,
+        96px 4px 0 0 #558B2F,
+        108px 3px 0 0 #689F38,
+        120px 5px 0 0 #558B2F,
+        132px 2px 0 0 #689F38,
+        144px 6px 0 0 #558B2F,
+        156px 4px 0 0 #689F38,
+        168px 3px 0 0 #558B2F,
+        180px 5px 0 0 #689F38,
+        192px 2px 0 0 #558B2F,
+        204px 6px 0 0 #689F38,
+        216px 4px 0 0 #558B2F;
+}
+
+@keyframes animals-grass-wave {
+    0%, 100% { transform: skewX(0deg); }
+    25% { transform: skewX(2deg); }
+    75% { transform: skewX(-2deg); }
+}
+
+/* === GRASS ELEMENT === */
+.theme-animals .grass {
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 20%;
-    z-index: 7;
-    pointer-events: none;
+    height: 25%;
+    background: linear-gradient(180deg,
+        rgba(124, 179, 66, 0) 0%,
+        rgba(124, 179, 66, 0.5) 30%,
+        rgba(104, 159, 56, 0.8) 60%,
+        rgba(85, 139, 47, 1) 100%);
+    z-index: 14;
 }
 
-.theme-animals .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Paw 1 - Main pad */
-        radial-gradient(ellipse at 22% 55%, rgba(93, 64, 55, 0.5) 0%, rgba(93, 64, 55, 0.5) 30%, transparent 31%) 0 0 / 18px 18px,
-        /* Paw 1 - Toes */
-        radial-gradient(circle at 22% 48%, rgba(93, 64, 55, 0.42) 0%, rgba(93, 64, 55, 0.42) 22%, transparent 23%) -4px -8px / 10px 10px,
-        radial-gradient(circle at 22% 48%, rgba(93, 64, 55, 0.42) 0%, rgba(93, 64, 55, 0.42) 22%, transparent 23%) 4px -8px / 10px 10px,
-        radial-gradient(circle at 22% 62%, rgba(93, 64, 55, 0.38) 0%, rgba(93, 64, 55, 0.38) 20%, transparent 21%) -3px 10px / 9px 9px,
-        radial-gradient(circle at 22% 62%, rgba(93, 64, 55, 0.38) 0%, rgba(93, 64, 55, 0.38) 20%, transparent 21%) 3px 10px / 9px 9px;
-    background-repeat: repeat-x;
-    background-position:
-        12% 50%,
-        12% 50%,
-        12% 50%,
-        12% 50%,
-        12% 50%;
-    animation: animals-paw-fade 20s ease-in-out infinite;
-}
-
-.theme-animals .elem-5::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Paw 2 - Main pad */
-        radial-gradient(ellipse at 58% 42%, rgba(78, 52, 46, 0.48) 0%, rgba(78, 52, 46, 0.48) 30%, transparent 31%) 0 0 / 18px 18px,
-        /* Paw 2 - Toes */
-        radial-gradient(circle at 58% 35%, rgba(78, 52, 46, 0.4) 0%, rgba(78, 52, 46, 0.4) 22%, transparent 23%) -4px -8px / 10px 10px,
-        radial-gradient(circle at 58% 35%, rgba(78, 52, 46, 0.4) 0%, rgba(78, 52, 46, 0.4) 22%, transparent 23%) 4px -8px / 10px 10px,
-        radial-gradient(circle at 58% 52%, rgba(78, 52, 46, 0.36) 0%, rgba(78, 52, 46, 0.36) 20%, transparent 21%) -3px 10px / 9px 9px,
-        radial-gradient(circle at 58% 52%, rgba(78, 52, 46, 0.36) 0%, rgba(78, 52, 46, 0.36) 20%, transparent 21%) 3px 10px / 9px 9px;
-    background-repeat: repeat-x;
-    background-position:
-        45% 65%,
-        45% 65%,
-        45% 65%,
-        45% 65%,
-        45% 65%;
-    animation: animals-paw-fade 20s ease-in-out infinite 2s;
-}
-
-@keyframes animals-paw-fade {
-    0%, 20%, 100% { opacity: 0; }
-    30%, 90% { opacity: 1; }
-}
-
-/* === ATMOSPHERIC PARTICLES (DUST) === */
+/* === SCENE-PARTICLES: DUST MOTES === */
 .theme-animals .scene-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: 18;
-    background:
-        radial-gradient(circle at 8% 38%, rgba(215, 204, 200, 0.7) 0%, transparent 1.8px),
-        radial-gradient(circle at 18% 62%, rgba(188, 170, 164, 0.65) 0%, transparent 2px),
-        radial-gradient(circle at 28% 25%, rgba(161, 136, 127, 0.7) 0%, transparent 1.7px),
-        radial-gradient(circle at 42% 75%, rgba(215, 204, 200, 0.65) 0%, transparent 1.9px),
-        radial-gradient(circle at 52% 45%, rgba(188, 170, 164, 0.7) 0%, transparent 1.8px),
-        radial-gradient(circle at 62% 68%, rgba(161, 136, 127, 0.65) 0%, transparent 2.1px),
-        radial-gradient(circle at 72% 32%, rgba(215, 204, 200, 0.7) 0%, transparent 1.7px),
-        radial-gradient(circle at 82% 58%, rgba(188, 170, 164, 0.65) 0%, transparent 2px),
-        radial-gradient(circle at 88% 82%, rgba(161, 136, 127, 0.7) 0%, transparent 1.9px),
-        radial-gradient(circle at 15% 88%, rgba(215, 204, 200, 0.65) 0%, transparent 1.8px),
-        radial-gradient(circle at 45% 15%, rgba(188, 170, 164, 0.7) 0%, transparent 1.7px),
-        radial-gradient(circle at 75% 92%, rgba(161, 136, 127, 0.65) 0%, transparent 2px);
-    animation: animals-dust-float 15.5s ease-in-out infinite;
+    z-index: 19;
+}
+
+.theme-animals .scene-particles::before {
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    background: rgba(215, 204, 200, 0.7);
+    border-radius: 50%;
+    box-shadow:
+        /* Floating dust particles */
+        80px 120px 0 0.5px rgba(215, 204, 200, 0.6),
+        180px 80px 0 0.8px rgba(188, 170, 164, 0.7),
+        300px 200px 0 0.6px rgba(161, 136, 127, 0.6),
+        420px 150px 0 1px rgba(215, 204, 200, 0.7),
+        550px 250px 0 0.5px rgba(188, 170, 164, 0.6),
+        680px 100px 0 0.9px rgba(161, 136, 127, 0.7),
+        800px 180px 0 0.7px rgba(215, 204, 200, 0.6),
+        150px 320px 0 0.8px rgba(188, 170, 164, 0.7),
+        350px 280px 0 0.6px rgba(161, 136, 127, 0.6),
+        550px 350px 0 1px rgba(215, 204, 200, 0.7),
+        750px 300px 0 0.5px rgba(188, 170, 164, 0.6),
+        100px 420px 0 0.9px rgba(161, 136, 127, 0.7);
+    animation: animals-dust-float 15s ease-in-out infinite;
 }
 
 @keyframes animals-dust-float {
-    0%, 100% { opacity: 0.4; transform: translateY(0) translateX(0) scale(1); }
-    25% { opacity: 0.7; transform: translateY(-28px) translateX(18px) scale(1.1); }
-    50% { opacity: 0.9; transform: translateY(-45px) translateX(-12px) scale(1.15); }
-    75% { opacity: 0.6; transform: translateY(-25px) translateX(22px) scale(1.05); }
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+    25% { transform: translateY(-25px) translateX(15px); opacity: 0.7; }
+    50% { transform: translateY(-45px) translateX(-10px); opacity: 0.9; }
+    75% { transform: translateY(-20px) translateX(20px); opacity: 0.6; }
 }
 
-/* === MASCOT ANIMATIONS === */
+/* === DEPTH-FOG: HEAT HAZE === */
+.theme-animals .depth-fog {
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top,
+        rgba(255, 193, 7, 0.15) 0%,
+        rgba(255, 152, 0, 0.08) 50%,
+        transparent 100%);
+    filter: blur(5px);
+    animation: animals-heat-haze 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 13;
+}
 
-/* Happy - Wild roar of joy */
+@keyframes animals-heat-haze {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.1); }
+}
+
+/* === CLOUDS === */
+.theme-animals .cloud-2 {
+    top: 12%;
+    left: 10%;
+    width: 80px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    box-shadow:
+        25px -10px 0 5px rgba(255, 255, 255, 0.2),
+        50px 0 0 3px rgba(255, 255, 255, 0.22);
+    animation: animals-cloud-drift 45s linear infinite;
+    z-index: 2;
+}
+
+.theme-animals .cloud-3 {
+    top: 18%;
+    left: 50%;
+    width: 100px;
+    height: 35px;
+    background: rgba(255, 245, 157, 0.2);
+    border-radius: 35px;
+    box-shadow:
+        30px -12px 0 8px rgba(255, 245, 157, 0.18),
+        60px 0 0 5px rgba(255, 245, 157, 0.15);
+    animation: animals-cloud-drift 55s linear infinite;
+    z-index: 2;
+}
+
+@keyframes animals-cloud-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(150px); }
+}
+
+/* === MASCOT CHARACTER ANIMATIONS === */
 .theme-animals .worm-character.happy,
 .theme-animals .bunny-character.happy,
 .theme-animals .owl-character.happy,
 .theme-animals .cat-character.happy,
 .theme-animals .robot-character.happy {
-    animation: animals-happy-roar 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: animals-happy-roar 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes animals-happy-roar {
     0% { transform: scale(1) rotate(0deg); }
-    12% { transform: scale(0.92) rotate(-6deg); }
-    25% { transform: scale(1.3) rotate(8deg); filter: brightness(1.25) saturate(1.3); }
-    40% { transform: scale(1.18) rotate(-4deg) translateY(-20px); }
-    55% { transform: scale(1.25) rotate(5deg) translateY(-35px); filter: brightness(1.2) saturate(1.2); }
-    70% { transform: scale(1.12) rotate(-3deg) translateY(-18px); }
-    85% { transform: scale(1.05) rotate(1deg) translateY(-8px); }
-    100% { transform: scale(1) rotate(0deg) translateY(0); filter: brightness(1) saturate(1); }
+    15% { transform: scale(0.9) rotate(-8deg); }
+    30% { transform: scale(1.3) rotate(10deg); filter: brightness(1.3); }
+    50% { transform: scale(1.25) rotate(-5deg) translateY(-30px); }
+    70% { transform: scale(1.15) rotate(4deg) translateY(-15px); }
+    100% { transform: scale(1) rotate(0deg) translateY(0); filter: brightness(1); }
 }
 
-/* Sad - Retreat and hide */
 .theme-animals .worm-character.sad,
 .theme-animals .bunny-character.sad,
 .theme-animals .owl-character.sad,
 .theme-animals .cat-character.sad,
 .theme-animals .robot-character.sad {
-    animation: animals-sad-retreat 2.7s ease-out forwards;
+    animation: animals-sad-retreat 2.5s ease-out forwards;
 }
 
 @keyframes animals-sad-retreat {
-    0% { transform: scale(1) translateX(0); filter: brightness(1) saturate(1); }
-    35% { transform: scale(0.92) translateX(-12px) translateY(8px); filter: brightness(0.8) saturate(0.7); }
-    65% { transform: scale(0.84) translateX(-18px) translateY(15px); filter: brightness(0.6) saturate(0.4); }
-    100% { transform: scale(0.78) translateX(-22px) translateY(22px); filter: brightness(0.5) saturate(0.25) sepia(0.3); }
+    0% { transform: scale(1) translateX(0); filter: brightness(1); }
+    40% { transform: scale(0.88) translateX(-15px) translateY(10px); filter: brightness(0.7); }
+    100% { transform: scale(0.75) translateX(-25px) translateY(20px); filter: brightness(0.5) saturate(0.3); }
 }
 
-/* Excited - Cat pounce */
+.theme-animals .worm-character.excited,
+.theme-animals .bunny-character.excited,
+.theme-animals .owl-character.excited,
 .theme-animals .cat-character.excited,
-.theme-animals .bunny-character.excited {
-    animation: animals-excited-pounce 1.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+.theme-animals .robot-character.excited {
+    animation: animals-excited-pounce 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes animals-excited-pounce {
     0% { transform: translateY(0) scale(1); }
-    22% { transform: translateY(12px) scale(0.88, 1.15); }
-    40% { transform: translateY(-50px) scale(1.15, 0.85) rotate(8deg); }
-    58% { transform: translateY(-35px) scale(1.08) rotate(-5deg); }
-    75% { transform: translateY(-18px) scale(1.02) rotate(2deg); }
+    20% { transform: translateY(12px) scale(0.88, 1.15); }
+    45% { transform: translateY(-50px) scale(1.18, 0.85) rotate(8deg); }
+    65% { transform: translateY(-35px) scale(1.08) rotate(-5deg); }
+    85% { transform: translateY(-12px) scale(1.02) rotate(2deg); }
     100% { transform: translateY(0) scale(1) rotate(0deg); }
 }
 
-/* === SUN (WARM AFRICAN SUN) === */
-.theme-animals .elem-sun {
-    position: absolute;
-    top: 6%;
-    right: 12%;
-    width: 120px;
-    height: 120px;
-    z-index: 5;
-    pointer-events: none;
-}
-
-.theme-animals .elem-sun::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 50% 50%,
-            #FFEB3B 0%,
-            #FFC107 20%,
-            #FF9800 35%,
-            rgba(255, 152, 0, 0.7) 50%,
-            rgba(255, 193, 7, 0.4) 65%,
-            transparent 80%);
-    border-radius: 50%;
-    box-shadow:
-        0 0 50px rgba(255, 235, 59, 0.95),
-        0 0 100px rgba(255, 193, 7, 0.7),
-        0 0 150px rgba(255, 152, 0, 0.5);
-    animation: animals-sun-pulse 9.5s ease-in-out infinite;
-}
-
-.theme-animals .elem-sun::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(90deg, transparent 46%, rgba(255, 249, 196, 0.7) 50%, transparent 54%),
-        linear-gradient(0deg, transparent 46%, rgba(255, 249, 196, 0.7) 50%, transparent 54%),
-        linear-gradient(45deg, transparent 46%, rgba(255, 236, 179, 0.6) 50%, transparent 54%),
-        linear-gradient(135deg, transparent 46%, rgba(255, 236, 179, 0.6) 50%, transparent 54%),
-        linear-gradient(22.5deg, transparent 47%, rgba(255, 243, 224, 0.5) 50%, transparent 53%),
-        linear-gradient(67.5deg, transparent 47%, rgba(255, 243, 224, 0.5) 50%, transparent 53%),
-        linear-gradient(112.5deg, transparent 47%, rgba(255, 243, 224, 0.5) 50%, transparent 53%),
-        linear-gradient(157.5deg, transparent 47%, rgba(255, 243, 224, 0.5) 50%, transparent 53%);
-    animation: animals-rays-rotate 25s linear infinite;
-}
-
-@keyframes animals-sun-pulse {
-    0%, 100% { transform: scale(1); filter: brightness(1); }
-    50% { transform: scale(1.1); filter: brightness(1.2); }
-}
-
-@keyframes animals-rays-rotate {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.05); opacity: 1; }
-}
-
-/* === HEAT SHIMMER === */
-.theme-animals .heat-shimmer {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    bottom: 30%;
-    left: 0;
-    pointer-events: none;
-    z-index: 6;
-    background:
-        linear-gradient(85deg,
-            transparent 0%,
-            rgba(255, 193, 7, 0.12) 25%,
-            rgba(255, 152, 0, 0.1) 50%,
-            rgba(255, 193, 7, 0.14) 75%,
-            transparent 100%);
-    background-size: 200% 100%;
-    animation: animals-heat-wave 9.8s ease-in-out infinite;
-    filter: blur(4px);
-}
-
-@keyframes animals-heat-wave {
-    0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.5; }
-    50% { transform: translateX(50%) scaleY(1.15); opacity: 0.8; }
-}
-
-/* === ACACIA TREE SILHOUETTE === */
-.theme-animals .acacia-trees {
-    position: absolute;
-    bottom: 25%;
-    left: 0;
-    width: 100%;
-    height: 25%;
-    z-index: 4;
-    pointer-events: none;
-    opacity: 0.4;
-}
-
-.theme-animals .acacia-trees::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Tree 1 - Crown */
-        radial-gradient(ellipse at 18% 30%, rgba(93, 64, 55, 0.8) 0%, rgba(93, 64, 55, 0.8) 28%, transparent 29%),
-        /* Tree 1 - Trunk */
-        linear-gradient(180deg,
-            transparent 0%,
-            transparent 70%,
-            rgba(78, 52, 46, 0.9) 70%,
-            rgba(78, 52, 46, 0.9) 100%) 17.5% 0% / 3px 100%,
-        /* Tree 2 - Crown */
-        radial-gradient(ellipse at 52% 25%, rgba(109, 76, 65, 0.75) 0%, rgba(109, 76, 65, 0.75) 25%, transparent 26%),
-        /* Tree 2 - Trunk */
-        linear-gradient(180deg,
-            transparent 0%,
-            transparent 65%,
-            rgba(93, 64, 55, 0.85) 65%,
-            rgba(93, 64, 55, 0.85) 100%) 51.5% 0% / 2.5px 100%,
-        /* Tree 3 - Crown */
-        radial-gradient(ellipse at 82% 28%, rgba(121, 85, 72, 0.7) 0%, rgba(121, 85, 72, 0.7) 26%, transparent 27%),
-        /* Tree 3 - Trunk */
-        linear-gradient(180deg,
-            transparent 0%,
-            transparent 68%,
-            rgba(109, 76, 65, 0.8) 68%,
-            rgba(109, 76, 65, 0.8) 100%) 81.5% 0% / 3px 100%;
-    background-repeat: no-repeat;
-    animation: animals-trees-sway 18.5s ease-in-out infinite;
-}
-
-@keyframes animals-trees-sway {
-    0%, 100% { transform: skewX(0deg); opacity: 0.4; }
-    50% { transform: skewX(0.5deg); opacity: 0.5; }
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    .theme-animals .elem-1 { height: 80px; }
+    .theme-animals .elem-1::before { border-left-width: 50px; border-right-width: 50px; }
+    .theme-animals .elem-3 { width: 45px; height: 28px; }
+    .theme-animals .elem-4 { width: 60px; height: 42px; }
+    .theme-animals .elem-5 { width: 35px; height: 35px; }
 }

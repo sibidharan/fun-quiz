@@ -100,12 +100,61 @@ class QuizTopics
             'animation' => 'news',
             'color' => '#3F51B5'
         ],
-        'mythology' => [
-            'name' => 'Indian Mythology',
-            'description' => 'Ramayana, Mahabharata, gods and legends',
-            'icon' => '🏹',
-            'animation' => 'mythology',
-            'color' => '#FFC107'
+        'cyber_security' => [
+            'name' => 'Cyber Security',
+            'description' => 'Online safety, passwords, privacy protection',
+            'icon' => '🔒',
+            'animation' => 'cyber',
+            'color' => '#1976D2'
+        ],
+        'internet_safety' => [
+            'name' => 'Internet Safety',
+            'description' => 'Safe browsing, social media awareness, online privacy',
+            'icon' => '🛡️',
+            'animation' => 'shield',
+            'color' => '#388E3C'
+        ],
+        'cyber_crime_awareness' => [
+            'name' => 'Cyber Crime Awareness',
+            'description' => 'Types of cyber crimes, how to stay safe online',
+            'icon' => '⚠️',
+            'animation' => 'warning',
+            'color' => '#F57C00'
+        ],
+        'online_fraud_awareness' => [
+            'name' => 'Online Fraud Awareness',
+            'description' => 'OTP fraud, phishing, scam awareness',
+            'icon' => '🚨',
+            'animation' => 'alert',
+            'color' => '#D32F2F'
+        ],
+        'police_awareness' => [
+            'name' => 'Police & Safety',
+            'description' => 'Role of police, emergency numbers, citizen safety',
+            'icon' => '👮',
+            'animation' => 'police',
+            'color' => '#0D47A1'
+        ],
+        'digital_literacy' => [
+            'name' => 'Digital Literacy',
+            'description' => 'Basic computer skills, internet usage, digital tools',
+            'icon' => '💻',
+            'animation' => 'digital',
+            'color' => '#7B1FA2'
+        ],
+        'network_basics' => [
+            'name' => 'Network Basics',
+            'description' => 'WiFi, LAN, internet connectivity basics',
+            'icon' => '📡',
+            'animation' => 'network',
+            'color' => '#00897B'
+        ],
+        'safe_online_culture' => [
+            'name' => 'Safe Online Culture',
+            'description' => 'Digital citizenship, responsible internet use',
+            'icon' => '🌐',
+            'animation' => 'globe-safe',
+            'color' => '#5C6BC0'
         ],
         'literature' => [
             'name' => 'Literature',

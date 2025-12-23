@@ -1,829 +1,1078 @@
 /* ============================================
-   SPACE & ASTRONOMY THEME - ULTRA CINEMATIC
-   Deep space with stunning nebulae, galaxies
-   Immersive cosmic experience
+   SPACE & ASTRONOMY THEME - JULIA MIOCENE STYLE
+   Deep space cosmic journey with pure CSS art
+   Box-shadow multiplication for stars & nebulae
    ============================================ */
 
-/* === EPIC DEEP SPACE BACKGROUND === */
+:root {
+    /* Deep space colors */
+    --space-void: #000000;
+    --space-deep: #0a0015;
+    --space-purple: #1a0044;
+    --space-nebula-purple: #9333ea;
+    --space-nebula-pink: #ec4899;
+    --space-nebula-blue: #3b82f6;
+
+    /* Star colors */
+    --star-white: #ffffff;
+    --star-blue: #a5f3fc;
+    --star-yellow: #fef08a;
+    --star-pink: #fda4af;
+    --star-purple: #c4b5fd;
+
+    /* Planet colors */
+    --planet-saturn-light: #fef3c7;
+    --planet-saturn-mid: #fbbf24;
+    --planet-saturn-dark: #b45309;
+    --planet-ring: #d97706;
+    --planet-earth-ocean: #3b82f6;
+    --planet-earth-land: #22c55e;
+    --planet-moon: #e2e8f0;
+    --planet-moon-dark: #64748b;
+
+    /* Rocket colors */
+    --rocket-body: #ef4444;
+    --rocket-dark: #991b1b;
+    --rocket-window: #0ea5e9;
+    --rocket-flame-inner: #fbbf24;
+    --rocket-flame-outer: #f97316;
+
+    /* Effects */
+    --comet-core: #fef9c3;
+    --comet-tail: #fde047;
+    --galaxy-core: #fef08a;
+}
+
+/* === DEEP SPACE BASE === */
 .theme-space_astronomy .scene-background {
-    background:
-        /* Vibrant nebula clouds */
-        radial-gradient(ellipse at 10% 90%, rgba(147, 51, 234, 0.7) 0%, transparent 50%),
-        radial-gradient(ellipse at 90% 10%, rgba(59, 130, 246, 0.6) 0%, transparent 45%),
-        radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.35) 0%, transparent 60%),
-        radial-gradient(ellipse at 25% 25%, rgba(34, 211, 238, 0.25) 0%, transparent 40%),
-        radial-gradient(ellipse at 75% 75%, rgba(251, 146, 60, 0.2) 0%, transparent 45%),
-        radial-gradient(ellipse at 40% 80%, rgba(139, 92, 246, 0.4) 0%, transparent 35%),
-        /* Deep space gradient */
-        linear-gradient(180deg,
-            #000000 0%,
-            #0a0015 15%,
-            #10002b 30%,
-            #1a0044 45%,
-            #240060 55%,
-            #1a0044 70%,
-            #0a0015 85%,
-            #000000 100%);
+    background: linear-gradient(180deg,
+        var(--space-void) 0%,
+        var(--space-deep) 20%,
+        var(--space-purple) 50%,
+        var(--space-deep) 80%,
+        var(--space-void) 100%);
     overflow: hidden;
-    animation: space-background-breathe 30s ease-in-out infinite;
+    position: relative;
 }
 
-@keyframes space-background-breathe {
-    0%, 100% { filter: brightness(1) saturate(1); }
-    50% { filter: brightness(1.1) saturate(1.15); }
-}
-
-/* === STUNNING 3-LAYER STARFIELD === */
-.theme-space_astronomy .scene-background::before {
+/* === UNIVERSAL ELEMENT SETUP - MIOCENE STYLE === */
+.theme-space_astronomy .scene-background *,
+.theme-space_astronomy .scene-background *::before,
+.theme-space_astronomy .scene-background *::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image:
-        /* Layer 1: Bright colored stars */
-        radial-gradient(2px 2px at 5% 8%, #fff 100%, transparent),
-        radial-gradient(3px 3px at 12% 25%, #a5f3fc 100%, transparent),
-        radial-gradient(2px 2px at 18% 12%, #fef08a 100%, transparent),
-        radial-gradient(4px 4px at 25% 40%, #fff 100%, transparent),
-        radial-gradient(2px 2px at 32% 18%, #c4b5fd 100%, transparent),
-        radial-gradient(3px 3px at 40% 55%, #fda4af 100%, transparent),
-        radial-gradient(2px 2px at 48% 8%, #fff 100%, transparent),
-        radial-gradient(3px 3px at 55% 35%, #a5f3fc 100%, transparent),
-        radial-gradient(2px 2px at 62% 22%, #fff 100%, transparent),
-        radial-gradient(4px 4px at 70% 50%, #fef08a 100%, transparent),
-        radial-gradient(2px 2px at 78% 15%, #c4b5fd 100%, transparent),
-        radial-gradient(3px 3px at 85% 42%, #fff 100%, transparent),
-        radial-gradient(2px 2px at 92% 28%, #fda4af 100%, transparent),
-        radial-gradient(2px 2px at 8% 70%, #fff 100%, transparent),
-        radial-gradient(3px 3px at 22% 82%, #a5f3fc 100%, transparent),
-        radial-gradient(2px 2px at 38% 75%, #fef08a 100%, transparent),
-        radial-gradient(4px 4px at 52% 88%, #fff 100%, transparent),
-        radial-gradient(2px 2px at 68% 72%, #c4b5fd 100%, transparent),
-        radial-gradient(3px 3px at 82% 85%, #fff 100%, transparent),
-        radial-gradient(2px 2px at 95% 78%, #fda4af 100%, transparent);
-    animation: space-stars-twinkle 4s ease-in-out infinite alternate;
+}
+
+/* === STAR FIELD - BOX-SHADOW MULTIPLICATION === */
+/* Layer 1: Bright prominent stars */
+.theme-space_astronomy .scene-background::before {
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    background: var(--star-white);
+    border-radius: 50%;
+    box-shadow:
+        /* Giant bright stars */
+        50px 80px 0 2px var(--star-white),
+        180px 120px 0 3px var(--star-white),
+        320px 60px 0 2px var(--star-yellow),
+        450px 150px 0 3px var(--star-white),
+        580px 90px 0 2px var(--star-blue),
+        720px 180px 0 3px var(--star-white),
+        850px 50px 0 2px var(--star-pink),
+        /* Large colored stars */
+        95px 200px 0 2px var(--star-blue),
+        230px 280px 0 2px var(--star-purple),
+        380px 220px 0 2px var(--star-yellow),
+        520px 300px 0 2px var(--star-pink),
+        670px 250px 0 2px var(--star-blue),
+        810px 320px 0 2px var(--star-white),
+        /* Medium stars scattered */
+        40px 350px 0 1px var(--star-white),
+        150px 400px 0 1px var(--star-blue),
+        280px 380px 0 1px var(--star-yellow),
+        420px 420px 0 1px var(--star-purple),
+        560px 370px 0 1px var(--star-white),
+        700px 450px 0 1px var(--star-pink),
+        840px 400px 0 1px var(--star-blue),
+        /* Scattered small stars */
+        25px 500px 0 1px var(--star-white),
+        130px 550px 0 1px var(--star-yellow),
+        270px 520px 0 1px var(--star-blue),
+        400px 580px 0 1px var(--star-white),
+        540px 530px 0 1px var(--star-purple),
+        680px 590px 0 1px var(--star-pink),
+        820px 550px 0 1px var(--star-white),
+        /* Deep field stars */
+        70px 30px 0 1px var(--star-blue),
+        200px 45px 0 1px var(--star-white),
+        340px 25px 0 1px var(--star-yellow),
+        480px 55px 0 1px var(--star-purple),
+        620px 35px 0 1px var(--star-white),
+        760px 65px 0 1px var(--star-pink),
+        900px 40px 0 1px var(--star-blue);
+    animation: space-stars-twinkle 8s ease-in-out infinite alternate;
     z-index: 1;
 }
 
-/* === DISTANT STAR DUST === */
+/* Layer 2: Distant star dust */
 .theme-space_astronomy .scene-background::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(1px 1px at 2% 5%, rgba(255,255,255,0.8) 100%, transparent),
-        radial-gradient(1px 1px at 7% 12%, rgba(255,255,255,0.6) 100%, transparent),
-        radial-gradient(1px 1px at 14% 8%, rgba(255,255,255,0.7) 100%, transparent),
-        radial-gradient(1px 1px at 21% 18%, rgba(255,255,255,0.5) 100%, transparent),
-        radial-gradient(1px 1px at 28% 4%, rgba(255,255,255,0.8) 100%, transparent),
-        radial-gradient(1px 1px at 35% 22%, rgba(255,255,255,0.6) 100%, transparent),
-        radial-gradient(1px 1px at 42% 10%, rgba(255,255,255,0.7) 100%, transparent),
-        radial-gradient(1px 1px at 49% 28%, rgba(255,255,255,0.5) 100%, transparent),
-        radial-gradient(1px 1px at 56% 6%, rgba(255,255,255,0.8) 100%, transparent),
-        radial-gradient(1px 1px at 63% 20%, rgba(255,255,255,0.6) 100%, transparent),
-        radial-gradient(1px 1px at 70% 14%, rgba(255,255,255,0.7) 100%, transparent),
-        radial-gradient(1px 1px at 77% 30%, rgba(255,255,255,0.5) 100%, transparent),
-        radial-gradient(1px 1px at 84% 8%, rgba(255,255,255,0.8) 100%, transparent),
-        radial-gradient(1px 1px at 91% 24%, rgba(255,255,255,0.6) 100%, transparent),
-        radial-gradient(1px 1px at 98% 16%, rgba(255,255,255,0.7) 100%, transparent),
-        radial-gradient(1px 1px at 4% 65%, rgba(255,255,255,0.5) 100%, transparent),
-        radial-gradient(1px 1px at 16% 78%, rgba(255,255,255,0.8) 100%, transparent),
-        radial-gradient(1px 1px at 28% 90%, rgba(255,255,255,0.6) 100%, transparent),
-        radial-gradient(1px 1px at 44% 72%, rgba(255,255,255,0.7) 100%, transparent),
-        radial-gradient(1px 1px at 58% 85%, rgba(255,255,255,0.5) 100%, transparent),
-        radial-gradient(1px 1px at 72% 68%, rgba(255,255,255,0.8) 100%, transparent),
-        radial-gradient(1px 1px at 86% 92%, rgba(255,255,255,0.6) 100%, transparent);
-    animation: space-stardust-drift 8s ease-in-out infinite alternate-reverse;
-    opacity: 0.9;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow:
+        /* Tiny distant stars - hundreds via box-shadow */
+        15px 25px 0 0 rgba(255,255,255,0.5),
+        45px 55px 0 0 rgba(165,243,252,0.5),
+        75px 85px 0 0 rgba(255,255,255,0.4),
+        105px 35px 0 0 rgba(254,240,138,0.5),
+        135px 95px 0 0 rgba(255,255,255,0.5),
+        165px 65px 0 0 rgba(196,181,253,0.5),
+        195px 115px 0 0 rgba(255,255,255,0.4),
+        225px 45px 0 0 rgba(253,164,175,0.5),
+        255px 125px 0 0 rgba(255,255,255,0.5),
+        285px 75px 0 0 rgba(165,243,252,0.4),
+        315px 135px 0 0 rgba(255,255,255,0.5),
+        345px 105px 0 0 rgba(254,240,138,0.5),
+        375px 155px 0 0 rgba(255,255,255,0.4),
+        405px 85px 0 0 rgba(196,181,253,0.5),
+        435px 165px 0 0 rgba(255,255,255,0.5),
+        465px 115px 0 0 rgba(253,164,175,0.4),
+        495px 175px 0 0 rgba(255,255,255,0.5),
+        525px 145px 0 0 rgba(165,243,252,0.5),
+        555px 195px 0 0 rgba(255,255,255,0.4),
+        585px 125px 0 0 rgba(254,240,138,0.5),
+        615px 205px 0 0 rgba(255,255,255,0.5),
+        645px 155px 0 0 rgba(196,181,253,0.4),
+        675px 215px 0 0 rgba(255,255,255,0.5),
+        705px 185px 0 0 rgba(253,164,175,0.5),
+        735px 225px 0 0 rgba(255,255,255,0.4),
+        765px 165px 0 0 rgba(165,243,252,0.5),
+        795px 235px 0 0 rgba(255,255,255,0.5),
+        825px 195px 0 0 rgba(254,240,138,0.4),
+        855px 245px 0 0 rgba(255,255,255,0.5),
+        885px 175px 0 0 rgba(196,181,253,0.5),
+        /* Second row */
+        30px 280px 0 0 rgba(255,255,255,0.4),
+        60px 310px 0 0 rgba(165,243,252,0.5),
+        90px 340px 0 0 rgba(255,255,255,0.5),
+        120px 290px 0 0 rgba(254,240,138,0.4),
+        150px 350px 0 0 rgba(255,255,255,0.5),
+        180px 320px 0 0 rgba(196,181,253,0.5),
+        210px 370px 0 0 rgba(255,255,255,0.4),
+        240px 300px 0 0 rgba(253,164,175,0.5),
+        270px 380px 0 0 rgba(255,255,255,0.5),
+        300px 330px 0 0 rgba(165,243,252,0.4),
+        330px 390px 0 0 rgba(255,255,255,0.5),
+        360px 360px 0 0 rgba(254,240,138,0.5),
+        390px 400px 0 0 rgba(255,255,255,0.4),
+        420px 340px 0 0 rgba(196,181,253,0.5),
+        450px 410px 0 0 rgba(255,255,255,0.5),
+        480px 370px 0 0 rgba(253,164,175,0.4),
+        510px 420px 0 0 rgba(255,255,255,0.5),
+        540px 380px 0 0 rgba(165,243,252,0.5),
+        570px 430px 0 0 rgba(255,255,255,0.4),
+        600px 390px 0 0 rgba(254,240,138,0.5),
+        630px 440px 0 0 rgba(255,255,255,0.5),
+        660px 400px 0 0 rgba(196,181,253,0.4),
+        690px 450px 0 0 rgba(255,255,255,0.5),
+        720px 410px 0 0 rgba(253,164,175,0.5),
+        750px 460px 0 0 rgba(255,255,255,0.4),
+        780px 420px 0 0 rgba(165,243,252,0.5),
+        810px 470px 0 0 rgba(255,255,255,0.5),
+        840px 430px 0 0 rgba(254,240,138,0.4),
+        870px 480px 0 0 rgba(255,255,255,0.5),
+        900px 440px 0 0 rgba(196,181,253,0.5),
+        /* Third row */
+        20px 510px 0 0 rgba(255,255,255,0.5),
+        50px 540px 0 0 rgba(165,243,252,0.4),
+        80px 570px 0 0 rgba(255,255,255,0.5),
+        110px 520px 0 0 rgba(254,240,138,0.5),
+        140px 580px 0 0 rgba(255,255,255,0.4),
+        170px 550px 0 0 rgba(196,181,253,0.5),
+        200px 590px 0 0 rgba(255,255,255,0.5),
+        230px 530px 0 0 rgba(253,164,175,0.4),
+        260px 600px 0 0 rgba(255,255,255,0.5),
+        290px 560px 0 0 rgba(165,243,252,0.5),
+        320px 610px 0 0 rgba(255,255,255,0.4),
+        350px 570px 0 0 rgba(254,240,138,0.5),
+        380px 620px 0 0 rgba(255,255,255,0.5),
+        410px 540px 0 0 rgba(196,181,253,0.4),
+        440px 630px 0 0 rgba(255,255,255,0.5),
+        470px 580px 0 0 rgba(253,164,175,0.5),
+        500px 640px 0 0 rgba(255,255,255,0.4),
+        530px 590px 0 0 rgba(165,243,252,0.5),
+        560px 650px 0 0 rgba(255,255,255,0.5),
+        590px 600px 0 0 rgba(254,240,138,0.4),
+        620px 660px 0 0 rgba(255,255,255,0.5),
+        650px 610px 0 0 rgba(196,181,253,0.5),
+        680px 670px 0 0 rgba(255,255,255,0.4),
+        710px 620px 0 0 rgba(253,164,175,0.5),
+        740px 680px 0 0 rgba(255,255,255,0.5),
+        770px 630px 0 0 rgba(165,243,252,0.4),
+        800px 690px 0 0 rgba(255,255,255,0.5),
+        830px 640px 0 0 rgba(254,240,138,0.5),
+        860px 700px 0 0 rgba(255,255,255,0.4),
+        890px 650px 0 0 rgba(196,181,253,0.5);
+    animation: space-stardust-drift 15s ease-in-out infinite alternate-reverse;
     z-index: 0;
 }
 
 @keyframes space-stars-twinkle {
     0% { opacity: 0.7; filter: brightness(0.9); }
-    100% { opacity: 1; filter: brightness(1.3); }
+    50% { opacity: 1; filter: brightness(1.3); }
+    100% { opacity: 0.8; filter: brightness(1.1); }
 }
 
 @keyframes space-stardust-drift {
     0% { opacity: 0.5; transform: translateY(0); }
-    100% { opacity: 0.9; transform: translateY(-3px); }
+    100% { opacity: 0.8; transform: translateY(-5px); }
 }
 
-/* === ELEMENT 1: MAJESTIC RINGED PLANET === */
-.theme-space_astronomy .elem-1 {
-    width: 110px;
-    height: 110px;
-    background:
-        radial-gradient(circle at 30% 30%,
-            #fbbf24 0%,
-            #f59e0b 25%,
-            #d97706 50%,
-            #b45309 75%,
-            #78350f 100%);
-    border-radius: 50%;
-    bottom: 18%;
+/* === ELEM-0-ULTRA: DISTANT NEBULA CLOUD === */
+.theme-space_astronomy .elem-0-ultra {
+    bottom: 60%;
     left: 5%;
-    box-shadow:
-        inset -30px -25px 50px rgba(0,0,0,0.7),
-        inset 15px 15px 30px rgba(255,255,255,0.15),
-        0 0 100px rgba(251, 191, 36, 0.6),
-        0 0 200px rgba(245, 158, 11, 0.3);
-    animation: space-planet-orbit 25s ease-in-out infinite;
-    z-index: 5;
-}
-
-/* Outer Ring */
-.theme-space_astronomy .elem-1::before {
-    content: '';
-    position: absolute;
     width: 200px;
-    height: 50px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateX(75deg);
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(251,191,36,0.1) 15%,
-            rgba(245,158,11,0.4) 30%,
-            rgba(217,119,6,0.6) 45%,
-            transparent 50%,
-            rgba(217,119,6,0.6) 55%,
-            rgba(245,158,11,0.4) 70%,
-            rgba(251,191,36,0.1) 85%,
-            transparent 100%);
+    height: 100px;
+    background: radial-gradient(ellipse,
+        rgba(147, 51, 234, 0.4) 0%,
+        rgba(147, 51, 234, 0.2) 40%,
+        transparent 70%);
     border-radius: 50%;
-    box-shadow:
-        0 0 30px rgba(251, 191, 36, 0.4),
-        inset 0 0 40px rgba(251, 191, 36, 0.2);
-    animation: space-ring-glow 4s ease-in-out infinite alternate;
+    filter: blur(20px);
+    z-index: 2;
 }
 
-/* Inner Ring */
-.theme-space_astronomy .elem-1::after {
-    content: '';
-    position: absolute;
+/* Nebula glow extension */
+.theme-space_astronomy .elem-0-ultra::before {
+    top: 20%;
+    left: 30%;
     width: 150px;
-    height: 35px;
+    height: 80px;
+    background: radial-gradient(ellipse,
+        rgba(236, 72, 153, 0.3) 0%,
+        rgba(236, 72, 153, 0.1) 50%,
+        transparent 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+}
+
+/* === ELEM-0-FAR: SECOND NEBULA === */
+.theme-space_astronomy .elem-0-far {
+    top: 15%;
+    right: 10%;
+    width: 180px;
+    height: 120px;
+    background: radial-gradient(ellipse,
+        rgba(59, 130, 246, 0.35) 0%,
+        rgba(59, 130, 246, 0.15) 45%,
+        transparent 70%);
+    border-radius: 50%;
+    filter: blur(18px);
+    z-index: 2;
+}
+
+/* === ELEM-1: SATURN - RINGED PLANET === */
+.theme-space_astronomy .elem-1 {
+    bottom: 15%;
+    left: 6%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 35% 30%,
+        var(--planet-saturn-light) 0%,
+        var(--planet-saturn-mid) 40%,
+        var(--planet-saturn-dark) 100%);
+    border-radius: 50%;
+    box-shadow:
+        inset -25px -20px 40px rgba(0,0,0,0.6),
+        inset 15px 15px 30px rgba(255,255,255,0.15),
+        0 0 60px rgba(251, 191, 36, 0.5),
+        0 0 120px rgba(245, 158, 11, 0.3);
+    animation: space-saturn-float 25s ease-in-out infinite;
+    z-index: 6;
+}
+
+/* Saturn's ring system using ellipse */
+.theme-space_astronomy .elem-1::before {
     top: 50%;
     left: 50%;
+    width: 180px;
+    height: 40px;
     transform: translate(-50%, -50%) rotateX(75deg);
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(180,83,9,0.3) 30%,
-            rgba(120,53,15,0.5) 45%,
-            transparent 50%,
-            rgba(120,53,15,0.5) 55%,
-            rgba(180,83,9,0.3) 70%,
-            transparent 100%);
+    background: transparent;
+    border: 12px solid transparent;
+    border-top-color: rgba(217, 119, 6, 0.6);
+    border-bottom-color: rgba(217, 119, 6, 0.4);
     border-radius: 50%;
-}
-
-@keyframes space-planet-orbit {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    25% { transform: translateY(-15px) translateX(8px); }
-    50% { transform: translateY(-25px) translateX(0); }
-    75% { transform: translateY(-15px) translateX(-8px); }
-}
-
-@keyframes space-ring-glow {
-    0% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.4), inset 0 0 40px rgba(251, 191, 36, 0.2); }
-    100% { box-shadow: 0 0 50px rgba(251, 191, 36, 0.7), inset 0 0 60px rgba(251, 191, 36, 0.4); }
-}
-
-/* === ELEMENT 2: SLEEK ROCKET SHIP === */
-.theme-space_astronomy .elem-2 {
-    width: 40px;
-    height: 90px;
-    background: linear-gradient(180deg,
-        #ef4444 0%,
-        #dc2626 40%,
-        #b91c1c 70%,
-        #991b1b 100%);
-    border-radius: 50% 50% 15% 15% / 35% 35% 8% 8%;
-    top: 12%;
-    right: 10%;
     box-shadow:
-        inset -10px 0 20px rgba(0,0,0,0.4),
-        inset 10px 0 20px rgba(255,255,255,0.1),
-        0 0 40px rgba(239, 68, 68, 0.5);
-    animation: space-rocket-fly 12s ease-in-out infinite;
-    z-index: 10;
+        0 0 0 4px rgba(251, 191, 36, 0.3),
+        0 0 0 10px rgba(217, 119, 6, 0.2),
+        0 0 30px rgba(251, 191, 36, 0.4);
 }
 
-/* Rocket Window */
-.theme-space_astronomy .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    background:
-        radial-gradient(circle at 35% 35%,
-            #e0f2fe,
-            #7dd3fc,
-            #0ea5e9);
+/* Ring detail layer */
+.theme-space_astronomy .elem-1::after {
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: 35px;
+    transform: translate(-50%, -50%) rotateX(75deg);
+    background: transparent;
+    border: 6px solid rgba(180, 83, 9, 0.5);
     border-radius: 50%;
-    top: 20px;
+}
+
+@keyframes space-saturn-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* === ELEM-2: ROCKET SHIP === */
+.theme-space_astronomy .elem-2 {
+    top: 18%;
+    right: 12%;
+    width: 35px;
+    height: 80px;
+    background: linear-gradient(180deg,
+        var(--rocket-body) 0%,
+        var(--rocket-dark) 100%);
+    border-radius: 50% 50% 20% 20% / 35% 35% 10% 10%;
+    box-shadow:
+        inset -8px 0 15px rgba(0,0,0,0.4),
+        inset 8px 0 15px rgba(255,255,255,0.1),
+        0 0 40px rgba(239, 68, 68, 0.5);
+    animation: space-rocket-journey 10s ease-in-out infinite;
+    z-index: 12;
+}
+
+/* Cockpit window */
+.theme-space_astronomy .elem-2::before {
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%,
+        #ffffff 0%,
+        var(--rocket-window) 60%,
+        #0369a1 100%);
+    border-radius: 50%;
     border: 3px solid #94a3b8;
     box-shadow:
-        inset -5px -5px 10px rgba(0,0,0,0.3),
-        0 0 20px rgba(14, 165, 233, 0.6);
-    animation: space-window-shine 3s ease-in-out infinite;
+        inset -4px -4px 8px rgba(0,0,0,0.3),
+        0 0 15px rgba(14, 165, 233, 0.6);
 }
 
-/* Rocket Flame */
+/* Rocket exhaust flame using border triangle */
 .theme-space_astronomy .elem-2::after {
-    content: '';
-    position: absolute;
-    bottom: -45px;
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 50px solid #f97316;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 45px solid var(--rocket-flame-outer);
     filter: blur(3px);
-    animation: space-flame-flicker 0.1s ease-in-out infinite alternate;
+    box-shadow:
+        0 0 20px rgba(249, 115, 22, 0.8),
+        0 0 40px rgba(251, 191, 36, 0.5);
+    animation: space-flame-flicker 0.15s ease-in-out infinite alternate;
 }
 
-@keyframes space-rocket-fly {
-    0%, 100% { transform: translateY(0) rotate(-12deg); }
-    25% { transform: translateY(-40px) rotate(-8deg); }
-    50% { transform: translateY(-70px) rotate(-15deg); }
-    75% { transform: translateY(-35px) rotate(-10deg); }
-}
-
-@keyframes space-window-shine {
-    0%, 100% { box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 20px rgba(14, 165, 233, 0.6); }
-    50% { box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 40px rgba(14, 165, 233, 1); }
+@keyframes space-rocket-journey {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    25% { transform: translateY(-40px) translateX(-10px) rotate(-5deg); }
+    50% { transform: translateY(-70px) translateX(-20px) rotate(-10deg); }
+    75% { transform: translateY(-35px) translateX(-15px) rotate(-6deg); }
 }
 
 @keyframes space-flame-flicker {
     0% {
-        border-top-color: #f97316;
-        border-top-width: 45px;
+        border-top-width: 40px;
         border-left-width: 12px;
         border-right-width: 12px;
+        opacity: 0.9;
     }
     100% {
-        border-top-color: #fbbf24;
-        border-top-width: 55px;
-        border-left-width: 18px;
-        border-right-width: 18px;
+        border-top-width: 50px;
+        border-left-width: 16px;
+        border-right-width: 16px;
+        opacity: 1;
     }
 }
 
-/* === ELEMENT 3: STUNNING SPIRAL GALAXY === */
+/* === ELEM-3: SPIRAL GALAXY === */
 .theme-space_astronomy .elem-3 {
-    width: 140px;
-    height: 140px;
-    top: 5%;
-    left: 22%;
-    background:
-        radial-gradient(ellipse at center,
-            rgba(255,255,255,1) 0%,
-            rgba(253,224,71,0.8) 8%,
-            rgba(192,132,252,0.5) 25%,
-            rgba(139,92,246,0.3) 40%,
-            transparent 60%);
+    top: 8%;
+    left: 25%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle,
+        rgba(255,255,255,0.9) 0%,
+        var(--galaxy-core) 15%,
+        rgba(192, 132, 252, 0.5) 35%,
+        transparent 60%);
     border-radius: 50%;
-    animation: space-galaxy-pulse 60s ease-in-out infinite;
-    z-index: 2;
+    animation: space-galaxy-glow 12s ease-in-out infinite;
+    z-index: 3;
 }
 
-/* Spiral Arms */
+/* Galaxy spiral arms using conic gradient */
 .theme-space_astronomy .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background:
-        conic-gradient(from 0deg at 50% 50%,
-            transparent 0deg,
-            rgba(192,132,252,0.5) 20deg,
-            transparent 40deg,
-            rgba(139,92,246,0.4) 60deg,
-            transparent 80deg,
-            rgba(192,132,252,0.5) 100deg,
-            transparent 120deg,
-            rgba(139,92,246,0.4) 140deg,
-            transparent 160deg,
-            rgba(192,132,252,0.5) 180deg,
-            transparent 200deg,
-            rgba(139,92,246,0.4) 220deg,
-            transparent 240deg,
-            rgba(192,132,252,0.5) 260deg,
-            transparent 280deg,
-            rgba(139,92,246,0.4) 300deg,
-            transparent 320deg,
-            rgba(192,132,252,0.5) 340deg,
-            transparent 360deg);
+    top: -40%;
+    left: -40%;
+    width: 180%;
+    height: 180%;
+    background: conic-gradient(from 0deg,
+        transparent 0deg,
+        rgba(192, 132, 252, 0.4) 20deg,
+        transparent 40deg,
+        rgba(147, 51, 234, 0.3) 60deg,
+        transparent 80deg,
+        rgba(192, 132, 252, 0.4) 110deg,
+        transparent 130deg,
+        rgba(147, 51, 234, 0.3) 150deg,
+        transparent 170deg,
+        rgba(192, 132, 252, 0.4) 200deg,
+        transparent 220deg,
+        rgba(147, 51, 234, 0.3) 240deg,
+        transparent 260deg,
+        rgba(192, 132, 252, 0.4) 290deg,
+        transparent 310deg,
+        rgba(147, 51, 234, 0.3) 330deg,
+        transparent 360deg);
     border-radius: 50%;
-    filter: blur(5px);
-    animation: space-arms-subtle 45s ease-in-out infinite;
+    filter: blur(4px);
+    animation: space-galaxy-rotate 50s linear infinite;
 }
 
-/* Galaxy Core */
+/* Bright core */
 .theme-space_astronomy .elem-3::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
     background: radial-gradient(circle,
-        #fff 0%,
-        #fef08a 40%,
-        #fbbf24 70%,
+        #ffffff 0%,
+        var(--galaxy-core) 50%,
         transparent 100%);
     border-radius: 50%;
     box-shadow:
-        0 0 30px rgba(254, 240, 138, 0.9),
-        0 0 60px rgba(251, 191, 36, 0.6),
-        0 0 100px rgba(245, 158, 11, 0.4);
-    animation: space-core-pulse 3s ease-in-out infinite;
+        0 0 20px rgba(254, 240, 138, 0.9),
+        0 0 40px rgba(251, 191, 36, 0.6),
+        0 0 60px rgba(245, 158, 11, 0.4);
 }
 
-@keyframes space-galaxy-pulse {
-    0%, 100% { opacity: 0.9; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
+@keyframes space-galaxy-glow {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
 }
 
-@keyframes space-arms-subtle {
-    0%, 100% { opacity: 0.8; transform: rotate(0deg); }
-    50% { opacity: 1; transform: rotate(5deg); }
+@keyframes space-galaxy-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-@keyframes space-core-pulse {
-    0%, 100% {
-        box-shadow: 0 0 30px rgba(254, 240, 138, 0.9), 0 0 60px rgba(251, 191, 36, 0.6), 0 0 100px rgba(245, 158, 11, 0.4);
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        box-shadow: 0 0 50px rgba(254, 240, 138, 1), 0 0 100px rgba(251, 191, 36, 0.8), 0 0 150px rgba(245, 158, 11, 0.6);
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-/* === ELEMENT 4: SHOOTING STAR === */
+/* === ELEM-4: SHOOTING STAR === */
 .theme-space_astronomy .elem-4 {
-    position: absolute;
+    top: 22%;
+    right: 35%;
     width: 6px;
     height: 6px;
-    background: #fff;
+    background: var(--star-white);
     border-radius: 50%;
-    top: 18%;
-    right: 35%;
     box-shadow:
-        0 0 15px #fff,
-        0 0 30px #7dd3fc;
+        0 0 15px var(--star-white),
+        0 0 30px var(--star-blue);
     animation: space-shooting-star 8s linear infinite;
     z-index: 15;
 }
 
-/* Star Trail */
+/* Shooting star trail */
 .theme-space_astronomy .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 150px;
-    height: 3px;
-    right: 6px;
     top: 50%;
+    right: 6px;
     transform: translateY(-50%);
+    width: 120px;
+    height: 3px;
     background: linear-gradient(90deg,
         transparent 0%,
-        rgba(255,255,255,0.9) 100%);
-    border-radius: 50%;
+        rgba(165, 243, 252, 0.3) 30%,
+        rgba(255, 255, 255, 0.8) 100%);
+    border-radius: 3px;
+    filter: blur(1px);
+}
+
+/* Secondary trail sparkles */
+.theme-space_astronomy .elem-4::after {
+    top: 60%;
+    right: 30px;
+    transform: translateY(-50%) rotate(-5deg);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(165, 243, 252, 0.4) 50%,
+        transparent 100%);
+    border-radius: 2px;
 }
 
 @keyframes space-shooting-star {
     0% {
-        transform: translateX(0) translateY(0) rotate(-35deg);
+        transform: translateX(0) translateY(0) rotate(-40deg);
         opacity: 0;
     }
-    5% { opacity: 1; }
-    35% {
-        transform: translateX(-350px) translateY(180px) rotate(-35deg);
+    10% { opacity: 1; }
+    40% {
+        transform: translateX(-300px) translateY(150px) rotate(-40deg);
         opacity: 1;
     }
-    40%, 100% {
+    45%, 100% {
         opacity: 0;
-        transform: translateX(0) translateY(0) rotate(-35deg);
+        transform: translateX(0) translateY(0) rotate(-40deg);
     }
 }
 
-/* === ELEMENT 5: DETAILED MOON === */
+/* === ELEM-5: MOON WITH CRATERS === */
 .theme-space_astronomy .elem-5 {
-    width: 75px;
-    height: 75px;
-    background:
-        radial-gradient(circle at 30% 30%,
-            #f1f5f9 0%,
-            #e2e8f0 35%,
-            #94a3b8 70%,
-            #64748b 100%);
+    bottom: 35%;
+    right: 8%;
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle at 35% 30%,
+        #f8fafc 0%,
+        var(--planet-moon) 50%,
+        var(--planet-moon-dark) 100%);
     border-radius: 50%;
-    bottom: 38%;
-    right: 6%;
     box-shadow:
         inset -18px -18px 35px rgba(0,0,0,0.5),
         inset 10px 10px 20px rgba(255,255,255,0.15),
-        0 0 60px rgba(241, 245, 249, 0.4),
-        0 0 120px rgba(226, 232, 240, 0.2);
-    animation: space-moon-float 20s ease-in-out infinite;
-    z-index: 4;
+        0 0 50px rgba(241, 245, 249, 0.4),
+        0 0 100px rgba(226, 232, 240, 0.2);
+    animation: space-moon-orbit 20s ease-in-out infinite;
+    z-index: 5;
 }
 
-/* Moon Craters */
+/* Craters using box-shadow multiplication */
 .theme-space_astronomy .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 20%;
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    background: rgba(71, 85, 105, 0.4);
     border-radius: 50%;
-    background:
-        radial-gradient(circle at 28% 22%, rgba(71,85,105,0.5) 0%, rgba(71,85,105,0.5) 12%, transparent 13%),
-        radial-gradient(circle at 58% 38%, rgba(51,65,85,0.4) 0%, rgba(51,65,85,0.4) 18%, transparent 19%),
-        radial-gradient(circle at 72% 68%, rgba(71,85,105,0.45) 0%, rgba(71,85,105,0.45) 10%, transparent 11%),
-        radial-gradient(circle at 35% 72%, rgba(51,65,85,0.35) 0%, rgba(51,65,85,0.35) 14%, transparent 15%),
-        radial-gradient(circle at 18% 52%, rgba(71,85,105,0.3) 0%, rgba(71,85,105,0.3) 8%, transparent 9%);
+    box-shadow:
+        /* Multiple craters at different positions */
+        20px 8px 0 -2px rgba(71, 85, 105, 0.5),
+        12px 25px 0 -1px rgba(51, 65, 85, 0.4),
+        -5px 20px 0 -3px rgba(71, 85, 105, 0.35),
+        25px 30px 0 -2px rgba(51, 65, 85, 0.45),
+        8px 38px 0 -1px rgba(71, 85, 105, 0.3),
+        -2px 35px 0 -3px rgba(51, 65, 85, 0.35);
 }
 
-/* Moon Glow */
+/* Lunar atmosphere glow */
 .theme-space_astronomy .elem-5::after {
-    content: '';
-    position: absolute;
-    width: 130%;
-    height: 130%;
     top: -15%;
     left: -15%;
+    width: 130%;
+    height: 130%;
     background: radial-gradient(circle,
-        rgba(255,255,255,0.1) 30%,
+        rgba(255, 255, 255, 0.1) 40%,
         transparent 70%);
     border-radius: 50%;
-    animation: space-moon-glow 6s ease-in-out infinite;
+    animation: space-lunar-glow 8s ease-in-out infinite;
 }
 
-@keyframes space-moon-float {
+@keyframes space-moon-orbit {
     0%, 100% { transform: translateX(0) translateY(0); }
     50% { transform: translateX(-15px) translateY(-20px); }
 }
 
-@keyframes space-moon-glow {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
+@keyframes space-lunar-glow {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
 }
 
-/* === ELEMENT 6: ASTRONAUT === */
+/* === ELEM-6: ASTRONAUT === */
 .theme-space_astronomy .elem-6 {
-    width: 55px;
-    height: 70px;
-    bottom: 10%;
+    bottom: 12%;
     left: 38%;
+    width: 50px;
+    height: 70px;
     animation: space-astronaut-float 15s ease-in-out infinite;
     z-index: 20;
 }
 
-/* Astronaut Suit */
+/* Astronaut body suit */
 .theme-space_astronomy .elem-6::before {
-    content: '';
-    position: absolute;
-    width: 38px;
-    height: 45px;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    width: 35px;
+    height: 42px;
     background: linear-gradient(180deg,
-        #f1f5f9 0%,
-        #e2e8f0 50%,
+        #f8fafc 0%,
+        #e2e8f0 60%,
         #cbd5e1 100%);
     border-radius: 15px;
+    border: 2px solid #94a3b8;
     box-shadow:
-        inset -8px 0 15px rgba(0,0,0,0.1),
-        inset 8px 0 15px rgba(255,255,255,0.4),
-        0 0 25px rgba(255,255,255,0.3);
+        inset -8px 0 12px rgba(0,0,0,0.1),
+        inset 8px 0 12px rgba(255,255,255,0.4),
+        0 0 20px rgba(255,255,255,0.3);
 }
 
-/* Astronaut Helmet */
+/* Astronaut helmet visor */
 .theme-space_astronomy .elem-6::after {
-    content: '';
-    position: absolute;
-    width: 42px;
-    height: 42px;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background:
-        radial-gradient(circle at 35% 35%,
-            rgba(255,255,255,0.95) 0%,
-            rgba(125,211,252,0.7) 40%,
-            #0284c7 100%);
+    width: 38px;
+    height: 38px;
+    background: radial-gradient(ellipse at 30% 30%,
+        rgba(255,255,255,0.9) 0%,
+        rgba(125, 211, 252, 0.8) 40%,
+        var(--rocket-window) 100%);
     border-radius: 50%;
     border: 5px solid #e2e8f0;
     box-shadow:
-        inset -8px -8px 20px rgba(0,0,0,0.3),
-        0 0 30px rgba(14, 165, 233, 0.5);
+        inset -8px -8px 18px rgba(0,0,0,0.3),
+        inset 4px 4px 10px rgba(255,255,255,0.3),
+        0 0 25px rgba(14, 165, 233, 0.5);
+    animation: space-visor-reflect 10s ease-in-out infinite;
 }
 
 @keyframes space-astronaut-float {
     0%, 100% { transform: translateY(0) rotate(-3deg); }
-    25% { transform: translateY(-25px) rotate(2deg); }
-    50% { transform: translateY(-35px) rotate(-2deg); }
-    75% { transform: translateY(-15px) rotate(3deg); }
+    25% { transform: translateY(-25px) translateX(10px) rotate(2deg); }
+    50% { transform: translateY(-35px) translateX(5px) rotate(-2deg); }
+    75% { transform: translateY(-15px) translateX(-8px) rotate(3deg); }
 }
 
-/* === ELEMENT 7: BEAUTIFUL EARTH === */
+@keyframes space-visor-reflect {
+    0%, 100% {
+        background: radial-gradient(ellipse at 30% 30%,
+            rgba(255,255,255,0.9) 0%,
+            rgba(125, 211, 252, 0.8) 40%,
+            var(--rocket-window) 100%);
+    }
+    50% {
+        background: radial-gradient(ellipse at 45% 40%,
+            rgba(255,255,255,0.95) 0%,
+            rgba(125, 211, 252, 0.85) 40%,
+            var(--rocket-window) 100%);
+    }
+}
+
+/* === ELEM-7: EARTH === */
 .theme-space_astronomy .elem-7 {
-    width: 50px;
-    height: 50px;
-    background:
-        radial-gradient(circle at 35% 35%,
-            #60a5fa 0%,
-            #3b82f6 30%,
-            #2563eb 60%,
-            #1d4ed8 100%);
-    border-radius: 50%;
     bottom: 58%;
-    left: 15%;
+    left: 16%;
+    width: 55px;
+    height: 55px;
+    background: radial-gradient(circle at 35% 30%,
+        #60a5fa 0%,
+        var(--planet-earth-ocean) 50%,
+        #1d4ed8 100%);
+    border-radius: 50%;
     box-shadow:
         inset -12px -12px 25px rgba(0,0,0,0.5),
         0 0 40px rgba(59, 130, 246, 0.5),
         0 0 80px rgba(37, 99, 235, 0.3);
-    animation: space-earth-glow 30s ease-in-out infinite;
-    z-index: 3;
+    animation: space-earth-spin 30s ease-in-out infinite;
+    z-index: 4;
 }
 
-/* Continents */
+/* Continents using box-shadow dots */
 .theme-space_astronomy .elem-7::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background:
-        radial-gradient(ellipse at 35% 30%, #22c55e 0%, #22c55e 20%, transparent 21%),
-        radial-gradient(ellipse at 60% 50%, #16a34a 0%, #16a34a 15%, transparent 16%),
-        radial-gradient(ellipse at 28% 65%, #22c55e 0%, #22c55e 12%, transparent 13%),
-        radial-gradient(ellipse at 55% 75%, #16a34a 0%, #16a34a 10%, transparent 11%);
-    animation: space-continents-spin 25s linear infinite;
+    top: 20%;
+    left: 25%;
+    width: 12px;
+    height: 10px;
+    background: var(--planet-earth-land);
+    border-radius: 40%;
+    box-shadow:
+        /* Multiple continent shapes */
+        15px 5px 0 -1px var(--planet-earth-land),
+        8px 18px 0 -2px #16a34a,
+        -3px 22px 0 -1px var(--planet-earth-land),
+        20px 20px 0 -2px #15803d;
 }
 
-/* Clouds */
+/* Cloud cover */
 .theme-space_astronomy .elem-7::after {
-    content: '';
-    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
     background:
-        radial-gradient(ellipse at 25% 25%, rgba(255,255,255,0.7) 0%, transparent 30%),
-        radial-gradient(ellipse at 70% 45%, rgba(255,255,255,0.6) 0%, transparent 25%),
-        radial-gradient(ellipse at 45% 75%, rgba(255,255,255,0.5) 0%, transparent 28%);
-    animation: space-clouds-swirl 18s linear infinite;
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,0.6) 0%, transparent 25%),
+        radial-gradient(circle at 65% 40%, rgba(255,255,255,0.5) 0%, transparent 20%),
+        radial-gradient(circle at 40% 75%, rgba(255,255,255,0.4) 0%, transparent 22%);
+    border-radius: 50%;
+    animation: space-clouds-move 20s linear infinite;
 }
 
-@keyframes space-earth-glow {
+@keyframes space-earth-spin {
     0%, 100% {
-        box-shadow: inset -12px -12px 25px rgba(0,0,0,0.5), 0 0 40px rgba(59, 130, 246, 0.5), 0 0 80px rgba(37, 99, 235, 0.3);
+        box-shadow:
+            inset -12px -12px 25px rgba(0,0,0,0.5),
+            0 0 40px rgba(59, 130, 246, 0.5),
+            0 0 80px rgba(37, 99, 235, 0.3);
     }
     50% {
-        box-shadow: inset -12px -12px 25px rgba(0,0,0,0.5), 0 0 60px rgba(59, 130, 246, 0.7), 0 0 120px rgba(37, 99, 235, 0.5);
+        box-shadow:
+            inset -12px -12px 25px rgba(0,0,0,0.5),
+            0 0 55px rgba(59, 130, 246, 0.7),
+            0 0 100px rgba(37, 99, 235, 0.45);
     }
 }
 
-@keyframes space-continents-spin {
-    0%, 100% { opacity: 0.95; }
-    50% { opacity: 1; }
+@keyframes space-clouds-move {
+    0% { opacity: 0.7; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0.7; }
 }
 
-@keyframes space-clouds-swirl {
-    0%, 100% { opacity: 0.7; transform: translateX(0); }
-    50% { opacity: 0.9; transform: translateX(2px); }
-}
-
-/* === ELEMENT 8: BRILLIANT COMET === */
+/* === ELEM-8: COMET === */
 .theme-space_astronomy .elem-8 {
+    top: 40%;
+    right: 38%;
     width: 18px;
     height: 18px;
-    background:
-        radial-gradient(circle at 40% 40%,
-            #fff 0%,
-            #fef9c3 30%,
-            #fde047 60%,
-            #eab308 100%);
+    background: radial-gradient(circle at 35% 30%,
+        #ffffff 0%,
+        var(--comet-core) 40%,
+        var(--comet-tail) 100%);
     border-radius: 50%;
-    top: 38%;
-    right: 42%;
     box-shadow:
-        0 0 25px rgba(253, 224, 71, 0.9),
-        0 0 50px rgba(234, 179, 8, 0.6),
-        0 0 80px rgba(202, 138, 4, 0.4);
-    animation: space-comet-fly 14s linear infinite;
-    z-index: 12;
+        0 0 20px var(--comet-core),
+        0 0 40px var(--comet-tail),
+        0 0 60px rgba(234, 179, 8, 0.4);
+    animation: space-comet-pass 14s linear infinite;
+    z-index: 14;
 }
 
-/* Main Tail */
+/* Comet dust tail */
 .theme-space_astronomy .elem-8::before {
-    content: '';
-    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
     width: 180px;
     height: 12px;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
     background: linear-gradient(90deg,
-        rgba(253,224,71,0.9) 0%,
-        rgba(250,204,21,0.6) 20%,
-        rgba(234,179,8,0.4) 50%,
-        rgba(161,98,7,0.2) 80%,
+        var(--comet-core) 0%,
+        var(--comet-tail) 20%,
+        rgba(234, 179, 8, 0.4) 50%,
         transparent 100%);
     border-radius: 50%;
     filter: blur(4px);
 }
 
-/* Ion Tail */
+/* Ion tail (blue) */
 .theme-space_astronomy .elem-8::after {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 20px;
-    left: 35%;
     top: 30%;
-    transform: rotate(18deg);
+    left: 40%;
+    transform: rotate(15deg);
+    width: 140px;
+    height: 18px;
     background: linear-gradient(90deg,
-        rgba(147,197,253,0.5) 0%,
-        rgba(96,165,250,0.3) 40%,
+        rgba(165, 243, 252, 0.6) 0%,
+        rgba(59, 130, 246, 0.4) 40%,
         transparent 100%);
     border-radius: 50%;
     filter: blur(5px);
 }
 
-@keyframes space-comet-fly {
+@keyframes space-comet-pass {
     0% {
-        transform: translateX(120px) translateY(-60px) rotate(-32deg);
+        transform: translateX(100px) translateY(-50px) rotate(-35deg);
         opacity: 0;
     }
-    8% { opacity: 1; }
-    50% {
-        transform: translateX(-280px) translateY(140px) rotate(-32deg);
+    15% { opacity: 1; }
+    55% {
+        transform: translateX(-280px) translateY(140px) rotate(-35deg);
         opacity: 1;
     }
-    58% { opacity: 0; }
+    65% { opacity: 0; }
     100% {
-        transform: translateX(120px) translateY(-60px) rotate(-32deg);
+        transform: translateX(100px) translateY(-50px) rotate(-35deg);
         opacity: 0;
     }
 }
 
-/* === COSMIC AURORA EFFECT === */
-.theme-space_astronomy .animation-layer::before {
-    content: '';
-    position: absolute;
+/* === ELEM-9: DISTANT GALAXY === */
+.theme-space_astronomy .elem-9 {
+    bottom: 10%;
+    right: 18%;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(ellipse,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(254, 240, 138, 0.6) 10%,
+        rgba(192, 132, 252, 0.3) 25%,
+        transparent 40%);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: space-distant-galaxy 60s linear infinite;
+    z-index: 2;
+}
+
+/* Galaxy spiral arms */
+.theme-space_astronomy .elem-9::before {
+    top: -70%;
+    left: -70%;
+    width: 240%;
+    height: 240%;
+    background: conic-gradient(from 0deg,
+        transparent 0deg,
+        rgba(147, 197, 253, 0.25) 15deg,
+        transparent 30deg,
+        rgba(192, 132, 252, 0.2) 50deg,
+        transparent 65deg,
+        rgba(147, 197, 253, 0.25) 90deg,
+        transparent 105deg,
+        rgba(192, 132, 252, 0.2) 125deg,
+        transparent 140deg,
+        rgba(147, 197, 253, 0.25) 165deg,
+        transparent 180deg,
+        rgba(192, 132, 252, 0.2) 200deg,
+        transparent 215deg,
+        rgba(147, 197, 253, 0.25) 240deg,
+        transparent 255deg,
+        rgba(192, 132, 252, 0.2) 275deg,
+        transparent 290deg,
+        rgba(147, 197, 253, 0.25) 315deg,
+        transparent 330deg,
+        rgba(192, 132, 252, 0.2) 350deg,
+        transparent 360deg);
+    border-radius: 50%;
+    filter: blur(3px);
+    animation: space-galaxy-arms-spin 55s linear infinite reverse;
+}
+
+/* Galaxy core */
+.theme-space_astronomy .elem-9::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle,
+        #ffffff 0%,
+        var(--galaxy-core) 40%,
+        transparent 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 15px rgba(254, 240, 138, 0.8),
+        0 0 30px rgba(251, 191, 36, 0.5),
+        0 0 50px rgba(245, 158, 11, 0.3);
+    animation: space-galaxy-core-pulse 10s ease-in-out infinite;
+}
+
+@keyframes space-distant-galaxy {
+    0% { transform: rotate(0deg); opacity: 0.55; }
+    50% { opacity: 0.7; }
+    100% { transform: rotate(360deg); opacity: 0.55; }
+}
+
+@keyframes space-galaxy-arms-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes space-galaxy-core-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 15px rgba(254, 240, 138, 0.8),
+            0 0 30px rgba(251, 191, 36, 0.5),
+            0 0 50px rgba(245, 158, 11, 0.3);
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        box-shadow:
+            0 0 25px rgba(254, 240, 138, 1),
+            0 0 50px rgba(251, 191, 36, 0.7),
+            0 0 75px rgba(245, 158, 11, 0.5);
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* === PINE-FOREST: CONSTELLATION PATTERN === */
+.theme-space_astronomy .pine-forest {
+    bottom: 70%;
+    left: 55%;
+    width: 4px;
+    height: 4px;
+    background: var(--star-white);
+    border-radius: 50%;
+    box-shadow:
+        /* Orion-like constellation */
+        0 0 8px var(--star-white),
+        20px -10px 0 1px var(--star-blue),
+        20px -10px 6px var(--star-blue),
+        40px 0 0 1px var(--star-white),
+        40px 0 8px var(--star-white),
+        60px -10px 0 1px var(--star-yellow),
+        60px -10px 6px var(--star-yellow),
+        /* Belt stars */
+        25px 15px 0 1px var(--star-white),
+        25px 15px 6px var(--star-white),
+        35px 17px 0 1px var(--star-white),
+        35px 17px 6px var(--star-white),
+        45px 15px 0 1px var(--star-white),
+        45px 15px 6px var(--star-white),
+        /* Connecting lines (faint) */
+        10px -5px 0 0 rgba(255,255,255,0.2),
+        30px -5px 0 0 rgba(255,255,255,0.2),
+        50px -5px 0 0 rgba(255,255,255,0.2);
+    z-index: 4;
+}
+
+/* === GRASS: ASTEROID FIELD === */
+.theme-space_astronomy .grass {
+    bottom: 5%;
+    left: 0;
+    width: 8px;
+    height: 6px;
+    background: #78716c;
+    border-radius: 40%;
+    box-shadow:
+        /* Scattered asteroids using box-shadow */
+        50px 20px 0 2px #57534e,
+        120px -10px 0 1px #78716c,
+        200px 15px 0 3px #44403c,
+        280px -5px 0 1px #78716c,
+        370px 25px 0 2px #57534e,
+        450px 5px 0 1px #44403c,
+        540px 20px 0 2px #78716c,
+        630px -8px 0 1px #57534e,
+        720px 18px 0 3px #44403c,
+        820px 0 0 1px #78716c,
+        900px 12px 0 2px #57534e;
+    animation: space-asteroids-drift 25s linear infinite;
+    z-index: 3;
+}
+
+@keyframes space-asteroids-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50px); }
+}
+
+/* === SCENE-PARTICLES: COSMIC DUST === */
+.theme-space_astronomy .scene-particles {
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.theme-space_astronomy .scene-particles::before {
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background: rgba(192, 132, 252, 0.7);
+    border-radius: 50%;
+    box-shadow:
+        /* Floating cosmic particles */
+        80px 100px 0 1px rgba(192, 132, 252, 0.6),
+        180px 200px 0 1px rgba(34, 211, 238, 0.7),
+        300px 150px 0 1px rgba(251, 146, 60, 0.6),
+        420px 250px 0 1px rgba(236, 72, 153, 0.7),
+        550px 180px 0 1px rgba(253, 224, 71, 0.6),
+        680px 300px 0 1px rgba(192, 132, 252, 0.7),
+        800px 220px 0 1px rgba(34, 211, 238, 0.6),
+        150px 380px 0 1px rgba(251, 146, 60, 0.7),
+        350px 420px 0 1px rgba(236, 72, 153, 0.6),
+        550px 350px 0 1px rgba(253, 224, 71, 0.7),
+        750px 450px 0 1px rgba(192, 132, 252, 0.6),
+        100px 520px 0 1px rgba(34, 211, 238, 0.7),
+        300px 580px 0 1px rgba(251, 146, 60, 0.6),
+        500px 500px 0 1px rgba(236, 72, 153, 0.7),
+        700px 560px 0 1px rgba(253, 224, 71, 0.6);
+    animation: space-particles-float 20s ease-in-out infinite;
+}
+
+@keyframes space-particles-float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+    25% { transform: translateY(-20px) translateX(10px); opacity: 0.9; }
+    50% { transform: translateY(-35px) translateX(-15px); opacity: 0.7; }
+    75% { transform: translateY(-15px) translateX(20px); opacity: 0.85; }
+}
+
+/* === DEPTH-FOG: COSMIC MIST === */
+.theme-space_astronomy .depth-fog {
     bottom: 0;
     left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top,
+        rgba(26, 0, 68, 0.4) 0%,
+        rgba(26, 0, 68, 0.2) 50%,
+        transparent 100%);
+    pointer-events: none;
+    z-index: 25;
+}
+
+/* === ANIMATION LAYER NEBULA EFFECTS === */
+.theme-space_astronomy .animation-layer::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background:
-        linear-gradient(180deg,
-            transparent 0%,
-            rgba(147, 51, 234, 0.05) 30%,
-            rgba(59, 130, 246, 0.08) 50%,
-            rgba(34, 211, 238, 0.1) 70%,
-            rgba(16, 185, 129, 0.08) 85%,
-            transparent 100%);
-    animation: space-aurora-wave 20s ease-in-out infinite;
+        radial-gradient(ellipse at 12% 80%, rgba(147, 51, 234, 0.12) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 15%, rgba(59, 130, 246, 0.1) 0%, transparent 35%),
+        radial-gradient(ellipse at 45% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 45%);
+    animation: space-nebula-breathe 30s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
 }
 
-@keyframes space-aurora-wave {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scaleY(1) translateY(0);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scaleY(1.3) translateY(-5%);
-    }
+@keyframes space-nebula-breathe {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
 }
 
-/* === FLOATING NEBULA PARTICLES === */
-.theme-space_astronomy .animation-layer::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    top: 0;
-    left: 0;
-    background: transparent;
-    box-shadow:
-        /* 30 floating particles */
-        10vw 15vh 0 2px rgba(192,132,252,0.7),
-        25vw 8vh 0 1px rgba(251,146,60,0.6),
-        40vw 22vh 0 2px rgba(34,211,238,0.8),
-        55vw 12vh 0 1px rgba(253,224,71,0.7),
-        70vw 28vh 0 2px rgba(192,132,252,0.6),
-        85vw 18vh 0 1px rgba(236,72,153,0.8),
-        15vw 42vh 0 2px rgba(34,211,238,0.7),
-        30vw 55vh 0 1px rgba(251,146,60,0.6),
-        45vw 38vh 0 2px rgba(192,132,252,0.8),
-        60vw 48vh 0 1px rgba(253,224,71,0.6),
-        75vw 62vh 0 2px rgba(236,72,153,0.7),
-        90vw 45vh 0 1px rgba(34,211,238,0.8),
-        8vw 72vh 0 2px rgba(251,146,60,0.7),
-        22vw 85vh 0 1px rgba(192,132,252,0.6),
-        38vw 78vh 0 2px rgba(253,224,71,0.8),
-        52vw 92vh 0 1px rgba(34,211,238,0.6),
-        68vw 82vh 0 2px rgba(236,72,153,0.7),
-        82vw 88vh 0 1px rgba(192,132,252,0.8),
-        95vw 75vh 0 2px rgba(251,146,60,0.6),
-        5vw 35vh 0 1px rgba(253,224,71,0.7),
-        18vw 58vh 0 2px rgba(34,211,238,0.6),
-        35vw 32vh 0 1px rgba(236,72,153,0.8),
-        48vw 68vh 0 2px rgba(192,132,252,0.7),
-        62vw 25vh 0 1px rgba(251,146,60,0.6),
-        78vw 52vh 0 2px rgba(253,224,71,0.8),
-        88vw 35vh 0 1px rgba(34,211,238,0.7),
-        12vw 88vh 0 2px rgba(236,72,153,0.6),
-        28vw 45vh 0 1px rgba(192,132,252,0.8),
-        58vw 75vh 0 2px rgba(251,146,60,0.7),
-        72vw 15vh 0 1px rgba(253,224,71,0.6);
-    animation: space-particles-float 25s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
-}
-
-@keyframes space-particles-float {
-    0%, 100% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.6;
-    }
-    25% {
-        transform: translateY(-20px) translateX(10px);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateY(-35px) translateX(-15px);
-        opacity: 0.7;
-    }
-    75% {
-        transform: translateY(-15px) translateX(20px);
-        opacity: 0.85;
-    }
-}
-
-/* === PULSATING PULSAR EFFECT === */
-.theme-space_astronomy .elem-3 ~ .animation-layer .pulsar-effect {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    top: 70%;
-    left: 75%;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow:
-        0 0 15px #fff,
-        0 0 30px #a5f3fc,
-        0 0 50px #22d3ee;
-    animation: space-pulsar-beam 2s ease-in-out infinite;
-    z-index: 5;
-}
-
-@keyframes space-pulsar-beam {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
-        box-shadow: 0 0 15px #fff, 0 0 30px #a5f3fc, 0 0 50px #22d3ee;
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.5);
-        box-shadow: 0 0 25px #fff, 0 0 50px #a5f3fc, 0 0 80px #22d3ee, 0 0 120px #0891b2;
-    }
-}
-
-/* === MASCOT ANIMATIONS === */
+/* === MASCOT CHARACTER ANIMATIONS === */
 .theme-space_astronomy .worm-character.happy,
 .theme-space_astronomy .bunny-character.happy,
 .theme-space_astronomy .owl-character.happy,
 .theme-space_astronomy .cat-character.happy,
 .theme-space_astronomy .robot-character.happy {
-    animation: space-launch-happy 2s var(--bounce-ease);
+    animation: space-launch-celebrate 2.5s var(--bounce-ease);
 }
 
-@keyframes space-launch-happy {
-    0% { transform: translateY(0) scale(1); filter: brightness(1); }
-    20% { transform: translateY(15px) scale(0.9); }
-    50% { transform: translateY(-80px) scale(1.15); filter: brightness(1.4); }
-    70% { transform: translateY(-50px) scale(1.1); }
-    100% { transform: translateY(0) scale(1); filter: brightness(1); }
+@keyframes space-launch-celebrate {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
+    }
+    20% {
+        transform: translateY(15px) scale(0.9);
+    }
+    50% {
+        transform: translateY(-80px) scale(1.2);
+        filter: brightness(1.4) drop-shadow(0 0 25px rgba(255,255,255,0.5));
+    }
+    70% {
+        transform: translateY(-50px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
+    }
 }
 
 .theme-space_astronomy .worm-character.sad,
@@ -831,12 +1080,18 @@
 .theme-space_astronomy .owl-character.sad,
 .theme-space_astronomy .cat-character.sad,
 .theme-space_astronomy .robot-character.sad {
-    animation: space-drift-sad 2s ease-out forwards;
+    animation: space-drift-away 2.5s ease-out forwards;
 }
 
-@keyframes space-drift-sad {
-    0% { transform: translateY(0) scale(1); filter: brightness(1) saturate(1); }
-    100% { transform: translateY(30px) scale(0.85) rotate(-5deg); filter: brightness(0.6) saturate(0.4); }
+@keyframes space-drift-away {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: brightness(1) saturate(1);
+    }
+    100% {
+        transform: translateY(30px) scale(0.85) rotate(-5deg);
+        filter: brightness(0.5) saturate(0.3);
+    }
 }
 
 .theme-space_astronomy .worm-character.excited,
@@ -844,16 +1099,25 @@
 .theme-space_astronomy .owl-character.excited,
 .theme-space_astronomy .cat-character.excited,
 .theme-space_astronomy .robot-character.excited {
-    animation: space-spin-orbit 2s var(--bounce-ease);
+    animation: space-orbit-spin 2.5s var(--bounce-ease);
 }
 
-@keyframes space-spin-orbit {
-    0% { transform: translateY(0) scale(1) rotate(0deg); }
-    50% { transform: translateY(-70px) scale(1.2) rotate(360deg); }
-    100% { transform: translateY(0) scale(1) rotate(360deg); }
+@keyframes space-orbit-spin {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        transform: translateY(-70px) scale(1.2) rotate(360deg);
+        filter: drop-shadow(0 0 35px rgba(59, 130, 246, 0.7));
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(720deg);
+        filter: drop-shadow(0 0 0 transparent);
+    }
 }
 
-/* === SPACE SUIT GLOW FOR ROBOT === */
+/* === ROBOT SPACE SUIT EFFECT === */
 .theme-space_astronomy .robot-character.idle::before {
     content: '';
     position: absolute;
@@ -863,11 +1127,36 @@
     left: -5%;
     border: 3px solid rgba(34, 211, 238, 0.4);
     border-radius: 20px;
-    box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
-    animation: space-suit-pulse 3s ease-in-out infinite;
+    box-shadow:
+        0 0 25px rgba(34, 211, 238, 0.4),
+        inset 0 0 15px rgba(34, 211, 238, 0.15);
+    animation: space-suit-pulse 8s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes space-suit-pulse {
-    0%, 100% { box-shadow: 0 0 25px rgba(34, 211, 238, 0.4); opacity: 0.7; }
-    50% { box-shadow: 0 0 50px rgba(34, 211, 238, 0.7); opacity: 1; }
+    0%, 100% {
+        box-shadow:
+            0 0 25px rgba(34, 211, 238, 0.4),
+            inset 0 0 15px rgba(34, 211, 238, 0.15);
+        opacity: 0.6;
+    }
+    50% {
+        box-shadow:
+            0 0 45px rgba(34, 211, 238, 0.7),
+            inset 0 0 25px rgba(34, 211, 238, 0.3);
+        opacity: 1;
+    }
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    .theme-space_astronomy .elem-1 { width: 70px; height: 70px; }
+    .theme-space_astronomy .elem-1::before { width: 130px; height: 30px; }
+    .theme-space_astronomy .elem-2 { width: 28px; height: 60px; }
+    .theme-space_astronomy .elem-3 { width: 90px; height: 90px; }
+    .theme-space_astronomy .elem-5 { width: 55px; height: 55px; }
+    .theme-space_astronomy .elem-6 { width: 40px; height: 55px; }
+    .theme-space_astronomy .elem-7 { width: 45px; height: 45px; }
+    .theme-space_astronomy .elem-9 { width: 100px; height: 100px; }
 }

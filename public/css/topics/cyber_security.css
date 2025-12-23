@@ -1,0 +1,1156 @@
+/* ============================================
+   CYBER SECURITY THEME - DIGITAL FORTRESS DEFENSE
+   Premium cinematic CSS animation scene
+   Shield locks, firewall protection, encryption keys
+   Binary rain, fingerprint scanner, secure servers
+   Deep navy blue with cyan security grid
+   ============================================ */
+
+/* === DEEP NAVY BACKGROUND WITH SECURITY GRID === */
+.theme-cyber_security .scene-background {
+    background:
+        /* Top protective glow */
+        radial-gradient(ellipse 900px 450px at 50% 0%, rgba(0, 230, 255, 0.12) 0%, transparent 50%),
+        /* Left shield aura */
+        radial-gradient(ellipse 600px 600px at 15% 30%, rgba(33, 150, 243, 0.15) 0%, transparent 60%),
+        /* Right encryption glow */
+        radial-gradient(ellipse 550px 550px at 85% 50%, rgba(0, 188, 212, 0.12) 0%, transparent 65%),
+        /* Deep navy gradient */
+        linear-gradient(180deg,
+            #0a1929 0%,
+            #0d1f33 12%,
+            #10253d 25%,
+            #132b47 38%,
+            #163151 50%,
+            #19375b 62%,
+            #1c3d65 75%,
+            #1f436f 88%,
+            #224979 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === SERVER RACK SILHOUETTES ON HORIZON === */
+.theme-cyber_security .scene-background .server-horizon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* Left server rack cluster */
+.theme-cyber_security .scene-background .server-horizon::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    width: 80px;
+    height: 85%;
+    background:
+        /* Server rack segments */
+        repeating-linear-gradient(0deg,
+            rgba(13, 71, 161, 0.8) 0px, rgba(13, 71, 161, 0.8) 16px,
+            rgba(10, 25, 41, 0.9) 16px, rgba(10, 25, 41, 0.9) 18px),
+        /* Vertical dividers */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 24px,
+            rgba(10, 25, 41, 0.7) 24px, rgba(10, 25, 41, 0.7) 26px,
+            transparent 26px, transparent 50px),
+        /* Base gradient */
+        linear-gradient(180deg,
+            rgba(21, 101, 192, 0.6) 0%,
+            rgba(13, 71, 161, 0.7) 50%,
+            rgba(10, 25, 41, 0.85) 100%);
+    border-left: 2px solid rgba(0, 188, 212, 0.4);
+    border-right: 2px solid rgba(0, 188, 212, 0.4);
+    box-shadow:
+        0 0 30px rgba(0, 188, 212, 0.3),
+        inset 0 0 20px rgba(0, 188, 212, 0.15);
+    animation: server-pulse-left 8s ease-in-out infinite;
+}
+
+/* Right server rack cluster */
+.theme-cyber_security .scene-background .server-horizon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 12%;
+    width: 65px;
+    height: 78%;
+    background:
+        /* Server rack segments */
+        repeating-linear-gradient(0deg,
+            rgba(13, 71, 161, 0.75) 0px, rgba(13, 71, 161, 0.75) 14px,
+            rgba(10, 25, 41, 0.85) 14px, rgba(10, 25, 41, 0.85) 16px),
+        /* Vertical dividers */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 19px,
+            rgba(10, 25, 41, 0.7) 19px, rgba(10, 25, 41, 0.7) 21px,
+            transparent 21px, transparent 40px),
+        /* Base gradient */
+        linear-gradient(180deg,
+            rgba(21, 101, 192, 0.55) 0%,
+            rgba(13, 71, 161, 0.65) 50%,
+            rgba(10, 25, 41, 0.8) 100%);
+    border-left: 2px solid rgba(0, 188, 212, 0.35);
+    border-right: 2px solid rgba(0, 188, 212, 0.35);
+    box-shadow:
+        0 0 25px rgba(0, 188, 212, 0.25),
+        inset 0 0 15px rgba(0, 188, 212, 0.12);
+    animation: server-pulse-right 9s ease-in-out infinite 1s;
+}
+
+@keyframes server-pulse-left {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.45; transform: scaleY(1.03); }
+}
+
+@keyframes server-pulse-right {
+    0%, 100% { opacity: 0.28; transform: scaleY(1); }
+    50% { opacity: 0.42; transform: scaleY(1.04); }
+}
+
+/* === HEXAGONAL SECURITY MESH PATTERN === */
+.theme-cyber_security .scene-background .hex-mesh {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.25;
+    background-image:
+        /* Hexagon pattern using conic gradients */
+        repeating-linear-gradient(30deg,
+            transparent 0px, transparent 40px,
+            rgba(0, 230, 255, 0.15) 40px, rgba(0, 230, 255, 0.15) 41px,
+            transparent 41px, transparent 80px),
+        repeating-linear-gradient(-30deg,
+            transparent 0px, transparent 40px,
+            rgba(0, 230, 255, 0.15) 40px, rgba(0, 230, 255, 0.15) 41px,
+            transparent 41px, transparent 80px),
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 46px,
+            rgba(0, 230, 255, 0.12) 46px, rgba(0, 230, 255, 0.12) 47px,
+            transparent 47px, transparent 93px);
+    background-size: 80px 139px, 80px 139px, 47px 81px;
+    background-position: 0 0, 0 0, 0 0;
+    animation: hex-mesh-shimmer 15s linear infinite;
+}
+
+@keyframes hex-mesh-shimmer {
+    0% { opacity: 0.22; transform: translateY(0); }
+    50% { opacity: 0.32; transform: translateY(-20px); }
+    100% { opacity: 0.22; transform: translateY(0); }
+}
+
+/* === SHIELD / FIREWALL FORTRESS SILHOUETTE === */
+.theme-cyber_security .scene-background .fortress-shield {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 140px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.2;
+}
+
+/* Central fortress tower */
+.theme-cyber_security .scene-background .fortress-shield::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100%;
+    background:
+        /* Tower battlements */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 8px,
+            rgba(13, 71, 161, 0.9) 8px, rgba(13, 71, 161, 0.9) 16px,
+            transparent 16px, transparent 24px),
+        /* Tower body */
+        linear-gradient(180deg,
+            rgba(21, 101, 192, 0.7) 0%,
+            rgba(13, 71, 161, 0.8) 30%,
+            rgba(10, 25, 41, 0.9) 100%);
+    background-position: 0 0, 0 10px;
+    background-size: 100% 15px, 100% calc(100% - 15px);
+    background-repeat: no-repeat;
+    border-left: 3px solid rgba(0, 188, 212, 0.5);
+    border-right: 3px solid rgba(0, 188, 212, 0.5);
+    box-shadow:
+        0 0 40px rgba(0, 188, 212, 0.4),
+        inset 0 0 30px rgba(0, 188, 212, 0.2);
+    clip-path: polygon(
+        0% 15%,
+        10% 10%, 10% 0%, 18% 0%, 18% 10%,
+        28% 15%, 28% 10%, 36% 10%, 36% 0%, 44% 0%, 44% 10%,
+        54% 15%, 54% 10%, 62% 10%, 62% 0%, 70% 0%, 70% 10%,
+        80% 15%, 80% 10%, 88% 10%, 88% 0%, 96% 0%, 96% 10%,
+        100% 15%,
+        100% 100%, 0% 100%
+    );
+    animation: fortress-beacon 10s ease-in-out infinite;
+}
+
+/* Shield emblem on fortress */
+.theme-cyber_security .scene-background .fortress-shield::after {
+    content: '';
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 50px;
+    background:
+        /* Shield core glow */
+        radial-gradient(ellipse 20px 20px at 50% 45%, rgba(0, 230, 255, 0.8) 0%, transparent 70%),
+        /* Shield body */
+        linear-gradient(135deg,
+            rgba(33, 150, 243, 0.6) 0%,
+            rgba(21, 101, 192, 0.7) 50%,
+            rgba(13, 71, 161, 0.8) 100%);
+    clip-path: polygon(50% 0%, 90% 20%, 95% 25%, 95% 55%, 50% 100%, 5% 55%, 5% 25%, 10% 20%);
+    border: 2px solid rgba(0, 230, 255, 0.6);
+    box-shadow:
+        0 0 20px rgba(0, 230, 255, 0.5),
+        inset 0 0 15px rgba(0, 230, 255, 0.3);
+    animation: shield-emblem-glow 6s ease-in-out infinite;
+}
+
+@keyframes fortress-beacon {
+    0%, 100% {
+        opacity: 0.2;
+        box-shadow:
+            0 0 40px rgba(0, 188, 212, 0.4),
+            inset 0 0 30px rgba(0, 188, 212, 0.2);
+    }
+    50% {
+        opacity: 0.35;
+        box-shadow:
+            0 0 60px rgba(0, 188, 212, 0.6),
+            inset 0 0 45px rgba(0, 230, 255, 0.3);
+    }
+}
+
+@keyframes shield-emblem-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(0, 230, 255, 0.5),
+            inset 0 0 15px rgba(0, 230, 255, 0.3);
+    }
+    50% {
+        box-shadow:
+            0 0 35px rgba(0, 230, 255, 0.8),
+            inset 0 0 25px rgba(0, 230, 255, 0.5);
+    }
+}
+
+/* === DIGITAL CIRCUIT TRACES IN BACKGROUND === */
+.theme-cyber_security .scene-background .circuit-traces {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.18;
+}
+
+/* Horizontal circuit traces */
+.theme-cyber_security .scene-background .circuit-traces::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Circuit trace line at 25% */
+        linear-gradient(90deg,
+            transparent 0%, transparent 5%,
+            rgba(0, 230, 255, 0.6) 5%, rgba(0, 230, 255, 0.6) 5.5%,
+            transparent 5.5%, transparent 18%,
+            rgba(0, 230, 255, 0.6) 18%, rgba(0, 230, 255, 0.6) 18.5%,
+            transparent 18.5%, transparent 22%,
+            rgba(0, 230, 255, 0.6) 22%, rgba(0, 230, 255, 0.6) 22.5%,
+            transparent 22.5%, transparent 35%,
+            rgba(0, 230, 255, 0.6) 35%, rgba(0, 230, 255, 0.6) 35.5%,
+            transparent 35.5%, transparent 100%),
+        /* Circuit trace line at 60% */
+        linear-gradient(90deg,
+            transparent 0%, transparent 15%,
+            rgba(33, 150, 243, 0.5) 15%, rgba(33, 150, 243, 0.5) 15.5%,
+            transparent 15.5%, transparent 28%,
+            rgba(33, 150, 243, 0.5) 28%, rgba(33, 150, 243, 0.5) 28.5%,
+            transparent 28.5%, transparent 45%,
+            rgba(33, 150, 243, 0.5) 45%, rgba(33, 150, 243, 0.5) 45.5%,
+            transparent 45.5%, transparent 62%,
+            rgba(33, 150, 243, 0.5) 62%, rgba(33, 150, 243, 0.5) 62.5%,
+            transparent 62.5%, transparent 100%);
+    background-position: 0 25%, 0 60%;
+    background-size: 100% 2px, 100% 2px;
+    background-repeat: no-repeat;
+}
+
+/* Vertical circuit traces with connection nodes */
+.theme-cyber_security .scene-background .circuit-traces::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Connection nodes (circuit dots) */
+        radial-gradient(circle 3px at 5% 25%, rgba(0, 230, 255, 0.9) 0%, rgba(0, 230, 255, 0.9) 100%, transparent 100%),
+        radial-gradient(circle 3px at 18% 25%, rgba(0, 230, 255, 0.9) 0%, rgba(0, 230, 255, 0.9) 100%, transparent 100%),
+        radial-gradient(circle 3px at 22% 25%, rgba(0, 230, 255, 0.9) 0%, rgba(0, 230, 255, 0.9) 100%, transparent 100%),
+        radial-gradient(circle 3px at 35% 25%, rgba(0, 230, 255, 0.9) 0%, rgba(0, 230, 255, 0.9) 100%, transparent 100%),
+        radial-gradient(circle 3px at 15% 60%, rgba(33, 150, 243, 0.8) 0%, rgba(33, 150, 243, 0.8) 100%, transparent 100%),
+        radial-gradient(circle 3px at 28% 60%, rgba(33, 150, 243, 0.8) 0%, rgba(33, 150, 243, 0.8) 100%, transparent 100%),
+        radial-gradient(circle 3px at 45% 60%, rgba(33, 150, 243, 0.8) 0%, rgba(33, 150, 243, 0.8) 100%, transparent 100%),
+        radial-gradient(circle 3px at 62% 60%, rgba(33, 150, 243, 0.8) 0%, rgba(33, 150, 243, 0.8) 100%, transparent 100%),
+        /* Vertical traces */
+        linear-gradient(0deg,
+            transparent 0%, transparent 25%,
+            rgba(0, 230, 255, 0.4) 25%, rgba(0, 230, 255, 0.4) 70%,
+            transparent 70%, transparent 100%),
+        linear-gradient(0deg,
+            transparent 0%, transparent 35%,
+            rgba(33, 150, 243, 0.35) 35%, rgba(33, 150, 243, 0.35) 80%,
+            transparent 80%, transparent 100%);
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 5% 0, 28% 0;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 2px 100%, 2px 100%;
+    background-repeat: no-repeat;
+    animation: circuit-flow 12s linear infinite;
+}
+
+@keyframes circuit-flow {
+    0%, 100% { opacity: 0.18; }
+    50% { opacity: 0.35; }
+}
+
+/* === CYAN SECURITY GRID PATTERN === */
+.theme-cyber_security .scene-background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Primary grid lines */
+        repeating-linear-gradient(0deg, transparent 0px, transparent 49px, rgba(0, 230, 255, 0.12) 49px, rgba(0, 230, 255, 0.12) 50px),
+        repeating-linear-gradient(90deg, transparent 0px, transparent 49px, rgba(0, 230, 255, 0.12) 49px, rgba(0, 230, 255, 0.12) 50px),
+        /* Diagonal security lines */
+        repeating-linear-gradient(45deg, transparent 0px, transparent 98px, rgba(33, 150, 243, 0.06) 98px, rgba(33, 150, 243, 0.06) 100px);
+    background-size: 50px 50px, 50px 50px, 100px 100px;
+    opacity: 0.7;
+    animation: cyber-grid-scan 10s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Scanning grid effect */
+.theme-cyber_security .scene-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 230, 255, 0.3) 20%,
+        rgba(0, 230, 255, 0.8) 50%,
+        rgba(0, 230, 255, 0.3) 80%,
+        transparent 100%);
+    box-shadow: 0 0 20px rgba(0, 230, 255, 0.8);
+    animation: cyber-scan-line 8s linear infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+@keyframes cyber-grid-scan {
+    0% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.02); }
+    100% { opacity: 0.6; transform: scale(1); }
+}
+
+@keyframes cyber-scan-line {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(600px); opacity: 0; }
+}
+
+/* === ELEMENT 1: DETAILED SHIELD WITH INTEGRATED LOCK === */
+.theme-cyber_security .elem-1 {
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    width: 95px;
+    height: 110px;
+    z-index: 15;
+    animation: cyber-shield-guardian 9s ease-in-out infinite;
+    filter: drop-shadow(0 10px 35px rgba(0, 230, 255, 0.6));
+    pointer-events: none;
+}
+
+/* Main shield body with metallic gradient */
+.theme-cyber_security .elem-1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Lock body at center */
+        radial-gradient(ellipse 22px 28px at 50% 58%, #1a237e 0%, #1a237e 100%),
+        radial-gradient(ellipse 15px 15px at 50% 40%, transparent 0%, transparent 58%, #1a237e 58%, #1a237e 100%),
+        /* Lock keyhole */
+        radial-gradient(circle 4px at 50% 60%, #00e5ff 0%, #00e5ff 100%),
+        /* Central bright accent */
+        radial-gradient(ellipse 35px 40px at 50% 50%, rgba(0, 229, 255, 0.25) 0%, transparent 70%),
+        /* Shield metallic gradient */
+        linear-gradient(135deg,
+            #1976d2 0%,
+            #1e88e5 15%,
+            #2196f3 30%,
+            #1565c0 50%,
+            #0d47a1 70%,
+            #1976d2 85%,
+            #2196f3 100%);
+    clip-path: polygon(50% 0%, 95% 18%, 100% 25%, 100% 62%, 50% 100%, 0% 62%, 0% 25%, 5% 18%);
+    border: 4px solid rgba(0, 229, 255, 0.8);
+    box-shadow:
+        0 0 50px rgba(0, 230, 255, 0.7),
+        inset 0 0 40px rgba(100, 181, 246, 0.3),
+        inset -5px -5px 20px rgba(13, 71, 161, 0.4);
+    animation: cyber-shield-pulse 4s ease-in-out infinite;
+}
+
+/* Lock shackle with glow */
+.theme-cyber_security .elem-1::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 20px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid #00e5ff;
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.9),
+        inset 0 0 8px rgba(0, 229, 255, 0.5);
+    animation: cyber-lock-glow 3s ease-in-out infinite;
+}
+
+@keyframes cyber-shield-guardian {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    25% { transform: translateY(-15px) rotate(2deg) scale(1.03); }
+    50% { transform: translateY(-8px) rotate(-1deg) scale(1.05); }
+    75% { transform: translateY(-12px) rotate(1.5deg) scale(1.02); }
+}
+
+@keyframes cyber-shield-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 50px rgba(0, 230, 255, 0.7),
+            inset 0 0 40px rgba(100, 181, 246, 0.3),
+            inset -5px -5px 20px rgba(13, 71, 161, 0.4);
+    }
+    50% {
+        box-shadow:
+            0 0 70px rgba(0, 230, 255, 0.95),
+            inset 0 0 60px rgba(100, 181, 246, 0.5),
+            inset -5px -5px 30px rgba(13, 71, 161, 0.6);
+    }
+}
+
+@keyframes cyber-lock-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.9), inset 0 0 8px rgba(0, 229, 255, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(0, 229, 255, 1), inset 0 0 15px rgba(0, 229, 255, 0.8); }
+}
+
+/* === ELEMENT 2: FIREWALL BRICK WALL WITH DIGITAL FLAMES === */
+.theme-cyber_security .elem-2 {
+    position: absolute;
+    bottom: 18%;
+    right: 10%;
+    width: 120px;
+    height: 90px;
+    z-index: 14;
+    animation: cyber-firewall-stand 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Brick wall structure */
+.theme-cyber_security .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Horizontal brick layers */
+        repeating-linear-gradient(0deg,
+            #1565c0 0px, #1565c0 18px,
+            #0d47a1 18px, #0d47a1 20px,
+            #1976d2 20px, #1976d2 38px,
+            #0d47a1 38px, #0d47a1 40px),
+        /* Vertical mortar lines (offset pattern) */
+        repeating-linear-gradient(90deg,
+            transparent 0px, transparent 28px,
+            rgba(10, 25, 41, 0.7) 28px, rgba(10, 25, 41, 0.7) 30px,
+            transparent 30px, transparent 58px,
+            rgba(10, 25, 41, 0.7) 58px, rgba(10, 25, 41, 0.7) 60px);
+    background-position: 0 0, 0 20px;
+    border: 3px solid rgba(0, 188, 212, 0.6);
+    border-radius: 6px;
+    box-shadow:
+        0 0 35px rgba(0, 188, 212, 0.6),
+        0 0 70px rgba(33, 150, 243, 0.4),
+        inset 0 0 20px rgba(0, 188, 212, 0.2);
+    animation: cyber-wall-fortify 5s ease-in-out infinite;
+}
+
+/* Digital flames on top */
+.theme-cyber_security .elem-2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    bottom: 100%;
+    left: 0;
+    background:
+        /* Left flame */
+        radial-gradient(ellipse 22px 35px at 18% 100%, rgba(255, 152, 0, 0.9) 0%, rgba(255, 152, 0, 0.5) 50%, transparent 75%),
+        radial-gradient(ellipse 18px 28px at 15% 100%, rgba(255, 87, 34, 0.8) 0%, transparent 70%),
+        /* Center flame */
+        radial-gradient(ellipse 28px 40px at 50% 100%, rgba(255, 152, 0, 0.95) 0%, rgba(255, 152, 0, 0.6) 45%, transparent 75%),
+        radial-gradient(ellipse 22px 32px at 50% 100%, rgba(255, 87, 34, 0.85) 0%, transparent 70%),
+        /* Right flame */
+        radial-gradient(ellipse 22px 35px at 82% 100%, rgba(255, 152, 0, 0.9) 0%, rgba(255, 152, 0, 0.5) 50%, transparent 75%),
+        radial-gradient(ellipse 18px 28px at 85% 100%, rgba(255, 87, 34, 0.8) 0%, transparent 70%),
+        /* Flame base glow */
+        linear-gradient(0deg, rgba(255, 152, 0, 0.4) 0%, transparent 100%);
+    filter: blur(1px);
+    animation: cyber-flame-dance 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes cyber-firewall-stand {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+}
+
+@keyframes cyber-wall-fortify {
+    0%, 100% {
+        box-shadow:
+            0 0 35px rgba(0, 188, 212, 0.6),
+            0 0 70px rgba(33, 150, 243, 0.4),
+            inset 0 0 20px rgba(0, 188, 212, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 0 50px rgba(0, 188, 212, 0.9),
+            0 0 100px rgba(33, 150, 243, 0.6),
+            inset 0 0 35px rgba(0, 188, 212, 0.4);
+    }
+}
+
+@keyframes cyber-flame-dance {
+    0% { transform: scaleY(1) scaleX(1); opacity: 0.85; }
+    100% { transform: scaleY(1.15) scaleX(0.93); opacity: 1; }
+}
+
+/* === ELEMENT 3: GOLDEN ENCRYPTION KEY WITH GLOW === */
+.theme-cyber_security .elem-3 {
+    position: absolute;
+    top: 30%;
+    right: 22%;
+    width: 85px;
+    height: 40px;
+    z-index: 13;
+    animation: cyber-key-rotate 11s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(255, 193, 7, 0.7));
+    pointer-events: none;
+}
+
+/* Key shaft with teeth */
+.theme-cyber_security .elem-3::before {
+    content: '';
+    position: absolute;
+    width: 52px;
+    height: 14px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background:
+        /* Teeth notches */
+        linear-gradient(90deg,
+            transparent 0%, transparent 35%,
+            #f57f17 35%, #f57f17 38%,
+            transparent 38%, transparent 45%,
+            #f57f17 45%, #f57f17 48%,
+            transparent 48%, transparent 58%,
+            #f57f17 58%, #f57f17 61%,
+            transparent 61%, transparent 100%),
+        /* Shaft gradient */
+        linear-gradient(180deg,
+            #ffd54f 0%,
+            #ffca28 20%,
+            #ffc107 40%,
+            #ffb300 60%,
+            #ffa000 80%,
+            #ff8f00 100%);
+    border-radius: 3px;
+    box-shadow:
+        0 3px 10px rgba(255, 193, 7, 0.6),
+        inset 0 -2px 5px rgba(255, 143, 0, 0.5),
+        inset 0 2px 5px rgba(255, 213, 79, 0.5);
+}
+
+/* Key head (circular bow) */
+.theme-cyber_security .elem-3::after {
+    content: '';
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background:
+        /* Inner hole */
+        radial-gradient(circle 9px at 50% 50%, #0a1929 0%, #0a1929 100%),
+        radial-gradient(circle 11px at 50% 50%, transparent 0%, transparent 70%, #ff8f00 70%, #ff8f00 100%),
+        /* Outer golden gradient */
+        linear-gradient(135deg,
+            #ffd54f 0%,
+            #ffca28 15%,
+            #ffc107 30%,
+            #ffb300 50%,
+            #ffa000 70%,
+            #ff8f00 85%,
+            #f57f17 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 25px rgba(255, 193, 7, 0.8),
+        inset 0 -3px 8px rgba(245, 127, 23, 0.6),
+        inset 0 3px 8px rgba(255, 213, 79, 0.6);
+    animation: cyber-key-glow 3s ease-in-out infinite;
+}
+
+@keyframes cyber-key-rotate {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-18px) rotate(15deg); }
+    50% { transform: translateY(-10px) rotate(-8deg); }
+    75% { transform: translateY(-15px) rotate(10deg); }
+}
+
+@keyframes cyber-key-glow {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 193, 7, 0.8), inset 0 -3px 8px rgba(245, 127, 23, 0.6), inset 0 3px 8px rgba(255, 213, 79, 0.6); }
+    50% { box-shadow: 0 0 40px rgba(255, 193, 7, 1), inset 0 -3px 12px rgba(245, 127, 23, 0.8), inset 0 3px 12px rgba(255, 213, 79, 0.8); }
+}
+
+/* === ELEMENT 4: BINARY RAIN (MATRIX STYLE) === */
+.theme-cyber_security .elem-4 {
+    position: absolute;
+    top: 0;
+    left: 28%;
+    width: 8px;
+    height: 100%;
+    z-index: 8;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(0, 229, 255, 0.8);
+    line-height: 18px;
+    overflow: hidden;
+}
+
+/* First binary column */
+.theme-cyber_security .elem-4::before {
+    content: '1\A0\A1\A1\A0\A0\A1\A0\A1\A1\A0\A1\A0\A0\A1\A1\A0\A1\A0\A1\A0\A0\A1\A1\A0\A1';
+    position: absolute;
+    white-space: pre;
+    text-shadow:
+        0 0 8px rgba(0, 229, 255, 0.9),
+        0 0 15px rgba(0, 229, 255, 0.6);
+    animation: cyber-binary-fall-1 8s linear infinite;
+}
+
+/* Second binary column */
+.theme-cyber_security .elem-4::after {
+    content: '0\A1\A0\A1\A1\A0\A1\A0\A0\A1\A1\A0\A1\A1\A0\A0\A1\A0\A1\A0\A1\A1\A0\A0\A1\A0';
+    position: absolute;
+    left: 60px;
+    white-space: pre;
+    color: rgba(0, 229, 255, 0.7);
+    text-shadow:
+        0 0 8px rgba(0, 229, 255, 0.8),
+        0 0 15px rgba(0, 229, 255, 0.5);
+    animation: cyber-binary-fall-2 10s linear infinite 2s;
+}
+
+@keyframes cyber-binary-fall-1 {
+    0% { transform: translateY(-100%); opacity: 0; }
+    5% { opacity: 0.9; }
+    95% { opacity: 0.9; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes cyber-binary-fall-2 {
+    0% { transform: translateY(-100%); opacity: 0; }
+    5% { opacity: 0.8; }
+    95% { opacity: 0.8; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* Additional binary streams */
+.theme-cyber_security .binary-stream-2 {
+    position: absolute;
+    top: 0;
+    left: 70%;
+    width: 8px;
+    height: 100%;
+    z-index: 7;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(0, 229, 255, 0.65);
+    line-height: 18px;
+    overflow: hidden;
+}
+
+.theme-cyber_security .binary-stream-2::before {
+    content: '1\A1\A0\A1\A0\A1\A1\A0\A0\A1\A0\A1\A1\A0\A1\A0\A0\A1\A1\A0\A1\A0\A1\A1\A0\A1';
+    position: absolute;
+    white-space: pre;
+    text-shadow:
+        0 0 8px rgba(0, 229, 255, 0.75),
+        0 0 15px rgba(0, 229, 255, 0.45);
+    animation: cyber-binary-fall-3 12s linear infinite 4s;
+}
+
+@keyframes cyber-binary-fall-3 {
+    0% { transform: translateY(-100%); opacity: 0; }
+    5% { opacity: 0.7; }
+    95% { opacity: 0.7; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* === ELEMENT 5: FINGERPRINT SCANNER WITH SCAN LINE === */
+.theme-cyber_security .elem-5 {
+    position: absolute;
+    bottom: 30%;
+    left: 18%;
+    width: 70px;
+    height: 90px;
+    z-index: 12;
+    animation: cyber-scanner-activate 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Fingerprint pattern */
+.theme-cyber_security .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Outer fingerprint rings */
+        radial-gradient(ellipse 60px 75px at 50% 50%, transparent 0%, transparent 48%, rgba(0, 229, 255, 0.6) 48%, rgba(0, 229, 255, 0.6) 52%, transparent 52%),
+        radial-gradient(ellipse 50px 62px at 50% 50%, transparent 0%, transparent 48%, rgba(0, 229, 255, 0.65) 48%, rgba(0, 229, 255, 0.65) 52%, transparent 52%),
+        radial-gradient(ellipse 40px 50px at 50% 50%, transparent 0%, transparent 48%, rgba(0, 229, 255, 0.7) 48%, rgba(0, 229, 255, 0.7) 52%, transparent 52%),
+        radial-gradient(ellipse 30px 38px at 50% 50%, transparent 0%, transparent 48%, rgba(0, 229, 255, 0.75) 48%, rgba(0, 229, 255, 0.75) 52%, transparent 52%),
+        radial-gradient(ellipse 20px 26px at 50% 50%, transparent 0%, transparent 48%, rgba(0, 229, 255, 0.8) 48%, rgba(0, 229, 255, 0.8) 52%, transparent 52%),
+        /* Center point */
+        radial-gradient(circle 8px at 50% 50%, rgba(0, 229, 255, 0.9) 0%, rgba(0, 229, 255, 0.9) 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow:
+        0 0 30px rgba(0, 229, 255, 0.6),
+        inset 0 0 20px rgba(0, 229, 255, 0.3);
+    animation: cyber-fingerprint-glow 3s ease-in-out infinite;
+}
+
+/* Scanning line */
+.theme-cyber_security .elem-5::after {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 2px;
+    top: 0;
+    left: 5%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(76, 175, 80, 0.5) 20%,
+        rgba(76, 175, 80, 1) 50%,
+        rgba(76, 175, 80, 0.5) 80%,
+        transparent 100%);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.9);
+    animation: cyber-scan-fingerprint 4s linear infinite;
+}
+
+@keyframes cyber-scanner-activate {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.5)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(0, 229, 255, 0.8)); }
+}
+
+@keyframes cyber-fingerprint-glow {
+    0%, 100% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 20px rgba(0, 229, 255, 0.3); }
+    50% { box-shadow: 0 0 50px rgba(0, 229, 255, 0.9), inset 0 0 35px rgba(0, 229, 255, 0.5); }
+}
+
+@keyframes cyber-scan-fingerprint {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(90px); opacity: 0; }
+}
+
+/* === ELEMENT 6: SECURE SERVER WITH BLINKING LIGHTS === */
+.theme-cyber_security .elem-6 {
+    position: absolute;
+    top: 58%;
+    right: 15%;
+    width: 55px;
+    height: 75px;
+    z-index: 11;
+    animation: cyber-server-hum 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Server rack body */
+.theme-cyber_security .elem-6::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Server slots (horizontal dividers) */
+        repeating-linear-gradient(0deg,
+            #1565c0 0px, #1565c0 18px,
+            #0a1929 18px, #0a1929 20px,
+            #1976d2 20px, #1976d2 38px,
+            #0a1929 38px, #0a1929 40px),
+        /* Vertical panel line */
+        linear-gradient(90deg,
+            transparent 0%, transparent 48%,
+            rgba(10, 25, 41, 0.6) 48%, rgba(10, 25, 41, 0.6) 52%,
+            transparent 52%, transparent 100%),
+        /* Main gradient */
+        linear-gradient(180deg,
+            #1e88e5 0%,
+            #1976d2 30%,
+            #1565c0 60%,
+            #0d47a1 100%);
+    border: 3px solid rgba(0, 188, 212, 0.7);
+    border-radius: 5px;
+    box-shadow:
+        0 0 25px rgba(0, 188, 212, 0.5),
+        inset 0 0 15px rgba(0, 188, 212, 0.2);
+}
+
+/* Blinking status lights */
+.theme-cyber_security .elem-6::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    top: 12px;
+    left: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px rgba(76, 175, 80, 0.9),
+        14px 0 0 0 #4caf50,
+        14px 0 10px 0 rgba(76, 175, 80, 0.9),
+        28px 0 0 0 #2196f3,
+        28px 0 10px 0 rgba(33, 150, 243, 0.9),
+        0 20px 0 0 #4caf50,
+        0 20px 10px 0 rgba(76, 175, 80, 0.9),
+        14px 20px 0 0 #ffc107,
+        14px 20px 10px 0 rgba(255, 193, 7, 0.9),
+        28px 20px 0 0 #4caf50,
+        28px 20px 10px 0 rgba(76, 175, 80, 0.9),
+        0 40px 0 0 #2196f3,
+        0 40px 10px 0 rgba(33, 150, 243, 0.9),
+        14px 40px 0 0 #4caf50,
+        14px 40px 10px 0 rgba(76, 175, 80, 0.9),
+        28px 40px 0 0 #4caf50,
+        28px 40px 10px 0 rgba(76, 175, 80, 0.9);
+    animation: cyber-lights-blink 2s ease-in-out infinite;
+}
+
+@keyframes cyber-server-hum {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.95; }
+}
+
+@keyframes cyber-lights-blink {
+    0%, 100% { opacity: 1; }
+    25% { opacity: 0.6; }
+    50% { opacity: 1; }
+    75% { opacity: 0.7; }
+}
+
+/* === ELEMENT 7: RED X MARKS - HACKER DETERRENT === */
+.theme-cyber_security .elem-7 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* First X mark */
+.theme-cyber_security .elem-7::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 48%;
+    left: 75%;
+    background:
+        /* Diagonal bars of X */
+        linear-gradient(45deg,
+            transparent 0%, transparent 42%,
+            #f44336 42%, #f44336 58%,
+            transparent 58%, transparent 100%),
+        linear-gradient(-45deg,
+            transparent 0%, transparent 42%,
+            #f44336 42%, #f44336 58%,
+            transparent 58%, transparent 100%);
+    border: 3px solid #d32f2f;
+    border-radius: 50%;
+    box-shadow:
+        0 0 25px rgba(244, 67, 54, 0.8),
+        inset 0 0 15px rgba(244, 67, 54, 0.4);
+    animation: cyber-x-block 4s ease-in-out infinite;
+}
+
+/* Second X mark */
+.theme-cyber_security .elem-7::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 20%;
+    left: 62%;
+    background:
+        linear-gradient(45deg,
+            transparent 0%, transparent 42%,
+            #f44336 42%, #f44336 58%,
+            transparent 58%, transparent 100%),
+        linear-gradient(-45deg,
+            transparent 0%, transparent 42%,
+            #f44336 42%, #f44336 58%,
+            transparent 58%, transparent 100%);
+    border: 2px solid #d32f2f;
+    border-radius: 50%;
+    box-shadow:
+        0 0 20px rgba(244, 67, 54, 0.7),
+        inset 0 0 12px rgba(244, 67, 54, 0.3);
+    animation: cyber-x-block 4.5s ease-in-out infinite 1s;
+}
+
+@keyframes cyber-x-block {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.15) rotate(90deg); opacity: 1; }
+}
+
+/* === ELEMENT 8: GREEN CHECKMARKS - SECURITY VERIFIED === */
+.theme-cyber_security .elem-8 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 16;
+}
+
+/* First checkmark - large */
+.theme-cyber_security .elem-8::before {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 70%;
+    left: 55%;
+    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #81c784 100%);
+    clip-path: polygon(
+        20% 45%,
+        35% 60%,
+        38% 63%,
+        41% 60%,
+        80% 20%,
+        92% 32%,
+        95% 35%,
+        92% 38%,
+        41% 88%,
+        38% 91%,
+        35% 88%,
+        8% 60%,
+        11% 57%,
+        14% 54%,
+        17% 51%
+    );
+    border: 2px solid #388e3c;
+    border-radius: 6px;
+    box-shadow:
+        0 0 25px rgba(76, 175, 80, 0.9),
+        inset 0 0 15px rgba(129, 199, 132, 0.5);
+    animation: cyber-check-verify 3.5s ease-in-out infinite;
+}
+
+/* Second checkmark - medium */
+.theme-cyber_security .elem-8::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 22%;
+    left: 40%;
+    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #81c784 100%);
+    clip-path: polygon(
+        20% 45%,
+        35% 60%,
+        38% 63%,
+        41% 60%,
+        80% 20%,
+        92% 32%,
+        95% 35%,
+        92% 38%,
+        41% 88%,
+        38% 91%,
+        35% 88%,
+        8% 60%,
+        11% 57%,
+        14% 54%,
+        17% 51%
+    );
+    border: 2px solid #388e3c;
+    border-radius: 5px;
+    box-shadow:
+        0 0 20px rgba(76, 175, 80, 0.85),
+        inset 0 0 12px rgba(129, 199, 132, 0.4);
+    animation: cyber-check-verify 4s ease-in-out infinite 1.5s;
+}
+
+/* Third checkmark - small */
+.theme-cyber_security .check-3 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 42%;
+    left: 8%;
+    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #81c784 100%);
+    clip-path: polygon(
+        20% 45%,
+        35% 60%,
+        38% 63%,
+        41% 60%,
+        80% 20%,
+        92% 32%,
+        95% 35%,
+        92% 38%,
+        41% 88%,
+        38% 91%,
+        35% 88%,
+        8% 60%,
+        11% 57%,
+        14% 54%,
+        17% 51%
+    );
+    border: 2px solid #388e3c;
+    border-radius: 4px;
+    box-shadow:
+        0 0 18px rgba(76, 175, 80, 0.8),
+        inset 0 0 10px rgba(129, 199, 132, 0.35);
+    animation: cyber-check-verify 3.8s ease-in-out infinite 0.8s;
+    pointer-events: none;
+    z-index: 16;
+}
+
+@keyframes cyber-check-verify {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* === PROTECTIVE DIGITAL AURA === */
+.theme-cyber_security .protective-aura {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        /* Left security pulse */
+        radial-gradient(ellipse 650px 350px at 20% 100%, rgba(0, 230, 255, 0.25) 0%, transparent 65%),
+        /* Right encryption glow */
+        radial-gradient(ellipse 600px 320px at 80% 100%, rgba(33, 150, 243, 0.2) 0%, transparent 60%),
+        /* Center shield aura */
+        radial-gradient(ellipse 700px 400px at 50% 100%, rgba(0, 188, 212, 0.18) 0%, transparent 70%);
+    animation: cyber-aura-protect 12s ease-in-out infinite;
+}
+
+@keyframes cyber-aura-protect {
+    0%, 100% { opacity: 0.65; transform: scaleY(1); }
+    50% { opacity: 0.95; transform: scaleY(1.2); }
+}
+
+/* === MASCOT ANIMATIONS === */
+.theme-cyber_security .worm-character.happy,
+.theme-cyber_security .bunny-character.happy,
+.theme-cyber_security .owl-character.happy,
+.theme-cyber_security .cat-character.happy,
+.theme-cyber_security .robot-character.happy {
+    animation: cyber-secure-celebration 2.2s ease-out;
+}
+
+@keyframes cyber-secure-celebration {
+    0% { transform: scale(1) translateY(0); filter: brightness(1); }
+    15% { transform: scale(1.08) translateY(-12px); filter: brightness(1.1); }
+    30% { transform: scale(1.15) translateY(-28px); filter: brightness(1.2) drop-shadow(0 0 25px rgba(0, 230, 255, 0.9)); }
+    45% { transform: scale(1.22) translateY(-40px) rotate(5deg); filter: brightness(1.3) drop-shadow(0 0 35px rgba(76, 175, 80, 0.9)); }
+    60% { transform: scale(1.18) translateY(-32px) rotate(-3deg); filter: brightness(1.25) drop-shadow(0 0 30px rgba(0, 230, 255, 0.8)); }
+    75% { transform: scale(1.1) translateY(-18px) rotate(2deg); filter: brightness(1.15); }
+    90% { transform: scale(1.03) translateY(-6px); filter: brightness(1.05); }
+    100% { transform: scale(1) translateY(0); filter: brightness(1); }
+}
+
+.theme-cyber_security .worm-character.sad,
+.theme-cyber_security .bunny-character.sad,
+.theme-cyber_security .owl-character.sad,
+.theme-cyber_security .cat-character.sad,
+.theme-cyber_security .robot-character.sad {
+    animation: cyber-breach-alert 2.5s ease-out forwards;
+}
+
+@keyframes cyber-breach-alert {
+    0% { transform: translateX(0); filter: brightness(1) hue-rotate(0deg); }
+    8% { transform: translateX(-10px) rotate(-2deg); filter: brightness(0.95) hue-rotate(-15deg); }
+    16% { transform: translateX(10px) rotate(2deg); filter: brightness(0.9) hue-rotate(-30deg); }
+    24% { transform: translateX(-8px) rotate(-1.5deg); filter: brightness(0.85) hue-rotate(-45deg); }
+    32% { transform: translateX(8px) rotate(1.5deg); filter: brightness(0.75) hue-rotate(-60deg) saturate(0.8); }
+    40% { transform: translateX(-6px) rotate(-1deg); filter: brightness(0.65) hue-rotate(-75deg) saturate(0.6); }
+    48% { transform: translateX(6px) rotate(1deg); filter: brightness(0.55) hue-rotate(-90deg) saturate(0.4); }
+    56% { transform: translateX(-4px); filter: brightness(0.5) grayscale(0.3); }
+    64% { transform: translateX(4px); filter: brightness(0.45) grayscale(0.5); }
+    72% { transform: translateX(-2px); filter: brightness(0.4) grayscale(0.7); }
+    80% { transform: translateX(2px); filter: brightness(0.38) grayscale(0.85); }
+    100% { transform: translateX(0) translateY(15px); filter: brightness(0.35) grayscale(1); }
+}

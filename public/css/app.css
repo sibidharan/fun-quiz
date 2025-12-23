@@ -195,7 +195,8 @@ body {
 
 /* ========== QUIZ CONTAINER - CLEAN MODERN DESIGN ========== */
 .quiz-container {
-    background: white;
+    backdrop-filter: blur(10px) saturate(150%);
+    background: rgba(255, 255, 255, 0.719);
     border-radius: 24px;
     box-shadow:
         0 4px 6px rgba(0, 0, 0, 0.05),
@@ -790,7 +791,14 @@ body {
 .theme-environment .topic-badge { background: linear-gradient(135deg, #8BC34A, #558B2F); color: #1A1A1A; }
 .theme-famous_people .topic-badge { background: linear-gradient(135deg, #607D8B, #37474F); }
 .theme-current_affairs .topic-badge { background: linear-gradient(135deg, #3F51B5, #1A237E); }
-.theme-mythology .topic-badge { background: linear-gradient(135deg, #FFC107, #FF8F00); color: #1A1A1A; }
+.theme-cyber_security .topic-badge { background: linear-gradient(135deg, #1976D2, #0D47A1); }
+.theme-internet_safety .topic-badge { background: linear-gradient(135deg, #388E3C, #1B5E20); }
+.theme-cyber_crime_awareness .topic-badge { background: linear-gradient(135deg, #F57C00, #E65100); }
+.theme-online_fraud_awareness .topic-badge { background: linear-gradient(135deg, #D32F2F, #B71C1C); }
+.theme-police_awareness .topic-badge { background: linear-gradient(135deg, #0D47A1, #01579B); }
+.theme-digital_literacy .topic-badge { background: linear-gradient(135deg, #7B1FA2, #4A148C); }
+.theme-network_basics .topic-badge { background: linear-gradient(135deg, #00897B, #004D40); }
+.theme-safe_online_culture .topic-badge { background: linear-gradient(135deg, #5C6BC0, #3949AB); }
 .theme-literature .topic-badge { background: linear-gradient(135deg, #673AB7, #4527A0); }
 .theme-music_arts .topic-badge { background: linear-gradient(135deg, #E91E63, #AD1457); }
 .theme-animals .topic-badge { background: linear-gradient(135deg, #FF9800, #E65100); color: #1A1A1A; }

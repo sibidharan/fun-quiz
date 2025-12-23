@@ -1,532 +1,972 @@
 /* ============================================
-   CURRENT AFFAIRS THEME - BREAKING NEWS STUDIO
-   Modern blue/red news atmosphere
-   Newspaper, globe, TV screen, ticker tape
-   Premium cinematic news broadcast experience
+   CURRENT AFFAIRS THEME - JULIA MIOCENE STYLE
+   Global news broadcast studio with
+   satellites, city skyline, and live elements
    ============================================ */
 
-/* === LAYERED BACKGROUND WITH GRADIENTS === */
+:root {
+    /* Sky colors - professional studio blues */
+    --news-sky-deep: #0A1929;
+    --news-sky-dark: #0D47A1;
+    --news-sky-mid: #1565C0;
+    --news-sky-light: #1976D2;
+    --news-sky-bright: #2196F3;
+    --news-horizon: #64B5F6;
+
+    /* Building colors */
+    --news-building-dark: #0A1929;
+    --news-building-mid: #0D2D4C;
+    --news-building-light: #1565C0;
+    --news-window-glow: #64B5F6;
+
+    /* Accent colors */
+    --news-red-dark: #B71C1C;
+    --news-red-bright: #F44336;
+    --news-gold: #FFD700;
+    --news-white: #FFFFFF;
+    --news-silver: #B0BEC5;
+
+    /* Signal colors */
+    --news-signal-blue: #2196F3;
+    --news-signal-green: #4CAF50;
+    --news-signal-yellow: #FFC107;
+}
+
+/* === BASE SETUP === */
 .theme-current_affairs .scene-background {
-    background:
-        /* Breaking news alert glow */
-        radial-gradient(ellipse at 50% 8%, rgba(244, 67, 54, 0.35) 0%, transparent 32%),
-        radial-gradient(ellipse at 18% 45%, rgba(33, 150, 243, 0.18) 0%, transparent 38%),
-        radial-gradient(ellipse at 82% 55%, rgba(76, 175, 80, 0.14) 0%, transparent 35%),
-        /* Modern news studio gradient */
-        linear-gradient(180deg,
-            #0A1929 0%,
-            #0D47A1 8%,
-            #1565C0 15%,
-            #1976D2 22%,
-            #1E88E5 30%,
-            #2196F3 38%,
-            #42A5F5 45%,
-            #64B5F6 52%,
-            #90CAF9 60%,
-            #BBDEFB 70%,
-            #E1F5FE 80%,
-            #F1F8FE 90%,
-            #FAFAFA 100%);
+    background: linear-gradient(180deg,
+        var(--news-sky-deep) 0%,
+        var(--news-sky-dark) 15%,
+        var(--news-sky-mid) 30%,
+        var(--news-sky-light) 45%,
+        var(--news-sky-bright) 60%,
+        var(--news-horizon) 75%,
+        #90CAF9 90%,
+        #BBDEFB 100%);
     overflow: hidden;
     position: relative;
 }
 
-/* === NEWS TICKER BAR (ANIMATED TEXT) === */
-.theme-current_affairs .scene-background::before {
-    content: '⬥ BREAKING NEWS ⬥ LATEST UPDATES ⬥ WORLD NEWS ⬥ TRENDING NOW ⬥ LIVE COVERAGE ⬥';
-    position: absolute;
-    bottom: 12%;
-    left: 0;
-    width: 200%;
-    height: 38px;
-    background: linear-gradient(90deg, #C62828 0%, #D32F2F 50%, #C62828 100%);
-    color: white;
-    font-family: 'Arial Black', Arial, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 38px;
-    white-space: nowrap;
-    animation: current-ticker-scroll 18s linear infinite;
-    box-shadow:
-        0 3px 12px rgba(0,0,0,0.4),
-        0 0 25px rgba(198, 40, 40, 0.6),
-        inset 0 2px 10px rgba(255,255,255,0.1);
-    z-index: 19;
-    pointer-events: none;
-}
-
-@keyframes current-ticker-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* === DIGITAL GRID OVERLAY === */
-.theme-current_affairs .scene-background::after {
+.theme-current_affairs .scene-background *,
+.theme-current_affairs .scene-background *::before,
+.theme-current_affairs .scene-background *::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 45px 45px;
-    animation: current-grid-pulse 3.8s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
 }
 
-@keyframes current-grid-pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.85; }
-}
-
-/* === ELEMENT 1: GLOBE (WORLD NEWS) === */
-.theme-current_affairs .elem-1 {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: 90px;
-    z-index: 12;
-    animation: current-globe-spin 20s linear infinite;
-    pointer-events: none;
-}
-
-/* Globe sphere with continents */
-.theme-current_affairs .elem-1::before {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    top: 5px;
-    left: 5px;
-    background:
-        radial-gradient(circle at 35% 35%, rgba(100, 181, 246, 0.95), rgba(25, 118, 210, 0.9), rgba(13, 71, 161, 0.85)),
-        repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(76,175,80,0.15) 10px, rgba(76,175,80,0.15) 12px),
-        repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(76,175,80,0.15) 10px, rgba(76,175,80,0.15) 12px);
-    border-radius: 50%;
-    box-shadow:
-        0 0 35px rgba(33, 150, 243, 0.8),
-        inset -8px -8px 20px rgba(0,0,0,0.35),
-        inset 6px 6px 18px rgba(255,255,255,0.25);
-}
-
-/* Signal waves */
-.theme-current_affairs .elem-1::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* === STARS IN SKY === */
+.theme-current_affairs .scene-particles {
     top: 0;
     left: 0;
-    border: 3px solid rgba(33, 150, 243, 0.7);
+    width: 3px;
+    height: 3px;
+    background: var(--news-white);
     border-radius: 50%;
-    animation: current-signal-pulse 2.8s ease-out infinite;
+    box-shadow:
+        /* Upper sky stars */
+        15vw 5vh 0 0 rgba(255, 255, 255, 0.8),
+        28vw 8vh 0 0 rgba(255, 255, 255, 0.6),
+        42vw 3vh 0 1px rgba(255, 255, 255, 0.9),
+        58vw 6vh 0 0 rgba(255, 255, 255, 0.7),
+        72vw 4vh 0 0 rgba(255, 255, 255, 0.8),
+        85vw 9vh 0 1px rgba(255, 255, 255, 0.6),
+        8vw 12vh 0 0 rgba(255, 255, 255, 0.5),
+        35vw 15vh 0 0 rgba(255, 255, 255, 0.6),
+        65vw 11vh 0 0 rgba(255, 255, 255, 0.7),
+        92vw 7vh 0 0 rgba(255, 255, 255, 0.5);
+    animation: news-stars-twinkle 4s ease-in-out infinite alternate;
+    z-index: 2;
 }
 
-@keyframes current-globe-spin {
+@keyframes news-stars-twinkle {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* === CITY SKYLINE (Multiple Building Layers) === */
+/* Far buildings - tallest skyscrapers */
+.theme-current_affairs .elem-0-ultra {
+    bottom: 30%;
+    left: 5%;
+    width: 0;
+    height: 0;
+    /* Tall tower using border */
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 180px solid var(--news-building-dark);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.theme-current_affairs .elem-0-ultra::before {
+    bottom: 0;
+    left: -20px;
+    width: 40px;
+    height: 180px;
+    background: var(--news-building-dark);
+    /* Windows using box-shadow multiplication */
+    box-shadow:
+        60px 0 0 0 var(--news-building-dark),
+        120px 30px 0 0 var(--news-building-dark),
+        180px -10px 0 0 var(--news-building-dark),
+        240px 20px 0 0 var(--news-building-dark);
+}
+
+/* Window lights on far buildings */
+.theme-current_affairs .elem-0-ultra::after {
+    bottom: 20px;
+    left: -15px;
+    width: 4px;
+    height: 4px;
+    background: var(--news-window-glow);
+    border-radius: 1px;
+    box-shadow:
+        /* First building windows */
+        8px 0 0 0 var(--news-window-glow),
+        0 15px 0 0 var(--news-window-glow),
+        8px 15px 0 0 var(--news-window-glow),
+        0 30px 0 0 var(--news-window-glow),
+        8px 30px 0 0 var(--news-window-glow),
+        0 45px 0 0 var(--news-window-glow),
+        8px 45px 0 0 var(--news-window-glow),
+        /* Second building windows */
+        60px 10px 0 0 var(--news-window-glow),
+        68px 10px 0 0 var(--news-window-glow),
+        60px 25px 0 0 var(--news-window-glow),
+        68px 25px 0 0 var(--news-window-glow),
+        60px 40px 0 0 var(--news-window-glow),
+        /* Third building windows */
+        120px 40px 0 0 var(--news-window-glow),
+        128px 40px 0 0 var(--news-window-glow),
+        120px 55px 0 0 var(--news-window-glow);
+    animation: news-windows-flicker 3s ease-in-out infinite;
+}
+
+@keyframes news-windows-flicker {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+    75% { opacity: 0.5; }
+}
+
+/* Mid buildings layer */
+.theme-current_affairs .elem-0-far {
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--news-building-mid);
+    clip-path: polygon(
+        0% 100%,
+        0% 60%, 5% 60%, 5% 40%, 10% 40%, 10% 50%,
+        15% 50%, 15% 30%, 22% 30%, 22% 55%,
+        28% 55%, 28% 25%, 35% 25%, 35% 45%,
+        40% 45%, 40% 20%, 48% 20%, 48% 50%,
+        55% 50%, 55% 35%, 62% 35%, 62% 55%,
+        68% 55%, 68% 15%, 75% 15%, 75% 40%,
+        80% 40%, 80% 30%, 88% 30%, 88% 60%,
+        95% 60%, 95% 50%, 100% 50%, 100% 100%
+    );
+    opacity: 0.8;
+    z-index: 6;
+}
+
+/* More window lights */
+.theme-current_affairs .elem-0-far::before {
+    bottom: 30px;
+    left: 10%;
+    width: 3px;
+    height: 3px;
+    background: var(--news-window-glow);
+    border-radius: 1px;
+    box-shadow:
+        6px 0 0 0 var(--news-window-glow),
+        0 8px 0 0 var(--news-window-glow),
+        6px 8px 0 0 var(--news-window-glow),
+        /* More windows across skyline */
+        80px -20px 0 0 var(--news-window-glow),
+        86px -20px 0 0 var(--news-window-glow),
+        80px -12px 0 0 var(--news-window-glow),
+        160px -30px 0 0 var(--news-window-glow),
+        166px -30px 0 0 var(--news-window-glow),
+        240px -40px 0 0 var(--news-window-glow),
+        246px -40px 0 0 var(--news-window-glow),
+        240px -32px 0 0 var(--news-window-glow);
+    animation: news-windows-flicker 4s ease-in-out infinite 1s;
+}
+
+/* === ROTATING GLOBE === */
+.theme-current_affairs .elem-1 {
+    top: 12%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%,
+        var(--news-sky-bright) 0%,
+        var(--news-sky-mid) 50%,
+        var(--news-sky-dark) 100%);
+    border: 3px solid rgba(33, 150, 243, 0.5);
+    box-shadow:
+        0 0 40px rgba(33, 150, 243, 0.6),
+        inset -20px -20px 40px rgba(0, 0, 0, 0.4),
+        inset 10px 10px 30px rgba(255, 255, 255, 0.2);
+    animation: news-globe-rotate 20s linear infinite;
+    z-index: 8;
+}
+
+/* Globe latitude/longitude lines */
+.theme-current_affairs .elem-1::before {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    box-shadow:
+        /* Latitude lines */
+        0 -20px 0 0 rgba(255, 255, 255, 0.1),
+        0 20px 0 0 rgba(255, 255, 255, 0.1),
+        /* Longitude effect */
+        inset 15px 0 0 0 rgba(255, 255, 255, 0.08),
+        inset -15px 0 0 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Continent shapes (simplified) */
+.theme-current_affairs .elem-1::after {
+    top: 25%;
+    left: 20%;
+    width: 25px;
+    height: 30px;
+    background: rgba(13, 71, 161, 0.5);
+    border-radius: 40% 60% 30% 70%;
+    box-shadow:
+        /* More continents */
+        40px 5px 0 0 rgba(13, 71, 161, 0.4),
+        20px 35px 0 5px rgba(13, 71, 161, 0.45),
+        50px 30px 0 3px rgba(13, 71, 161, 0.35);
+    animation: news-continents-drift 20s linear infinite;
+}
+
+@keyframes news-globe-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes news-continents-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+/* === ORBITING SATELLITE === */
+.theme-current_affairs .elem-2 {
+    top: 8%;
+    left: 15%;
+    width: 50px;
+    height: 30px;
+    z-index: 10;
+    animation: news-satellite-orbit 18s linear infinite;
+}
+
+/* Satellite body */
+.theme-current_affairs .elem-2::before {
+    top: 10px;
+    left: 15px;
+    width: 20px;
+    height: 12px;
+    background: linear-gradient(180deg,
+        var(--news-silver) 0%,
+        #78909C 50%,
+        #546E7A 100%);
+    border-radius: 2px;
+    box-shadow:
+        0 0 10px rgba(176, 190, 197, 0.5),
+        inset 0 2px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Solar panels using border */
+.theme-current_affairs .elem-2::after {
+    top: 8px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 12px solid var(--news-sky-mid);
+    box-shadow:
+        /* Right panel */
+        38px 0 0 0 var(--news-sky-mid),
+        /* Panel details */
+        -2px 0 5px rgba(33, 150, 243, 0.6),
+        40px 0 5px rgba(33, 150, 243, 0.6);
+}
+
+@keyframes news-satellite-orbit {
     0% {
-        transform: translateX(-50%) translateY(0) scale(1);
-        filter: drop-shadow(0 0 18px rgba(33, 150, 243, 0.7));
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(60vw, 15vh) rotate(90deg);
     }
     50% {
-        transform: translateX(-50%) translateY(-10px) scale(1.08);
-        filter: drop-shadow(0 0 30px rgba(33, 150, 243, 1));
+        transform: translate(40vw, 25vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(10vw, 10vh) rotate(270deg);
     }
     100% {
-        transform: translateX(-50%) translateY(0) scale(1);
-        filter: drop-shadow(0 0 18px rgba(33, 150, 243, 0.7));
+        transform: translate(0, 0) rotate(360deg);
     }
 }
 
-@keyframes current-signal-pulse {
-    0% { transform: scale(1); opacity: 0.9; }
-    100% { transform: scale(1.7); opacity: 0; }
-}
-
-/* === ELEMENT 2: NEWSPAPER === */
-.theme-current_affairs .elem-2 {
-    position: absolute;
-    top: 28%;
-    left: 12%;
+/* === LIVE BADGE === */
+.theme-current_affairs .elem-3 {
+    top: 8%;
+    left: 8%;
     width: 70px;
-    height: 82px;
-    z-index: 10;
-    animation: current-paper-flutter 5.5s ease-in-out infinite;
-    pointer-events: none;
+    height: 32px;
+    background: linear-gradient(180deg,
+        var(--news-red-bright) 0%,
+        var(--news-red-dark) 100%);
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 0 20px rgba(244, 67, 54, 0.8),
+        0 0 40px rgba(244, 67, 54, 0.4),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    animation: news-live-pulse 1.5s ease-in-out infinite;
+    z-index: 25;
 }
 
-/* Newspaper page */
-.theme-current_affairs .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(90deg, #F0F0F0 0%, #FFFFFF 50%, #F0F0F0 100%),
-        repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(0,0,0,0.08) 6px, rgba(0,0,0,0.08) 7px);
-    border-radius: 3px;
+/* Recording dot */
+.theme-current_affairs .elem-3::before {
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--news-white);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--news-white);
+    animation: news-dot-blink 1s ease-in-out infinite;
+}
+
+/* "LIVE" text effect using small dots */
+.theme-current_affairs .elem-3::after {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 12px;
+    background: linear-gradient(90deg,
+        var(--news-white) 0%, var(--news-white) 20%,
+        transparent 20%, transparent 25%,
+        var(--news-white) 25%, var(--news-white) 40%,
+        transparent 40%, transparent 45%,
+        var(--news-white) 45%, var(--news-white) 70%,
+        transparent 70%, transparent 75%,
+        var(--news-white) 75%, var(--news-white) 100%);
+}
+
+@keyframes news-live-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(244, 67, 54, 0.8);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 35px rgba(244, 67, 54, 1);
+    }
+}
+
+@keyframes news-dot-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* === NEWS DESK (Border Triangle Perspective) === */
+.theme-current_affairs .elem-4 {
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 50px solid var(--news-sky-mid);
+    z-index: 15;
+}
+
+/* Desk surface with LED strip */
+.theme-current_affairs .elem-4::before {
+    bottom: -50px;
+    left: -100px;
+    width: 200px;
+    height: 50px;
+    background: linear-gradient(180deg,
+        var(--news-sky-bright) 0%,
+        var(--news-sky-mid) 50%,
+        var(--news-sky-dark) 100%);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
     box-shadow:
-        0 4px 15px rgba(0,0,0,0.25),
-        inset 0 0 8px rgba(0,0,0,0.06);
+        0 -5px 30px rgba(33, 150, 243, 0.6),
+        inset 0 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* LED strip */
+.theme-current_affairs .elem-4::after {
+    bottom: -8px;
+    left: -80px;
+    width: 160px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--news-signal-blue) 20%,
+        var(--news-white) 50%,
+        var(--news-signal-blue) 80%,
+        transparent 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--news-signal-blue);
+    animation: news-led-pulse 2s ease-in-out infinite;
+}
+
+@keyframes news-led-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* === BROADCAST CAMERA === */
+.theme-current_affairs .elem-5 {
+    bottom: 28%;
+    right: 15%;
+    width: 55px;
+    height: 45px;
+    z-index: 14;
+    animation: news-camera-pan 8s ease-in-out infinite;
+}
+
+/* Camera body */
+.theme-current_affairs .elem-5::before {
+    top: 10px;
+    left: 15px;
+    width: 40px;
+    height: 28px;
+    background: linear-gradient(135deg,
+        #212121 0%,
+        #424242 50%,
+        #212121 100%);
+    border-radius: 4px;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Camera lens */
+.theme-current_affairs .elem-5::after {
+    top: 15px;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle at 30% 30%,
+        rgba(100, 181, 246, 0.4) 0%,
+        var(--news-sky-mid) 40%,
+        var(--news-sky-dark) 100%);
+    border-radius: 50%;
+    border: 3px solid #424242;
+    box-shadow:
+        0 0 15px rgba(33, 150, 243, 0.6),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+        /* Recording light */
+        35px -10px 0 3px var(--news-red-bright),
+        35px -10px 8px 2px rgba(244, 67, 54, 0.8);
+    animation: news-lens-glow 3s ease-in-out infinite;
+}
+
+@keyframes news-camera-pan {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes news-lens-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 15px rgba(33, 150, 243, 0.6),
+            inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+            35px -10px 0 3px var(--news-red-bright),
+            35px -10px 8px 2px rgba(244, 67, 54, 0.8);
+    }
+    50% {
+        box-shadow:
+            0 0 25px rgba(33, 150, 243, 0.9),
+            inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+            35px -10px 0 3px var(--news-red-bright),
+            35px -10px 15px 4px rgba(244, 67, 54, 1);
+    }
+}
+
+/* === MICROPHONE === */
+.theme-current_affairs .elem-6 {
+    bottom: 32%;
+    left: 30%;
+    width: 25px;
+    height: 70px;
+    z-index: 16;
+    animation: news-mic-tilt 6s ease-in-out infinite;
+}
+
+/* Mic head */
+.theme-current_affairs .elem-6::before {
+    top: 0;
+    left: 5px;
+    width: 15px;
+    height: 25px;
+    background: linear-gradient(90deg,
+        #424242 0%,
+        #616161 30%,
+        #757575 50%,
+        #616161 70%,
+        #424242 100%);
+    border-radius: 8px 8px 5px 5px;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.5),
+        inset -2px 0 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Mic stand */
+.theme-current_affairs .elem-6::after {
+    top: 25px;
+    left: 10px;
+    width: 5px;
+    height: 45px;
+    background: linear-gradient(90deg,
+        #424242 0%,
+        #616161 50%,
+        #424242 100%);
+    border-radius: 0 0 2px 2px;
+}
+
+@keyframes news-mic-tilt {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+/* === WORLD MAP DISPLAY === */
+.theme-current_affairs .elem-7 {
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 70px;
+    background: linear-gradient(135deg,
+        rgba(13, 71, 161, 0.8) 0%,
+        rgba(25, 118, 210, 0.9) 50%,
+        rgba(13, 71, 161, 0.8) 100%);
+    border-radius: 8px;
+    border: 2px solid rgba(33, 150, 243, 0.6);
+    box-shadow:
+        0 5px 20px rgba(33, 150, 243, 0.5),
+        inset 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 12;
+    animation: news-map-glow 5s ease-in-out infinite;
+}
+
+/* Hotspot markers using box-shadow */
+.theme-current_affairs .elem-7::before {
+    top: 20px;
+    left: 25px;
+    width: 6px;
+    height: 6px;
+    background: var(--news-red-bright);
+    border-radius: 50%;
+    box-shadow:
+        /* Multiple hotspots */
+        0 0 8px var(--news-red-bright),
+        30px -5px 0 0 var(--news-signal-green),
+        30px -5px 8px 0 var(--news-signal-green),
+        55px 8px 0 0 var(--news-signal-yellow),
+        55px 8px 8px 0 var(--news-signal-yellow),
+        75px 20px 0 0 var(--news-signal-blue),
+        75px 20px 8px 0 var(--news-signal-blue),
+        15px 30px 0 0 #9C27B0,
+        15px 30px 8px 0 #9C27B0;
+    animation: news-hotspots-pulse 2s ease-in-out infinite;
+}
+
+/* Grid lines on map */
+.theme-current_affairs .elem-7::after {
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        inset 0 20px 0 0 rgba(255, 255, 255, 0.05),
+        inset 0 40px 0 0 rgba(255, 255, 255, 0.05),
+        inset 30px 0 0 0 rgba(255, 255, 255, 0.05),
+        inset 60px 0 0 0 rgba(255, 255, 255, 0.05),
+        inset 90px 0 0 0 rgba(255, 255, 255, 0.05);
+}
+
+@keyframes news-map-glow {
+    0%, 100% {
+        box-shadow: 0 5px 20px rgba(33, 150, 243, 0.5);
+    }
+    50% {
+        box-shadow: 0 5px 35px rgba(33, 150, 243, 0.8);
+    }
+}
+
+@keyframes news-hotspots-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* === WORLD CLOCK === */
+.theme-current_affairs .elem-8 {
+    top: 35%;
+    right: 10%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle,
+        var(--news-white) 0%,
+        #F5F5F5 60%,
+        #E0E0E0 100%);
+    border-radius: 50%;
+    border: 3px solid #424242;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.15);
+    z-index: 14;
+    animation: news-clock-float 8s ease-in-out infinite;
+}
+
+/* Clock hands using box-shadow */
+.theme-current_affairs .elem-8::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 4px;
+    background: var(--news-red-bright);
+    border-radius: 50%;
+    box-shadow:
+        /* Hour hand */
+        0 -12px 0 1px #212121,
+        /* Minute hand */
+        8px -8px 0 0.5px #424242,
+        /* Clock markers */
+        0 -24px 0 1px #616161,
+        0 24px 0 1px #616161,
+        -24px 0 0 1px #616161,
+        24px 0 0 1px #616161;
+    animation: news-hands-rotate 10s linear infinite;
+}
+
+/* Clock label */
+.theme-current_affairs .elem-8::after {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 12px;
+    background: rgba(33, 33, 33, 0.8);
+    border-radius: 2px;
+}
+
+@keyframes news-clock-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes news-hands-rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* === NEWS TICKER BAR === */
+.theme-current_affairs .grass {
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: linear-gradient(90deg,
+        var(--news-red-dark) 0%,
+        var(--news-red-bright) 50%,
+        var(--news-red-dark) 100%);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(183, 28, 28, 0.6),
+        inset 0 2px 10px rgba(255, 255, 255, 0.2);
+    z-index: 20;
+}
+
+/* Ticker decoration dots */
+.theme-current_affairs .grass::before {
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--news-white);
+    border-radius: 50%;
+    box-shadow:
+        15px 0 0 0 var(--news-white),
+        calc(100vw - 60px) 0 0 0 var(--news-white),
+        calc(100vw - 45px) 0 0 0 var(--news-white);
+}
+
+/* Scrolling effect line */
+.theme-current_affairs .grass::after {
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
+    animation: news-ticker-scroll 8s linear infinite;
+}
+
+@keyframes news-ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(400%); }
+}
+
+/* === FLOATING NEWSPAPER === */
+.theme-current_affairs .elem-1-fg {
+    top: 40%;
+    left: 10%;
+    width: 50px;
+    height: 65px;
+    background: linear-gradient(135deg,
+        #FAFAFA 0%,
+        var(--news-white) 50%,
+        #F5F5F5 100%);
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 11;
+    animation: news-paper-float 10s ease-in-out infinite;
+    transform: rotate(-8deg);
 }
 
 /* Headline bar */
-.theme-current_affairs .elem-2::after {
-    content: '';
-    position: absolute;
+.theme-current_affairs .elem-1-fg::before {
     top: 10px;
     left: 8px;
-    width: 54px;
-    height: 16px;
-    background: linear-gradient(90deg, #212121, #424242);
-    border-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    width: 35px;
+    height: 8px;
+    background: #212121;
+    border-radius: 1px;
+    box-shadow:
+        /* Subheadline */
+        0 12px 0 0 #616161,
+        -3px 12px 0 0 #616161;
 }
 
-@keyframes current-paper-flutter {
+/* Text lines */
+.theme-current_affairs .elem-1-fg::after {
+    top: 35px;
+    left: 8px;
+    width: 35px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 5px 0 0 rgba(0, 0, 0, 0.2),
+        0 10px 0 0 rgba(0, 0, 0, 0.2),
+        0 15px 0 0 rgba(0, 0, 0, 0.2),
+        0 20px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+@keyframes news-paper-float {
     0%, 100% {
-        transform: rotate(-6deg) translateY(0) rotateX(0deg);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        transform: translateY(0) rotate(-8deg);
     }
     25% {
-        transform: rotate(-3deg) translateY(-10px) rotateX(-6deg);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        transform: translateY(-15px) rotate(-5deg);
     }
     50% {
-        transform: rotate(6deg) translateY(-15px) rotateX(6deg);
-        box-shadow: 0 15px 25px rgba(0,0,0,0.35);
+        transform: translateY(-25px) rotate(5deg);
     }
     75% {
-        transform: rotate(3deg) translateY(-8px) rotateX(-4deg);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+        transform: translateY(-10px) rotate(-3deg);
     }
 }
 
-/* === ELEMENT 3: TV SCREEN (BROADCAST) === */
-.theme-current_affairs .elem-3 {
-    position: absolute;
-    bottom: 32%;
-    right: 15%;
-    width: 80px;
-    height: 65px;
-    z-index: 10;
-    animation: current-tv-broadcast 6.5s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* TV frame */
-.theme-current_affairs .elem-3::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #424242, #212121, #424242);
-    border-radius: 6px;
-    box-shadow:
-        0 4px 18px rgba(0,0,0,0.45),
-        inset 0 0 12px rgba(0,0,0,0.6);
-}
-
-/* Screen with broadcast */
-.theme-current_affairs .elem-3::after {
-    content: '';
-    position: absolute;
-    width: 68px;
-    height: 52px;
-    top: 6px;
-    left: 6px;
-    background:
-        linear-gradient(180deg, #2196F3 0%, #2196F3 38%, #FFFFFF 38%, #FFFFFF 100%),
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
-    border-radius: 3px;
-    animation: current-tv-static 0.18s steps(4) infinite;
-    box-shadow:
-        inset 0 0 15px rgba(33, 150, 243, 0.6),
-        0 0 20px rgba(33, 150, 243, 0.4);
-}
-
-@keyframes current-tv-broadcast {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.4));
-    }
-    50% {
-        transform: scale(1.06);
-        filter: drop-shadow(0 0 20px rgba(33, 150, 243, 0.7));
-    }
-}
-
-@keyframes current-tv-static {
-    0%, 100% { opacity: 1; }
-    25% { opacity: 0.96; }
-    50% { opacity: 0.93; }
-    75% { opacity: 0.97; }
-}
-
-/* === ELEMENT 4: BREAKING NEWS FLASH === */
-.theme-current_affairs .elem-4 {
-    position: absolute;
-    top: 8%;
-    right: 10%;
-    width: 90px;
-    height: 35px;
-    z-index: 18;
-    pointer-events: none;
-}
-
-.theme-current_affairs .elem-4::before {
-    content: 'LIVE';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #D32F2F, #F44336, #D32F2F);
-    color: white;
-    font-family: 'Arial Black', Arial, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 35px;
-    border-radius: 5px;
-    box-shadow:
-        0 0 20px rgba(244, 67, 54, 0.9),
-        0 0 35px rgba(244, 67, 54, 0.6),
-        inset 0 2px 8px rgba(255,255,255,0.2);
-    animation: current-live-pulse 2.2s ease-in-out infinite;
-}
-
-@keyframes current-live-pulse {
-    0%, 100% {
-        opacity: 0.85;
-        transform: scale(1);
-        box-shadow: 0 0 20px rgba(244, 67, 54, 0.9);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.08);
-        box-shadow: 0 0 35px rgba(244, 67, 54, 1), 0 0 50px rgba(244, 67, 54, 0.7);
-    }
-}
-
-/* === ELEMENT 5: TICKER TAPE (ENHANCED) === */
-.theme-current_affairs .elem-5 {
-    position: absolute;
-    bottom: 18%;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(255, 215, 0, 0.6) 50%,
-        transparent 100%);
-    z-index: 17;
-    animation: current-ticker-shimmer 4.5s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes current-ticker-shimmer {
-    0% { transform: translateX(-100%); opacity: 0.6; }
-    100% { transform: translateX(200%); opacity: 1; }
-}
-
-/* === SCAN LINES (DIGITAL OVERLAY) === */
-.theme-current_affairs .scan-lines {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(33, 150, 243, 0.04) 2px,
-        rgba(33, 150, 243, 0.04) 4px
-    );
-    pointer-events: none;
-    z-index: 14;
-    animation: current-scan-drift 10s linear infinite;
-}
-
-@keyframes current-scan-drift {
-    0% { transform: translateY(0); opacity: 0.25; }
-    100% { transform: translateY(25px); opacity: 0.25; }
-}
-
-/* === DATA STREAM LINES === */
-.theme-current_affairs .data-stream {
-    position: absolute;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(180deg,
-        transparent 0%,
-        rgba(33, 150, 243, 0.9) 18%,
-        rgba(33, 150, 243, 0.5) 50%,
-        transparent 100%);
-    pointer-events: none;
-    z-index: 13;
-    left: 18%;
-    animation: current-data-flow 7.5s linear infinite;
-    box-shadow:
-        25vw 0 0 0 rgba(76, 175, 80, 0.7),
-        50vw 0 0 0 rgba(255, 193, 7, 0.6),
-        72vw 0 0 0 rgba(33, 150, 243, 0.8);
-}
-
-@keyframes current-data-flow {
-    0% { transform: translateY(-105%); }
-    100% { transform: translateY(105%); }
-}
-
-/* === DIGITAL PARTICLES === */
-.theme-current_affairs .digital-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 15;
-}
-
-.theme-current_affairs .digital-particles::before {
-    content: '';
-    position: absolute;
-    width: 2.5px;
-    height: 2.5px;
+/* === SIGNAL WAVES FROM SATELLITE === */
+.theme-current_affairs .depth-fog {
+    top: 5%;
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(33, 150, 243, 0.3);
+    border-radius: 50%;
     background: transparent;
     box-shadow:
-        12vw 22vh 0 1.5px rgba(33, 150, 243, 0.85),
-        28vw 38vh 0 1px rgba(76, 175, 80, 0.65),
-        44vw 18vh 0 2px rgba(33, 150, 243, 0.95),
-        60vw 48vh 0 1.2px rgba(255, 193, 7, 0.75),
-        74vw 30vh 0 1px rgba(244, 67, 54, 0.65),
-        86vw 42vh 0 1.5px rgba(33, 150, 243, 0.85),
-        20vw 62vh 0 2px rgba(76, 175, 80, 0.75),
-        36vw 75vh 0 1px rgba(33, 150, 243, 0.65),
-        52vw 70vh 0 1.5px rgba(255, 193, 7, 0.85),
-        68vw 60vh 0 2px rgba(33, 150, 243, 0.95),
-        80vw 78vh 0 1px rgba(76, 175, 80, 0.6),
-        94vw 65vh 0 1.5px rgba(33, 150, 243, 0.75);
-    animation: current-bits-shimmer 6.5s ease-in-out infinite alternate;
+        0 0 0 8px rgba(33, 150, 243, 0.2),
+        0 0 0 16px rgba(33, 150, 243, 0.1),
+        0 0 0 24px rgba(33, 150, 243, 0.05);
+    animation: news-signal-expand 3s ease-out infinite;
+    z-index: 9;
 }
 
-@keyframes current-bits-shimmer {
-    0% { opacity: 0.45; transform: scale(0.75); }
-    100% { opacity: 1; transform: scale(1.25); }
+@keyframes news-signal-expand {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
 }
 
-/* === BREAKING NEWS ALERT FLASH === */
-.theme-current_affairs .alert-flash {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 16;
-}
-
-.theme-current_affairs .alert-flash::before {
-    content: '';
-    position: absolute;
+/* === DATA STREAM PARTICLES === */
+.theme-current_affairs .pine-forest {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 8%, rgba(244, 67, 54, 0.35) 0%, transparent 45%);
-    opacity: 0;
-    animation: current-alert-flash 11s ease-in-out infinite;
-}
-
-@keyframes current-alert-flash {
-    0%, 88%, 100% { opacity: 0; }
-    90%, 94% { opacity: 0.9; }
-    92%, 96% { opacity: 0; }
-}
-
-/* === WORLD HOTSPOTS (NEWS LOCATIONS) === */
-.theme-current_affairs .world-hotspots {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     pointer-events: none;
-    z-index: 14;
+    z-index: 7;
 }
 
-.theme-current_affairs .world-hotspots::before {
-    content: '';
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: transparent;
+/* Vertical data streams */
+.theme-current_affairs .pine-forest::before {
+    top: -100%;
+    left: 25%;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        var(--news-signal-blue) 50%,
+        transparent 100%);
+    box-shadow:
+        30vw 20px 0 0 var(--news-signal-green),
+        50vw -30px 0 0 var(--news-signal-yellow),
+        70vw 10px 0 0 var(--news-signal-blue);
+    animation: news-data-fall 6s linear infinite;
+}
+
+@keyframes news-data-fall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(250%); }
+}
+
+/* === SPOTLIGHT BEAM === */
+.theme-current_affairs .cloud-2 {
+    top: -10%;
+    left: 40%;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-top: 200px solid rgba(255, 255, 255, 0.05);
+    z-index: 3;
+    animation: news-spotlight-sweep 12s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+@keyframes news-spotlight-sweep {
+    0%, 100% { transform: rotate(-15deg); opacity: 0.3; }
+    50% { transform: rotate(15deg); opacity: 0.6; }
+}
+
+/* === SECOND SPOTLIGHT === */
+.theme-current_affairs .cloud-3 {
+    top: -10%;
+    right: 30%;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 180px solid rgba(255, 255, 255, 0.04);
+    z-index: 3;
+    animation: news-spotlight-sweep 10s ease-in-out infinite 3s;
+    transform-origin: top center;
+}
+
+/* === BROADCAST ANTENNA === */
+.theme-current_affairs .elem-9 {
+    bottom: 42%;
+    left: 8%;
+    width: 4px;
+    height: 80px;
+    background: linear-gradient(180deg,
+        var(--news-silver) 0%,
+        #546E7A 100%);
+    z-index: 13;
+}
+
+/* Antenna dishes/elements */
+.theme-current_affairs .elem-9::before {
+    top: 0;
+    left: -8px;
+    width: 20px;
+    height: 10px;
+    background: var(--news-silver);
+    border-radius: 50% 50% 0 0;
+    box-shadow:
+        0 30px 0 0 var(--news-silver),
+        0 60px 0 0 var(--news-silver);
+}
+
+/* Signal indicator */
+.theme-current_affairs .elem-9::after {
+    top: -15px;
+    left: -3px;
+    width: 10px;
+    height: 10px;
+    background: var(--news-red-bright);
     border-radius: 50%;
-    box-shadow:
-        18vw 28vh 0 2.5px rgba(244, 67, 54, 0.95),
-        18vw 28vh 4px 5px rgba(244, 67, 54, 0.5),
-        38vw 38vh 0 2.5px rgba(33, 150, 243, 0.95),
-        38vw 38vh 4px 5px rgba(33, 150, 243, 0.5),
-        58vw 32vh 0 2.5px rgba(76, 175, 80, 0.95),
-        58vw 32vh 4px 5px rgba(76, 175, 80, 0.5),
-        78vw 42vh 0 2.5px rgba(255, 193, 7, 0.95),
-        78vw 42vh 4px 5px rgba(255, 193, 7, 0.5),
-        28vw 62vh 0 2.5px rgba(156, 39, 176, 0.95),
-        28vw 62vh 4px 5px rgba(156, 39, 176, 0.5),
-        68vw 68vh 0 2.5px rgba(244, 67, 54, 0.95),
-        68vw 68vh 4px 5px rgba(244, 67, 54, 0.5),
-        88vw 58vh 0 2.5px rgba(33, 150, 243, 0.95),
-        88vw 58vh 4px 5px rgba(33, 150, 243, 0.5);
-    animation: current-hotspots-pulse 5.5s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--news-red-bright);
+    animation: news-antenna-blink 1s ease-in-out infinite;
 }
 
-@keyframes current-hotspots-pulse {
-    0%, 100% {
-        opacity: 0.25;
-        transform: scale(0.7);
-    }
-    25% {
-        opacity: 1;
-        transform: scale(1.3);
-    }
-    50% {
-        opacity: 0.4;
-        transform: scale(0.95);
-    }
-    75% {
-        opacity: 1;
-        transform: scale(1.4);
-    }
+@keyframes news-antenna-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
-/* === ATMOSPHERIC PARTICLES === */
-.theme-current_affairs .atmosphere-particles {
-    position: absolute;
+/* === STUDIO GRID OVERLAY === */
+.theme-current_affairs .birds-2 {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
     pointer-events: none;
-    z-index: 15;
+    z-index: 4;
+    animation: news-grid-pulse 5s ease-in-out infinite;
 }
 
-.theme-current_affairs .atmosphere-particles::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow:
-        10vw 18vh 0 1.5px rgba(255, 255, 255, 0.7),
-        26vw 30vh 0 1px rgba(33, 150, 243, 0.65),
-        42vw 14vh 0 2px rgba(255, 255, 255, 0.8),
-        58vw 40vh 0 1.2px rgba(76, 175, 80, 0.7),
-        74vw 24vh 0 1px rgba(255, 255, 255, 0.65),
-        86vw 48vh 0 1.5px rgba(33, 150, 243, 0.75),
-        16vw 60vh 0 2px rgba(255, 255, 255, 0.8),
-        32vw 74vh 0 1px rgba(76, 175, 80, 0.6),
-        50vw 70vh 0 1.5px rgba(255, 255, 255, 0.7),
-        68vw 60vh 0 1.2px rgba(33, 150, 243, 0.75),
-        82vw 77vh 0 1px rgba(255, 255, 255, 0.65),
-        96vw 67vh 0 1.8px rgba(76, 175, 80, 0.8);
-    animation: current-particles-shimmer 9.5s ease-in-out infinite alternate;
+@keyframes news-grid-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
 }
 
-@keyframes current-particles-shimmer {
-    0% { opacity: 0.4; filter: brightness(0.85); transform: scale(0.8); }
-    100% { opacity: 1; filter: brightness(1.4); transform: scale(1.2); }
+/* === ATMOSPHERIC SCAN LINES === */
+.theme-current_affairs .butterfly-2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(255, 255, 255, 0.02) 4px);
+    pointer-events: none;
+    z-index: 22;
+    animation: news-scan-drift 6s linear infinite;
+}
+
+@keyframes news-scan-drift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
 }
 
 /* === MASCOT ANIMATIONS === */
@@ -535,27 +975,27 @@
 .theme-current_affairs .owl-character.happy,
 .theme-current_affairs .cat-character.happy,
 .theme-current_affairs .robot-character.happy {
-    animation: current-happy-informed 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: news-celebration 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes current-happy-informed {
+@keyframes news-celebration {
     0% { transform: scale(1) translateY(0) rotate(0deg); }
-    22% { transform: scale(1.12) translateY(-25px) rotate(8deg); }
-    42% { transform: scale(1.25) translateY(-38px) rotate(6deg); }
-    62% { transform: scale(1.18) translateY(-32px) rotate(-6deg); }
-    82% { transform: scale(1.06) translateY(-12px) rotate(-3deg); }
+    20% { transform: scale(1.1) translateY(-20px) rotate(6deg); }
+    40% { transform: scale(1.22) translateY(-35px) rotate(4deg); }
+    60% { transform: scale(1.15) translateY(-28px) rotate(-5deg); }
+    80% { transform: scale(1.05) translateY(-10px) rotate(-2deg); }
     100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 
 .theme-current_affairs .robot-character.excited {
-    animation: current-robot-broadcast 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: news-robot-broadcast 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes current-robot-broadcast {
-    0%, 100% { transform: translateY(0); filter: hue-rotate(0deg); }
-    25% { transform: translateY(-25px); filter: hue-rotate(35deg); }
-    50% { transform: translateY(-18px); filter: hue-rotate(-35deg); }
-    75% { transform: translateY(-30px); filter: hue-rotate(20deg); }
+@keyframes news-robot-broadcast {
+    0%, 100% { transform: translateY(0); filter: hue-rotate(0deg) brightness(1); }
+    25% { transform: translateY(-22px); filter: hue-rotate(30deg) brightness(1.2); }
+    50% { transform: translateY(-15px); filter: hue-rotate(-30deg) brightness(1.1); }
+    75% { transform: translateY(-28px); filter: hue-rotate(20deg) brightness(1.15); }
 }
 
 .theme-current_affairs .worm-character.sad,
@@ -563,21 +1003,25 @@
 .theme-current_affairs .owl-character.sad,
 .theme-current_affairs .cat-character.sad,
 .theme-current_affairs .robot-character.sad {
-    animation: current-sad-offline 2.5s ease-out forwards;
+    animation: news-disappointment 2.5s ease-out forwards;
 }
 
-@keyframes current-sad-offline {
+@keyframes news-disappointment {
     0% { transform: scale(1); filter: brightness(1) grayscale(0); }
-    35% { transform: scale(0.92) translateY(10px); filter: brightness(0.85) grayscale(0.3); }
-    65% { transform: scale(0.85) translateY(18px); filter: brightness(0.65) grayscale(0.55); }
-    100% { transform: scale(0.78) translateY(24px); filter: brightness(0.45) grayscale(0.8); }
+    30% { transform: scale(0.93) translateY(8px); filter: brightness(0.88) grayscale(0.25); }
+    60% { transform: scale(0.87) translateY(15px); filter: brightness(0.7) grayscale(0.5); }
+    100% { transform: scale(0.8) translateY(22px); filter: brightness(0.5) grayscale(0.75); }
 }
 
+.theme-current_affairs .worm-character.idle,
+.theme-current_affairs .bunny-character.idle,
+.theme-current_affairs .owl-character.idle,
+.theme-current_affairs .cat-character.idle,
 .theme-current_affairs .robot-character.idle {
-    animation: current-robot-scan 3.5s ease-in-out infinite;
+    animation: news-idle-broadcast 4s ease-in-out infinite;
 }
 
-@keyframes current-robot-scan {
-    0%, 100% { filter: hue-rotate(0deg) brightness(1); }
-    50% { filter: hue-rotate(25deg) brightness(1.12); }
+@keyframes news-idle-broadcast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }

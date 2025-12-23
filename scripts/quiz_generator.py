@@ -112,11 +112,53 @@ TOPICS = {
         "icon": "📰",
         "examples": "G20 Summit India, Chandrayaan-3, recent Olympics winners"
     },
-    "mythology": {
-        "name": "Indian Mythology",
-        "description": "Ramayana, Mahabharata, gods and legends",
-        "icon": "🏹",
-        "examples": "Lord Rama, Pandavas, Hanuman, Krishna, Durga"
+    "cyber_security": {
+        "name": "Cyber Security",
+        "description": "Online safety, passwords, privacy protection",
+        "icon": "🔒",
+        "examples": "Strong passwords, two-factor authentication, antivirus, malware, data protection, encryption basics"
+    },
+    "internet_safety": {
+        "name": "Internet Safety",
+        "description": "Safe browsing, social media awareness, online privacy",
+        "icon": "🛡️",
+        "examples": "Safe browsing habits, privacy settings, social media safety, online stranger danger, personal information protection"
+    },
+    "cyber_crime_awareness": {
+        "name": "Cyber Crime Awareness",
+        "description": "Types of cyber crimes, how to stay safe online",
+        "icon": "⚠️",
+        "examples": "Phishing attacks, identity theft, cyberbullying, ransomware, hacking awareness, reporting cyber crimes"
+    },
+    "online_fraud_awareness": {
+        "name": "Online Fraud Awareness",
+        "description": "OTP fraud, phishing, scam awareness",
+        "icon": "🚨",
+        "examples": "OTP fraud, fake websites, lottery scams, job scams, UPI fraud, bank fraud awareness, never share OTP"
+    },
+    "police_awareness": {
+        "name": "Police & Safety",
+        "description": "Role of police, emergency numbers, citizen safety",
+        "icon": "👮",
+        "examples": "100 emergency number, Tamil Nadu Police, role of police, traffic rules, child safety, women safety helplines, cyber crime reporting"
+    },
+    "digital_literacy": {
+        "name": "Digital Literacy",
+        "description": "Basic computer skills, internet usage, digital tools",
+        "icon": "💻",
+        "examples": "Computer basics, keyboard mouse usage, web browsers, search engines, email basics, file management"
+    },
+    "network_basics": {
+        "name": "Network Basics",
+        "description": "WiFi, LAN, internet connectivity basics",
+        "icon": "📡",
+        "examples": "WiFi security, LAN networks, internet connection, routers, modems, public WiFi dangers"
+    },
+    "safe_online_culture": {
+        "name": "Safe Online Culture",
+        "description": "Digital citizenship, responsible internet use",
+        "icon": "🌐",
+        "examples": "Online etiquette, responsible posting, copyright awareness, fake news identification, digital footprint"
     },
     "literature": {
         "name": "Literature",
@@ -211,11 +253,45 @@ TOPIC_MAPPING = {
     'winter sports': 'sports',
     # Technology variants
     'computers': 'technology',
-    'internet': 'technology',
     'gadgets': 'technology',
     # Monuments variants
     'monuments_wonders': 'monuments',
     'monuments-wonders': 'monuments',
+    # Cyber security variants
+    'cybersecurity': 'cyber_security',
+    'cyber-security': 'cyber_security',
+    'online_safety': 'internet_safety',
+    'online-safety': 'internet_safety',
+    'internet': 'internet_safety',
+    'safe_browsing': 'internet_safety',
+    # Cyber crime variants
+    'cybercrime': 'cyber_crime_awareness',
+    'cyber-crime': 'cyber_crime_awareness',
+    'cyber_crimes': 'cyber_crime_awareness',
+    'hacking': 'cyber_crime_awareness',
+    'phishing': 'cyber_crime_awareness',
+    # Online fraud variants
+    'fraud': 'online_fraud_awareness',
+    'scams': 'online_fraud_awareness',
+    'otp_fraud': 'online_fraud_awareness',
+    'banking_fraud': 'online_fraud_awareness',
+    # Police variants
+    'police': 'police_awareness',
+    'law_enforcement': 'police_awareness',
+    'emergency_services': 'police_awareness',
+    'citizen_safety': 'police_awareness',
+    # Digital literacy variants
+    'computer_basics': 'digital_literacy',
+    'computer_literacy': 'digital_literacy',
+    'basic_computing': 'digital_literacy',
+    # Network variants
+    'networking': 'network_basics',
+    'wifi': 'network_basics',
+    'lan': 'network_basics',
+    # Safe online culture variants
+    'digital_citizenship': 'safe_online_culture',
+    'online_etiquette': 'safe_online_culture',
+    'netiquette': 'safe_online_culture',
 }
 
 

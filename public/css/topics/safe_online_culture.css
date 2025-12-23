@@ -1,0 +1,728 @@
+/* ============================================
+   SAFE ONLINE CULTURE THEME - PREMIUM CINEMATIC
+   Positive Digital Community & Kindness
+   Warm indigo/purple with friendly glow
+   8-12 second animation loops with complex shapes
+   ============================================ */
+
+/* === CINEMATIC BACKGROUND === */
+.theme-safe_online_culture .scene-background {
+    background:
+        /* === LAYER 1: Friendly Community Silhouettes === */
+        /* Left community group */
+        radial-gradient(ellipse 35px 55px at 8% 82%, rgba(103, 58, 183, 0.4) 0%, rgba(103, 58, 183, 0.15) 50%, transparent 70%),
+        radial-gradient(ellipse 30px 50px at 12% 80%, rgba(92, 107, 192, 0.35) 0%, rgba(92, 107, 192, 0.12) 50%, transparent 65%),
+        radial-gradient(ellipse 32px 52px at 5% 83%, rgba(156, 39, 176, 0.38) 0%, rgba(156, 39, 176, 0.13) 50%, transparent 68%),
+        /* Center community group */
+        radial-gradient(ellipse 38px 58px at 48% 85%, rgba(103, 58, 183, 0.42) 0%, rgba(103, 58, 183, 0.16) 50%, transparent 72%),
+        radial-gradient(ellipse 35px 56px at 52% 84%, rgba(92, 107, 192, 0.4) 0%, rgba(92, 107, 192, 0.14) 50%, transparent 70%),
+        radial-gradient(ellipse 33px 54px at 50% 86%, rgba(156, 39, 176, 0.36) 0%, rgba(156, 39, 176, 0.12) 50%, transparent 66%),
+        /* Right community group */
+        radial-gradient(ellipse 36px 57px at 92% 81%, rgba(103, 58, 183, 0.39) 0%, rgba(103, 58, 183, 0.15) 50%, transparent 69%),
+        radial-gradient(ellipse 33px 53px at 88% 83%, rgba(92, 107, 192, 0.37) 0%, rgba(92, 107, 192, 0.13) 50%, transparent 67%),
+        radial-gradient(ellipse 31px 51px at 95% 82%, rgba(156, 39, 176, 0.34) 0%, rgba(156, 39, 176, 0.11) 50%, transparent 64%),
+
+        /* === LAYER 2: Heart and Thumbs-Up Elements (Positive Engagement) === */
+        /* Floating hearts */
+        radial-gradient(circle 18px at 22% 35%, rgba(233, 30, 99, 0.25) 0%, transparent 60%),
+        radial-gradient(circle 15px at 78% 42%, rgba(233, 30, 99, 0.22) 0%, transparent 58%),
+        radial-gradient(circle 12px at 35% 55%, rgba(233, 30, 99, 0.18) 0%, transparent 55%),
+        /* Thumbs up glows */
+        radial-gradient(circle 20px at 68% 28%, rgba(255, 193, 7, 0.28) 0%, transparent 62%),
+        radial-gradient(circle 16px at 15% 48%, rgba(255, 193, 7, 0.24) 0%, transparent 58%),
+        radial-gradient(circle 14px at 85% 65%, rgba(255, 193, 7, 0.2) 0%, transparent 56%),
+
+        /* === LAYER 3: Chat Bubbles with Checkmarks === */
+        /* Left chat bubble */
+        radial-gradient(ellipse 45px 32px at 18% 22%, rgba(76, 175, 80, 0.18) 0%, transparent 65%),
+        radial-gradient(circle 8px at 22% 20%, rgba(76, 175, 80, 0.25) 0%, transparent 50%),
+        /* Right chat bubble */
+        radial-gradient(ellipse 42px 30px at 82% 38%, rgba(66, 165, 245, 0.16) 0%, transparent 63%),
+        radial-gradient(circle 7px at 85% 36%, rgba(66, 165, 245, 0.23) 0%, transparent 48%),
+        /* Center chat bubble */
+        radial-gradient(ellipse 40px 28px at 50% 18%, rgba(156, 39, 176, 0.14) 0%, transparent 60%),
+        radial-gradient(circle 6px at 52% 16%, rgba(156, 39, 176, 0.2) 0%, transparent 45%),
+
+        /* === LAYER 4: Globe with Connected Hands === */
+        /* Central globe */
+        radial-gradient(circle 65px at 50% 35%, rgba(33, 150, 243, 0.22) 0%, rgba(33, 150, 243, 0.08) 50%, transparent 70%),
+        /* Continent patches on globe */
+        radial-gradient(circle 15px at 45% 32%, rgba(76, 175, 80, 0.18) 0%, transparent 60%),
+        radial-gradient(circle 12px at 55% 37%, rgba(76, 175, 80, 0.15) 0%, transparent 55%),
+        radial-gradient(circle 10px at 50% 40%, rgba(76, 175, 80, 0.12) 0%, transparent 50%),
+        /* Connected hands reaching toward globe */
+        radial-gradient(ellipse 25px 18px at 35% 45%, rgba(255, 193, 7, 0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 25px 18px at 65% 45%, rgba(255, 193, 7, 0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 22px 16px at 40% 28%, rgba(255, 193, 7, 0.14) 0%, transparent 52%),
+        radial-gradient(ellipse 22px 16px at 60% 28%, rgba(255, 193, 7, 0.14) 0%, transparent 52%),
+
+        /* === LAYER 5: Warm Welcoming Digital Atmosphere === */
+        /* Warm top glow */
+        radial-gradient(ellipse 800px 400px at 50% 0%, rgba(156, 39, 176, 0.22) 0%, transparent 65%),
+        /* Left community atmosphere */
+        radial-gradient(ellipse 550px 550px at 15% 40%, rgba(103, 58, 183, 0.18) 0%, transparent 60%),
+        /* Right harmony atmosphere */
+        radial-gradient(ellipse 600px 600px at 85% 60%, rgba(92, 107, 192, 0.15) 0%, transparent 62%),
+        /* Center warm radiance */
+        radial-gradient(ellipse 650px 450px at 50% 50%, rgba(156, 39, 176, 0.12) 0%, transparent 68%),
+        /* Bottom community glow */
+        radial-gradient(ellipse 900px 300px at 50% 100%, rgba(103, 58, 183, 0.16) 0%, transparent 70%),
+        /* Welcoming ambient light */
+        radial-gradient(circle 400px at 30% 25%, rgba(233, 30, 99, 0.08) 0%, transparent 75%),
+        radial-gradient(circle 380px at 70% 70%, rgba(76, 175, 80, 0.07) 0%, transparent 73%),
+
+        /* === LAYER 6: Warm Gradient Base === */
+        linear-gradient(135deg,
+            #1a0f2e 0%,
+            #251741 8%,
+            #2d1e4f 16%,
+            #35255d 24%,
+            #3d2c6b 32%,
+            #453379 40%,
+            #4c3a87 48%,
+            #544195 56%,
+            #5c48a3 64%,
+            #644fb1 72%,
+            #6b56bf 80%,
+            #735dcd 88%,
+            #7a64db 96%,
+            #826be9 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Floating particle dots */
+.theme-safe_online_culture .scene-background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle 3px at 50% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 100%);
+    background-size: 80px 80px;
+    background-position: 0 0, 40px 40px;
+    opacity: 0.6;
+    animation: culture-particles-drift 12s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes culture-particles-drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(80px, 80px); }
+}
+
+/* Ambient light waves */
+.theme-safe_online_culture .scene-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse 700px 300px at 30% 50%, rgba(156, 39, 176, 0.1) 0%, transparent 60%);
+    animation: culture-ambient-pulse 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes culture-ambient-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.15); }
+}
+
+/* === ELEMENT 1: GLOBE WITH HEART OVERLAY === */
+.theme-safe_online_culture .elem-1 {
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    width: 120px;
+    height: 120px;
+    z-index: 15;
+    animation: culture-globe-float 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Globe sphere with continents */
+.theme-safe_online_culture .elem-1::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    top: 15px;
+    left: 15px;
+    background:
+        /* Continents */
+        radial-gradient(ellipse 25px 18px at 25% 35%, #66BB6A 0%, #4CAF50 100%),
+        radial-gradient(ellipse 30px 22px at 75% 30%, #66BB6A 0%, #4CAF50 100%),
+        radial-gradient(ellipse 20px 28px at 45% 65%, #66BB6A 0%, #4CAF50 100%),
+        radial-gradient(ellipse 18px 15px at 80% 70%, #66BB6A 0%, #4CAF50 100%),
+        /* Ocean */
+        radial-gradient(circle at 35% 35%, #42A5F5 0%, #2196F3 50%, #1976D2 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 40px rgba(33, 150, 243, 0.5),
+        0 0 60px rgba(33, 150, 243, 0.3),
+        inset -12px -12px 25px rgba(0, 0, 0, 0.25),
+        inset 8px 8px 20px rgba(255, 255, 255, 0.1);
+    animation: culture-globe-rotate 20s linear infinite;
+}
+
+/* Heart overlay on globe */
+.theme-safe_online_culture .elem-1::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 45px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #FF6090 0%, #E91E63 50%, #C2185B 100%);
+    clip-path: path('M25 42 C10 30 0 20 0 12 C0 5 5 0 12 0 C18 0 22 4 25 8 C28 4 32 0 38 0 C45 0 50 5 50 12 C50 20 40 30 25 42');
+    box-shadow:
+        0 0 30px rgba(233, 30, 99, 0.6),
+        0 0 50px rgba(233, 30, 99, 0.4);
+    animation: culture-heart-pulse 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes culture-globe-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(2deg); }
+    50% { transform: translateY(-20px) rotate(0deg); }
+    75% { transform: translateY(-15px) rotate(-2deg); }
+}
+
+@keyframes culture-globe-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes culture-heart-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.95; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+/* === ELEMENT 2: CONNECTED PEOPLE HOLDING HANDS === */
+.theme-safe_online_culture .elem-2 {
+    position: absolute;
+    bottom: 32%;
+    left: 18%;
+    width: 180px;
+    height: 80px;
+    z-index: 14;
+    pointer-events: none;
+}
+
+/* Three diverse people */
+.theme-safe_online_culture .elem-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Person 1 - Left */
+        radial-gradient(circle 14px at 15% 25%, #FFCC80 0%, #FFB74D 100%),
+        radial-gradient(ellipse 16px 25px at 15% 65%, #5C6BC0 0%, #3F51B5 100%),
+        /* Person 2 - Center */
+        radial-gradient(circle 15px at 50% 20%, #FFAB91 0%, #FF8A65 100%),
+        radial-gradient(ellipse 17px 26px at 50% 60%, #4CAF50 0%, #388E3C 100%),
+        /* Person 3 - Right */
+        radial-gradient(circle 14px at 85% 25%, #FFD9A3 0%, #FFCA90 100%),
+        radial-gradient(ellipse 16px 25px at 85% 65%, #FF9800 0%, #F57C00 100%);
+    animation: culture-people-bounce 3.5s ease-in-out infinite;
+}
+
+/* Holding hands connection */
+.theme-safe_online_culture .elem-2::after {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 4px;
+    top: 55%;
+    left: 12%;
+    background: linear-gradient(90deg,
+        rgba(92, 107, 192, 0.9) 0%,
+        rgba(255, 193, 7, 0.9) 25%,
+        rgba(76, 175, 80, 0.9) 50%,
+        rgba(255, 152, 0, 0.9) 75%,
+        rgba(255, 152, 0, 0.9) 100%);
+    border-radius: 3px;
+    box-shadow:
+        0 0 12px rgba(255, 193, 7, 0.6),
+        0 0 20px rgba(76, 175, 80, 0.4);
+    animation: culture-connection-glow 2s ease-in-out infinite;
+}
+
+@keyframes culture-people-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes culture-connection-glow {
+    0%, 100% { opacity: 0.8; box-shadow: 0 0 12px rgba(255, 193, 7, 0.6); }
+    50% { opacity: 1; box-shadow: 0 0 20px rgba(255, 193, 7, 0.9), 0 0 30px rgba(76, 175, 80, 0.6); }
+}
+
+/* === ELEMENT 3: THUMBS UP FLOATING === */
+.theme-safe_online_culture .elem-3 {
+    position: absolute;
+    top: 28%;
+    right: 20%;
+    width: 50px;
+    height: 60px;
+    z-index: 13;
+    animation: culture-thumbs-rise 9s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Thumbs up hand */
+.theme-safe_online_culture .elem-3::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Thumb */
+        linear-gradient(135deg, #FFD54F 0%, #FFC107 50%, #FFB300 100%),
+        /* Hand shadow */
+        radial-gradient(ellipse 25px 30px at 50% 60%, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+    clip-path: path('M20 60 L20 35 L15 35 L15 20 L20 20 L20 5 L35 5 L35 20 L40 20 L40 30 L45 30 L45 45 L40 50 L30 50 L25 60 Z');
+    box-shadow:
+        0 0 25px rgba(255, 213, 79, 0.6),
+        0 5px 15px rgba(255, 193, 7, 0.4);
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* Sparkle effect */
+.theme-safe_online_culture .elem-3::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    right: -5px;
+    background: #FFF9C4;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    box-shadow: 0 0 15px rgba(255, 249, 196, 0.8);
+    animation: culture-sparkle-spin 3s linear infinite;
+}
+
+@keyframes culture-thumbs-rise {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+    25% { transform: translateY(-12px) rotate(5deg); opacity: 1; }
+    50% { transform: translateY(-20px) rotate(-3deg); opacity: 0.95; }
+    75% { transform: translateY(-12px) rotate(3deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+}
+
+@keyframes culture-sparkle-spin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* === ELEMENT 4: SPEECH BUBBLES WITH KIND WORDS === */
+.theme-safe_online_culture .elem-4 {
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    width: 80px;
+    height: 60px;
+    z-index: 12;
+    animation: culture-bubble-float 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Speech bubble 1 */
+.theme-safe_online_culture .elem-4::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background:
+        /* Kind message dots */
+        radial-gradient(circle 4px at 25% 45%, #5C6BC0 0%, #5C6BC0 100%),
+        radial-gradient(circle 4px at 50% 45%, #5C6BC0 0%, #5C6BC0 100%),
+        radial-gradient(circle 4px at 75% 45%, #5C6BC0 0%, #5C6BC0 100%),
+        /* Bubble background */
+        linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 50%, #A5D6A7 100%);
+    border-radius: 25px;
+    box-shadow:
+        0 4px 15px rgba(76, 175, 80, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Bubble tail */
+.theme-safe_online_culture .elem-4::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    bottom: 8px;
+    left: 12px;
+    background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);
+    clip-path: polygon(100% 0%, 0% 0%, 100% 100%);
+    box-shadow: -2px 2px 5px rgba(76, 175, 80, 0.2);
+}
+
+@keyframes culture-bubble-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(10px, -15px) scale(1.05); }
+    66% { transform: translate(-8px, -10px) scale(0.98); }
+}
+
+/* === ELEMENT 5: SHIELD WITH SMILE === */
+.theme-safe_online_culture .elem-5 {
+    position: absolute;
+    bottom: 20%;
+    right: 15%;
+    width: 70px;
+    height: 85px;
+    z-index: 11;
+    animation: culture-shield-guard 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Shield shape */
+.theme-safe_online_culture .elem-5::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #42A5F5 0%, #2196F3 50%, #1E88E5 100%);
+    clip-path: path('M35 0 L70 15 L70 50 C70 70 35 85 35 85 C35 85 0 70 0 50 L0 15 Z');
+    box-shadow:
+        0 0 30px rgba(33, 150, 243, 0.5),
+        inset 0 3px 10px rgba(255, 255, 255, 0.3),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Smiley face on shield */
+.theme-safe_online_culture .elem-5::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Eyes */
+        radial-gradient(circle 4px at 35% 38%, #FFFFFF 0%, #FFFFFF 100%),
+        radial-gradient(circle 4px at 65% 38%, #FFFFFF 0%, #FFFFFF 100%),
+        /* Smile arc */
+        radial-gradient(ellipse 18px 12px at 50% 58%, transparent 45%, #FFFFFF 45%, #FFFFFF 60%, transparent 60%);
+    animation: culture-shield-smile 3s ease-in-out infinite;
+}
+
+@keyframes culture-shield-guard {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(0deg); }
+    75% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes culture-shield-smile {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+/* === ELEMENT 6: DIGITAL FLOWER GARDEN === */
+.theme-safe_online_culture .elem-6 {
+    position: absolute;
+    bottom: 15%;
+    left: 28%;
+    width: 150px;
+    height: 70px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Flowers growing */
+.theme-safe_online_culture .elem-6::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Flower 1 - Pink */
+        radial-gradient(circle 8px at 20% 30%, #F48FB1 0%, #F06292 100%),
+        radial-gradient(circle 6px at 18% 28%, #EC407A 0%, #E91E63 100%),
+        radial-gradient(circle 6px at 22% 28%, #EC407A 0%, #E91E63 100%),
+        radial-gradient(circle 6px at 20% 26%, #EC407A 0%, #E91E63 100%),
+        radial-gradient(circle 6px at 20% 34%, #EC407A 0%, #E91E63 100%),
+        linear-gradient(90deg, transparent 18%, #4CAF50 18%, #4CAF50 22%, transparent 22%),
+        /* Flower 2 - Purple */
+        radial-gradient(circle 8px at 50% 25%, #CE93D8 0%, #BA68C8 100%),
+        radial-gradient(circle 6px at 48% 23%, #AB47BC 0%, #9C27B0 100%),
+        radial-gradient(circle 6px at 52% 23%, #AB47BC 0%, #9C27B0 100%),
+        radial-gradient(circle 6px at 50% 21%, #AB47BC 0%, #9C27B0 100%),
+        radial-gradient(circle 6px at 50% 29%, #AB47BC 0%, #9C27B0 100%),
+        linear-gradient(90deg, transparent 48%, #66BB6A 48%, #66BB6A 52%, transparent 52%),
+        /* Flower 3 - Orange */
+        radial-gradient(circle 8px at 80% 35%, #FFB74D 0%, #FFA726 100%),
+        radial-gradient(circle 6px at 78% 33%, #FF9800 0%, #F57C00 100%),
+        radial-gradient(circle 6px at 82% 33%, #FF9800 0%, #F57C00 100%),
+        radial-gradient(circle 6px at 80% 31%, #FF9800 0%, #F57C00 100%),
+        radial-gradient(circle 6px at 80% 39%, #FF9800 0%, #F57C00 100%),
+        linear-gradient(90deg, transparent 78%, #81C784 78%, #81C784 82%, transparent 82%),
+        /* Ground */
+        linear-gradient(180deg, transparent 70%, rgba(76, 175, 80, 0.2) 100%);
+    animation: culture-flowers-grow 10s ease-in-out infinite;
+}
+
+/* Sparkles around flowers */
+.theme-safe_online_culture .elem-6::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle 3px at 25% 20%, #FFF9C4 0%, transparent 100%),
+        radial-gradient(circle 3px at 55% 15%, #FFF9C4 0%, transparent 100%),
+        radial-gradient(circle 3px at 85% 25%, #FFF9C4 0%, transparent 100%);
+    animation: culture-flower-sparkle 4s ease-in-out infinite;
+}
+
+@keyframes culture-flowers-grow {
+    0%, 100% { transform: scaleY(1); transform-origin: bottom; }
+    50% { transform: scaleY(1.1); }
+}
+
+@keyframes culture-flower-sparkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* === ELEMENT 7: RAINBOW CONNECTION BRIDGE === */
+.theme-safe_online_culture .elem-7 {
+    position: absolute;
+    top: 55%;
+    right: 12%;
+    width: 120px;
+    height: 80px;
+    z-index: 9;
+    animation: culture-rainbow-arc 11s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Rainbow arc layers */
+.theme-safe_online_culture .elem-7::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Red arc */
+        radial-gradient(ellipse 120px 40px at 50% 100%, transparent 72%, #F44336 72%, #F44336 78%, transparent 78%),
+        /* Orange arc */
+        radial-gradient(ellipse 115px 38px at 50% 100%, transparent 72%, #FF9800 72%, #FF9800 78%, transparent 78%),
+        /* Yellow arc */
+        radial-gradient(ellipse 110px 36px at 50% 100%, transparent 72%, #FFEB3B 72%, #FFEB3B 78%, transparent 78%),
+        /* Green arc */
+        radial-gradient(ellipse 105px 34px at 50% 100%, transparent 72%, #4CAF50 72%, #4CAF50 78%, transparent 78%),
+        /* Blue arc */
+        radial-gradient(ellipse 100px 32px at 50% 100%, transparent 72%, #2196F3 72%, #2196F3 78%, transparent 78%),
+        /* Indigo arc */
+        radial-gradient(ellipse 95px 30px at 50% 100%, transparent 72%, #3F51B5 72%, #3F51B5 78%, transparent 78%),
+        /* Violet arc */
+        radial-gradient(ellipse 90px 28px at 50% 100%, transparent 72%, #9C27B0 72%, #9C27B0 78%, transparent 78%);
+    opacity: 0.9;
+    box-shadow: 0 0 30px rgba(156, 39, 176, 0.4);
+}
+
+/* Connecting users at ends */
+.theme-safe_online_culture .elem-7::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Left user */
+        radial-gradient(circle 8px at 8% 95%, #FFCC80 0%, #FFB74D 100%),
+        radial-gradient(ellipse 10px 15px at 8% 80%, #5C6BC0 0%, #3F51B5 100%),
+        /* Right user */
+        radial-gradient(circle 8px at 92% 95%, #FFCC80 0%, #FFB74D 100%),
+        radial-gradient(ellipse 10px 15px at 92% 80%, #FF9800 0%, #F57C00 100%);
+}
+
+@keyframes culture-rainbow-arc {
+    0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.9; }
+    50% { transform: translateY(-10px) scaleY(1.1); opacity: 1; }
+}
+
+/* === ELEMENT 8: STAR RATING (5 STARS) === */
+.theme-safe_online_culture .elem-8 {
+    position: absolute;
+    top: 18%;
+    right: 35%;
+    width: 100px;
+    height: 20px;
+    z-index: 14;
+    pointer-events: none;
+}
+
+/* Five golden stars */
+.theme-safe_online_culture .elem-8::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Star 1 */
+        radial-gradient(circle at 10% 50%, #FFD54F 0%, transparent 100%),
+        /* Star 2 */
+        radial-gradient(circle at 30% 50%, #FFD54F 0%, transparent 100%),
+        /* Star 3 */
+        radial-gradient(circle at 50% 50%, #FFD54F 0%, transparent 100%),
+        /* Star 4 */
+        radial-gradient(circle at 70% 50%, #FFD54F 0%, transparent 100%),
+        /* Star 5 */
+        radial-gradient(circle at 90% 50%, #FFD54F 0%, transparent 100%);
+    clip-path: polygon(
+        /* Star 1 */
+        10% 0%, 12% 7%, 19% 7%, 13% 11%, 15% 18%, 10% 14%, 5% 18%, 7% 11%, 1% 7%, 8% 7%,
+        /* Star 2 */
+        30% 0%, 32% 7%, 39% 7%, 33% 11%, 35% 18%, 30% 14%, 25% 18%, 27% 11%, 21% 7%, 28% 7%,
+        /* Star 3 */
+        50% 0%, 52% 7%, 59% 7%, 53% 11%, 55% 18%, 50% 14%, 45% 18%, 47% 11%, 41% 7%, 48% 7%,
+        /* Star 4 */
+        70% 0%, 72% 7%, 79% 7%, 73% 11%, 75% 18%, 70% 14%, 65% 18%, 67% 11%, 61% 7%, 68% 7%,
+        /* Star 5 */
+        90% 0%, 92% 7%, 99% 7%, 93% 11%, 95% 18%, 90% 14%, 85% 18%, 87% 11%, 81% 7%, 88% 7%
+    );
+    box-shadow: 0 0 20px rgba(255, 213, 79, 0.6);
+    animation: culture-stars-twinkle 2s ease-in-out infinite;
+}
+
+/* Star sparkle effect */
+.theme-safe_online_culture .elem-8::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle 2px at 10% 50%, #FFF9C4 0%, transparent 100%),
+        radial-gradient(circle 2px at 30% 50%, #FFF9C4 0%, transparent 100%),
+        radial-gradient(circle 2px at 50% 50%, #FFF9C4 0%, transparent 100%),
+        radial-gradient(circle 2px at 70% 50%, #FFF9C4 0%, transparent 100%),
+        radial-gradient(circle 2px at 90% 50%, #FFF9C4 0%, transparent 100%);
+    animation: culture-star-sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes culture-stars-twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes culture-star-sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* === ADDITIONAL ELEMENT: POSITIVE SYMBOLS FLOATING === */
+.theme-safe_online_culture .elem-9 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 16;
+}
+
+/* Peace symbol */
+.theme-safe_online_culture .elem-9::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 65%;
+    left: 50%;
+    background: linear-gradient(135deg, #AB47BC 0%, #9C27B0 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 20px rgba(156, 39, 176, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+    clip-path: circle(50% at 50% 50%);
+    animation: culture-peace-spin 12s linear infinite;
+}
+
+/* Heart symbol floating */
+.theme-safe_online_culture .elem-9::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 27px;
+    top: 40%;
+    left: 8%;
+    background: linear-gradient(135deg, #FF6090 0%, #E91E63 100%);
+    clip-path: path('M15 25 C7 18 0 13 0 7 C0 3 3 0 7 0 C11 0 13 2 15 5 C17 2 19 0 23 0 C27 0 30 3 30 7 C30 13 23 18 15 25');
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.5);
+    animation: culture-heart-float 7s ease-in-out infinite;
+}
+
+@keyframes culture-peace-spin {
+    0% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(180deg) translateY(-15px); }
+    100% { transform: rotate(360deg) translateY(0); }
+}
+
+@keyframes culture-heart-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.15); }
+}
+
+/* === COMMUNITY GROUND BASE === */
+.theme-safe_online_culture .community-ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 28%;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        /* Left community glow */
+        radial-gradient(ellipse 550px 220px at 25% 100%, rgba(103, 58, 183, 0.25) 0%, transparent 65%),
+        /* Right harmony glow */
+        radial-gradient(ellipse 500px 240px at 75% 100%, rgba(92, 107, 192, 0.2) 0%, transparent 60%),
+        /* Base gradient */
+        linear-gradient(180deg, transparent 0%, rgba(103, 58, 183, 0.15) 100%);
+}
+
+/* === MASCOT CELEBRATION ANIMATIONS === */
+.theme-safe_online_culture .worm-character.happy,
+.theme-safe_online_culture .bunny-character.happy,
+.theme-safe_online_culture .owl-character.happy,
+.theme-safe_online_culture .cat-character.happy,
+.theme-safe_online_culture .robot-character.happy {
+    animation: culture-celebrate-together 2.2s ease-out;
+}
+
+@keyframes culture-celebrate-together {
+    0% { transform: scale(1) translateY(0) rotate(0deg); }
+    15% { transform: scale(1.08) translateY(-12px) rotate(-4deg); }
+    30% { transform: scale(1.18) translateY(-28px) rotate(4deg); filter: drop-shadow(0 0 20px rgba(156, 39, 176, 0.8)); }
+    45% { transform: scale(1.25) translateY(-35px) rotate(-3deg); filter: drop-shadow(0 0 30px rgba(103, 58, 183, 0.9)); }
+    60% { transform: scale(1.2) translateY(-30px) rotate(2deg); filter: drop-shadow(0 0 25px rgba(92, 107, 192, 0.7)); }
+    75% { transform: scale(1.1) translateY(-18px) rotate(-2deg); }
+    90% { transform: scale(1.05) translateY(-8px) rotate(1deg); }
+    100% { transform: scale(1) translateY(0) rotate(0deg); }
+}
+
+.theme-safe_online_culture .worm-character.sad,
+.theme-safe_online_culture .bunny-character.sad,
+.theme-safe_online_culture .owl-character.sad,
+.theme-safe_online_culture .cat-character.sad,
+.theme-safe_online_culture .robot-character.sad {
+    animation: culture-isolated-fade 2.2s ease-out forwards;
+}
+
+@keyframes culture-isolated-fade {
+    0% { transform: translateY(0) scale(1); filter: brightness(1) saturate(1); }
+    20% { transform: translateY(4px) scale(0.97); filter: brightness(0.88) saturate(0.85); }
+    40% { transform: translateY(10px) scale(0.92); filter: brightness(0.7) saturate(0.6) grayscale(0.25); }
+    60% { transform: translateY(16px) scale(0.86); filter: brightness(0.55) saturate(0.4) grayscale(0.5); }
+    80% { transform: translateY(20px) scale(0.82); filter: brightness(0.4) saturate(0.2) grayscale(0.75); }
+    100% { transform: translateY(24px) scale(0.78); filter: brightness(0.3) saturate(0.1) grayscale(0.95); }
+}

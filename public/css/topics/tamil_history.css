@@ -1,494 +1,1064 @@
 /* ============================================
-   TAMIL HISTORY THEME - PREMIUM CINEMATIC
-   Ancient Tamil glory - temples, bronze, culture
-   Rich maroon/gold tones, majestic gopuram, classical dance
+   TAMIL HISTORY THEME - JULIA MIOCENE STYLE
+   Ancient Tamil Temple Complex at Twilight
+   Dravidian Architecture | Bronze Art | Sacred Traditions
    ============================================ */
 
-/* === LAYERED GRADIENT BACKGROUND === */
-.theme-tamil_history .scene-background {
-    background:
-        /* Temple gopuram divine glow */
-        radial-gradient(ellipse 900px 500px at 50% 10%, rgba(255, 152, 0, 0.45), transparent),
-        radial-gradient(ellipse 700px 400px at 15% 60%, rgba(233, 30, 99, 0.25), transparent),
-        radial-gradient(ellipse 600px 350px at 85% 70%, rgba(156, 39, 176, 0.2), transparent),
-        /* Rich sunset gradient */
-        linear-gradient(180deg,
-            #E65100 0%,
-            #F57C00 8%,
-            #FB8C00 15%,
-            #FF9800 22%,
-            #FFA726 30%,
-            #FFB74D 38%,
-            #FFCC80 46%,
-            #FFE0B2 54%,
-            #EFEBE9 62%,
-            #D7CCC8 70%,
-            #BCAAA4 78%,
-            #A1887F 86%,
-            #8D6E63 92%,
-            #6D4C41 100%);
-    position: relative;
-    overflow: hidden;
+:root {
+    /* Sky colors - Twilight */
+    --tamil-sky-top: #4A148C;
+    --tamil-sky-mid: #7B1FA2;
+    --tamil-sky-horizon: #E91E63;
+    --tamil-sky-glow: #FF5722;
+
+    /* Temple/Stone colors */
+    --tamil-temple-gold: #FFD700;
+    --tamil-temple-orange: #FF9800;
+    --tamil-temple-terracotta: #BF360C;
+    --tamil-temple-stone: #8D6E63;
+    --tamil-temple-dark: #5D4037;
+
+    /* Bronze colors */
+    --tamil-bronze-light: #CD7F32;
+    --tamil-bronze-mid: #B8860B;
+    --tamil-bronze-dark: #8B6914;
+
+    /* Palm/Nature colors */
+    --tamil-palm-light: #388E3C;
+    --tamil-palm-mid: #2E7D32;
+    --tamil-palm-dark: #1B5E20;
+    --tamil-palm-trunk: #6D4C41;
+
+    /* Ocean colors */
+    --tamil-ocean-light: #00BCD4;
+    --tamil-ocean-mid: #0097A7;
+    --tamil-ocean-dark: #006064;
+
+    /* Ground colors */
+    --tamil-ground-light: #A1887F;
+    --tamil-ground-dark: #6D4C41;
+
+    /* Accent colors */
+    --tamil-flame: #FF5722;
+    --tamil-lamp-glow: #FFC107;
+    --tamil-star: #FFFFFF;
+    --tamil-peacock: #00ACC1;
 }
 
-/* === FLOATING TEMPLE LAMPS === */
-.theme-tamil_history .scene-background::before {
+/* === BASE SCENE SETUP === */
+.theme-tamil_history .scene-background {
+    background: linear-gradient(180deg,
+        var(--tamil-sky-top) 0%,
+        var(--tamil-sky-mid) 25%,
+        var(--tamil-sky-horizon) 45%,
+        var(--tamil-sky-glow) 55%,
+        var(--tamil-ground-light) 70%,
+        var(--tamil-ground-dark) 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Universal element setup - Miocene style */
+.theme-tamil_history .scene-background *,
+.theme-tamil_history .scene-background *::before,
+.theme-tamil_history .scene-background *::after {
     content: '';
     position: absolute;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
+}
+
+/* === STARS - Box-shadow multiplication === */
+.theme-tamil_history .scene-background::before {
     top: 0;
     left: 0;
-    pointer-events: none;
+    width: 2px;
+    height: 2px;
+    background: var(--tamil-star);
+    border-radius: 50%;
     box-shadow:
-        /* Top row lights */
-        10% 12% 12px 7px rgba(255, 152, 0, 0.75),
-        22% 18% 10px 6px rgba(255, 193, 7, 0.7),
-        38% 15% 14px 8px rgba(255, 152, 0, 0.8),
-        54% 20% 11px 6px rgba(255, 193, 7, 0.72),
-        68% 14% 13px 7px rgba(255, 152, 0, 0.78),
-        82% 22% 10px 6px rgba(255, 193, 7, 0.7),
-        92% 17% 12px 7px rgba(255, 152, 0, 0.75),
-        /* Mid row lights */
-        15% 38% 11px 6px rgba(255, 152, 0, 0.7),
-        30% 42% 13px 7px rgba(255, 193, 7, 0.75),
-        48% 36% 10px 6px rgba(255, 152, 0, 0.68),
-        62% 45% 14px 8px rgba(255, 193, 7, 0.8),
-        78% 40% 11px 6px rgba(255, 152, 0, 0.72),
-        88% 38% 12px 7px rgba(255, 193, 7, 0.75),
-        /* Lower row lights */
-        12% 65% 10px 6px rgba(255, 152, 0, 0.65),
-        28% 62% 12px 7px rgba(255, 193, 7, 0.7),
-        45% 68% 11px 6px rgba(255, 152, 0, 0.68),
-        60% 63% 13px 7px rgba(255, 193, 7, 0.72),
-        75% 70% 10px 6px rgba(255, 152, 0, 0.65),
-        85% 65% 12px 7px rgba(255, 193, 7, 0.7);
-    animation: tamil-vilakku-glow 22s ease-in-out infinite;
+        /* Upper stars */
+        45px 25px 0 0 var(--tamil-star),
+        95px 18px 0 1px var(--tamil-star),
+        150px 35px 0 0 var(--tamil-star),
+        200px 12px 0 1px var(--tamil-star),
+        260px 28px 0 0 var(--tamil-star),
+        320px 15px 0 1px var(--tamil-star),
+        380px 38px 0 0 var(--tamil-star),
+        450px 22px 0 1px var(--tamil-star),
+        520px 32px 0 0 var(--tamil-star),
+        590px 14px 0 1px var(--tamil-star),
+        660px 40px 0 0 var(--tamil-star),
+        730px 20px 0 1px var(--tamil-star),
+        /* Mid-upper stars */
+        30px 55px 0 0 var(--tamil-star),
+        80px 70px 0 1px var(--tamil-star),
+        140px 62px 0 0 var(--tamil-star),
+        195px 80px 0 0 var(--tamil-star),
+        250px 58px 0 1px var(--tamil-star),
+        310px 75px 0 0 var(--tamil-star),
+        370px 65px 0 1px var(--tamil-star),
+        430px 85px 0 0 var(--tamil-star),
+        500px 60px 0 0 var(--tamil-star),
+        570px 78px 0 1px var(--tamil-star),
+        640px 55px 0 0 var(--tamil-star),
+        710px 72px 0 1px var(--tamil-star),
+        /* Bright stars with glow */
+        120px 45px 3px 1px rgba(255, 255, 255, 0.8),
+        350px 30px 3px 1px rgba(255, 255, 255, 0.8),
+        550px 50px 3px 1px rgba(255, 255, 255, 0.8);
+    animation: tamil-stars-twinkle 4s ease-in-out infinite;
+    z-index: 1;
 }
 
-@keyframes tamil-vilakku-glow {
-    0%, 100% {
-        opacity: 0.9;
-        transform: translateY(0) scale(1);
-        filter: brightness(1);
-    }
-    25% {
-        opacity: 1;
-        transform: translateY(-12px) scale(1.08);
-        filter: brightness(1.15);
-    }
-    50% {
-        opacity: 0.85;
-        transform: translateY(-6px) scale(1.04);
-        filter: brightness(1.05);
-    }
-    75% {
-        opacity: 0.95;
-        transform: translateY(-10px) scale(1.06);
-        filter: brightness(1.1);
-    }
+@keyframes tamil-stars-twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
 }
 
-/* === KOLAM PATTERN AT BASE === */
+/* === KOLAM PATTERN - Geometric dots at bottom === */
 .theme-tamil_history .scene-background::after {
-    content: '';
-    position: absolute;
     bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
-    height: 2px;
+    width: 4px;
+    height: 4px;
+    background: var(--tamil-star);
     border-radius: 50%;
-    pointer-events: none;
     box-shadow:
-        /* Center pattern */
-        0px 0px 4px 3px rgba(255, 255, 255, 0.9),
-        -20px 0px 4px 3px rgba(255, 255, 255, 0.85),
-        20px 0px 4px 3px rgba(255, 255, 255, 0.85),
-        0px -20px 4px 3px rgba(255, 255, 255, 0.85),
-        0px 20px 4px 3px rgba(255, 255, 255, 0.85),
-        /* Diagonals inner */
-        -14px -14px 4px 3px rgba(255, 255, 255, 0.8),
-        14px -14px 4px 3px rgba(255, 255, 255, 0.8),
-        -14px 14px 4px 3px rgba(255, 255, 255, 0.8),
-        14px 14px 4px 3px rgba(255, 255, 255, 0.8),
-        /* Outer ring */
-        -35px 0px 3px 2px rgba(255, 255, 255, 0.7),
-        35px 0px 3px 2px rgba(255, 255, 255, 0.7),
-        0px -35px 3px 2px rgba(255, 255, 255, 0.7),
-        0px 35px 3px 2px rgba(255, 255, 255, 0.7),
-        /* Diagonals outer */
-        -25px -25px 3px 2px rgba(255, 193, 7, 0.7),
-        25px -25px 3px 2px rgba(255, 193, 7, 0.7),
-        -25px 25px 3px 2px rgba(255, 193, 7, 0.7),
-        25px 25px 3px 2px rgba(255, 193, 7, 0.7);
-    animation: tamil-kolam-spin 15s ease-in-out infinite;
+        /* Center */
+        0 0 6px 3px rgba(255, 255, 255, 0.9),
+        /* Inner ring - cardinal */
+        -20px 0 4px 2px rgba(255, 255, 255, 0.8),
+        20px 0 4px 2px rgba(255, 255, 255, 0.8),
+        0 -20px 4px 2px rgba(255, 255, 255, 0.8),
+        0 20px 4px 2px rgba(255, 255, 255, 0.8),
+        /* Inner ring - diagonal */
+        -14px -14px 4px 2px rgba(255, 255, 255, 0.75),
+        14px -14px 4px 2px rgba(255, 255, 255, 0.75),
+        -14px 14px 4px 2px rgba(255, 255, 255, 0.75),
+        14px 14px 4px 2px rgba(255, 255, 255, 0.75),
+        /* Middle ring - cardinal */
+        -35px 0 3px 2px rgba(255, 193, 7, 0.7),
+        35px 0 3px 2px rgba(255, 193, 7, 0.7),
+        0 -35px 3px 2px rgba(255, 193, 7, 0.7),
+        0 35px 3px 2px rgba(255, 193, 7, 0.7),
+        /* Middle ring - diagonal */
+        -25px -25px 3px 2px rgba(255, 193, 7, 0.65),
+        25px -25px 3px 2px rgba(255, 193, 7, 0.65),
+        -25px 25px 3px 2px rgba(255, 193, 7, 0.65),
+        25px 25px 3px 2px rgba(255, 193, 7, 0.65),
+        /* Outer ring - cardinal */
+        -50px 0 2px 1px rgba(255, 152, 0, 0.5),
+        50px 0 2px 1px rgba(255, 152, 0, 0.5),
+        0 -50px 2px 1px rgba(255, 152, 0, 0.5),
+        0 50px 2px 1px rgba(255, 152, 0, 0.5),
+        /* Outer ring - diagonal */
+        -35px -35px 2px 1px rgba(255, 152, 0, 0.45),
+        35px -35px 2px 1px rgba(255, 152, 0, 0.45),
+        -35px 35px 2px 1px rgba(255, 152, 0, 0.45),
+        35px 35px 2px 1px rgba(255, 152, 0, 0.45);
+    animation: tamil-kolam-glow 6s ease-in-out infinite;
+    z-index: 8;
 }
 
-@keyframes tamil-kolam-spin {
+@keyframes tamil-kolam-glow {
     0%, 100% {
         opacity: 0.8;
         transform: translateX(-50%) scale(1);
     }
     50% {
         opacity: 1;
-        transform: translateX(-50%) scale(1.25);
+        transform: translateX(-50%) scale(1.1);
     }
 }
 
-/* === ELEMENT 1: BRIHADEESWARAR TEMPLE GOPURAM === */
+/* === DISTANT GOPURAMS (elem-0-ultra) - Far silhouettes === */
+.theme-tamil_history .elem-0-ultra {
+    bottom: 45%;
+    left: 5%;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 100px solid rgba(74, 20, 140, 0.4);
+    z-index: 2;
+    opacity: 0.6;
+}
+
+.theme-tamil_history .elem-0-ultra::before {
+    bottom: -100px;
+    left: -40px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 70px solid rgba(74, 20, 140, 0.4);
+    transform: translateX(120px);
+}
+
+.theme-tamil_history .elem-0-ultra::after {
+    bottom: -100px;
+    right: -200px;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 85px solid rgba(74, 20, 140, 0.35);
+}
+
+/* === MID GOPURAMS (elem-0-far) - Medium distance === */
+.theme-tamil_history .elem-0-far {
+    bottom: 40%;
+    right: 8%;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 120px solid rgba(123, 31, 162, 0.5);
+    z-index: 3;
+}
+
+.theme-tamil_history .elem-0-far::before {
+    bottom: -120px;
+    left: -80px;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 80px solid rgba(123, 31, 162, 0.45);
+}
+
+/* === MAIN GOPURAM (elem-1) - Central temple tower === */
 .theme-tamil_history .elem-1 {
-    position: absolute;
-    top: 8%;
+    bottom: 30%;
     left: 50%;
     transform: translateX(-50%);
-    width: 90px;
-    height: 130px;
-    z-index: 12;
-    pointer-events: none;
-    animation: gopuram-breathe 13s ease-in-out infinite;
+    z-index: 15;
 }
 
-/* Temple tower with stepped structure */
+/* Gopuram base tier */
 .theme-tamil_history .elem-1::before {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 120px;
-    background:
-        linear-gradient(180deg,
-            #E65100 0%,
-            #F57C00 12%,
-            #FB8C00 25%,
-            #FF9800 40%,
-            #FFA726 55%,
-            #8D6E63 75%,
-            #6D4C41 100%);
-    clip-path: polygon(
-        50% 0%,
-        45% 6%, 38% 6%,
-        38% 15%, 32% 15%,
-        32% 26%, 26% 26%,
-        26% 40%, 20% 40%,
-        20% 58%, 14% 58%,
-        14% 80%, 10% 80%,
-        10% 100%, 90% 100%,
-        90% 80%, 86% 80%,
-        86% 58%, 80% 58%,
-        80% 40%, 74% 40%,
-        74% 26%, 68% 26%,
-        68% 15%, 62% 15%,
-        62% 6%, 55% 6%
-    );
-    left: 5px;
-    filter: drop-shadow(0 0 40px rgba(255, 152, 0, 0.7))
-            drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
-    animation: gopuram-divine-glow 10s ease-in-out infinite;
-}
-
-/* Kalasam (golden pot on top) */
-.theme-tamil_history .elem-1::after {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 18px;
-    background:
-        radial-gradient(ellipse at 50% 30%, #FFD700, #FFC107 50%, #FF9800);
-    border-radius: 50% 50% 35% 35%;
-    top: -10px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1))
-            drop-shadow(0 0 40px rgba(255, 193, 7, 0.7));
-    animation: kalasam-glow 6s ease-in-out infinite;
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 50px solid var(--tamil-temple-terracotta);
+    box-shadow:
+        0 -50px 0 0 var(--tamil-temple-stone),
+        0 -50px 0 -10px var(--tamil-temple-dark);
 }
 
-@keyframes gopuram-breathe {
-    0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
-    50% { transform: translateX(-50%) translateY(-8px) scale(1.02); }
+/* Gopuram upper tiers - stacked triangles */
+.theme-tamil_history .elem-1::after {
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 55px solid transparent;
+    border-bottom: 45px solid var(--tamil-temple-orange);
+    box-shadow:
+        /* Tier 2 */
+        0 -45px 0 -8px var(--tamil-temple-orange),
+        /* Tier 3 */
+        0 -80px 0 -16px var(--tamil-temple-gold),
+        /* Tier 4 - top */
+        0 -110px 0 -24px var(--tamil-temple-gold),
+        /* Golden glow */
+        0 -110px 30px 10px rgba(255, 215, 0, 0.6);
+    animation: tamil-gopuram-glow 8s ease-in-out infinite;
 }
 
-@keyframes gopuram-divine-glow {
+@keyframes tamil-gopuram-glow {
     0%, 100% {
-        filter: drop-shadow(0 0 40px rgba(255, 152, 0, 0.7))
-                drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+        filter: drop-shadow(0 0 20px rgba(255, 152, 0, 0.5));
     }
     50% {
-        filter: drop-shadow(0 0 70px rgba(255, 152, 0, 1))
-                drop-shadow(0 15px 45px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8));
     }
 }
 
-@keyframes kalasam-glow {
+/* === KALASAM - Golden finial on top (elem-1-fg helper) === */
+.theme-tamil_history .elem-1-fg {
+    bottom: calc(30% + 165px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 20px;
+    background: linear-gradient(180deg,
+        var(--tamil-temple-gold) 0%,
+        #FFC107 50%,
+        var(--tamil-temple-orange) 100%);
+    border-radius: 50% 50% 30% 30%;
+    z-index: 16;
+    box-shadow:
+        0 0 20px 8px rgba(255, 215, 0, 0.8),
+        0 0 40px 15px rgba(255, 193, 7, 0.5);
+    animation: tamil-kalasam-radiance 4s ease-in-out infinite;
+}
+
+.theme-tamil_history .elem-1-fg::before {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 8px;
+    background: var(--tamil-temple-gold);
+    border-radius: 50%;
+}
+
+@keyframes tamil-kalasam-radiance {
     0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1))
-                drop-shadow(0 0 40px rgba(255, 193, 7, 0.7));
+        box-shadow:
+            0 0 20px 8px rgba(255, 215, 0, 0.8),
+            0 0 40px 15px rgba(255, 193, 7, 0.5);
     }
     50% {
-        filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1))
-                drop-shadow(0 0 65px rgba(255, 193, 7, 1));
+        box-shadow:
+            0 0 30px 12px rgba(255, 215, 0, 1),
+            0 0 60px 25px rgba(255, 193, 7, 0.7);
     }
 }
 
-/* === ELEMENT 2: NATARAJA BRONZE SCULPTURE === */
+/* === TEMPLE ELEPHANT (elem-2) === */
 .theme-tamil_history .elem-2 {
-    position: absolute;
-    top: 30%;
-    right: 10%;
-    width: 60px;
-    height: 75px;
-    z-index: 11;
-    pointer-events: none;
-    animation: bronze-dance 8.5s ease-in-out infinite;
+    bottom: 25%;
+    left: 8%;
+    z-index: 12;
+    animation: tamil-elephant-walk 30s linear infinite;
+}
+
+/* Elephant body - oval */
+.theme-tamil_history .elem-2::before {
+    bottom: 15px;
+    left: 0;
+    width: 55px;
+    height: 40px;
+    background: radial-gradient(ellipse at 40% 40%,
+        #757575,
+        #616161 50%,
+        #424242 80%);
+    border-radius: 45% 55% 45% 55%;
+    box-shadow:
+        /* Head */
+        -12px -5px 0 -8px #616161,
+        /* Ears */
+        -20px 0 0 -5px #757575,
+        /* Legs using box-shadow */
+        8px 35px 0 -3px #424242,
+        20px 38px 0 -3px #424242,
+        35px 38px 0 -3px #424242,
+        45px 35px 0 -3px #424242;
+}
+
+/* Elephant trunk */
+.theme-tamil_history .elem-2::after {
+    bottom: 25px;
+    left: -15px;
+    width: 8px;
+    height: 30px;
+    background: linear-gradient(90deg, #616161, #424242);
+    border-radius: 0 0 50% 50%;
+    transform-origin: top center;
+    animation: tamil-trunk-sway 3s ease-in-out infinite;
+}
+
+@keyframes tamil-elephant-walk {
+    0% { left: -15%; }
+    100% { left: 110%; }
+}
+
+@keyframes tamil-trunk-sway {
+    0%, 100% { transform: rotate(-20deg); }
+    50% { transform: rotate(20deg); }
+}
+
+/* === NATARAJA - Cosmic Dancer (elem-3) === */
+.theme-tamil_history .elem-3 {
+    top: 25%;
+    right: 12%;
+    z-index: 14;
+    animation: tamil-nataraja-dance 8s ease-in-out infinite;
+}
+
+/* Cosmic fire ring (Prabha Mandala) */
+.theme-tamil_history .elem-3::before {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 60%, rgba(255, 87, 34, 0.3) 100%);
+    box-shadow:
+        0 0 0 2px var(--tamil-flame),
+        0 0 15px 5px rgba(255, 87, 34, 0.5),
+        0 0 30px 10px rgba(255, 152, 0, 0.3),
+        /* Fire points around ring */
+        35px 0 8px 0 var(--tamil-flame),
+        -35px 0 8px 0 var(--tamil-flame),
+        0 35px 8px 0 var(--tamil-flame),
+        0 -35px 8px 0 var(--tamil-flame),
+        25px 25px 6px 0 var(--tamil-lamp-glow),
+        -25px 25px 6px 0 var(--tamil-lamp-glow),
+        25px -25px 6px 0 var(--tamil-lamp-glow),
+        -25px -25px 6px 0 var(--tamil-lamp-glow);
+    animation: tamil-fire-ring-rotate 10s linear infinite;
 }
 
 /* Bronze figure body */
-.theme-tamil_history .elem-2::before {
-    content: '';
-    position: absolute;
-    width: 38px;
-    height: 55px;
-    background:
-        radial-gradient(ellipse at 35% 25%, #CD7F32, #B8860B 50%, #8B6914);
-    border-radius: 45% 45% 35% 35% / 55% 55% 40% 40%;
-    left: 11px;
-    top: 8px;
-    filter: drop-shadow(0 6px 22px rgba(205, 127, 50, 0.7))
-            drop-shadow(0 0 35px rgba(255, 152, 0, 0.4))
-            drop-shadow(inset -5px -5px 15px rgba(0, 0, 0, 0.4));
-    animation: bronze-shimmer 5.5s ease-in-out infinite;
-}
-
-/* Fire ring (Nataraja's cosmic dance circle) */
-.theme-tamil_history .elem-2::after {
-    content: '';
-    position: absolute;
-    width: 75px;
-    height: 75px;
-    top: 0;
-    left: -7.5px;
-    border: 4px solid transparent;
-    border-top-color: #FF5722;
-    border-right-color: #FF9800;
-    border-bottom-color: #FFC107;
-    border-left-color: #FFB300;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 25px rgba(255, 87, 34, 0.7));
-    animation: bronze-fire-ring 4s linear infinite;
-}
-
-@keyframes bronze-dance {
-    0%, 100% { transform: rotate(-10deg) scale(1); }
-    25% { transform: rotate(8deg) scale(1.04); }
-    50% { transform: rotate(-6deg) scale(1.07); }
-    75% { transform: rotate(9deg) scale(1.05); }
-}
-
-@keyframes bronze-shimmer {
-    0%, 100% {
-        filter: drop-shadow(0 6px 22px rgba(205, 127, 50, 0.7))
-                drop-shadow(0 0 35px rgba(255, 152, 0, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 6px 22px rgba(205, 127, 50, 0.9))
-                drop-shadow(0 0 60px rgba(255, 152, 0, 0.7)) brightness(1.2);
-    }
-}
-
-@keyframes bronze-fire-ring {
-    0% { transform: rotate(0deg); opacity: 0.85; }
-    50% { opacity: 1; }
-    100% { transform: rotate(360deg); opacity: 0.85; }
-}
-
-/* === ELEMENT 3: BRONZE VILAKKU (LAMP) === */
-.theme-tamil_history .elem-3 {
-    position: absolute;
-    bottom: 30%;
-    left: 15%;
-    width: 40px;
-    height: 55px;
-    z-index: 10;
-    pointer-events: none;
-    animation: vilakku-rock 6.5s ease-in-out infinite;
-}
-
-/* Lamp base */
-.theme-tamil_history .elem-3::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 40px;
-    height: 45px;
-    background:
-        radial-gradient(ellipse at 50% 25%, #DAA520, #B8860B 50%, #CD7F32);
-    clip-path: polygon(
-        50% 0%,
-        38% 18%, 28% 35%,
-        22% 65%, 18% 100%,
-        82% 100%, 78% 65%,
-        72% 35%, 62% 18%
-    );
-    filter: drop-shadow(0 5px 18px rgba(0, 0, 0, 0.35))
-            drop-shadow(0 0 25px rgba(205, 127, 50, 0.5));
-    animation: vilakku-shimmer 5s ease-in-out infinite;
-}
-
-/* Flame */
 .theme-tamil_history .elem-3::after {
-    content: '';
-    position: absolute;
-    top: -18px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 14px;
-    height: 24px;
-    background:
-        radial-gradient(ellipse at 50% 70%,
-            #FFEB3B 0%,
-            #FFC107 25%,
-            #FF9800 55%,
-            #FF5722 90%,
-            transparent 100%);
-    border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
-    filter: drop-shadow(0 0 25px rgba(255, 152, 0, 0.9))
-            drop-shadow(0 0 45px rgba(255, 193, 7, 0.6));
-    animation: vilakku-flame-dance 1.5s ease-in-out infinite;
+    width: 25px;
+    height: 35px;
+    background: radial-gradient(ellipse at 40% 30%,
+        var(--tamil-bronze-light),
+        var(--tamil-bronze-mid) 50%,
+        var(--tamil-bronze-dark) 80%);
+    border-radius: 30% 30% 40% 40%;
+    box-shadow:
+        /* Head */
+        0 -12px 0 5px var(--tamil-bronze-light),
+        /* Arms extended */
+        -18px 5px 0 -2px var(--tamil-bronze-mid),
+        18px -8px 0 -2px var(--tamil-bronze-mid),
+        /* Legs */
+        -8px 30px 0 -3px var(--tamil-bronze-dark),
+        5px 32px 0 -3px var(--tamil-bronze-dark),
+        /* Bronze glow */
+        0 0 20px 5px rgba(205, 127, 50, 0.5);
 }
 
-@keyframes vilakku-rock {
-    0%, 100% { transform: rotate(0deg) translateY(0); }
-    25% { transform: rotate(-4deg) translateY(-4px); }
-    75% { transform: rotate(4deg) translateY(-3px); }
+@keyframes tamil-nataraja-dance {
+    0%, 100% { transform: rotate(-5deg) scale(1); }
+    25% { transform: rotate(5deg) scale(1.05); }
+    50% { transform: rotate(-3deg) scale(1.08); }
+    75% { transform: rotate(4deg) scale(1.05); }
 }
 
-@keyframes vilakku-shimmer {
-    0%, 100% { filter: drop-shadow(0 5px 18px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 25px rgba(205, 127, 50, 0.5)); }
-    50% { filter: drop-shadow(0 5px 18px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 45px rgba(205, 127, 50, 0.8)) brightness(1.2); }
+@keyframes tamil-fire-ring-rotate {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
 }
 
-@keyframes vilakku-flame-dance {
-    0%, 100% { transform: translateX(-50%) scaleY(1) skewX(-4deg); }
-    20% { transform: translateX(-50%) scaleY(1.12) skewX(5deg); }
-    40% { transform: translateX(-50%) scaleY(0.95) skewX(-3deg); }
-    60% { transform: translateX(-50%) scaleY(1.1) skewX(4deg); }
-    80% { transform: translateX(-50%) scaleY(0.98) skewX(-2deg); }
-}
-
-/* === ELEMENT 4: BHARATANATYAM DANCER === */
+/* === PALM TREES - Left side (elem-4) === */
 .theme-tamil_history .elem-4 {
-    position: absolute;
-    bottom: 28%;
-    right: 15%;
-    width: 50px;
-    height: 65px;
-    z-index: 13;
-    pointer-events: none;
-    animation: dancer-pose 7s ease-in-out infinite;
-}
-
-/* Dancer body */
-.theme-tamil_history .elem-4::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 50px;
-    background:
-        radial-gradient(ellipse at 50% 15%, #D81B60, #AD1457 60%, #880E4F);
-    border-radius: 48% 48% 42% 42% / 65% 65% 38% 38%;
-    left: 5px;
-    top: 6px;
-    filter: drop-shadow(0 6px 18px rgba(216, 27, 96, 0.5))
-            drop-shadow(0 0 25px rgba(233, 30, 99, 0.4));
-    animation: dancer-dress-flow 3s ease-in-out infinite;
-}
-
-/* Gold jewelry glow */
-.theme-tamil_history .elem-4::after {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    top: 10px;
-    left: 16px;
-    background:
-        radial-gradient(circle at 50% 50%, #FFD700, #FFC107 50%, transparent);
-    border-radius: 50%;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
-    animation: dancer-jewelry-sparkle 2.5s ease-in-out infinite;
-}
-
-@keyframes dancer-pose {
-    0%, 100% { transform: scaleX(1) rotate(0deg) translateY(0); }
-    25% { transform: scaleX(1.06) rotate(-10deg) translateY(-8px); }
-    50% { transform: scaleX(-1.06) rotate(0deg) translateY(-12px); }
-    75% { transform: scaleX(-1) rotate(10deg) translateY(-6px); }
-}
-
-@keyframes dancer-dress-flow {
-    0%, 100% { border-radius: 48% 48% 42% 42% / 65% 65% 38% 38%; }
-    50% { border-radius: 52% 52% 38% 38% / 70% 70% 34% 34%; }
-}
-
-@keyframes dancer-jewelry-sparkle {
-    0%, 100% { opacity: 0.75; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.4); }
-}
-
-/* === ELEMENT 5: PALM TREES === */
-.theme-tamil_history .elem-5 {
-    position: absolute;
-    bottom: 15%;
-    left: 8%;
-    width: 30px;
-    height: 80px;
-    z-index: 6;
-    pointer-events: none;
-    animation: palm-sway 10s ease-in-out infinite;
+    bottom: 20%;
+    left: 3%;
+    z-index: 8;
+    animation: tamil-palm-sway 8s ease-in-out infinite;
 }
 
 /* Palm trunk */
-.theme-tamil_history .elem-5::before {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 70px;
-    background: linear-gradient(90deg, #6D4C41, #8D6E63 50%, #6D4C41);
+.theme-tamil_history .elem-4::before {
     bottom: 0;
-    left: 11px;
-    border-radius: 4px;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    left: 15px;
+    width: 8px;
+    height: 80px;
+    background: linear-gradient(90deg,
+        var(--tamil-palm-trunk),
+        #8D6E63 50%,
+        var(--tamil-palm-trunk));
+    border-radius: 3px;
+    transform: rotate(-3deg);
+    transform-origin: bottom center;
 }
 
-/* Palm leaves */
-.theme-tamil_history .elem-5::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 25px;
-    background:
-        radial-gradient(ellipse at 50% 100%, #388E3C, #2E7D32 60%, transparent);
-    top: 0;
-    border-radius: 50% 50% 0 0;
-    filter: drop-shadow(0 0 12px rgba(56, 142, 60, 0.5));
+/* Palm fronds - using border triangles */
+.theme-tamil_history .elem-4::after {
+    top: -15px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid var(--tamil-palm-dark);
+    box-shadow:
+        /* Multiple fronds radiating out */
+        -15px 5px 0 0 var(--tamil-palm-mid),
+        15px 5px 0 0 var(--tamil-palm-mid),
+        -25px 12px 0 -3px var(--tamil-palm-light),
+        25px 12px 0 -3px var(--tamil-palm-light),
+        -8px -5px 0 -2px var(--tamil-palm-dark),
+        8px -5px 0 -2px var(--tamil-palm-dark);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes palm-sway {
+@keyframes tamil-palm-sway {
     0%, 100% { transform: rotate(-5deg); }
     50% { transform: rotate(5deg); }
 }
 
-/* === DAY/NIGHT ATMOSPHERIC CYCLE === */
-.theme-tamil_history .scene-background {
-    animation: tamil-day-night 75s ease-in-out infinite;
+/* === PALM TREES - Right side (elem-8) === */
+.theme-tamil_history .elem-8 {
+    bottom: 18%;
+    right: 4%;
+    z-index: 7;
+    animation: tamil-palm-sway-reverse 9s ease-in-out infinite;
 }
 
-@keyframes tamil-day-night {
-    0%, 100% { filter: brightness(1) sepia(0.12) saturate(1.15); }
-    25% { filter: brightness(1.18) sepia(0.18) saturate(1.25) hue-rotate(8deg); }
-    50% { filter: brightness(0.55) sepia(0.45) saturate(0.85) hue-rotate(-15deg); }
-    75% { filter: brightness(0.8) sepia(0.28) saturate(0.95) hue-rotate(-8deg); }
+.theme-tamil_history .elem-8::before {
+    bottom: 0;
+    left: 15px;
+    width: 9px;
+    height: 90px;
+    background: linear-gradient(90deg,
+        var(--tamil-palm-trunk),
+        #8D6E63 50%,
+        var(--tamil-palm-trunk));
+    border-radius: 3px;
+    transform: rotate(2deg);
+    transform-origin: bottom center;
+}
+
+.theme-tamil_history .elem-8::after {
+    top: -18px;
+    left: -2px;
+    width: 0;
+    height: 0;
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    border-bottom: 40px solid var(--tamil-palm-dark);
+    box-shadow:
+        -18px 6px 0 0 var(--tamil-palm-mid),
+        18px 6px 0 0 var(--tamil-palm-mid),
+        -28px 15px 0 -3px var(--tamil-palm-light),
+        28px 15px 0 -3px var(--tamil-palm-light),
+        -10px -6px 0 -2px var(--tamil-palm-dark),
+        10px -6px 0 -2px var(--tamil-palm-dark);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes tamil-palm-sway-reverse {
+    0%, 100% { transform: rotate(4deg); }
+    50% { transform: rotate(-4deg); }
+}
+
+/* === OIL LAMPS ROW (elem-5) - Temple lamps === */
+.theme-tamil_history .elem-5 {
+    bottom: 32%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+}
+
+/* Lamp bases - using box-shadow multiplication */
+.theme-tamil_history .elem-5::before {
+    bottom: 0;
+    left: 0;
+    width: 12px;
+    height: 18px;
+    background: linear-gradient(180deg,
+        var(--tamil-bronze-light) 0%,
+        var(--tamil-bronze-mid) 50%,
+        var(--tamil-bronze-dark) 100%);
+    border-radius: 20% 20% 40% 40%;
+    box-shadow:
+        40px 0 0 0 var(--tamil-bronze-mid),
+        80px 0 0 0 var(--tamil-bronze-mid),
+        120px 0 0 0 var(--tamil-bronze-mid),
+        160px 0 0 0 var(--tamil-bronze-mid),
+        -40px 0 0 0 var(--tamil-bronze-mid),
+        -80px 0 0 0 var(--tamil-bronze-mid);
+}
+
+/* Lamp flames - box-shadow with glow */
+.theme-tamil_history .elem-5::after {
+    bottom: 18px;
+    left: 3px;
+    width: 6px;
+    height: 14px;
+    background: radial-gradient(ellipse at 50% 80%,
+        #FFEB3B 0%,
+        var(--tamil-lamp-glow) 40%,
+        var(--tamil-flame) 80%,
+        transparent 100%);
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    box-shadow:
+        40px 0 0 0 #FFC107,
+        40px 0 12px 4px rgba(255, 152, 0, 0.6),
+        80px 0 0 0 #FFC107,
+        80px 0 12px 4px rgba(255, 152, 0, 0.6),
+        120px 0 0 0 #FFC107,
+        120px 0 12px 4px rgba(255, 152, 0, 0.6),
+        160px 0 0 0 #FFC107,
+        160px 0 12px 4px rgba(255, 152, 0, 0.6),
+        -40px 0 0 0 #FFC107,
+        -40px 0 12px 4px rgba(255, 152, 0, 0.6),
+        -80px 0 0 0 #FFC107,
+        -80px 0 12px 4px rgba(255, 152, 0, 0.6),
+        /* Central flame glow */
+        0 0 15px 5px rgba(255, 193, 7, 0.7);
+    animation: tamil-flames-flicker 1.5s ease-in-out infinite;
+}
+
+@keyframes tamil-flames-flicker {
+    0%, 100% {
+        transform: scaleY(1) skewX(-2deg);
+        opacity: 0.9;
+    }
+    25% {
+        transform: scaleY(1.15) skewX(3deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleY(0.9) skewX(-1deg);
+        opacity: 0.85;
+    }
+    75% {
+        transform: scaleY(1.1) skewX(2deg);
+        opacity: 1;
+    }
+}
+
+/* === TEMPLE CHARIOT/RATHA (elem-6) === */
+.theme-tamil_history .elem-6 {
+    bottom: 22%;
+    right: 15%;
+    z-index: 10;
+    animation: tamil-chariot-rock 6s ease-in-out infinite;
+}
+
+/* Chariot body */
+.theme-tamil_history .elem-6::before {
+    bottom: 12px;
+    left: 0;
+    width: 50px;
+    height: 30px;
+    background: linear-gradient(180deg,
+        var(--tamil-temple-orange) 0%,
+        var(--tamil-temple-terracotta) 50%,
+        var(--tamil-temple-dark) 100%);
+    border-radius: 5px 5px 2px 2px;
+    box-shadow:
+        /* Decorative top */
+        0 -8px 0 -2px var(--tamil-temple-gold),
+        /* Base shadow */
+        0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Chariot wheels */
+.theme-tamil_history .elem-6::after {
+    bottom: 0;
+    left: 5px;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 50% 50%,
+        var(--tamil-temple-dark) 20%,
+        var(--tamil-palm-trunk) 25%,
+        var(--tamil-temple-dark) 30%,
+        var(--tamil-palm-trunk) 80%,
+        var(--tamil-temple-dark) 85%);
+    border-radius: 50%;
+    border: 2px solid var(--tamil-temple-dark);
+    box-shadow:
+        32px 0 0 0 var(--tamil-palm-trunk),
+        32px 0 0 2px var(--tamil-temple-dark);
+    animation: tamil-wheels-rotate 3s linear infinite;
+}
+
+@keyframes tamil-chariot-rock {
+    0%, 100% { transform: rotate(-1deg) translateY(0); }
+    50% { transform: rotate(1deg) translateY(-2px); }
+}
+
+@keyframes tamil-wheels-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === FLYING PEACOCK (elem-7) === */
+.theme-tamil_history .elem-7 {
+    top: 18%;
+    left: -10%;
+    z-index: 13;
+    animation: tamil-peacock-fly 28s linear infinite;
+}
+
+/* Peacock body */
+.theme-tamil_history .elem-7::before {
+    top: 10px;
+    left: 15px;
+    width: 22px;
+    height: 16px;
+    background: radial-gradient(ellipse at 40% 40%,
+        #1976D2,
+        #1565C0 60%,
+        #0D47A1);
+    border-radius: 50% 50% 40% 60%;
+    box-shadow:
+        /* Head */
+        -8px -4px 0 -4px #1976D2,
+        /* Neck */
+        -5px 0 0 -6px #1565C0;
+}
+
+/* Peacock tail fan - using box-shadow for feather pattern */
+.theme-tamil_history .elem-7::after {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid var(--tamil-peacock);
+    box-shadow:
+        /* Fan spread using triangular shadows */
+        -12px 5px 0 0 #00838F,
+        12px 5px 0 0 #00838F,
+        -20px 10px 0 -2px #006064,
+        20px 10px 0 -2px #006064,
+        /* Eye spots */
+        -8px 15px 4px 0 rgba(0, 150, 136, 0.6),
+        8px 15px 4px 0 rgba(0, 150, 136, 0.6),
+        0 18px 4px 0 rgba(0, 188, 212, 0.8);
+    animation: tamil-tail-fan 2s ease-in-out infinite;
+}
+
+@keyframes tamil-peacock-fly {
+    0% {
+        left: -15%;
+        top: 18%;
+    }
+    25% {
+        left: 25%;
+        top: 12%;
+    }
+    50% {
+        left: 55%;
+        top: 16%;
+    }
+    75% {
+        left: 80%;
+        top: 20%;
+    }
+    100% {
+        left: 115%;
+        top: 22%;
+    }
+}
+
+@keyframes tamil-tail-fan {
+    0%, 100% {
+        transform: scaleY(1) rotate(-3deg);
+    }
+    50% {
+        transform: scaleY(1.1) rotate(3deg);
+    }
+}
+
+/* === OCEAN WAVES (grass element repurposed) === */
+.theme-tamil_history .grass {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 6;
+}
+
+/* Wave layers */
+.theme-tamil_history .grass::before {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(180deg,
+        rgba(0, 188, 212, 0.3) 0%,
+        rgba(0, 151, 167, 0.4) 50%,
+        rgba(0, 96, 100, 0.5) 100%);
+    border-radius: 100% 100% 0 0 / 30px 30px 0 0;
+    animation: tamil-waves-roll 4s ease-in-out infinite;
+}
+
+/* Wave foam */
+.theme-tamil_history .grass::after {
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(224, 247, 250, 0.4) 10%,
+        rgba(178, 235, 242, 0.3) 20%,
+        transparent 30%,
+        rgba(224, 247, 250, 0.35) 40%,
+        rgba(178, 235, 242, 0.25) 50%,
+        transparent 60%,
+        rgba(224, 247, 250, 0.4) 70%,
+        rgba(178, 235, 242, 0.3) 85%,
+        transparent 100%);
+    animation: tamil-foam-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes tamil-waves-roll {
+    0%, 100% {
+        transform: translateX(0) scaleY(1);
+    }
+    50% {
+        transform: translateX(-20px) scaleY(1.1);
+    }
+}
+
+@keyframes tamil-foam-shimmer {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateX(0);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateX(30px);
+    }
+}
+
+/* === SCENE PARTICLES - Fireflies/divine sparkles === */
+.theme-tamil_history .scene-particles {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.theme-tamil_history .scene-particles::before {
+    top: 20%;
+    left: 15%;
+    width: 4px;
+    height: 4px;
+    background: var(--tamil-lamp-glow);
+    border-radius: 50%;
+    box-shadow:
+        /* Golden divine particles */
+        80px 30px 0 0 var(--tamil-lamp-glow),
+        80px 30px 8px 2px rgba(255, 193, 7, 0.5),
+        200px -20px 0 0 var(--tamil-lamp-glow),
+        200px -20px 8px 2px rgba(255, 193, 7, 0.5),
+        350px 50px 0 0 var(--tamil-lamp-glow),
+        350px 50px 8px 2px rgba(255, 193, 7, 0.5),
+        450px -10px 0 0 var(--tamil-lamp-glow),
+        450px -10px 8px 2px rgba(255, 193, 7, 0.5),
+        550px 40px 0 0 var(--tamil-lamp-glow),
+        550px 40px 8px 2px rgba(255, 193, 7, 0.5),
+        /* Orange particles */
+        120px 80px 0 0 var(--tamil-flame),
+        120px 80px 6px 2px rgba(255, 87, 34, 0.4),
+        280px 60px 0 0 var(--tamil-flame),
+        280px 60px 6px 2px rgba(255, 87, 34, 0.4),
+        420px 90px 0 0 var(--tamil-flame),
+        420px 90px 6px 2px rgba(255, 87, 34, 0.4);
+    animation: tamil-particles-float 6s ease-in-out infinite;
+}
+
+.theme-tamil_history .scene-particles::after {
+    top: 40%;
+    left: 10%;
+    width: 3px;
+    height: 3px;
+    background: var(--tamil-star);
+    border-radius: 50%;
+    box-shadow:
+        60px 20px 0 0 rgba(255, 255, 255, 0.6),
+        150px -30px 0 0 rgba(255, 255, 255, 0.5),
+        250px 35px 0 0 rgba(255, 255, 255, 0.6),
+        380px 10px 0 0 rgba(255, 255, 255, 0.5),
+        480px -25px 0 0 rgba(255, 255, 255, 0.6),
+        580px 30px 0 0 rgba(255, 255, 255, 0.5);
+    animation: tamil-particles-drift 8s ease-in-out infinite reverse;
+}
+
+@keyframes tamil-particles-float {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+}
+
+@keyframes tamil-particles-drift {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateX(10px) translateY(-10px);
+        opacity: 0.8;
+    }
+}
+
+/* === DEPTH FOG - Atmospheric haze === */
+.theme-tamil_history .depth-fog {
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(74, 20, 140, 0.1) 30%,
+        rgba(123, 31, 162, 0.15) 60%,
+        transparent 100%);
+    z-index: 5;
+    animation: tamil-fog-drift 20s ease-in-out infinite;
+}
+
+@keyframes tamil-fog-drift {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(30px);
+        opacity: 0.8;
+    }
+}
+
+/* === PINE FOREST - Temple surroundings === */
+.theme-tamil_history .pine-forest {
+    bottom: 28%;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+}
+
+/* Small temple structures in distance */
+.theme-tamil_history .pine-forest::before {
+    bottom: 0;
+    left: 20%;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid rgba(141, 110, 99, 0.6);
+    box-shadow:
+        60px 5px 0 -5px rgba(141, 110, 99, 0.5),
+        150px -3px 0 -3px rgba(141, 110, 99, 0.55),
+        250px 8px 0 -6px rgba(141, 110, 99, 0.5),
+        380px 2px 0 -4px rgba(141, 110, 99, 0.55);
+}
+
+/* Ground vegetation */
+.theme-tamil_history .pine-forest::after {
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(90deg,
+        var(--tamil-ground-dark) 0%,
+        var(--tamil-ground-light) 25%,
+        var(--tamil-ground-dark) 50%,
+        var(--tamil-ground-light) 75%,
+        var(--tamil-ground-dark) 100%);
+    border-radius: 50% 50% 0 0 / 10px 10px 0 0;
+}
+
+/* === BIRDS FLOCK (elem-9) === */
+.theme-tamil_history .elem-9 {
+    top: 30%;
+    left: -5%;
+    z-index: 11;
+    animation: tamil-birds-fly 35s linear infinite;
+}
+
+.theme-tamil_history .elem-9::before {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 4px solid rgba(50, 50, 50, 0.7);
+    box-shadow:
+        20px 5px 0 0 rgba(50, 50, 50, 0.7),
+        45px -3px 0 0 rgba(50, 50, 50, 0.6),
+        70px 8px 0 0 rgba(50, 50, 50, 0.7),
+        95px 2px 0 0 rgba(50, 50, 50, 0.6);
+}
+
+@keyframes tamil-birds-fly {
+    0% { left: -10%; top: 30%; }
+    100% { left: 120%; top: 25%; }
+}
+
+/* === SECOND BIRD FLOCK (birds-2) === */
+.theme-tamil_history .birds-2 {
+    top: 22%;
+    left: -15%;
+    z-index: 11;
+    animation: tamil-birds-fly-2 40s linear infinite;
+    animation-delay: 10s;
+}
+
+.theme-tamil_history .birds-2::before {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 3px solid rgba(60, 60, 60, 0.6);
+    box-shadow:
+        15px 4px 0 0 rgba(60, 60, 60, 0.6),
+        35px -2px 0 0 rgba(60, 60, 60, 0.5),
+        55px 6px 0 0 rgba(60, 60, 60, 0.6);
+}
+
+@keyframes tamil-birds-fly-2 {
+    0% { left: -20%; top: 22%; }
+    100% { left: 115%; top: 18%; }
+}
+
+/* === CLOUDS (elem-6 helper - cloud-2, cloud-3) === */
+.theme-tamil_history .cloud-2 {
+    top: 8%;
+    left: 15%;
+    width: 80px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    z-index: 2;
+    animation: tamil-cloud-drift 45s linear infinite;
+}
+
+.theme-tamil_history .cloud-2::before {
+    top: -12px;
+    left: 20px;
+    width: 40px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 25px;
+}
+
+.theme-tamil_history .cloud-3 {
+    top: 12%;
+    right: 20%;
+    width: 100px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    z-index: 2;
+    animation: tamil-cloud-drift 55s linear infinite reverse;
+}
+
+.theme-tamil_history .cloud-3::before {
+    top: -15px;
+    left: 30px;
+    width: 50px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+}
+
+@keyframes tamil-cloud-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 200px)); }
 }
 
 /* === MASCOT ANIMATIONS === */
@@ -497,30 +1067,30 @@
 .theme-tamil_history .owl-character.happy,
 .theme-tamil_history .cat-character.happy,
 .theme-tamil_history .robot-character.happy {
-    animation: tamil-happy-celebration 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: tamil-celebration-dance 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes tamil-happy-celebration {
+@keyframes tamil-celebration-dance {
     0% { transform: scale(1) translateY(0) rotate(0deg); }
-    15% { transform: scale(0.92) translateY(6px) rotate(0deg); }
-    30% { transform: scale(1.18) translateY(-32px) rotate(-12deg); }
-    50% { transform: scale(1.22) translateY(-28px) rotate(12deg); }
-    65% { transform: scale(1.16) translateY(-22px) rotate(-6deg); }
-    80% { transform: scale(1.1) translateY(-12px) rotate(4deg); }
+    15% { transform: scale(0.9) translateY(8px) rotate(0deg); }
+    30% { transform: scale(1.2) translateY(-35px) rotate(-15deg); }
+    50% { transform: scale(1.25) translateY(-32px) rotate(15deg); }
+    65% { transform: scale(1.18) translateY(-25px) rotate(-8deg); }
+    80% { transform: scale(1.1) translateY(-15px) rotate(5deg); }
     100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 
 .theme-tamil_history .worm-character.excited,
 .theme-tamil_history .bunny-character.excited {
-    animation: tamil-dance-excited 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: tamil-excited-spin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes tamil-dance-excited {
+@keyframes tamil-excited-spin {
     0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-    20% { transform: translateY(-28px) rotate(18deg) scale(1.12); }
-    40% { transform: translateY(-18px) rotate(-22deg) scale(1.15); }
-    60% { transform: translateY(-32px) rotate(12deg) scale(1.14); }
-    80% { transform: translateY(-12px) rotate(-8deg) scale(1.08); }
+    20% { transform: translateY(-30px) rotate(20deg) scale(1.15); }
+    40% { transform: translateY(-20px) rotate(-25deg) scale(1.18); }
+    60% { transform: translateY(-35px) rotate(15deg) scale(1.16); }
+    80% { transform: translateY(-15px) rotate(-10deg) scale(1.1); }
 }
 
 .theme-tamil_history .worm-character.sad,
@@ -528,21 +1098,54 @@
 .theme-tamil_history .owl-character.sad,
 .theme-tamil_history .cat-character.sad,
 .theme-tamil_history .robot-character.sad {
-    animation: tamil-sad-droop 2.8s ease-out forwards;
+    animation: tamil-sorrow-fade 3s ease-out forwards;
 }
 
-@keyframes tamil-sad-droop {
-    0% { transform: scale(1) translateY(0); filter: brightness(1) saturate(1); }
-    50% { transform: scale(0.9) translateY(14px); filter: brightness(0.75) saturate(0.6); }
-    100% { transform: scale(0.83) translateY(22px); filter: brightness(0.6) saturate(0.45) sepia(0.35); }
+@keyframes tamil-sorrow-fade {
+    0% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1) saturate(1);
+    }
+    50% {
+        transform: scale(0.88) translateY(16px);
+        filter: brightness(0.7) saturate(0.5);
+    }
+    100% {
+        transform: scale(0.8) translateY(25px);
+        filter: brightness(0.55) saturate(0.4) sepia(0.4);
+    }
 }
 
 .theme-tamil_history .owl-character.idle {
-    animation: tamil-owl-wisdom 5.5s ease-in-out infinite;
+    animation: tamil-owl-meditate 6s ease-in-out infinite;
 }
 
-@keyframes tamil-owl-wisdom {
+@keyframes tamil-owl-meditate {
     0%, 100% { transform: rotate(0deg) scale(1); }
-    30% { transform: rotate(-10deg) scale(1.03); }
-    70% { transform: rotate(10deg) scale(1.02); }
+    30% { transform: rotate(-12deg) scale(1.04); }
+    70% { transform: rotate(12deg) scale(1.03); }
+}
+
+.theme-tamil_history .cat-character.idle {
+    animation: tamil-cat-observe 7s ease-in-out infinite;
+}
+
+@keyframes tamil-cat-observe {
+    0%, 100% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(8px) scale(1.05); }
+}
+
+.theme-tamil_history .robot-character.idle {
+    animation: tamil-robot-process 5s ease-in-out infinite;
+}
+
+@keyframes tamil-robot-process {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        filter: brightness(1);
+    }
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+        filter: brightness(1.15);
+    }
 }
