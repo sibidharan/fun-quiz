@@ -60,7 +60,6 @@
         var(--india-sky-bottom) 100%);
     overflow: hidden;
     position: relative;
-    animation: india-sky-cycle 60s ease-in-out infinite;
 }
 
 /* Universal element setup - Miocene style */
@@ -71,714 +70,667 @@
     position: absolute;
 }
 
-@keyframes india-sky-cycle {
-    0%, 100% { filter: brightness(1) saturate(1.2); }
-    50% { filter: brightness(0.85) saturate(1); }
+/* Hide unused child divs that may interfere with theme elements */
+.theme-indian_history .elem-1 > div,
+.theme-indian_history .elem-2 > div,
+.theme-indian_history .elem-3 > div,
+.theme-indian_history .elem-4 > div,
+.theme-indian_history .elem-5 > div {
+    display: none !important;
 }
 
-/* === SUN (box-shadow glow) === */
+/* === SUN (glowing orb) === */
 .theme-indian_history .scene-background::before {
-    top: 12%;
+    content: '';
+    top: 8%;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    background: #FFFDE7;
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, #FFF9C4 0%, #FFEB3B 30%, #FF9800 70%, transparent 100%);
     border-radius: 50%;
     box-shadow:
         0 0 60px 30px rgba(255, 193, 7, 0.8),
-        0 0 120px 60px rgba(255, 152, 0, 0.6),
-        0 0 180px 90px rgba(255, 87, 34, 0.4),
-        inset -15px -15px 30px rgba(255, 152, 0, 0.3);
-    animation: india-sun-glow 10s ease-in-out infinite;
+        0 0 120px 60px rgba(255, 152, 0, 0.5),
+        0 0 200px 100px rgba(255, 87, 34, 0.3);
+    animation: india-sun-pulse 8s ease-in-out infinite;
     z-index: 1;
 }
 
-@keyframes india-sun-glow {
-    0%, 100% {
-        box-shadow:
-            0 0 60px 30px rgba(255, 193, 7, 0.8),
-            0 0 120px 60px rgba(255, 152, 0, 0.6),
-            0 0 180px 90px rgba(255, 87, 34, 0.4),
-            inset -15px -15px 30px rgba(255, 152, 0, 0.3);
-    }
-    50% {
-        box-shadow:
-            0 0 80px 40px rgba(255, 193, 7, 1),
-            0 0 150px 80px rgba(255, 152, 0, 0.8),
-            0 0 220px 110px rgba(255, 87, 34, 0.6),
-            inset -15px -15px 30px rgba(255, 152, 0, 0.4);
-    }
+@keyframes india-sun-pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(1.1); opacity: 0.9; }
 }
 
-/* === FLOATING ROSE PETALS (box-shadow multiplication) === */
+/* === FLOATING ROSE PETALS === */
 .theme-indian_history .scene-background::after {
-    top: 5%;
-    left: 8%;
-    width: 6px;
-    height: 6px;
+    content: '';
+    top: 10%;
+    left: 5%;
+    width: 8px;
+    height: 8px;
     background: var(--india-petal-pink);
-    border-radius: 50%;
+    border-radius: 50% 0 50% 50%;
     box-shadow:
-        /* Upper petals */
-        80px 30px 0 0 var(--india-petal-rose),
-        150px 20px 0 1px var(--india-petal-pink),
-        220px 50px 0 0 var(--india-petal-rose),
-        300px 25px 0 1px var(--india-petal-pink),
-        380px 45px 0 0 var(--india-petal-rose),
-        450px 15px 0 1px var(--india-petal-pink),
-        520px 55px 0 0 var(--india-petal-rose),
-        600px 35px 0 1px var(--india-petal-pink),
-        /* Middle petals */
-        50px 100px 0 0 #F06292,
-        130px 120px 0 1px var(--india-petal-pink),
-        210px 90px 0 0 #F06292,
-        290px 130px 0 1px var(--india-petal-rose),
-        370px 105px 0 0 #F06292,
-        450px 140px 0 1px var(--india-petal-pink),
-        530px 95px 0 0 #F06292,
-        /* Lower petals with gold accents */
-        70px 180px 0 0 #FFD54F,
-        160px 200px 0 1px var(--india-petal-rose),
-        250px 170px 0 0 #FFD54F,
-        340px 210px 0 1px var(--india-petal-pink);
-    animation: india-petals-drift 35s ease-in-out infinite;
+        100px 20px 0 0 var(--india-petal-rose),
+        200px 40px 0 2px var(--india-petal-pink),
+        350px 15px 0 0 #F06292,
+        500px 35px 0 1px var(--india-petal-rose),
+        650px 25px 0 0 var(--india-petal-pink),
+        80px 80px 0 1px #FFD54F,
+        250px 100px 0 0 var(--india-petal-rose),
+        400px 70px 0 2px #FFD54F,
+        550px 90px 0 0 var(--india-petal-pink);
+    animation: india-petals-fall 25s linear infinite;
     z-index: 20;
 }
 
-@keyframes india-petals-drift {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 1; }
-    50% { transform: translateY(40vh) translateX(10px); opacity: 0.6; }
+@keyframes india-petals-fall {
+    0% { transform: translateY(-20px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
 }
 
-/* === FORT SILHOUETTES (border triangles + box-shadow) === */
-.theme-indian_history .elem-0-ultra {
-    bottom: 25%;
-    left: 0;
-    width: 0;
-    height: 0;
-    /* Main tower */
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 100px solid var(--india-fort-near);
-    box-shadow:
-        /* Tower cluster left */
-        80px 20px 0 0 var(--india-fort-mid),
-        140px 30px 0 0 var(--india-fort-far),
-        200px 15px 0 0 var(--india-fort-mid),
-        /* Tower cluster right */
-        450px 25px 0 0 var(--india-fort-near),
-        520px 10px 0 0 var(--india-fort-mid),
-        590px 35px 0 0 var(--india-fort-far),
-        660px 20px 0 0 var(--india-fort-mid);
-    z-index: 2;
-    opacity: 0.8;
-}
-
-/* Fort domes using border-radius */
-.theme-indian_history .elem-0-ultra::before {
-    bottom: 100px;
-    left: -20px;
-    width: 50px;
-    height: 35px;
-    background: var(--india-fort-near);
-    border-radius: 50% 50% 0 0;
-    box-shadow:
-        130px 10px 0 -5px var(--india-fort-mid),
-        250px 5px 0 0 var(--india-fort-far),
-        500px 15px 0 -3px var(--india-fort-mid),
-        620px 8px 0 0 var(--india-fort-near);
-}
-
-/* === ASHOKA PILLAR LEFT (elem-0-far) === */
-.theme-indian_history .elem-0-far {
-    bottom: 12%;
-    left: 8%;
-    width: 25px;
-    height: 140px;
-    z-index: 3;
-}
-
-/* Pillar shaft */
-.theme-indian_history .elem-0-far::before {
-    bottom: 0;
-    left: 0;
-    width: 25px;
-    height: 120px;
-    background: var(--india-fort-mid);
-    border-radius: 3px;
-    box-shadow:
-        inset 5px 0 15px rgba(255, 255, 255, 0.1),
-        inset -5px 0 15px rgba(0, 0, 0, 0.2),
-        5px 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Lion capital */
-.theme-indian_history .elem-0-far::after {
-    bottom: 120px;
-    left: -5px;
-    width: 35px;
-    height: 25px;
-    background: var(--india-fort-near);
-    border-radius: 50% 50% 10% 10%;
-    box-shadow:
-        0 -10px 0 -5px var(--india-fort-mid);
-}
-
-/* === ASHOKA PILLAR RIGHT === */
-.theme-indian_history .pine-forest {
-    bottom: 12%;
-    right: 8%;
-    width: 22px;
-    height: 120px;
-    z-index: 3;
-}
-
-.theme-indian_history .pine-forest::before {
-    bottom: 0;
-    left: 0;
-    width: 22px;
-    height: 100px;
-    background: var(--india-fort-far);
-    border-radius: 3px;
-    box-shadow:
-        inset 4px 0 12px rgba(255, 255, 255, 0.1),
-        inset -4px 0 12px rgba(0, 0, 0, 0.2);
-    opacity: 0.8;
-}
-
-.theme-indian_history .pine-forest::after {
-    bottom: 100px;
-    left: -4px;
-    width: 30px;
-    height: 20px;
-    background: var(--india-fort-mid);
-    border-radius: 50% 50% 10% 10%;
-    opacity: 0.8;
-}
-
-/* === TAJ MAHAL (elem-1) === */
+/* === TAJ MAHAL - Main Dome (elem-1) === */
 .theme-indian_history .elem-1 {
-    bottom: 10%;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 130px;
+    z-index: 10;
+}
+
+/* Main onion dome - larger and more visible */
+.theme-indian_history .elem-1::before {
+    content: '';
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 110px;
+    background: linear-gradient(135deg,
+        #FFFFFF 0%,
+        #FAFAFA 30%,
+        #F0F0F0 60%,
+        #E8E8E8 100%);
+    border-radius: 50% 50% 48% 48% / 65% 65% 35% 35%;
+    box-shadow:
+        /* Inner highlights */
+        inset -20px -15px 40px rgba(0, 0, 0, 0.12),
+        inset 15px 15px 30px rgba(255, 255, 255, 0.9),
+        /* Strong golden glow */
+        0 0 40px rgba(255, 215, 0, 0.6),
+        0 0 80px rgba(255, 193, 7, 0.4),
+        0 0 120px rgba(255, 152, 0, 0.25),
+        /* Ground shadow */
+        0 15px 50px rgba(0, 0, 0, 0.35),
+        /* Silhouette definition */
+        0 0 3px rgba(0, 0, 0, 0.15);
+    animation: india-dome-glow 5s ease-in-out infinite;
+}
+
+/* Golden finial/spire - taller and brighter */
+.theme-indian_history .elem-1::after {
+    content: '';
+    bottom: 108px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 38px;
+    background: linear-gradient(to top, #B8860B, #DAA520, #FFD700, #FFF8E1);
+    border-radius: 50% 50% 25% 25% / 75% 75% 25% 25%;
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.9),
+        0 0 40px rgba(218, 165, 32, 0.6),
+        0 0 60px rgba(255, 193, 7, 0.4);
+    animation: india-finial-glow 3s ease-in-out infinite;
+}
+
+@keyframes india-dome-glow {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 20px rgba(255, 193, 7, 0.4)); }
+    50% { filter: brightness(1.1) drop-shadow(0 0 35px rgba(255, 193, 7, 0.6)); }
+}
+
+@keyframes india-finial-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 40px rgba(218, 165, 32, 0.6), 0 0 60px rgba(255, 193, 7, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(218, 165, 32, 0.8), 0 0 90px rgba(255, 193, 7, 0.6); }
+}
+
+/* === TAJ MAHAL BASE & MINARETS (elem-1-fg) === */
+.theme-indian_history .elem-1-fg {
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 70px;
+    z-index: 9;
+}
+
+/* Main platform/base */
+.theme-indian_history .elem-1-fg::before {
+    content: '';
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 180px;
-    height: 140px;
-    z-index: 10;
-    animation: india-taj-presence 12s ease-in-out infinite;
+    height: 50px;
+    background: linear-gradient(180deg, #FAFAFA 0%, #E0E0E0 100%);
+    border-radius: 8px 8px 0 0;
+    box-shadow:
+        inset 0 5px 15px rgba(255, 255, 255, 0.5),
+        inset 0 -10px 20px rgba(0, 0, 0, 0.1),
+        0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Main dome */
-.theme-indian_history .elem-1::before {
-    bottom: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 65px;
+/* Minarets */
+.theme-indian_history .elem-1-fg::after {
+    content: '';
+    bottom: 50px;
+    left: 5px;
+    width: 14px;
+    height: 90px;
+    background: linear-gradient(90deg, #FFFFFF 0%, #E0E0E0 50%, #BDBDBD 100%);
+    border-radius: 4px 4px 0 0;
+    box-shadow:
+        166px 0 0 0 #FFFFFF,
+        166px 0 0 0 linear-gradient(90deg, #FFFFFF 0%, #E0E0E0 50%, #BDBDBD 100%),
+        /* Minaret tops */
+        7px -15px 0 -3px #F5F5F5,
+        173px -15px 0 -3px #F5F5F5,
+        /* Glow */
+        0 0 20px rgba(255, 193, 7, 0.3),
+        166px 0 20px rgba(255, 193, 7, 0.3);
+}
+
+/* === RED FORT SILHOUETTE LEFT (elem-0-ultra) === */
+.theme-indian_history .elem-0-ultra {
+    bottom: 8%;
+    left: 0;
+    width: 200px;
+    height: 120px;
+    z-index: 3;
+}
+
+/* Fort wall with battlements */
+.theme-indian_history .elem-0-ultra::before {
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 180px;
     height: 80px;
-    background: var(--india-marble-light);
-    border-radius: 50% 50% 10% 10% / 65% 65% 10% 10%;
+    background: linear-gradient(180deg,
+        rgba(121, 85, 72, 0.9) 0%,
+        rgba(93, 64, 55, 0.95) 100%);
+    clip-path: polygon(
+        0% 100%,
+        0% 40%,
+        5% 40%, 5% 30%, 10% 30%, 10% 40%,
+        15% 40%, 15% 25%, 20% 25%, 20% 40%,
+        25% 40%, 25% 30%, 30% 30%, 30% 40%,
+        35% 40%, 35% 20%, 40% 20%, 40% 40%,
+        45% 40%, 45% 30%, 50% 30%, 50% 40%,
+        55% 40%, 55% 25%, 60% 25%, 60% 40%,
+        65% 40%, 65% 30%, 70% 30%, 70% 40%,
+        100% 40%,
+        100% 100%
+    );
     box-shadow:
-        /* Dome shading */
-        inset -15px -10px 30px var(--india-marble-dark),
-        inset 10px 10px 20px rgba(255, 255, 255, 0.5),
-        /* Golden glow from sunset */
-        0 0 50px rgba(255, 193, 7, 0.6),
-        0 0 100px rgba(255, 152, 0, 0.4),
-        /* Shadow */
-        0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: india-taj-glow 10s ease-in-out infinite;
+        inset 5px 0 20px rgba(0, 0, 0, 0.3),
+        5px 0 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Golden finial (spire) using border triangle */
-.theme-indian_history .elem-1::after {
-    bottom: 123px;
+/* Fort dome/tower */
+.theme-indian_history .elem-0-ultra::after {
+    content: '';
+    bottom: 80px;
+    left: 60px;
+    width: 50px;
+    height: 45px;
+    background: rgba(93, 64, 55, 0.95);
+    border-radius: 50% 50% 10% 10% / 70% 70% 10% 10%;
+    box-shadow:
+        -80px -10px 0 -5px rgba(78, 52, 46, 0.8),
+        100px 5px 0 -8px rgba(62, 39, 35, 0.7);
+}
+
+/* === QUTUB MINAR (elem-0-far) === */
+.theme-indian_history .elem-0-far {
+    bottom: 8%;
+    left: 5%;
+    width: 35px;
+    height: 160px;
+    z-index: 5;
+}
+
+/* Minar tower - tapered */
+.theme-indian_history .elem-0-far::before {
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 150px;
+    background: linear-gradient(90deg,
+        #8D6E63 0%,
+        #A1887F 30%,
+        #8D6E63 70%,
+        #6D4C41 100%);
+    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+    box-shadow:
+        inset 5px 0 15px rgba(255, 255, 255, 0.2),
+        inset -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Minar balconies */
+.theme-indian_history .elem-0-far::after {
+    content: '';
+    bottom: 120px;
+    left: -5px;
+    width: 45px;
+    height: 8px;
+    background: #6D4C41;
+    border-radius: 0 0 50% 50%;
+    box-shadow:
+        0 35px 0 0 #6D4C41,
+        0 70px 0 0 #6D4C41,
+        0 100px 0 2px #6D4C41;
+}
+
+/* === PEACOCK (elem-2) === */
+/* Simplified peacock with clear fan tail and body */
+.theme-indian_history .elem-2 {
+    top: 5%;
+    right: 3%;
+    width: 120px;
+    height: 140px;
+    z-index: 12;
+    animation: india-peacock-dance 8s ease-in-out infinite;
+}
+
+/* Tail fan - multiple feather arcs using box-shadow */
+.theme-indian_history .elem-2::before {
+    content: '';
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 25px solid var(--india-gold);
+    width: 20px;
+    height: 20px;
+    background: #1B5E20;
+    border-radius: 50%;
     box-shadow:
-        0 0 20px var(--india-gold),
-        0 0 40px rgba(218, 165, 32, 0.6);
-    animation: india-finial-shine 8s ease-in-out infinite;
+        /* Outer feather ring - green with blue tips */
+        -50px -20px 0 8px #2E7D32,
+        -40px -40px 0 8px #388E3C,
+        -20px -55px 0 8px #43A047,
+        0px -60px 0 8px #4CAF50,
+        20px -55px 0 8px #43A047,
+        40px -40px 0 8px #388E3C,
+        50px -20px 0 8px #2E7D32,
+        /* Eye spots on feathers - cyan/purple */
+        -50px -20px 0 3px #00BCD4,
+        -40px -40px 0 3px #00ACC1,
+        -20px -55px 0 3px #00BCD4,
+        0px -60px 0 3px #00ACC1,
+        20px -55px 0 3px #00BCD4,
+        40px -40px 0 3px #00ACC1,
+        50px -20px 0 3px #00BCD4,
+        /* Inner eye - purple/gold */
+        -50px -20px 0 0 #7B1FA2,
+        -40px -40px 0 0 #8E24AA,
+        -20px -55px 0 0 #7B1FA2,
+        0px -60px 0 0 #8E24AA,
+        20px -55px 0 0 #7B1FA2,
+        40px -40px 0 0 #8E24AA,
+        50px -20px 0 0 #7B1FA2,
+        /* Middle feather ring */
+        -35px -10px 0 6px #66BB6A,
+        -28px -30px 0 6px #81C784,
+        -10px -42px 0 6px #A5D6A7,
+        10px -42px 0 6px #A5D6A7,
+        28px -30px 0 6px #81C784,
+        35px -10px 0 6px #66BB6A,
+        /* Inner decorative ring */
+        -18px -5px 0 4px #4CAF50,
+        -12px -20px 0 4px #66BB6A,
+        0px -28px 0 4px #81C784,
+        12px -20px 0 4px #66BB6A,
+        18px -5px 0 4px #4CAF50,
+        /* Glow */
+        0 -30px 30px 10px rgba(0, 188, 212, 0.3);
+    animation: india-tail-shimmer 6s ease-in-out infinite;
 }
 
-@keyframes india-taj-presence {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-8px); }
-}
-
-@keyframes india-taj-glow {
-    0%, 100% {
-        box-shadow:
-            inset -15px -10px 30px var(--india-marble-dark),
-            inset 10px 10px 20px rgba(255, 255, 255, 0.5),
-            0 0 50px rgba(255, 193, 7, 0.6),
-            0 0 100px rgba(255, 152, 0, 0.4),
-            0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    50% {
-        box-shadow:
-            inset -15px -10px 30px var(--india-marble-dark),
-            inset 10px 10px 20px rgba(255, 255, 255, 0.5),
-            0 0 80px rgba(255, 193, 7, 0.9),
-            0 0 150px rgba(255, 152, 0, 0.7),
-            0 15px 40px rgba(0, 0, 0, 0.4);
-    }
-}
-
-@keyframes india-finial-shine {
-    0%, 90%, 100% {
-        box-shadow: 0 0 20px var(--india-gold), 0 0 40px rgba(218, 165, 32, 0.6);
-    }
-    95% {
-        box-shadow: 0 0 40px var(--india-gold-bright), 0 0 60px rgba(218, 165, 32, 0.9);
-    }
-}
-
-/* === TAJ MAHAL BASE (elem-1-fg) === */
-.theme-indian_history .elem-1-fg {
-    bottom: 10%;
+/* Peacock body, neck and head */
+.theme-indian_history .elem-2::after {
+    content: '';
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 160px;
+    width: 30px;
+    height: 40px;
+    background: linear-gradient(180deg, #0097A7 0%, #00838F 100%);
+    border-radius: 50% 50% 45% 45%;
+    box-shadow:
+        /* Elegant curved neck */
+        0px -25px 0 -8px #00ACC1,
+        2px -35px 0 -10px #00BCD4,
+        /* Head */
+        4px -48px 0 -12px #00BCD4,
+        /* Eye */
+        6px -48px 0 -14px #FFF,
+        7px -48px 0 -15px #212121,
+        /* Crown feathers - 3 plumes */
+        0px -58px 0 -14px #1B5E20,
+        4px -62px 0 -14px #2E7D32,
+        8px -60px 0 -14px #1B5E20,
+        /* Gold tips on crown */
+        0px -60px 0 -15px #FFD700,
+        4px -64px 0 -15px #FFC107,
+        8px -62px 0 -15px #FFD700,
+        /* Orange beak pointing right */
+        12px -46px 0 -14px #FF6F00,
+        /* Feet */
+        -5px 40px 0 -12px #5D4037,
+        5px 40px 0 -12px #5D4037;
+}
+
+@keyframes india-peacock-dance {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes india-tail-shimmer {
+    0%, 100% { filter: brightness(1) saturate(1.1); }
+    50% { filter: brightness(1.2) saturate(1.3); }
+}
+
+/* === LOTUS FLOWER (elem-3) === */
+.theme-indian_history .elem-3 {
+    bottom: 5%;
+    right: 20%;
+    width: 70px;
     height: 50px;
     z-index: 9;
 }
 
-/* Base platform */
-.theme-indian_history .elem-1-fg::before {
-    bottom: 0;
-    left: 0;
-    width: 160px;
-    height: 45px;
-    background: var(--india-marble-mid);
-    border-radius: 4px 4px 0 0;
-    box-shadow:
-        inset 0 5px 15px rgba(255, 255, 255, 0.3),
-        inset 0 -10px 20px var(--india-marble-dark),
-        0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Minarets using box-shadow */
-.theme-indian_history .elem-1-fg::after {
-    bottom: 45px;
-    left: 15px;
-    width: 12px;
-    height: 80px;
-    background: var(--india-marble-light);
-    border-radius: 3px 3px 0 0;
-    box-shadow:
-        /* Right minaret */
-        118px 0 0 0 var(--india-marble-light),
-        /* Minaret shadows */
-        inset -3px 0 8px var(--india-marble-dark),
-        118px 0 0 0 var(--india-marble-light),
-        /* Minaret domes */
-        6px -20px 0 -4px var(--india-marble-mid),
-        124px -20px 0 -4px var(--india-marble-mid),
-        /* Glow */
-        0 0 20px rgba(255, 193, 7, 0.4),
-        118px 0 20px rgba(255, 193, 7, 0.4);
-    animation: india-minaret-sway 11s ease-in-out infinite;
-}
-
-@keyframes india-minaret-sway {
-    0%, 100% { transform: rotate(0deg); }
-    33% { transform: rotate(-0.5deg); }
-    66% { transform: rotate(0.5deg); }
-}
-
-/* === PEACOCK (elem-2) === */
-.theme-indian_history .elem-2 {
-    top: 30%;
-    right: 10%;
-    width: 90px;
-    height: 110px;
-    z-index: 12;
-    animation: india-peacock-strut 14s ease-in-out infinite;
-}
-
-/* Peacock body */
-.theme-indian_history .elem-2::before {
-    bottom: 25px;
-    left: 30px;
-    width: 30px;
-    height: 45px;
-    background: var(--india-peacock-body);
-    border-radius: 40% 40% 60% 60% / 30% 30% 70% 70%;
-    box-shadow:
-        /* Head */
-        5px -35px 0 -10px var(--india-peacock-head),
-        /* Eye */
-        8px -38px 0 -13px #000000,
-        /* Beak */
-        15px -35px 0 -13px #FF9800,
-        /* Body shading */
-        inset -5px 0 10px rgba(0, 0, 0, 0.3),
-        0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* Peacock tail fan (feathers using box-shadow) */
-.theme-indian_history .elem-2::after {
-    bottom: 35px;
-    left: 0;
-    width: 70px;
-    height: 80px;
-    background: var(--india-peacock-feather);
-    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-    box-shadow:
-        /* Feather eye patterns */
-        10px 15px 0 -30px var(--india-peacock-eye),
-        10px 15px 0 -26px var(--india-peacock-head),
-        10px 15px 0 -22px #1B5E20,
-        35px 10px 0 -30px var(--india-peacock-eye),
-        35px 10px 0 -26px var(--india-peacock-head),
-        35px 10px 0 -22px #1B5E20,
-        60px 18px 0 -30px var(--india-peacock-eye),
-        60px 18px 0 -26px var(--india-peacock-head),
-        60px 18px 0 -22px #1B5E20,
-        /* Additional eyes */
-        22px 40px 0 -32px var(--india-peacock-eye),
-        22px 40px 0 -28px var(--india-peacock-head),
-        48px 42px 0 -32px var(--india-peacock-eye),
-        48px 42px 0 -28px var(--india-peacock-head),
-        /* Outer glow */
-        0 0 30px rgba(156, 39, 176, 0.6),
-        0 0 50px rgba(0, 188, 212, 0.4);
-    animation: india-tail-fan 10s ease-in-out infinite;
-}
-
-@keyframes india-peacock-strut {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    25% { transform: translateX(-5px) rotate(-3deg); }
-    75% { transform: translateX(5px) rotate(3deg); }
-}
-
-@keyframes india-tail-fan {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.15) rotate(5deg); }
-}
-
-/* === LOTUS FLOWERS (elem-3) === */
-.theme-indian_history .elem-3 {
-    bottom: 8%;
-    right: 22%;
-    width: 55px;
-    height: 55px;
-    z-index: 9;
-}
-
-/* Main lotus */
+/* Lotus petals */
 .theme-indian_history .elem-3::before {
+    content: '';
     bottom: 0;
-    left: 0;
-    width: 55px;
-    height: 55px;
-    background: var(--india-lotus-center);
-    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(to top, #F8BBD0, #F48FB1);
+    border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
     box-shadow:
-        /* Center */
-        0 0 0 4px #F9A825,
-        /* Inner petals */
-        0 20px 0 -20px var(--india-lotus-inner),
-        -15px 15px 0 -18px var(--india-lotus-inner),
-        15px 15px 0 -18px var(--india-lotus-inner),
-        /* Middle petals */
-        0 -18px 0 -15px var(--india-lotus-mid),
-        -20px 0 0 -15px var(--india-lotus-mid),
-        20px 0 0 -15px var(--india-lotus-mid),
-        -15px -15px 0 -16px var(--india-lotus-mid),
-        15px -15px 0 -16px var(--india-lotus-mid),
-        /* Outer petals */
-        0 -25px 0 -12px var(--india-lotus-outer),
-        -25px 0 0 -12px var(--india-lotus-outer),
-        25px 0 0 -12px var(--india-lotus-outer),
-        -18px -18px 0 -13px var(--india-lotus-outer),
-        18px -18px 0 -13px var(--india-lotus-outer),
+        /* Petal ring 1 */
+        -18px 5px 0 -2px #EC407A,
+        18px 5px 0 -2px #EC407A,
+        -12px -5px 0 -3px #F06292,
+        12px -5px 0 -3px #F06292,
+        /* Petal ring 2 */
+        -25px 10px 0 -4px #F8BBD0,
+        25px 10px 0 -4px #F8BBD0,
+        -20px 0px 0 -5px #F48FB1,
+        20px 0px 0 -5px #F48FB1,
         /* Glow */
-        0 0 30px rgba(236, 64, 122, 0.6);
-    animation: india-lotus-bloom 9s ease-in-out infinite;
+        0 0 30px rgba(236, 64, 122, 0.5);
+    animation: india-lotus-bloom 6s ease-in-out infinite;
 }
 
-/* Second smaller lotus */
+/* Lotus center */
 .theme-indian_history .elem-3::after {
-    top: -45px;
-    left: -40px;
-    width: 35px;
-    height: 35px;
-    background: var(--india-lotus-center);
+    content: '';
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, #FDD835 0%, #F9A825 100%);
     border-radius: 50%;
     box-shadow:
-        0 0 0 3px #F9A825,
-        0 12px 0 -13px var(--india-lotus-inner),
-        -10px 10px 0 -12px var(--india-lotus-inner),
-        10px 10px 0 -12px var(--india-lotus-inner),
-        0 -12px 0 -10px var(--india-lotus-mid),
-        -13px 0 0 -10px var(--india-lotus-mid),
-        13px 0 0 -10px var(--india-lotus-mid),
-        0 0 20px rgba(236, 64, 122, 0.5);
-    animation: india-lotus-bloom 9s ease-in-out infinite 2s;
+        0 0 10px rgba(253, 216, 53, 0.8);
 }
 
 @keyframes india-lotus-bloom {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.15) rotate(8deg); }
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
 }
 
 /* === DIYA OIL LAMP (elem-4) === */
 .theme-indian_history .elem-4 {
-    bottom: 16%;
-    left: 18%;
-    width: 40px;
-    height: 45px;
+    bottom: 12%;
+    left: 22%;
+    width: 50px;
+    height: 60px;
     z-index: 11;
-    animation: india-diya-rock 6s ease-in-out infinite;
 }
 
-/* Diya clay base */
+/* Clay lamp base */
 .theme-indian_history .elem-4::before {
+    content: '';
     bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 18px;
-    background: var(--india-clay);
-    border-radius: 50% 50% 45% 45% / 65% 65% 40% 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 20px;
+    background: linear-gradient(180deg, #D84315 0%, #BF360C 50%, #8D6E63 100%);
+    border-radius: 50% 50% 40% 40% / 100% 100% 40% 40%;
     box-shadow:
-        inset 5px 5px 10px rgba(255, 138, 101, 0.3),
-        inset -5px -5px 10px rgba(0, 0, 0, 0.3),
+        inset 5px 3px 10px rgba(255, 138, 101, 0.4),
+        inset -5px -3px 10px rgba(0, 0, 0, 0.3),
         0 5px 15px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(255, 152, 0, 0.4);
+        0 0 40px rgba(255, 152, 0, 0.4);
 }
 
 /* Flame */
 .theme-indian_history .elem-4::after {
-    bottom: 16px;
+    content: '';
+    bottom: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 28px solid var(--india-flame-mid);
-    border-radius: 50%;
+    width: 12px;
+    height: 35px;
+    background: linear-gradient(to top,
+        #FF5722 0%,
+        #FF9800 30%,
+        #FFEB3B 60%,
+        #FFFDE7 90%,
+        transparent 100%);
+    border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
     box-shadow:
-        /* Inner flame layers */
-        0 5px 0 -2px var(--india-flame-inner),
-        0 8px 0 -4px var(--india-flame-core),
-        /* Outer glow */
-        0 0 25px rgba(255, 193, 7, 0.9),
-        0 0 50px rgba(255, 152, 0, 0.7),
-        0 0 80px rgba(255, 87, 34, 0.5);
-    animation: india-flame-dance 1.5s ease-in-out infinite;
+        0 0 20px rgba(255, 193, 7, 0.9),
+        0 0 40px rgba(255, 152, 0, 0.6),
+        0 0 60px rgba(255, 87, 34, 0.4);
+    animation: india-flame-flicker 0.8s ease-in-out infinite alternate;
 }
 
-@keyframes india-diya-rock {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-2deg); }
-    75% { transform: rotate(2deg); }
-}
-
-@keyframes india-flame-dance {
-    0%, 100% { transform: translateX(-50%) skewX(-5deg) scaleY(1); }
-    25% { transform: translateX(-50%) skewX(5deg) scaleY(1.1); }
-    50% { transform: translateX(-50%) skewX(-3deg) scaleY(0.95); }
-    75% { transform: translateX(-50%) skewX(4deg) scaleY(1.05); }
+@keyframes india-flame-flicker {
+    0% { transform: translateX(-50%) scaleX(1) scaleY(1); }
+    25% { transform: translateX(-48%) scaleX(0.95) scaleY(1.05); }
+    50% { transform: translateX(-52%) scaleX(1.05) scaleY(0.95); }
+    75% { transform: translateX(-50%) scaleX(0.98) scaleY(1.02); }
+    100% { transform: translateX(-50%) scaleX(1.02) scaleY(0.98); }
 }
 
 /* === TEMPLE BELL (elem-5) === */
 .theme-indian_history .elem-5 {
-    top: 10%;
-    left: 15%;
-    width: 28px;
-    height: 38px;
+    top: 8%;
+    left: 12%;
+    width: 35px;
+    height: 50px;
     z-index: 13;
     transform-origin: 50% 0%;
-    animation: india-bell-swing 7s ease-in-out infinite;
+    animation: india-bell-swing 5s ease-in-out infinite;
 }
 
 /* Bell body */
 .theme-indian_history .elem-5::before {
-    top: 0;
+    content: '';
+    top: 10px;
     left: 0;
-    width: 28px;
-    height: 35px;
-    background: var(--india-bell-gold);
-    border-radius: 45% 45% 50% 50% / 35% 35% 65% 65%;
+    width: 35px;
+    height: 40px;
+    background: linear-gradient(135deg,
+        #FFD54F 0%,
+        #DAA520 30%,
+        #B8860B 70%,
+        #8B7500 100%);
+    border-radius: 40% 40% 50% 50% / 30% 30% 70% 70%;
     box-shadow:
-        /* Metallic shading */
-        inset 8px 0 15px rgba(255, 215, 0, 0.4),
-        inset -8px 0 15px rgba(139, 101, 8, 0.4),
-        /* Glow */
+        inset 8px -5px 15px rgba(255, 235, 59, 0.5),
+        inset -8px 5px 15px rgba(139, 101, 8, 0.5),
         0 0 25px rgba(218, 165, 32, 0.6),
-        0 4px 12px rgba(0, 0, 0, 0.4);
-    animation: india-bell-shimmer 5s ease-in-out infinite;
+        0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* Bell chain and clapper */
 .theme-indian_history .elem-5::after {
-    top: -12px;
+    content: '';
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
-    height: 12px;
-    background: #8D6E63;
+    width: 3px;
+    height: 10px;
+    background: #5D4037;
+    border-radius: 2px;
     box-shadow:
-        /* Clapper */
-        0 45px 0 2px #5D4037,
-        0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: india-clapper-swing 7s ease-in-out infinite;
+        0 48px 0 3px #5D4037;
 }
 
 @keyframes india-bell-swing {
     0%, 100% { transform: rotate(0deg); }
-    12% { transform: rotate(-18deg); }
-    37% { transform: rotate(18deg); }
-    62% { transform: rotate(-12deg); }
-    87% { transform: rotate(8deg); }
-}
-
-@keyframes india-bell-shimmer {
-    0%, 100% {
-        box-shadow:
-            inset 8px 0 15px rgba(255, 215, 0, 0.4),
-            inset -8px 0 15px rgba(139, 101, 8, 0.4),
-            0 0 25px rgba(218, 165, 32, 0.6),
-            0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-    50% {
-        box-shadow:
-            inset 8px 0 15px rgba(255, 215, 0, 0.6),
-            inset -8px 0 15px rgba(139, 101, 8, 0.3),
-            0 0 45px rgba(218, 165, 32, 0.9),
-            0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-}
-
-@keyframes india-clapper-swing {
-    0%, 100% { transform: translateX(-50%) rotate(0deg); }
-    12% { transform: translateX(-50%) rotate(25deg); }
-    37% { transform: translateX(-50%) rotate(-25deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
 }
 
 /* === ASHOKA CHAKRA (elem-6) === */
 .theme-indian_history .elem-6 {
-    top: 15%;
-    right: 12%;
-    width: 100px;
-    height: 100px;
-    z-index: 1;
-    animation: india-chakra-rotate 120s linear infinite;
+    top: 20%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+    animation: india-chakra-spin 60s linear infinite;
 }
 
-/* Chakra outer ring */
+/* Chakra wheel */
 .theme-indian_history .elem-6::before {
+    content: '';
     top: 0;
     left: 0;
-    width: 100px;
-    height: 100px;
-    border: 3px solid rgba(0, 56, 168, 0.15);
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgba(0, 56, 168, 0.3);
     border-radius: 50%;
     box-shadow:
-        inset 0 0 0 8px transparent,
-        inset 0 0 0 10px rgba(0, 56, 168, 0.08);
+        inset 0 0 0 12px transparent,
+        inset 0 0 0 14px rgba(0, 56, 168, 0.2);
 }
 
-/* Chakra center hub */
+/* Chakra center with spokes illusion */
 .theme-indian_history .elem-6::after {
+    content: '';
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background: rgba(0, 56, 168, 0.12);
+    background: rgba(0, 56, 168, 0.25);
     border-radius: 50%;
-    border: 2px solid rgba(0, 56, 168, 0.1);
+    box-shadow:
+        /* Spoke dots around */
+        0 -30px 0 -8px rgba(0, 56, 168, 0.25),
+        21px -21px 0 -8px rgba(0, 56, 168, 0.25),
+        30px 0 0 -8px rgba(0, 56, 168, 0.25),
+        21px 21px 0 -8px rgba(0, 56, 168, 0.25),
+        0 30px 0 -8px rgba(0, 56, 168, 0.25),
+        -21px 21px 0 -8px rgba(0, 56, 168, 0.25),
+        -30px 0 0 -8px rgba(0, 56, 168, 0.25),
+        -21px -21px 0 -8px rgba(0, 56, 168, 0.25);
 }
 
-@keyframes india-chakra-rotate {
-    0% { transform: rotate(0deg); opacity: 0.4; }
-    50% { opacity: 0.5; }
-    100% { transform: rotate(360deg); opacity: 0.4; }
+@keyframes india-chakra-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* === FLYING BIRDS (elem-7) using border shapes === */
+/* === FLYING BIRDS (elem-7) === */
 .theme-indian_history .elem-7 {
-    top: 20%;
-    left: 20%;
-    width: 0;
-    height: 0;
+    top: 25%;
+    left: 10%;
+    width: 20px;
+    height: 10px;
     z-index: 8;
-    animation: india-birds-fly 20s linear infinite;
+    animation: india-birds-soar 18s linear infinite;
 }
 
-/* Birds using border triangle technique */
+/* Bird shapes */
 .theme-indian_history .elem-7::before {
+    content: '';
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 5px solid rgba(74, 20, 140, 0.6);
+    width: 20px;
+    height: 8px;
+    background: transparent;
+    border-top: 3px solid rgba(62, 39, 35, 0.6);
+    border-radius: 50% 50% 0 0;
     box-shadow:
-        30px 15px 0 0 rgba(74, 20, 140, 0.5),
-        55px 8px 0 0 rgba(74, 20, 140, 0.55),
-        80px 20px 0 0 rgba(74, 20, 140, 0.45);
+        40px 15px 0 0 rgba(62, 39, 35, 0.5),
+        80px 5px 0 0 rgba(62, 39, 35, 0.55),
+        120px 20px 0 0 rgba(62, 39, 35, 0.45);
 }
 
 .theme-indian_history .elem-7::after {
-    top: 40px;
-    left: 25px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 4px solid rgba(74, 20, 140, 0.5);
+    content: '';
+    top: 30px;
+    left: 20px;
+    width: 15px;
+    height: 6px;
+    background: transparent;
+    border-top: 2px solid rgba(62, 39, 35, 0.5);
+    border-radius: 50% 50% 0 0;
     box-shadow:
-        25px 12px 0 0 rgba(74, 20, 140, 0.4),
-        50px 5px 0 0 rgba(74, 20, 140, 0.45);
+        35px 10px 0 0 rgba(62, 39, 35, 0.4),
+        70px 5px 0 0 rgba(62, 39, 35, 0.45);
 }
 
-@keyframes india-birds-fly {
-    0% { transform: translateX(-100px); }
-    100% { transform: translateX(calc(100vw + 100px)); }
+@keyframes india-birds-soar {
+    0% { transform: translateX(-150px) translateY(0); }
+    50% { transform: translateX(50vw) translateY(-30px); }
+    100% { transform: translateX(calc(100vw + 150px)) translateY(0); }
 }
 
-/* === ANCIENT SCROLL (elem-8) === */
-.theme-indian_history .elem-8 {
-    bottom: 6%;
-    right: 5%;
-    width: 120px;
+/* === DISTANT MOUNTAINS/HILLS (pine-forest) === */
+.theme-indian_history .pine-forest {
+    bottom: 8%;
+    right: 0;
+    width: 250px;
+    height: 100px;
+    z-index: 2;
+}
+
+.theme-indian_history .pine-forest::before {
+    content: '';
+    bottom: 0;
+    right: 0;
+    width: 250px;
     height: 80px;
-    z-index: 3;
-    transform: rotate(-8deg);
-    animation: india-scroll-float 18s ease-in-out infinite;
-}
-
-.theme-indian_history .elem-8::before {
-    top: 0;
-    left: 0;
-    width: 120px;
-    height: 80px;
-    background: rgba(245, 222, 179, 0.3);
-    border-radius: 4px;
-    box-shadow:
-        inset 0 0 30px rgba(101, 67, 33, 0.15),
-        0 8px 25px rgba(0, 0, 0, 0.3),
-        /* Text lines simulation */
-        inset 10px 10px 0 -8px rgba(139, 90, 43, 0.2),
-        inset 10px 25px 0 -8px rgba(139, 90, 43, 0.15),
-        inset 10px 40px 0 -8px rgba(139, 90, 43, 0.2),
-        inset 10px 55px 0 -8px rgba(139, 90, 43, 0.15);
-    opacity: 0.5;
-}
-
-@keyframes india-scroll-float {
-    0%, 100% { transform: rotate(-8deg) translateY(0); opacity: 0.5; }
-    50% { transform: rotate(-6deg) translateY(-10px); opacity: 0.65; }
+    background: linear-gradient(180deg,
+        rgba(78, 52, 46, 0.6) 0%,
+        rgba(62, 39, 35, 0.8) 100%);
+    clip-path: polygon(
+        0% 100%,
+        0% 60%,
+        15% 40%,
+        30% 55%,
+        45% 30%,
+        60% 50%,
+        75% 25%,
+        90% 45%,
+        100% 35%,
+        100% 100%
+    );
 }
 
 /* === WATER REFLECTION (grass) === */
@@ -786,29 +738,34 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 12%;
+    height: 10%;
     z-index: 8;
     background: linear-gradient(180deg,
-        rgba(33, 150, 243, 0.3) 0%,
-        rgba(33, 150, 243, 0.2) 50%,
-        rgba(33, 150, 243, 0.1) 100%);
+        rgba(33, 150, 243, 0.25) 0%,
+        rgba(33, 150, 243, 0.15) 50%,
+        rgba(33, 150, 243, 0.08) 100%);
 }
 
+/* Taj reflection shimmer */
 .theme-indian_history .grass::before {
-    top: 0;
+    content: '';
+    top: 5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 160px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.15);
+    width: 120px;
+    height: 40px;
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
     border-radius: 50%;
-    filter: blur(5px);
-    animation: india-reflection-ripple 8s ease-in-out infinite;
+    filter: blur(3px);
+    animation: india-water-shimmer 4s ease-in-out infinite;
 }
 
-@keyframes india-reflection-ripple {
-    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.6; }
-    50% { transform: translateX(-50%) scaleX(1.1); opacity: 0.4; }
+@keyframes india-water-shimmer {
+    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.8; }
+    50% { transform: translateX(-50%) scaleX(1.2); opacity: 0.5; }
 }
 
 /* === DEPTH FOG === */
@@ -816,40 +773,54 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 25%;
+    height: 20%;
     background: linear-gradient(0deg,
-        rgba(255, 152, 0, 0.15) 0%,
-        rgba(255, 193, 7, 0.08) 50%,
+        rgba(255, 152, 0, 0.12) 0%,
+        rgba(255, 193, 7, 0.06) 50%,
         transparent 100%);
     z-index: 1;
     pointer-events: none;
 }
 
-/* === SCENE PARTICLES (incense smoke) === */
+/* === INCENSE SMOKE (scene-particles) === */
 .theme-indian_history .scene-particles {
-    bottom: 20%;
-    left: 20%;
-    width: 80px;
+    bottom: 25%;
+    left: 23%;
+    width: 30px;
     height: 80px;
     z-index: 15;
     pointer-events: none;
 }
 
 .theme-indian_history .scene-particles::before {
+    content: '';
     bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
-    filter: blur(8px);
-    animation: india-smoke-rise 15s ease-in-out infinite;
+    filter: blur(5px);
+    animation: india-incense-rise 8s ease-out infinite;
 }
 
-@keyframes india-smoke-rise {
-    0% { transform: translateY(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.5; }
-    100% { transform: translateY(-150px) translateX(30px) scale(1.5); opacity: 0; }
+.theme-indian_history .scene-particles::after {
+    content: '';
+    bottom: 20px;
+    left: 30%;
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(4px);
+    animation: india-incense-rise 8s ease-out infinite 2s;
+}
+
+@keyframes india-incense-rise {
+    0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0.6; }
+    50% { opacity: 0.4; }
+    100% { transform: translateY(-120px) translateX(20px) scale(2); opacity: 0; }
 }
 
 /* === MASCOT ANIMATIONS === */
@@ -858,66 +829,15 @@
 .theme-indian_history .owl-character.happy,
 .theme-indian_history .cat-character.happy,
 .theme-indian_history .robot-character.happy {
-    animation: india-happy-celebration 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: india-happy-namaste 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes india-happy-celebration {
-    0% {
-        transform: scale(1) translateY(0) rotate(0deg);
-        filter: brightness(1);
-    }
-    20% {
-        transform: scale(1.15) translateY(-20px) rotate(-10deg);
-        filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 193, 7, 0.6));
-    }
-    40% {
-        transform: scale(1.22) translateY(-35px) rotate(10deg);
-        filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 193, 7, 0.8));
-    }
-    60% {
-        transform: scale(1.18) translateY(-28px) rotate(-6deg);
-        filter: brightness(1.25) drop-shadow(0 0 25px rgba(255, 193, 7, 0.7));
-    }
-    80% {
-        transform: scale(1.1) translateY(-15px) rotate(4deg);
-        filter: brightness(1.15) drop-shadow(0 0 15px rgba(255, 193, 7, 0.5));
-    }
-    100% {
-        transform: scale(1) translateY(0) rotate(0deg);
-        filter: brightness(1);
-    }
-}
-
-.theme-indian_history .worm-character.excited,
-.theme-indian_history .bunny-character.excited {
-    animation: india-victory-dance 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes india-victory-dance {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        filter: hue-rotate(0deg) brightness(1);
-    }
-    15% {
-        transform: translateY(-22px) rotate(-20deg) scale(1.12);
-        filter: hue-rotate(10deg) brightness(1.2);
-    }
-    30% {
-        transform: translateY(-38px) rotate(20deg) scale(1.18);
-        filter: hue-rotate(-10deg) brightness(1.3);
-    }
-    45% {
-        transform: translateY(-30px) rotate(-15deg) scale(1.15);
-        filter: hue-rotate(8deg) brightness(1.25);
-    }
-    60% {
-        transform: translateY(-34px) rotate(15deg) scale(1.16);
-        filter: hue-rotate(-8deg) brightness(1.28);
-    }
-    75% {
-        transform: translateY(-22px) rotate(-10deg) scale(1.1);
-        filter: hue-rotate(5deg) brightness(1.15);
-    }
+@keyframes india-happy-namaste {
+    0% { transform: scale(1) translateY(0); filter: brightness(1); }
+    30% { transform: scale(1.15) translateY(-25px); filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 193, 7, 0.6)); }
+    50% { transform: scale(1.2) translateY(-30px); filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 193, 7, 0.8)); }
+    70% { transform: scale(1.15) translateY(-20px); filter: brightness(1.2); }
+    100% { transform: scale(1) translateY(0); filter: brightness(1); }
 }
 
 .theme-indian_history .worm-character.sad,
@@ -925,47 +845,32 @@
 .theme-indian_history .owl-character.sad,
 .theme-indian_history .cat-character.sad,
 .theme-indian_history .robot-character.sad {
-    animation: india-sad-droop 2.8s ease-out forwards;
+    animation: india-sad-bow 2.5s ease-out forwards;
 }
 
-@keyframes india-sad-droop {
-    0% {
-        transform: scale(1) rotate(0deg);
-        filter: brightness(1) saturate(1) sepia(0);
-    }
-    40% {
-        transform: scale(0.9) rotate(-8deg) translateY(15px);
-        filter: brightness(0.75) saturate(0.6) sepia(0.2);
-    }
-    70% {
-        transform: scale(0.84) rotate(0deg) translateY(25px);
-        filter: brightness(0.6) saturate(0.4) sepia(0.35);
-    }
-    100% {
-        transform: scale(0.8) translateY(30px);
-        filter: brightness(0.5) saturate(0.3) sepia(0.45);
-    }
+@keyframes india-sad-bow {
+    0% { transform: scale(1) rotate(0deg); filter: brightness(1) saturate(1); }
+    50% { transform: scale(0.9) rotate(-5deg) translateY(15px); filter: brightness(0.7) saturate(0.5); }
+    100% { transform: scale(0.85) translateY(25px); filter: brightness(0.5) saturate(0.3) sepia(0.3); }
 }
 
-.theme-indian_history .owl-character.idle {
-    animation: india-owl-wisdom 6s ease-in-out infinite;
+/* === HIDE ELEMENTS NOT USED IN INDIAN HISTORY === */
+/* Hide butterflies - we have birds and peacock instead */
+.theme-indian_history .butterfly-1,
+.theme-indian_history .butterfly-1::before,
+.theme-indian_history .butterfly-1::after,
+.theme-indian_history .butterfly-2,
+.theme-indian_history .butterfly-2::before,
+.theme-indian_history .butterfly-2::after {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 
-@keyframes india-owl-wisdom {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-        filter: brightness(1);
-    }
-    25% {
-        transform: rotate(-5deg) scale(1.03);
-        filter: brightness(1.1);
-    }
-    50% {
-        transform: rotate(0deg) scale(1.05);
-        filter: brightness(1.15);
-    }
-    75% {
-        transform: rotate(5deg) scale(1.03);
-        filter: brightness(1.1);
-    }
+/* Hide environment/default elements that might leak through */
+.theme-indian_history .elem-2-valley,
+.theme-indian_history .clouds-layer,
+.theme-indian_history .cloud-2,
+.theme-indian_history .cloud-3 {
+    display: none !important;
 }

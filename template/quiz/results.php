@@ -98,11 +98,42 @@ if ($score === $total && $total > 0) {
         <?php App::render('/index/_footer'); ?>
     </div>
 
+    <!-- Audio Manager -->
+    <script src="/js/audio-manager.js"></script>
+
     <?php if ($percentage >= 80): ?>
     <script src="/js/confetti.js"></script>
     <script>
-        // Celebration confetti for high scores
+        // Celebration confetti and victory music for high scores
         showCelebrationConfetti(50, 50);
+
+        // Play victory music
+        document.addEventListener('click', function playVictory() {
+            if (typeof audioManager !== 'undefined') {
+                audioManager.init();
+                audioManager.playMusic('victory');
+                audioManager.play('levelUp');
+            }
+            document.removeEventListener('click', playVictory);
+        }, { once: true });
+
+        // Auto-trigger if user hasn't interacted
+        setTimeout(() => {
+            if (typeof audioManager !== 'undefined' && audioManager.isInitialized) {
+                audioManager.playMusic('victory');
+            }
+        }, 500);
+    </script>
+    <?php else: ?>
+    <script>
+        // Play game over sound for other scores
+        document.addEventListener('click', function playGameOver() {
+            if (typeof audioManager !== 'undefined') {
+                audioManager.init();
+                audioManager.play('gameOver');
+            }
+            document.removeEventListener('click', playGameOver);
+        }, { once: true });
     </script>
     <?php endif; ?>
 </body>

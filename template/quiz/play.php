@@ -150,6 +150,9 @@ $topicCartoons = [
             <div class="glitter-particle"></div>
             <div class="golden-spiral"></div>
             <div class="grass"></div>
+            <div class="pine-forest"></div>
+            <div class="cloud-2"></div>
+            <div class="cloud-3"></div>
             <div class="grid-overlay"></div>
             <div class="heat-shimmer"></div>
             <div class="herb-particles"></div>
@@ -348,6 +351,10 @@ $topicCartoons = [
                 <nav class="nav">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/leaderboard" class="nav-link">Leaderboard</a>
+                    <button class="audio-toggle" id="audio-toggle" onclick="toggleAudio()" title="Toggle Sound">
+                        <span class="audio-on">🔊</span>
+                        <span class="audio-off" style="display:none;">🔇</span>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -436,16 +443,53 @@ $topicCartoons = [
     </div>
 
     <!-- External JS Files -->
+    <script src="/js/audio-manager.js"></script>
     <script src="/js/confetti.js"></script>
     <script src="/js/quiz-game.js"></script>
+    <script>
+        // Audio toggle function
+        function toggleAudio() {
+            if (typeof audioManager !== 'undefined') {
+                const isMuted = audioManager.toggleMute();
+                const btn = document.getElementById('audio-toggle');
+                const onIcon = btn.querySelector('.audio-on');
+                const offIcon = btn.querySelector('.audio-off');
+
+                if (isMuted) {
+                    onIcon.style.display = 'none';
+                    offIcon.style.display = 'inline';
+                } else {
+                    onIcon.style.display = 'inline';
+                    offIcon.style.display = 'none';
+                    // Resume music if quiz is playing
+                    if (quizGame && quizGame.questions.length > 0) {
+                        audioManager.playMusic('quiz');
+                    }
+                }
+            }
+        }
+
+        // Update audio button state on page load based on saved preference
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (typeof audioManager !== 'undefined' && audioManager.isMuted) {
+                    const btn = document.getElementById('audio-toggle');
+                    const onIcon = btn.querySelector('.audio-on');
+                    const offIcon = btn.querySelector('.audio-off');
+                    onIcon.style.display = 'none';
+                    offIcon.style.display = 'inline';
+                }
+            }, 100);
+        });
+    </script>
     <script>
         // Topic data from PHP
         const topicsData = <?= json_encode($topics) ?>;
         const topicCartoons = <?= json_encode($topicCartoons) ?>;
 
-        // Initialize and start the quiz
-        quizGame = new QuizGame(topicsData, topicCartoons);
-        quizGame.loadQuestions();
+        // Initialize and start the quiz (window. for global access in debug panel)
+        window.quizGame = new QuizGame(topicsData, topicCartoons);
+        window.quizGame.loadQuestions();
     </script>
     <!-- Mascot Controller - Manages all quiz mascots -->
     <script src="/js/mascot-controller.js"></script>
@@ -462,6 +506,9 @@ $topicCartoons = [
                 <option value="">-- Select Theme --</option>
             </select>
         </div>
+        <div style="margin-bottom:10px;">
+            <button id="debug-pause-btn" onclick="debugPanel.togglePause()" style="width:100%; padding:8px; background:#ff9800; color:#000; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">⏸️ Pause Timer</button>
+        </div>
         <div id="debug-info" style="color:#aaa; font-size:11px; margin-top:10px;"></div>
     </div>
 
@@ -471,11 +518,15 @@ $topicCartoons = [
         panel: null,
         select: null,
         info: null,
+        pauseBtn: null,
+        isPaused: false,
+        savedTimeLeft: null,
 
         init() {
             this.panel = document.getElementById('debug-panel');
             this.select = document.getElementById('debug-theme-select');
             this.info = document.getElementById('debug-info');
+            this.pauseBtn = document.getElementById('debug-pause-btn');
 
             // Populate theme dropdown
             const themes = Object.keys(topicsData);
@@ -523,6 +574,48 @@ $topicCartoons = [
             console.log('%c[Debug] Theme set to: ' + theme, 'color: #0f0; font-weight: bold');
             this.updateInfo();
             this.logSceneElements();
+        },
+
+        togglePause() {
+            console.log('%c[Debug] togglePause called, isPaused=' + this.isPaused + ', quizGame exists=' + !!window.quizGame, 'color: #f0f; font-weight: bold');
+            if (!this.isPaused) {
+                // Pause the timer
+                if (window.quizGame) {
+                    this.savedTimeLeft = window.quizGame.timeLeft;
+                    window.quizGame.stopTimer();
+                    this.isPaused = true;
+                    if (this.pauseBtn) {
+                        this.pauseBtn.innerHTML = '▶️ Resume Timer';
+                        this.pauseBtn.style.background = '#4CAF50';
+                    }
+                    console.log('%c[Debug] Timer PAUSED at ' + this.savedTimeLeft + 's', 'color: #ff0; font-weight: bold');
+                } else {
+                    console.error('[Debug] Cannot pause: window.quizGame not found!');
+                }
+            } else {
+                // Resume the timer - restore time and restart
+                if (window.quizGame) {
+                    window.quizGame.timeLeft = this.savedTimeLeft;
+                    window.quizGame.updateTimerDisplay();
+                    window.quizGame.timer = setInterval(() => {
+                        window.quizGame.timeLeft--;
+                        window.quizGame.updateTimerDisplay();
+                        if (window.quizGame.timeLeft <= 0) {
+                            window.quizGame.stopTimer();
+                            window.quizGame.currentQuestion++;
+                            window.quizGame.showQuestion();
+                        }
+                    }, 1000);
+                    this.isPaused = false;
+                    if (this.pauseBtn) {
+                        this.pauseBtn.innerHTML = '⏸️ Pause Timer';
+                        this.pauseBtn.style.background = '#ff9800';
+                    }
+                    console.log('%c[Debug] Timer RESUMED', 'color: #0f0; font-weight: bold');
+                } else {
+                    console.error('[Debug] Cannot resume: window.quizGame not found!');
+                }
+            }
         },
 
         updateInfo() {

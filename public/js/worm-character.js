@@ -15,6 +15,9 @@ class MascotController {
         this.currentState = 'idle';
         this.currentMascot = 'worm'; // Default mascot
         this.reactionTimeout = null;
+        this.isHidden = false;  // Track if mascot is currently hidden
+        this.wrongAnswerCount = 0;  // Track consecutive wrong answers
+        this.WRONG_ANSWERS_TO_HIDE = 3;  // Hide after this many wrong answers
 
         // Available mascots
         this.mascots = ['worm', 'bunny', 'owl', 'cat', 'robot'];
@@ -274,6 +277,14 @@ class MascotController {
         // Clear any existing reaction
         this.clearReaction();
 
+        // Reset wrong answer count on correct answer
+        this.wrongAnswerCount = 0;
+
+        // If mascot is hidden, bring it back!
+        if (this.isHidden) {
+            this.showMascot();
+        }
+
         // Occasionally switch mascot on correct answer (10% chance)
         if (Math.random() < 0.1) {
             this.switchMascot(this.getRandomMascot());
@@ -323,6 +334,15 @@ class MascotController {
 
         // Clear any existing reaction
         this.clearReaction();
+
+        // Increment wrong answer count
+        this.wrongAnswerCount++;
+
+        // Hide mascot in shame after too many wrong answers
+        if (this.wrongAnswerCount >= this.WRONG_ANSWERS_TO_HIDE && !this.isHidden) {
+            this.hideMascotInShame();
+            return;  // Don't show sad reaction, mascot is hiding
+        }
 
         // Get random sad emotion
         const emotion = this.getRandomEmotion(this.sadEmotions);
@@ -502,6 +522,63 @@ class MascotController {
             clearTimeout(this.reactionTimeout);
             this.reactionTimeout = null;
         }
+    }
+
+    /**
+     * Hide the mascot in shame (slides off screen)
+     * Called after too many wrong answers
+     */
+    hideMascotInShame() {
+        const mascot = this.getActiveMascotElement();
+        if (!mascot || this.isHidden) return;
+
+        // Show a sad message before hiding
+        this.showSpeechBubble('*hides in shame*');
+
+        // Determine if mascot is on left or right side
+        const isLeftSide = mascot.classList.contains('side-left');
+
+        // Remove other state classes
+        const allClasses = ['idle', 'sad', 'crying', 'confused', 'surprised', 'sleepy', 'happy', 'excited', 'giggling', 'proud', 'dancing', 'showing'];
+        allClasses.forEach(cls => mascot.classList.remove(cls));
+
+        // Add hiding animation class
+        mascot.classList.add('hiding');
+
+        // After animation, set to hidden state
+        setTimeout(() => {
+            mascot.classList.remove('hiding');
+            mascot.classList.add('hidden');
+            this.isHidden = true;
+            this.hideSpeechBubble();
+            console.log('Mascot hidden in shame after', this.wrongAnswerCount, 'wrong answers');
+        }, 600);
+    }
+
+    /**
+     * Show the mascot (brings it back after correct answer)
+     */
+    showMascot() {
+        const mascot = this.getActiveMascotElement();
+        if (!mascot || !this.isHidden) return;
+
+        // Remove hidden state
+        mascot.classList.remove('hidden');
+
+        // Add showing animation
+        mascot.classList.add('showing');
+
+        // Show encouraging message
+        this.showSpeechBubble("I'm back!");
+
+        // After animation completes, set to idle
+        setTimeout(() => {
+            mascot.classList.remove('showing');
+            mascot.classList.add('idle');
+            this.isHidden = false;
+            this.currentState = 'idle';
+            console.log('Mascot returned after correct answer!');
+        }, 800);
     }
 
     /**

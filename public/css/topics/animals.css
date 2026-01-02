@@ -274,63 +274,86 @@
 }
 
 /* === ELEM-3: LION === */
+/* Redesigned lion with recognizable silhouette - body is horizontal oval */
 .theme-animals .elem-3 {
-    bottom: 28%;
-    left: 16%;
-    width: 55px;
-    height: 32px;
+    bottom: 26%;
+    left: 18%;
+    width: 65px;
+    height: 35px;
     background: linear-gradient(180deg,
         #FFD54F 0%,
-        var(--lion-body) 50%,
+        #FFCA28 50%,
         #FFB300 100%);
-    border-radius: 28px 28px 12px 12px;
+    border-radius: 30px 25px 20px 25px;
     box-shadow:
-        inset -8px -4px 15px rgba(0, 0, 0, 0.25),
-        inset 5px 3px 10px rgba(255, 255, 255, 0.15),
-        4px 8px 20px rgba(0, 0, 0, 0.35),
-        /* Legs using box-shadow */
-        -12px 22px 0 -2px #FFB300,
-        -2px 25px 0 -2px #FFA000,
-        18px 22px 0 -2px #FFB300,
-        28px 25px 0 -2px #FFA000;
+        inset -8px -4px 12px rgba(0, 0, 0, 0.2),
+        inset 4px 3px 8px rgba(255, 255, 255, 0.3),
+        4px 6px 15px rgba(0, 0, 0, 0.35),
+        /* Front legs */
+        -12px 28px 0 3px #FFCA28,
+        -12px 38px 0 2px #FFB300,
+        2px 28px 0 3px #FFCA28,
+        2px 38px 0 2px #FFB300,
+        /* Back legs */
+        35px 26px 0 3px #FFCA28,
+        35px 36px 0 2px #FFB300,
+        48px 26px 0 3px #FFCA28,
+        48px 36px 0 2px #FFB300;
     animation: animals-lion-breathe 4s ease-in-out infinite;
     z-index: 12;
 }
 
-/* Lion head with mane */
+/* Lion head - separate round head with fluffy mane edge */
 .theme-animals .elem-3::before {
-    top: -8px;
-    left: -5px;
-    width: 38px;
-    height: 38px;
-    background: radial-gradient(circle,
+    top: -18px;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    /* Face is golden, mane is orange border */
+    background: radial-gradient(circle at 55% 45%,
         #FFE082 0%,
         #FFD54F 40%,
-        transparent 45%);
+        #FFCA28 60%,
+        #FF8F00 75%,
+        #E65100 90%,
+        #BF360C 100%);
     border-radius: 50%;
     box-shadow:
-        /* Mane layers */
-        0 0 0 7px var(--lion-mane),
-        0 0 0 12px #FF6F00,
-        0 0 0 16px #FF8F00,
-        0 0 15px 18px rgba(255, 87, 34, 0.3),
-        /* Eyes */
-        6px 0px 0 -16px #212121,
-        16px 0px 0 -16px #212121,
-        /* Nose */
-        11px 6px 0 -17px #5D4037;
-    animation: animals-mane-breathe 8s ease-in-out infinite;
+        /* Mane fluff - wavy edge effect */
+        -3px -3px 0 4px #E65100,
+        3px -3px 0 4px #FF5722,
+        -5px 2px 0 3px #E65100,
+        5px 2px 0 3px #FF5722,
+        0 -5px 0 3px #FF6F00,
+        /* Eyes - positioned on face */
+        10px 12px 0 3px #FFFFFF,
+        11px 13px 0 2px #212121,
+        22px 12px 0 3px #FFFFFF,
+        23px 13px 0 2px #212121,
+        /* Nose - small dark triangle */
+        16px 22px 0 2px #5D4037,
+        /* Mouth line */
+        14px 26px 0 1px #4E342E,
+        18px 26px 0 1px #4E342E,
+        /* Ears poking through mane */
+        2px -8px 0 3px #FFB300,
+        32px -8px 0 3px #FFB300;
+    animation: animals-mane-breathe 6s ease-in-out infinite;
 }
 
-/* Tail */
+/* Tail - curved with tuft */
 .theme-animals .elem-3::after {
     top: 5px;
-    right: -25px;
-    width: 30px;
+    right: -30px;
+    width: 35px;
     height: 4px;
-    background: var(--lion-body);
+    background: linear-gradient(90deg, #FFCA28 0%, #FFB300 80%);
     border-radius: 2px;
     transform-origin: left center;
+    box-shadow:
+        /* Tail tuft - dark poof at end */
+        32px -2px 0 4px #5D4037,
+        34px 0px 0 3px #4E342E;
     animation: animals-tail-wag 3s ease-in-out infinite;
 }
 
@@ -340,146 +363,181 @@
 }
 
 @keyframes animals-mane-breathe {
-    0%, 100% { transform: scale(1); filter: brightness(1); }
-    50% { transform: scale(1.05); filter: brightness(1.1); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
 }
 
 @keyframes animals-tail-wag {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(15deg); }
-    75% { transform: rotate(-15deg); }
+    25% { transform: rotate(12deg); }
+    75% { transform: rotate(-12deg); }
 }
 
 /* === ELEM-4: ELEPHANT === */
+/* Redesigned elephant with clear body, big ear, and trunk */
 .theme-animals .elem-4 {
     bottom: 27%;
-    right: 18%;
-    width: 70px;
-    height: 48px;
+    right: 15%;
+    width: 80px;
+    height: 50px;
     background: linear-gradient(180deg,
-        #BDBDBD 0%,
-        var(--elephant-body) 50%,
-        var(--elephant-dark) 100%);
-    border-radius: 35px 35px 18px 18px;
+        #90A4AE 0%,
+        #78909C 50%,
+        #607D8B 100%);
+    border-radius: 40px 35px 15px 20px;
     box-shadow:
-        inset -10px -5px 18px rgba(0, 0, 0, 0.35),
-        inset 5px 3px 10px rgba(255, 255, 255, 0.12),
-        4px 8px 20px rgba(0, 0, 0, 0.4),
-        /* Legs */
-        -18px 35px 0 -3px var(--elephant-dark),
-        -6px 38px 0 -3px #757575,
-        14px 35px 0 -3px var(--elephant-dark),
-        26px 38px 0 -3px #757575;
+        inset -8px -5px 15px rgba(0, 0, 0, 0.3),
+        inset 5px 4px 10px rgba(255, 255, 255, 0.15),
+        5px 8px 20px rgba(0, 0, 0, 0.4),
+        /* Four thick legs */
+        -18px 38px 0 4px #607D8B,
+        -18px 50px 0 3px #546E7A,
+        -2px 40px 0 4px #607D8B,
+        -2px 52px 0 3px #546E7A,
+        38px 36px 0 4px #607D8B,
+        38px 48px 0 3px #546E7A,
+        55px 38px 0 4px #607D8B,
+        55px 50px 0 3px #546E7A;
     animation: animals-elephant-walk 8s ease-in-out infinite;
     z-index: 11;
 }
 
-/* Elephant head with trunk and ear */
+/* Elephant head with large ear */
 .theme-animals .elem-4::before {
     top: -12px;
-    right: -8px;
-    width: 35px;
-    height: 40px;
+    right: -18px;
+    width: 42px;
+    height: 45px;
     background: linear-gradient(180deg,
-        #BDBDBD 0%,
-        var(--elephant-body) 50%,
-        #757575 100%);
-    border-radius: 50% 50% 40% 40%;
+        #90A4AE 0%,
+        #78909C 60%,
+        #607D8B 100%);
+    border-radius: 45% 50% 40% 45%;
     box-shadow:
-        /* Ear */
-        22px 8px 0 8px rgba(158, 158, 158, 0.7),
+        /* BIG floppy ear - elephant's signature feature */
+        30px 5px 0 18px #78909C,
+        32px 8px 0 15px #90A4AE,
+        28px 12px 0 10px #B0BEC5,
         /* Eye */
-        8px 6px 0 -15px #212121,
-        /* Trunk */
-        -4px 30px 0 -13px #757575,
-        -6px 38px 0 -14px var(--elephant-body),
-        -5px 45px 0 -15px #9E9E9E;
+        8px 12px 0 3px #FFFFFF,
+        10px 13px 0 2px #212121,
+        /* Trunk - long curved shape going down */
+        5px 40px 0 5px #78909C,
+        2px 52px 0 4px #90A4AE,
+        -2px 62px 0 4px #78909C,
+        -8px 70px 0 3px #90A4AE,
+        /* Trunk tip curled */
+        -15px 72px 0 2px #B0BEC5;
     animation: animals-trunk-swing 5s ease-in-out infinite;
 }
 
-/* Tusk */
+/* Tusk - curved ivory */
 .theme-animals .elem-4::after {
-    top: 22px;
-    right: -3px;
-    width: 4px;
-    height: 14px;
-    background: #FFF8E1;
-    border-radius: 2px 2px 50% 50%;
-    transform: rotate(-15deg);
+    top: 30px;
+    right: -8px;
+    width: 5px;
+    height: 18px;
+    background: linear-gradient(180deg, #FFFDE7 0%, #FFF8E1 50%, #FFE0B2 100%);
+    border-radius: 2px 2px 8px 8px;
+    transform: rotate(-20deg);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.3),
+        /* Second tusk */
+        -12px 5px 0 0 #FFF8E1;
 }
 
 @keyframes animals-elephant-walk {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-20px); }
+    50% { transform: translateX(-15px); }
 }
 
 @keyframes animals-trunk-swing {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    75% { transform: rotate(-5deg); }
+    30% { transform: rotate(3deg); }
+    70% { transform: rotate(-3deg); }
 }
 
 /* === ELEM-5: GIRAFFE === */
+/* Redesigned giraffe with clear body and very tall neck */
 .theme-animals .elem-5 {
-    bottom: 25%;
-    left: 42%;
+    bottom: 22%;
+    left: 38%;
     width: 45px;
-    height: 45px;
+    height: 35px;
     background: linear-gradient(180deg,
-        #FFE082 0%,
-        var(--giraffe-body) 50%,
+        #FFD54F 0%,
+        #FFCA28 50%,
         #FFB300 100%);
-    border-radius: 35%;
+    border-radius: 25px 20px 15px 18px;
     box-shadow:
-        inset -6px -3px 12px rgba(0, 0, 0, 0.25),
-        inset 4px 2px 8px rgba(255, 255, 255, 0.15),
-        4px 6px 15px rgba(0, 0, 0, 0.3),
-        /* Spots */
-        -8px -5px 0 3px var(--giraffe-spots),
-        5px 8px 0 2px #6D4C41,
-        15px -3px 0 3px var(--giraffe-spots),
-        /* Legs */
-        -10px 35px 0 -5px #FFB300,
-        0px 38px 0 -5px var(--giraffe-body),
-        15px 35px 0 -5px #FFB300,
-        25px 38px 0 -5px var(--giraffe-body);
+        inset -6px -4px 10px rgba(0, 0, 0, 0.2),
+        inset 4px 3px 8px rgba(255, 255, 255, 0.25),
+        4px 6px 15px rgba(0, 0, 0, 0.35),
+        /* Brown spots on body */
+        -8px -2px 0 3px #8D6E63,
+        5px 5px 0 4px #795548,
+        15px -3px 0 3px #8D6E63,
+        -2px 10px 0 3px #6D4C41,
+        /* Very long thin legs */
+        -10px 30px 0 2px #FFCA28,
+        -10px 55px 0 2px #FFB300,
+        2px 32px 0 2px #FFCA28,
+        2px 57px 0 2px #FFB300,
+        22px 28px 0 2px #FFCA28,
+        22px 53px 0 2px #FFB300,
+        32px 30px 0 2px #FFCA28,
+        32px 55px 0 2px #FFB300;
     z-index: 10;
 }
 
-/* Giraffe neck and head */
+/* Giraffe VERY LONG neck and small head */
 .theme-animals .elem-5::before {
-    bottom: 35px;
-    left: 0;
-    width: 15px;
+    bottom: 30px;
+    left: -8px;
+    width: 14px;
     height: 100px;
     background: linear-gradient(90deg,
         #FFE082 0%,
-        var(--giraffe-body) 50%,
-        #FFCA28 100%);
-    border-radius: 8px;
+        #FFCA28 50%,
+        #FFD54F 100%);
+    border-radius: 8px 8px 5px 5px;
     box-shadow:
-        /* Neck spots */
-        3px 20px 0 1px var(--giraffe-spots),
-        -2px 40px 0 1px #6D4C41,
-        4px 60px 0 1px var(--giraffe-spots),
-        -1px 80px 0 1px #6D4C41,
-        /* Head */
-        0 -12px 0 4px var(--giraffe-body),
-        /* Ossicones */
-        -4px -20px 0 -3px #8D6E63,
-        8px -20px 0 -3px #8D6E63,
+        /* Spots along neck */
+        3px 15px 0 2px #8D6E63,
+        -1px 35px 0 2px #795548,
+        4px 55px 0 2px #8D6E63,
+        0px 75px 0 2px #6D4C41,
+        /* Small head at top */
+        0 -12px 0 5px #FFD54F,
+        /* Ossicones (horn things) */
+        -4px -22px 0 1px #5D4037,
+        8px -22px 0 1px #5D4037,
         /* Ears */
-        -8px -12px 0 -2px #FFB300,
-        12px -12px 0 -2px #FFB300,
+        -8px -12px 0 2px #FFCA28,
+        12px -12px 0 2px #FFCA28,
         /* Eye */
-        5px -8px 0 -5px #212121;
+        4px -8px 0 2px #FFFFFF,
+        5px -8px 0 1px #212121,
+        /* Muzzle */
+        1px -3px 0 3px #FFB300;
     animation: animals-giraffe-eat 9s ease-in-out infinite;
+}
+
+/* Giraffe tail */
+.theme-animals .elem-5::after {
+    top: 10px;
+    right: -12px;
+    width: 15px;
+    height: 3px;
+    background: #FFCA28;
+    border-radius: 2px;
+    box-shadow: 12px 2px 0 3px #5D4037; /* tail tuft */
 }
 
 @keyframes animals-giraffe-eat {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-3deg); }
-    75% { transform: rotate(3deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
 }
 
 /* === ELEM-6: FLYING BIRDS V-FORMATION === */
@@ -535,56 +593,77 @@
 }
 
 /* === ELEM-7: BUTTERFLY === */
+/* Redesigned butterfly with more detailed colorful wings */
 .theme-animals .elem-7 {
     top: 38%;
     left: 28%;
-    width: 5px;
-    height: 25px;
+    width: 6px;
+    height: 22px;
     background: linear-gradient(180deg,
-        #212121 0%,
-        #37474F 50%,
-        #212121 100%);
-    border-radius: 3px;
+        #37474F 0%,
+        #263238 40%,
+        #37474F 60%,
+        #455A64 100%);
+    border-radius: 3px 3px 2px 2px;
     animation: animals-butterfly-float 12s ease-in-out infinite;
     z-index: 18;
 }
 
-/* Butterfly wings */
+/* Butterfly wings - more detailed with patterns */
 .theme-animals .elem-7::before {
-    top: 2px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 30px;
+    width: 50px;
+    height: 35px;
     background: transparent;
     border-radius: 50%;
     box-shadow:
-        /* Upper wings */
-        -12px -5px 0 8px #E91E63,
-        -14px -7px 0 4px #9C27B0,
-        12px -5px 0 8px #E91E63,
-        14px -7px 0 4px #9C27B0,
-        /* Lower wings */
-        -10px 8px 0 6px #FF9800,
-        -12px 6px 0 3px #FF5722,
-        10px 8px 0 6px #FF9800,
-        12px 6px 0 3px #FF5722;
-    animation: animals-butterfly-wings 0.6s ease-in-out infinite alternate;
+        /* Upper left wing - layered colors */
+        -16px -4px 0 10px #E91E63,
+        -18px -6px 0 6px #AD1457,
+        -14px -2px 0 4px #F48FB1,
+        -20px -8px 0 3px #880E4F,
+        /* Wing spots on upper left */
+        -12px -8px 0 2px #FFFFFF,
+        -22px -4px 0 1px #FFFFFF,
+        /* Upper right wing - layered colors */
+        16px -4px 0 10px #E91E63,
+        18px -6px 0 6px #AD1457,
+        14px -2px 0 4px #F48FB1,
+        20px -8px 0 3px #880E4F,
+        /* Wing spots on upper right */
+        12px -8px 0 2px #FFFFFF,
+        22px -4px 0 1px #FFFFFF,
+        /* Lower left wing - warm orange gradient effect */
+        -12px 10px 0 7px #FF9800,
+        -14px 12px 0 4px #F57C00,
+        -10px 8px 0 3px #FFB74D,
+        -16px 14px 0 2px #E65100,
+        /* Lower right wing */
+        12px 10px 0 7px #FF9800,
+        14px 12px 0 4px #F57C00,
+        10px 8px 0 3px #FFB74D,
+        16px 14px 0 2px #E65100;
+    animation: animals-butterfly-wings 0.5s ease-in-out infinite alternate;
 }
 
-/* Antennae */
+/* Antennae - curled at tips */
 .theme-animals .elem-7::after {
-    top: -8px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1px;
-    height: 8px;
-    background: #212121;
+    width: 2px;
+    height: 10px;
+    background: #37474F;
+    border-radius: 1px;
     box-shadow:
-        5px 0 0 0 #212121,
-        -5px 0 0 0 #212121,
-        5px -3px 0 1px #212121,
-        -5px -3px 0 1px #212121;
+        /* Left antenna */
+        -6px 0 0 0 #37474F,
+        -8px -4px 0 1px #455A64,
+        /* Right antenna */
+        6px 0 0 0 #37474F,
+        8px -4px 0 1px #455A64;
 }
 
 @keyframes animals-butterfly-float {
@@ -601,64 +680,92 @@
 }
 
 /* === ELEM-8: ZEBRA === */
+/* Redesigned zebra with clear stripes and visible legs */
 .theme-animals .elem-8 {
-    bottom: 28%;
-    left: 58%;
-    width: 50px;
-    height: 30px;
-    background: repeating-linear-gradient(90deg,
+    bottom: 26%;
+    left: 55%;
+    width: 55px;
+    height: 35px;
+    background: repeating-linear-gradient(100deg,
         #FFFFFF 0px,
         #FFFFFF 4px,
         #212121 4px,
         #212121 8px);
-    border-radius: 25px 25px 12px 12px;
+    border-radius: 25px 22px 12px 15px;
     box-shadow:
         inset -5px -3px 10px rgba(0, 0, 0, 0.2),
-        3px 5px 12px rgba(0, 0, 0, 0.3),
-        /* Legs */
-        -12px 22px 0 -4px #212121,
-        -4px 25px 0 -4px #FFFFFF,
-        12px 22px 0 -4px #212121,
-        20px 25px 0 -4px #FFFFFF;
+        inset 3px 2px 8px rgba(255, 255, 255, 0.3),
+        3px 5px 12px rgba(0, 0, 0, 0.35),
+        /* Four proper legs - alternating black/white stripes */
+        /* Front left leg */
+        -12px 28px 0 3px #FFFFFF,
+        -12px 40px 0 3px #212121,
+        -12px 50px 0 2px #FFFFFF,
+        /* Front right leg */
+        2px 30px 0 3px #212121,
+        2px 42px 0 3px #FFFFFF,
+        2px 52px 0 2px #212121,
+        /* Back left leg */
+        28px 26px 0 3px #FFFFFF,
+        28px 38px 0 3px #212121,
+        28px 48px 0 2px #FFFFFF,
+        /* Back right leg */
+        40px 28px 0 3px #212121,
+        40px 40px 0 3px #FFFFFF,
+        40px 50px 0 2px #212121;
     z-index: 9;
 }
 
-/* Zebra head and neck */
+/* Zebra neck and head */
 .theme-animals .elem-8::before {
-    top: -25px;
-    left: -8px;
-    width: 12px;
-    height: 35px;
-    background: repeating-linear-gradient(90deg,
+    top: -35px;
+    left: -12px;
+    width: 16px;
+    height: 48px;
+    background: repeating-linear-gradient(95deg,
         #FFFFFF 0px,
         #FFFFFF 3px,
         #212121 3px,
         #212121 6px);
-    border-radius: 6px;
+    border-radius: 8px 8px 5px 5px;
     box-shadow:
-        /* Head */
-        0 -10px 0 3px #FFFFFF,
-        /* Mane */
-        3px -5px 0 1px #212121,
-        3px 5px 0 1px #212121,
-        3px 15px 0 1px #212121,
-        /* Ears */
-        -3px -18px 0 -1px #FFFFFF,
-        5px -18px 0 -1px #FFFFFF,
+        /* Head - elongated oval */
+        -2px -18px 0 6px #FFFFFF,
+        2px -18px 0 4px #E0E0E0,
+        /* Black stripe on face */
+        0px -16px 0 2px #212121,
+        /* Spiky mane along neck */
+        8px -12px 0 2px #212121,
+        8px -2px 0 2px #212121,
+        8px 10px 0 2px #212121,
+        8px 22px 0 2px #212121,
+        8px 34px 0 2px #212121,
+        /* Ears - pointed */
+        -6px -28px 0 2px #FFFFFF,
+        6px -28px 0 2px #FFFFFF,
+        -5px -30px 0 1px #212121,
+        7px -30px 0 1px #212121,
         /* Eye */
-        -2px -8px 0 -3px #212121;
+        -4px -14px 0 2px #FFFFFF,
+        -3px -14px 0 1px #212121,
+        /* Nostrils */
+        -4px -6px 0 1px #424242,
+        0px -6px 0 1px #424242;
 }
 
-/* Tail */
+/* Tail - bushy black tuft */
 .theme-animals .elem-8::after {
-    top: 8px;
-    right: -15px;
-    width: 20px;
+    top: 5px;
+    right: -18px;
+    width: 22px;
     height: 3px;
-    background: #212121;
+    background: linear-gradient(90deg, #FFFFFF 0%, #212121 40%);
     border-radius: 2px;
     box-shadow:
-        15px 5px 0 2px #212121;
+        /* Bushy tail end */
+        18px 0px 0 4px #212121,
+        20px 3px 0 3px #212121,
+        19px -3px 0 3px #212121;
 }
 
 /* === PINE-FOREST: GRASS BLADES === */

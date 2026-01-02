@@ -385,7 +385,7 @@ Use these elements in `play.php` for quiz backgrounds:
 
 ## Reference Files
 
-The cloned Miocene animations are in `/animations/`:
+The cloned Miocene animations are in `/public/animations/`:
 - `2017_06_windmill/` - Windmill with snow scene
 - `2021_11_town/` - Complex 3D isometric town
 - `2020_04_tractor/` - Farm scene with tractor

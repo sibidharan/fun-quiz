@@ -108,6 +108,7 @@ class QuizGame {
         this.answeredIds = [];
         this.currentTopic = null;
         this.isGenerating = false;
+        this.lastTickTime = 0;
 
         this.TIMER_DURATION = 30;
         this.TIMER_CIRCUMFERENCE = 2 * Math.PI * 25; // 157
@@ -137,6 +138,11 @@ class QuizGame {
             // Show quiz container
             document.getElementById('loading-container').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'flex';
+
+            // Start background music
+            if (typeof audioManager !== 'undefined') {
+                audioManager.playMusic('quiz');
+            }
 
             this.showQuestion();
 
@@ -285,11 +291,22 @@ class QuizGame {
 
         this.selectedAnswer = null;
         document.getElementById('next-btn').disabled = true;
+
+        // Play whoosh sound for new question
+        if (typeof audioManager !== 'undefined') {
+            audioManager.play('whoosh');
+        }
+
         this.startTimer();
     }
 
     selectOption(index) {
         if (this.selectedAnswer !== null) return;
+
+        // Play click sound
+        if (typeof audioManager !== 'undefined') {
+            audioManager.play('click');
+        }
 
         this.selectedAnswer = index;
         const options = document.querySelectorAll('.option');
@@ -316,6 +333,13 @@ class QuizGame {
 
             if (index === q.correct) {
                 this.score++;
+                // Play correct answer sound and celebration
+                if (typeof audioManager !== 'undefined') {
+                    audioManager.play('correct');
+                    audioManager.play('celebration');
+                    // Play funny mascot celebration sound
+                    audioManager.playMascotHappy();
+                }
                 if (typeof showConfetti === 'function') {
                     showConfetti();
                 }
@@ -324,6 +348,12 @@ class QuizGame {
                     wormCharacter.reactHappy(this.currentTopic);
                 }
             } else {
+                // Play wrong answer sound
+                if (typeof audioManager !== 'undefined') {
+                    audioManager.play('wrong');
+                    // Play funny mascot sad sound
+                    audioManager.playMascotSad();
+                }
                 // Worm is sad
                 if (typeof wormCharacter !== 'undefined' && wormCharacter) {
                     wormCharacter.reactSad(this.currentTopic);
@@ -371,7 +401,10 @@ class QuizGame {
             this.updateTimerDisplay();
             if (this.timeLeft <= 0) {
                 this.stopTimer();
-                // Auto-skip on timeout
+                // Auto-skip on timeout - play sad sound
+                if (typeof audioManager !== 'undefined') {
+                    audioManager.playMascotSad();
+                }
                 if (typeof wormCharacter !== 'undefined' && wormCharacter) {
                     wormCharacter.reactSad(this.currentTopic);
                 }
@@ -412,11 +445,28 @@ class QuizGame {
         if (this.timeLeft <= 5) {
             timerEl.classList.add('danger');
             if (timerRing) timerRing.classList.add('danger');
+
+            // Play tick sound for last 5 seconds
+            if (typeof audioManager !== 'undefined') {
+                audioManager.play('tick');
+            }
+        }
+
+        // Play warning sound at 10 seconds
+        if (this.timeLeft === 10 && typeof audioManager !== 'undefined') {
+            audioManager.play('timerWarning');
         }
     }
 
     async finishQuiz() {
         this.stopTimer();
+
+        // Stop quiz music and play game over sound
+        if (typeof audioManager !== 'undefined') {
+            audioManager.stopMusic();
+            audioManager.play('gameOver');
+        }
+
         try {
             const formData = new FormData();
             formData.append('topic', 'mixed');
@@ -436,13 +486,36 @@ class QuizGame {
 }
 
 // Global quiz game instance - will be initialized in the page
+// Using window.quizGame for global access from debug panel and onclick handlers
 let quizGame = null;
 
 // Global functions for onclick handlers
 function nextQuestion() {
-    if (quizGame) quizGame.nextQuestion();
+    if (typeof audioManager !== 'undefined') {
+        audioManager.play('pop');
+    }
+    // Check both local and window scope for quizGame
+    const game = window.quizGame || quizGame;
+    if (game) game.nextQuestion();
 }
 
 function skipQuestion() {
-    if (quizGame) quizGame.skipQuestion();
+    if (typeof audioManager !== 'undefined') {
+        audioManager.play('boing');
+    }
+    // Check both local and window scope for quizGame
+    const game = window.quizGame || quizGame;
+    if (game) game.skipQuestion();
 }
+
+// Add hover sounds to all buttons
+document.addEventListener('DOMContentLoaded', () => {
+    // Add hover sound to buttons
+    document.querySelectorAll('button, .btn, .nav-link').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            if (typeof audioManager !== 'undefined') {
+                audioManager.play('hover');
+            }
+        });
+    });
+});

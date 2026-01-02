@@ -2,6 +2,7 @@
    MUSIC & ARTS THEME - JULIA MIOCENE STYLE
    Concert stage with piano, instruments, and
    artistic elements in pure CSS art
+   FIXED: Explicit content declarations
    ============================================ */
 
 :root {
@@ -50,16 +51,10 @@
     position: relative;
 }
 
-.theme-music_arts .scene-background *,
-.theme-music_arts .scene-background *::before,
-.theme-music_arts .scene-background *::after {
+/* === STAGE CURTAINS (elem-0-ultra) === */
+.theme-music_arts .elem-0-ultra {
     content: '';
     position: absolute;
-}
-
-/* === STAGE CURTAINS (elem-0-ultra) === */
-/* Left curtain using clip-path */
-.theme-music_arts .elem-0-ultra {
     left: 0;
     top: 0;
     width: 15%;
@@ -77,6 +72,8 @@
 
 /* Right curtain */
 .theme-music_arts .elem-0-ultra::before {
+    content: '';
+    position: absolute;
     right: -560%;
     top: 0;
     width: 100%;
@@ -93,6 +90,8 @@
 
 /* Gold trim on curtains */
 .theme-music_arts .elem-0-ultra::after {
+    content: '';
+    position: absolute;
     left: 0;
     top: 0;
     width: 8px;
@@ -100,13 +99,14 @@
     background: var(--music-gold-trim);
     box-shadow:
         92px 0 0 0 var(--music-gold-trim),
-        /* Right curtain trim */
         570px 0 0 0 var(--music-gold-trim),
         660px 0 0 0 var(--music-gold-trim);
 }
 
 /* === STAGE FLOOR BOARDS (elem-0-far) === */
 .theme-music_arts .elem-0-far {
+    content: '';
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -123,6 +123,8 @@
 
 /* Stage floor shine */
 .theme-music_arts .elem-0-far::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -134,6 +136,8 @@
 
 /* Stage edge */
 .theme-music_arts .elem-0-far::after {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -146,8 +150,9 @@
 }
 
 /* === GRAND PIANO (elem-1) === */
-/* Piano body - curved shape */
 .theme-music_arts .elem-1 {
+    content: '';
+    position: absolute;
     bottom: 15%;
     left: 8%;
     width: 180px;
@@ -162,6 +167,8 @@
 
 /* Piano lid */
 .theme-music_arts .elem-1::before {
+    content: '';
+    position: absolute;
     top: -40px;
     left: 20px;
     width: 150px;
@@ -175,6 +182,8 @@
 
 /* Piano legs */
 .theme-music_arts .elem-1::after {
+    content: '';
+    position: absolute;
     bottom: -30px;
     left: 20px;
     width: 12px;
@@ -187,8 +196,9 @@
 }
 
 /* === PIANO KEYBOARD (pine-forest) === */
-/* White keys */
 .theme-music_arts .pine-forest {
+    content: '';
+    position: absolute;
     bottom: 16%;
     left: 10%;
     width: 12px;
@@ -197,7 +207,6 @@
     border-radius: 0 0 2px 2px;
     z-index: 16;
     box-shadow:
-        /* Row of white keys */
         14px 0 0 0 var(--music-piano-white),
         28px 0 0 0 var(--music-piano-white),
         42px 0 0 0 var(--music-piano-white),
@@ -212,6 +221,8 @@
 
 /* Black keys */
 .theme-music_arts .pine-forest::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 9px;
     width: 8px;
@@ -227,71 +238,162 @@
         112px 0 0 0 var(--music-piano-black);
 }
 
-/* === ACOUSTIC GUITAR (elem-1-fg) === */
-/* Guitar body */
-.theme-music_arts .elem-1-fg {
-    bottom: 18%;
-    right: 12%;
-    width: 70px;
-    height: 90px;
-    background: radial-gradient(ellipse at center,
-        var(--music-guitar-body) 0%,
-        var(--music-guitar-dark) 100%);
-    border-radius: 50%;
-    z-index: 14;
+/* Piano bench */
+.theme-music_arts .pine-forest::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 40px;
+    width: 50px;
+    height: 20px;
+    background: #2C2C2C;
+    border-radius: 3px;
     box-shadow:
-        inset 0 0 20px rgba(0, 0, 0, 0.5),
-        3px 5px 15px rgba(0, 0, 0, 0.4);
+        0 15px 0 -5px #1A1A1A,
+        20px 15px 0 -5px #1A1A1A;
 }
 
-/* Guitar sound hole */
+/* === ACOUSTIC GUITAR (elem-1-fg) === */
+/* Classic acoustic guitar with figure-8 body shape */
+.theme-music_arts .elem-1-fg {
+    content: '';
+    position: absolute;
+    bottom: 12%;
+    right: 10%;
+    width: 55px;
+    height: 85px;
+    z-index: 14;
+    /* Lower bout (larger bottom curve) */
+    background: radial-gradient(ellipse 100% 80% at 50% 70%,
+        var(--music-guitar-body) 0%,
+        var(--music-guitar-dark) 100%);
+    border-radius: 50% 50% 48% 48% / 30% 30% 70% 70%;
+    box-shadow:
+        /* Upper bout (smaller top curve) - creates figure-8 */
+        0 -38px 0 -8px var(--music-guitar-body),
+        /* Waist shadow for depth */
+        inset 15px 0 8px -10px rgba(0, 0, 0, 0.4),
+        inset -15px 0 8px -10px rgba(0, 0, 0, 0.4),
+        /* Overall shadow */
+        4px 6px 15px rgba(0, 0, 0, 0.5);
+    transform: rotate(-15deg);
+}
+
+/* Guitar sound hole and bridge */
 .theme-music_arts .elem-1-fg::before {
-    top: 50%;
+    content: '';
+    position: absolute;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
     background: #1A1A1A;
     border-radius: 50%;
     box-shadow:
-        0 0 0 3px var(--music-guitar-body),
-        0 0 0 5px var(--music-guitar-dark);
+        /* Rosette ring decoration */
+        0 0 0 3px #A1887F,
+        0 0 0 5px var(--music-guitar-dark),
+        0 0 0 7px #D7CCC8,
+        /* Bridge below sound hole */
+        0 30px 0 -5px #3E2723,
+        /* Saddle on bridge */
+        0 28px 0 -7px #FAFAFA;
 }
 
-/* Guitar neck */
+/* Guitar neck and headstock */
 .theme-music_arts .elem-1-fg::after {
-    top: -60px;
+    content: '';
+    position: absolute;
+    top: -55px;
     left: 50%;
     transform: translateX(-50%);
-    width: 15px;
-    height: 70px;
+    width: 12px;
+    height: 60px;
     background: linear-gradient(90deg,
         var(--music-guitar-dark) 0%,
-        var(--music-guitar-body) 50%,
+        #6D4C41 30%,
+        #8D6E63 50%,
+        #6D4C41 70%,
         var(--music-guitar-dark) 100%);
     border-radius: 3px 3px 0 0;
+    box-shadow:
+        /* Fret markers */
+        0 15px 0 -4px #E0E0E0,
+        0 30px 0 -4px #E0E0E0,
+        0 45px 0 -4px #E0E0E0,
+        /* Headstock */
+        0 -18px 0 3px var(--music-guitar-dark),
+        /* Tuning pegs */
+        -8px -12px 0 -4px #FFD700,
+        -8px -6px 0 -4px #FFD700,
+        -8px 0px 0 -4px #FFD700,
+        8px -12px 0 -4px #FFD700,
+        8px -6px 0 -4px #FFD700,
+        8px 0px 0 -4px #FFD700;
 }
 
 /* === GUITAR STRINGS (deer-legs) === */
+/* Six strings running from headstock to bridge */
 .theme-music_arts .deer-legs {
-    bottom: 35%;
-    right: 14%;
+    content: '';
+    position: absolute;
+    bottom: 18%;
+    right: 12%;
     width: 1px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.6);
-    z-index: 15;
+    height: 95px;
+    background: linear-gradient(180deg,
+        rgba(255, 215, 0, 0.95) 0%,
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 215, 0, 0.95) 100%);
+    z-index: 16;
+    transform: rotate(-15deg);
+    transform-origin: top center;
     box-shadow:
-        6px 0 0 0 rgba(255, 255, 255, 0.5),
-        12px 0 0 0 rgba(255, 255, 255, 0.4),
-        18px 0 0 0 rgba(255, 255, 255, 0.3),
-        24px 0 0 0 rgba(255, 255, 255, 0.4),
-        30px 0 0 0 rgba(255, 255, 255, 0.5);
-    animation: music-strings-vibrate 0.1s linear infinite;
+        /* 6 strings with varying thickness */
+        5px 0 0 0 rgba(255, 255, 255, 0.9),
+        10px 0 0 0 rgba(255, 215, 0, 0.85),
+        15px 0 0 0 rgba(255, 255, 255, 0.8),
+        20px 0 0 0 rgba(255, 215, 0, 0.85),
+        25px 0 0 0 rgba(255, 255, 255, 0.9);
+    animation: music-strings-vibrate 0.08s linear infinite;
+}
+
+/* String vibration highlight */
+.theme-music_arts .deer-legs::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    width: 32px;
+    height: 2px;
+    background: radial-gradient(ellipse at center,
+        rgba(255, 255, 255, 0.7) 0%,
+        transparent 70%);
+    animation: music-string-highlight 2s ease-in-out infinite;
+}
+
+/* Pick/plectrum */
+.theme-music_arts .deer-legs::after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: 35px;
+    width: 12px;
+    height: 15px;
+    background: linear-gradient(135deg,
+        #FF5722 0%,
+        #E64A19 50%,
+        #BF360C 100%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: rotate(45deg);
+    animation: music-pick-move 1.5s ease-in-out infinite;
 }
 
 /* === FLOATING MUSICAL NOTES (elem-2) === */
-/* Quarter note */
 .theme-music_arts .elem-2 {
+    content: '';
+    position: absolute;
     top: 25%;
     left: 25%;
     width: 18px;
@@ -306,6 +408,8 @@
 
 /* Note stem */
 .theme-music_arts .elem-2::before {
+    content: '';
+    position: absolute;
     top: -35px;
     right: 0;
     width: 3px;
@@ -316,6 +420,8 @@
 
 /* Note flag */
 .theme-music_arts .elem-2::after {
+    content: '';
+    position: absolute;
     top: -35px;
     right: 0;
     width: 12px;
@@ -324,11 +430,13 @@
     border-left: none;
     border-top: none;
     border-radius: 0 0 15px 0;
+    background: transparent;
 }
 
 /* === MORE FLOATING NOTES (elem-3) === */
-/* Eighth notes pair */
 .theme-music_arts .elem-3 {
+    content: '';
+    position: absolute;
     top: 18%;
     right: 30%;
     width: 14px;
@@ -343,6 +451,8 @@
 
 /* Connecting beam */
 .theme-music_arts .elem-3::before {
+    content: '';
+    position: absolute;
     top: -30px;
     left: 10px;
     width: 28px;
@@ -353,6 +463,8 @@
 
 /* Stems */
 .theme-music_arts .elem-3::after {
+    content: '';
+    position: absolute;
     top: -28px;
     left: 10px;
     width: 3px;
@@ -362,8 +474,9 @@
 }
 
 /* === ART EASEL (elem-4) === */
-/* Easel frame */
 .theme-music_arts .elem-4 {
+    content: '';
+    position: absolute;
     bottom: 12%;
     right: 30%;
     width: 8px;
@@ -376,6 +489,8 @@
 
 /* Easel crossbar */
 .theme-music_arts .elem-4::before {
+    content: '';
+    position: absolute;
     top: 60%;
     left: -10px;
     width: 70px;
@@ -386,6 +501,8 @@
 
 /* Canvas on easel */
 .theme-music_arts .elem-4::after {
+    content: '';
+    position: absolute;
     top: -10px;
     left: 5px;
     width: 50px;
@@ -396,8 +513,9 @@
 }
 
 /* === PAINT PALETTE (elem-5) === */
-/* Palette base */
 .theme-music_arts .elem-5 {
+    content: '';
+    position: absolute;
     bottom: 8%;
     right: 22%;
     width: 60px;
@@ -411,6 +529,8 @@
 
 /* Thumb hole */
 .theme-music_arts .elem-5::before {
+    content: '';
+    position: absolute;
     bottom: 5px;
     left: 8px;
     width: 12px;
@@ -419,8 +539,10 @@
     border-radius: 50%;
 }
 
-/* Paint colors using box-shadow */
+/* Paint colors */
 .theme-music_arts .elem-5::after {
+    content: '';
+    position: absolute;
     top: 8px;
     left: 15px;
     width: 10px;
@@ -436,8 +558,9 @@
 }
 
 /* === PAINTBRUSH (butterfly-2) === */
-/* Brush handle */
 .theme-music_arts .butterfly-2 {
+    content: '';
+    position: absolute;
     bottom: 15%;
     right: 18%;
     width: 6px;
@@ -450,8 +573,10 @@
     z-index: 14;
 }
 
-/* Brush ferrule (metal part) */
+/* Brush ferrule */
 .theme-music_arts .butterfly-2::before {
+    content: '';
+    position: absolute;
     top: -8px;
     left: -1px;
     width: 8px;
@@ -463,8 +588,10 @@
     border-radius: 2px;
 }
 
-/* Brush bristles with paint */
+/* Brush bristles */
 .theme-music_arts .butterfly-2::after {
+    content: '';
+    position: absolute;
     top: -25px;
     left: 0;
     width: 6px;
@@ -476,8 +603,9 @@
 }
 
 /* === TREBLE CLEF (butterfly-3) === */
-/* Main spiral part */
 .theme-music_arts .butterfly-3 {
+    content: '';
+    position: absolute;
     top: 30%;
     left: 40%;
     width: 30px;
@@ -490,10 +618,13 @@
     z-index: 23;
     animation: music-clef-pulse 3s ease-in-out infinite;
     filter: drop-shadow(0 0 8px var(--music-spot-pink));
+    background: transparent;
 }
 
 /* Clef stem */
 .theme-music_arts .butterfly-3::before {
+    content: '';
+    position: absolute;
     top: 10px;
     left: 20px;
     width: 5px;
@@ -505,6 +636,8 @@
 
 /* Clef bottom curl */
 .theme-music_arts .butterfly-3::after {
+    content: '';
+    position: absolute;
     bottom: -45px;
     left: 0;
     width: 20px;
@@ -514,11 +647,13 @@
     border-top-color: transparent;
     border-right-color: transparent;
     transform: rotate(-45deg);
+    background: transparent;
 }
 
 /* === STAGE SPOTLIGHT LEFT (elem-6) === */
-/* Spotlight fixture */
 .theme-music_arts .elem-6 {
+    content: '';
+    position: absolute;
     top: 5%;
     left: 20%;
     width: 30px;
@@ -528,8 +663,10 @@
     z-index: 30;
 }
 
-/* Light beam - triangle using borders */
+/* Light beam */
 .theme-music_arts .elem-6::before {
+    content: '';
+    position: absolute;
     top: 25px;
     left: 50%;
     transform: translateX(-50%);
@@ -543,6 +680,8 @@
 
 /* Spotlight lens */
 .theme-music_arts .elem-6::after {
+    content: '';
+    position: absolute;
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
@@ -555,6 +694,8 @@
 
 /* === STAGE SPOTLIGHT RIGHT (cloud-2) === */
 .theme-music_arts .cloud-2 {
+    content: '';
+    position: absolute;
     top: 5%;
     right: 20%;
     width: 30px;
@@ -566,6 +707,8 @@
 
 /* Blue light beam */
 .theme-music_arts .cloud-2::before {
+    content: '';
+    position: absolute;
     top: 25px;
     left: 50%;
     transform: translateX(-50%);
@@ -579,6 +722,8 @@
 
 /* Blue spotlight lens */
 .theme-music_arts .cloud-2::after {
+    content: '';
+    position: absolute;
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
@@ -591,6 +736,8 @@
 
 /* === CENTER SPOTLIGHT (cloud-3) === */
 .theme-music_arts .cloud-3 {
+    content: '';
+    position: absolute;
     top: 3%;
     left: 50%;
     transform: translateX(-50%);
@@ -603,6 +750,8 @@
 
 /* Gold light beam */
 .theme-music_arts .cloud-3::before {
+    content: '';
+    position: absolute;
     top: 28px;
     left: 50%;
     transform: translateX(-50%);
@@ -616,6 +765,8 @@
 
 /* Gold spotlight lens */
 .theme-music_arts .cloud-3::after {
+    content: '';
+    position: absolute;
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
@@ -627,8 +778,9 @@
 }
 
 /* === SAXOPHONE (elem-7) === */
-/* Sax body curve */
 .theme-music_arts .elem-7 {
+    content: '';
+    position: absolute;
     bottom: 20%;
     left: 35%;
     width: 25px;
@@ -644,6 +796,8 @@
 
 /* Sax bell */
 .theme-music_arts .elem-7::before {
+    content: '';
+    position: absolute;
     bottom: -20px;
     left: -10px;
     width: 45px;
@@ -657,6 +811,8 @@
 
 /* Sax neck and mouthpiece */
 .theme-music_arts .elem-7::after {
+    content: '';
+    position: absolute;
     top: -25px;
     left: 5px;
     width: 15px;
@@ -670,8 +826,9 @@
 }
 
 /* === DISCO BALL (elem-8) === */
-/* Ball sphere */
 .theme-music_arts .elem-8 {
+    content: '';
+    position: absolute;
     top: 8%;
     left: 50%;
     transform: translateX(-50%);
@@ -688,6 +845,8 @@
 
 /* Mirror tiles pattern */
 .theme-music_arts .elem-8::before {
+    content: '';
+    position: absolute;
     top: 5px;
     left: 5px;
     width: 30px;
@@ -712,6 +871,8 @@
 
 /* Hanging wire */
 .theme-music_arts .elem-8::after {
+    content: '';
+    position: absolute;
     top: -25px;
     left: 50%;
     transform: translateX(-50%);
@@ -722,6 +883,8 @@
 
 /* === MUSIC STAFF LINES (elem-9) === */
 .theme-music_arts .elem-9 {
+    content: '';
+    position: absolute;
     top: 35%;
     right: 8%;
     width: 80px;
@@ -738,6 +901,8 @@
 
 /* Notes on staff */
 .theme-music_arts .elem-9::before {
+    content: '';
+    position: absolute;
     top: -4px;
     left: 10px;
     width: 10px;
@@ -750,9 +915,25 @@
         55px 8px 0 0 var(--music-spot-gold);
 }
 
+/* Extra note decorations */
+.theme-music_arts .elem-9::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    width: 2px;
+    height: 20px;
+    background: var(--music-note-glow);
+    box-shadow:
+        20px 4px 0 0 var(--music-spot-gold),
+        40px 12px 0 0 var(--music-note-glow),
+        55px 4px 0 0 var(--music-spot-gold);
+}
+
 /* === DANCING FIGURE SILHOUETTE (birds-2) === */
-/* Body */
 .theme-music_arts .birds-2 {
+    content: '';
+    position: absolute;
     bottom: 25%;
     left: 55%;
     width: 20px;
@@ -765,6 +946,8 @@
 
 /* Head */
 .theme-music_arts .birds-2::before {
+    content: '';
+    position: absolute;
     top: -18px;
     left: 50%;
     transform: translateX(-50%);
@@ -776,6 +959,8 @@
 
 /* Arms raised */
 .theme-music_arts .birds-2::after {
+    content: '';
+    position: absolute;
     top: 5px;
     left: -15px;
     width: 50px;
@@ -786,8 +971,9 @@
 }
 
 /* === MICROPHONE STAND (grass) === */
-/* Stand pole */
 .theme-music_arts .grass {
+    content: '';
+    position: absolute;
     bottom: 10%;
     left: 48%;
     width: 4px;
@@ -800,6 +986,8 @@
 
 /* Mic head */
 .theme-music_arts .grass::before {
+    content: '';
+    position: absolute;
     top: -25px;
     left: -10px;
     width: 24px;
@@ -813,6 +1001,8 @@
 
 /* Mic grill pattern */
 .theme-music_arts .grass::after {
+    content: '';
+    position: absolute;
     top: -22px;
     left: -7px;
     width: 18px;
@@ -830,6 +1020,8 @@
 
 /* === DISCO LIGHT REFLECTIONS (scene-particles) === */
 .theme-music_arts .scene-particles {
+    content: '';
+    position: absolute;
     top: 15%;
     left: 10%;
     width: 6px;
@@ -839,25 +1031,23 @@
     z-index: 27;
     animation: music-disco-lights 2s ease-in-out infinite;
     box-shadow:
-        /* Pink lights */
         50px 20px 0 0 var(--music-spot-pink),
         150px 40px 0 0 var(--music-spot-pink),
         280px 15px 0 0 var(--music-spot-pink),
-        /* Blue lights */
         80px 50px 0 0 var(--music-spot-blue),
         200px 30px 0 0 var(--music-spot-blue),
         320px 45px 0 0 var(--music-spot-blue),
-        /* Gold lights */
         120px 25px 0 0 var(--music-spot-gold),
         250px 55px 0 0 var(--music-spot-gold),
         350px 20px 0 0 var(--music-spot-gold),
-        /* Purple lights */
         180px 10px 0 0 var(--music-spot-purple),
         300px 35px 0 0 var(--music-spot-purple);
 }
 
 /* More scattered lights */
 .theme-music_arts .scene-particles::before {
+    content: '';
+    position: absolute;
     top: 100px;
     left: 30px;
     width: 4px;
@@ -872,8 +1062,26 @@
         280px 30px 0 0 var(--music-spot-purple);
 }
 
+/* Star burst effect */
+.theme-music_arts .scene-particles::after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px 3px rgba(255, 255, 255, 0.8),
+        0 0 20px 5px rgba(255, 255, 255, 0.4);
+    animation: music-star-twinkle 1.5s ease-in-out infinite;
+}
+
 /* === SOUND WAVES (depth-fog) === */
 .theme-music_arts .depth-fog {
+    content: '';
+    position: absolute;
     bottom: 30%;
     left: 45%;
     width: 30px;
@@ -882,9 +1090,12 @@
     border-radius: 50%;
     z-index: 9;
     animation: music-sound-wave 2s ease-out infinite;
+    background: transparent;
 }
 
 .theme-music_arts .depth-fog::before {
+    content: '';
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -893,9 +1104,12 @@
     border: 2px solid rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     animation: music-sound-wave 2s ease-out infinite 0.5s;
+    background: transparent;
 }
 
 .theme-music_arts .depth-fog::after {
+    content: '';
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -904,11 +1118,11 @@
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     animation: music-sound-wave 2s ease-out infinite 1s;
+    background: transparent;
 }
 
 /* === ANIMATIONS === */
 
-/* Piano key press effect */
 @keyframes music-key-press {
     0%, 100% { transform: translateY(0); }
     10% { transform: translateY(2px); }
@@ -917,14 +1131,27 @@
     40% { transform: translateY(0); }
 }
 
-/* Guitar strings vibration */
 @keyframes music-strings-vibrate {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(1px); }
-    75% { transform: translateX(-1px); }
+    0%, 100% { transform: translateX(0) scaleY(1); }
+    25% { transform: translateX(1.5px) scaleY(1.01); }
+    50% { transform: translateX(-0.5px) scaleY(0.99); }
+    75% { transform: translateX(-1.5px) scaleY(1.01); }
 }
 
-/* Note floating animation 1 */
+@keyframes music-string-highlight {
+    0%, 100% { opacity: 0; transform: translateY(0); }
+    25% { opacity: 0.8; transform: translateY(-10px); }
+    50% { opacity: 0.3; transform: translateY(-5px); }
+    75% { opacity: 0.8; transform: translateY(-15px); }
+}
+
+@keyframes music-pick-move {
+    0%, 100% { transform: rotate(30deg) translateY(0); }
+    25% { transform: rotate(20deg) translateY(-5px); }
+    50% { transform: rotate(40deg) translateY(3px); }
+    75% { transform: rotate(25deg) translateY(-3px); }
+}
+
 @keyframes music-note-float-1 {
     0%, 100% {
         transform: translate(0, 0) rotate(-20deg);
@@ -936,7 +1163,6 @@
     }
 }
 
-/* Note floating animation 2 */
 @keyframes music-note-float-2 {
     0%, 100% {
         transform: translate(0, 0);
@@ -948,7 +1174,6 @@
     }
 }
 
-/* Treble clef pulse */
 @keyframes music-clef-pulse {
     0%, 100% {
         transform: rotate(45deg) scale(1);
@@ -960,19 +1185,16 @@
     }
 }
 
-/* Disco ball spin */
 @keyframes music-disco-spin {
     0% { transform: translateX(-50%) rotate(0deg); }
     100% { transform: translateX(-50%) rotate(360deg); }
 }
 
-/* Staff lines fade */
 @keyframes music-staff-fade {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
 }
 
-/* Dancing figure */
 @keyframes music-dance {
     0%, 100% {
         transform: translateY(0) rotate(-5deg);
@@ -988,13 +1210,11 @@
     }
 }
 
-/* Disco light reflections */
 @keyframes music-disco-lights {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
 }
 
-/* Sound wave expansion */
 @keyframes music-sound-wave {
     0% {
         transform: translate(-50%, -50%) scale(0.5);
@@ -1006,9 +1226,13 @@
     }
 }
 
+@keyframes music-star-twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
 /* === MASCOT ANIMATIONS === */
 
-/* Happy mascot - bouncing to the beat */
 .theme-music_arts .mascot.happy {
     animation: music-mascot-dance 0.5s ease-in-out infinite;
 }
@@ -1018,7 +1242,6 @@
     50% { transform: translateY(-8px) rotate(3deg); }
 }
 
-/* Sad mascot - slow sway */
 .theme-music_arts .mascot.sad {
     animation: music-mascot-sad 2s ease-in-out infinite;
 }
@@ -1028,7 +1251,6 @@
     50% { transform: translateY(3px); }
 }
 
-/* Idle mascot - gentle groove */
 .theme-music_arts .mascot.idle {
     animation: music-mascot-groove 1.5s ease-in-out infinite;
 }

@@ -102,10 +102,9 @@ body[class*="theme-"] {
     opacity: 1;
     transition: all 0.5s ease;
     pointer-events: none;
-    /* Hide elements by default - theme CSS sets actual dimensions */
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    /* Theme CSS overrides dimensions - don't set width/height here */
+    /* overflow: visible needed for border-based CSS triangles */
+    overflow: visible;
 }
 
 /* Hide all auxiliary scene elements by default - theme CSS sets dimensions */
@@ -226,9 +225,8 @@ body[class*="theme-"] {
     opacity: 1;
     transition: all 0.5s ease;
     pointer-events: none;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    /* Base: hide by default, themes override with actual dimensions */
+    /* Note: overflow:visible needed for border-based triangle shapes */
 }
 
 /* ============================================
@@ -2254,15 +2252,15 @@ body[class*="theme-"] {
    COMIC VISUAL EFFECTS
    ============================================ */
 
-/* Speech Bubble */
+/* Speech Bubble - Positioned ABOVE the mascot */
 .speech-bubble {
     position: absolute;
-    bottom: 130px;
-    right: 50px;
+    bottom: 200px;  /* Higher up, above the mascot */
+    right: 20px;
     background: white;
     border-radius: 20px;
-    padding: 10px 15px;
-    font-size: 18px;
+    padding: 12px 18px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -2270,6 +2268,9 @@ body[class*="theme-"] {
     animation: bubble-pop 0.5s var(--bounce-ease);
     opacity: 0;
     transform: scale(0);
+    pointer-events: none;
+    max-width: 150px;
+    text-align: center;
 }
 
 .speech-bubble.show {
@@ -2277,27 +2278,38 @@ body[class*="theme-"] {
     transform: scale(1);
 }
 
+/* Speech bubble tail pointing DOWN to mascot */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -10px;
-    right: 25px;
+    top: 100%;  /* Position at bottom of bubble */
+    right: 30px;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 15px solid white;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid white;  /* Arrow points down */
 }
 
 /* Left side speech bubble */
 .speech-bubble.side-left {
     right: auto;
-    left: 50px;
+    left: 20px;
 }
 
 .speech-bubble.side-left::after {
     right: auto;
-    left: 25px;
+    left: 30px;
+}
+
+/* Hide speech bubble when mascot is hidden */
+.worm-character.hidden ~ .speech-bubble,
+.worm-character.hiding ~ .speech-bubble,
+.mascot-container.hidden .speech-bubble,
+.mascot-container.hiding .speech-bubble {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+    pointer-events: none;
 }
 
 @keyframes bubble-pop {

@@ -126,6 +126,31 @@ body {
     color: var(--primary);
 }
 
+/* Audio Toggle Button */
+.audio-toggle {
+    background: linear-gradient(135deg, var(--fun-yellow), var(--fun-orange));
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.audio-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.audio-toggle:active {
+    transform: scale(0.95);
+}
+
 /* User Info */
 .user-info {
     display: flex;

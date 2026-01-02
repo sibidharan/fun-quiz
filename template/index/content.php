@@ -73,4 +73,31 @@
     </div>
 </div>
 
+<script src="/js/audio-manager.js"></script>
 <script src="/js/registration.js"></script>
+<script>
+    // Play menu music on home page
+    document.addEventListener('click', function initMenuMusic() {
+        if (typeof audioManager !== 'undefined') {
+            audioManager.init();
+            audioManager.playMusic('menu');
+        }
+        document.removeEventListener('click', initMenuMusic);
+    }, { once: true });
+
+    // Add hover and click sounds to all interactive elements
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('button, .btn, .nav-link, .topic-badge').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (typeof audioManager !== 'undefined') {
+                    audioManager.play('hover');
+                }
+            });
+            el.addEventListener('click', () => {
+                if (typeof audioManager !== 'undefined') {
+                    audioManager.play('click');
+                }
+            });
+        });
+    });
+</script>

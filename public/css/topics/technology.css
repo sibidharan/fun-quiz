@@ -605,57 +605,89 @@
 }
 
 /* === HOLOGRAPHIC DISPLAY (elem-6) === */
+/* 3D rotating globe hologram with scanning lines */
 .theme-technology .elem-6 {
     top: 25%;
     right: 15%;
     width: 80px;
-    height: 70px;
+    height: 85px;
     z-index: 11;
-    animation: tech-hologram-rotate 12s ease-in-out infinite;
+    animation: tech-hologram-float 12s ease-in-out infinite;
 }
 
-/* Hologram projection */
+/* Holographic globe sphere */
 .theme-technology .elem-6::before {
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: 60px;
-    background: rgba(0, 255, 255, 0.1);
-    border: 2px solid var(--tech-cyan-dim);
-    clip-path: polygon(10% 100%, 90% 100%, 100% 0%, 0% 0%);
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 55px;
+    background:
+        /* Globe latitude lines */
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 8px,
+            rgba(0, 255, 255, 0.4) 8px,
+            rgba(0, 255, 255, 0.4) 10px
+        ),
+        /* Globe longitude curves simulated */
+        radial-gradient(ellipse 60% 100% at 30% 50%, transparent 45%, rgba(0, 255, 255, 0.3) 46%, transparent 48%),
+        radial-gradient(ellipse 60% 100% at 70% 50%, transparent 45%, rgba(0, 255, 255, 0.3) 46%, transparent 48%),
+        radial-gradient(ellipse 30% 100% at 50% 50%, transparent 45%, rgba(0, 255, 255, 0.25) 46%, transparent 48%),
+        /* Sphere gradient */
+        radial-gradient(circle at 35% 35%, rgba(0, 255, 255, 0.25) 0%, rgba(0, 255, 255, 0.1) 40%, rgba(0, 100, 130, 0.15) 70%, transparent 100%);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 255, 255, 0.5);
     box-shadow:
-        0 0 30px rgba(0, 255, 255, 0.4),
-        inset 0 0 20px rgba(0, 255, 255, 0.2),
-        /* Hologram content - circular display */
-        inset 40px 30px 0 -25px var(--tech-cyan),
-        inset 40px 30px 15px -20px rgba(0, 255, 255, 0.3);
-    animation: tech-hologram-flicker 3s ease-in-out infinite;
+        /* Outer glow */
+        0 0 25px rgba(0, 255, 255, 0.6),
+        0 0 50px rgba(0, 255, 255, 0.3),
+        /* Inner glow */
+        inset 0 0 20px rgba(0, 255, 255, 0.3),
+        /* Highlight */
+        inset -8px -8px 15px rgba(0, 255, 255, 0.2);
+    animation: tech-globe-rotate 8s linear infinite, tech-hologram-flicker 3s ease-in-out infinite;
 }
 
-/* Projector base */
+/* Projector base with beam */
 .theme-technology .elem-6::after {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 10px;
-    background: var(--tech-metal-mid);
-    border-radius: 5px;
+    width: 40px;
+    height: 12px;
+    background: linear-gradient(180deg, var(--tech-metal-light) 0%, var(--tech-metal-dark) 100%);
+    border-radius: 3px 3px 6px 6px;
     box-shadow:
-        0 0 15px rgba(0, 255, 255, 0.3),
-        /* Light beam upward */
-        0 -20px 10px 5px rgba(0, 255, 255, 0.15);
+        /* Base glow */
+        0 0 15px rgba(0, 255, 255, 0.4),
+        /* Light beam cone upward */
+        0 -15px 8px 3px rgba(0, 255, 255, 0.08),
+        0 -25px 12px 6px rgba(0, 255, 255, 0.05),
+        0 -35px 15px 8px rgba(0, 255, 255, 0.03),
+        /* Status LEDs */
+        -12px 3px 0 -4px var(--tech-cyan),
+        12px 3px 0 -4px var(--tech-green),
+        /* Base shadow */
+        0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes tech-hologram-rotate {
-    0%, 100% { transform: translateY(0) rotateY(0deg) scale(1); }
-    33% { transform: translateY(-10px) rotateY(15deg) scale(1.05); }
-    66% { transform: translateY(-5px) rotateY(-15deg) scale(1.03); }
+@keyframes tech-hologram-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes tech-globe-rotate {
+    0% { background-position: 0px 0, 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 55px 0, 0 0, 0 0, 0 0, 0 0; }
 }
 
 @keyframes tech-hologram-flicker {
-    0%, 100% { opacity: 0.85; }
-    50% { opacity: 1; }
+    0%, 90%, 100% { opacity: 0.9; }
+    92% { opacity: 0.6; }
+    94% { opacity: 0.95; }
+    96% { opacity: 0.7; }
 }
 
 /* === DRONE (elem-7) === */
@@ -734,64 +766,84 @@
 }
 
 /* === SMART WATCH (elem-8) === */
+/* Modern smartwatch with rounded display and band */
 .theme-technology .elem-8 {
     bottom: 32%;
     right: 28%;
-    width: 45px;
-    height: 55px;
+    width: 50px;
+    height: 70px;
     z-index: 11;
-    animation: tech-watch-pulse 7s ease-in-out infinite;
+    animation: tech-watch-float 8s ease-in-out infinite;
 }
 
-/* Watch screen */
+/* Watch face with rounded corners */
 .theme-technology .elem-8::before {
-    top: 8px;
-    left: 5px;
-    width: 35px;
-    height: 35px;
-    background: var(--tech-screen-dark);
-    border: 2px solid var(--tech-metal-mid);
-    border-radius: 6px;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: 45px;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border: 3px solid var(--tech-metal-light);
+    border-radius: 10px;
     box-shadow:
-        0 0 20px rgba(0, 255, 255, 0.4),
-        /* Time dots */
-        inset 17px 10px 0 -15px var(--tech-cyan),
-        inset 17px 16px 0 -15px var(--tech-cyan),
-        /* Notification badge */
-        inset 28px 8px 0 -13px var(--tech-red),
-        /* Heart rate line */
-        inset 8px 26px 0 -15px var(--tech-pink),
-        inset 14px 24px 0 -15px var(--tech-pink),
-        inset 20px 28px 0 -15px var(--tech-pink),
-        inset 26px 24px 0 -15px var(--tech-pink);
-    animation: tech-watch-screen-glow 3.5s ease-in-out infinite;
+        /* Outer glow */
+        0 0 20px rgba(0, 255, 255, 0.5),
+        0 0 40px rgba(0, 255, 255, 0.2),
+        /* Screen content - time display */
+        inset 10px 8px 0 -6px var(--tech-cyan),
+        inset 22px 8px 0 -7px var(--tech-cyan),
+        inset 16px 10px 0 -8px var(--tech-cyan),
+        /* Battery indicator */
+        inset 30px 6px 0 -8px var(--tech-green),
+        /* Heart icon */
+        inset 10px 22px 0 -7px var(--tech-pink),
+        inset 10px 22px 6px -5px rgba(255, 64, 129, 0.4),
+        /* Steps counter dots */
+        inset 22px 22px 0 -8px var(--tech-amber),
+        inset 26px 22px 0 -8px var(--tech-amber),
+        inset 30px 22px 0 -8px var(--tech-amber),
+        /* Bottom notification */
+        inset 19px 34px 0 -7px var(--tech-purple),
+        /* Inner shadow for depth */
+        inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    animation: tech-watch-screen-glow 4s ease-in-out infinite;
 }
 
-/* Watch band */
+/* Watch bands (top and bottom) */
 .theme-technology .elem-8::after {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 25px;
-    height: 8px;
-    background: var(--tech-metal-dark);
-    border-radius: 2px;
+    width: 28px;
+    height: 14px;
+    background: linear-gradient(90deg, #37474F 0%, #546E7A 50%, #37474F 100%);
+    border-radius: 4px 4px 0 0;
     box-shadow:
         /* Bottom band */
-        0 47px 0 0 var(--tech-metal-dark);
+        0 56px 0 0 #37474F,
+        0 56px 0 0 linear-gradient(90deg, #37474F 0%, #546E7A 50%, #37474F 100%),
+        /* Band texture lines */
+        -8px 3px 0 -7px rgba(0, 0, 0, 0.3),
+        8px 3px 0 -7px rgba(0, 0, 0, 0.3),
+        -8px 59px 0 -7px rgba(0, 0, 0, 0.3),
+        8px 59px 0 -7px rgba(0, 0, 0, 0.3),
+        /* Side button */
+        22px 30px 0 -8px var(--tech-metal-light);
 }
 
-@keyframes tech-watch-pulse {
-    0%, 100% { transform: translateY(0) scale(1); }
-    20% { transform: translateY(-3px) scale(1.05); }
-    25% { transform: translateY(0) scale(1); }
-    30% { transform: translateY(-3px) scale(1.05); }
-    35% { transform: translateY(0) scale(1); }
+@keyframes tech-watch-float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
 }
 
 @keyframes tech-watch-screen-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 17px 10px 0 -15px var(--tech-cyan), inset 17px 16px 0 -15px var(--tech-cyan), inset 28px 8px 0 -13px var(--tech-red), inset 8px 26px 0 -15px var(--tech-pink), inset 14px 24px 0 -15px var(--tech-pink), inset 20px 28px 0 -15px var(--tech-pink), inset 26px 24px 0 -15px var(--tech-pink); }
-    50% { box-shadow: 0 0 35px rgba(0, 255, 255, 0.7), 0 0 50px rgba(0, 255, 255, 0.3), inset 17px 10px 0 -15px var(--tech-cyan), inset 17px 16px 0 -15px var(--tech-cyan), inset 28px 8px 0 -13px var(--tech-red), inset 8px 26px 0 -15px var(--tech-pink), inset 14px 24px 0 -15px var(--tech-pink), inset 20px 28px 0 -15px var(--tech-pink), inset 26px 24px 0 -15px var(--tech-pink); }
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.2), inset 10px 8px 0 -6px var(--tech-cyan), inset 22px 8px 0 -7px var(--tech-cyan), inset 16px 10px 0 -8px var(--tech-cyan), inset 30px 6px 0 -8px var(--tech-green), inset 10px 22px 0 -7px var(--tech-pink), inset 10px 22px 6px -5px rgba(255, 64, 129, 0.4), inset 22px 22px 0 -8px var(--tech-amber), inset 26px 22px 0 -8px var(--tech-amber), inset 30px 22px 0 -8px var(--tech-amber), inset 19px 34px 0 -7px var(--tech-purple), inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4), inset 10px 8px 0 -6px var(--tech-cyan), inset 22px 8px 0 -7px var(--tech-cyan), inset 16px 10px 0 -8px var(--tech-cyan), inset 30px 6px 0 -8px var(--tech-green), inset 10px 22px 0 -7px var(--tech-pink), inset 10px 22px 10px -3px rgba(255, 64, 129, 0.6), inset 22px 22px 0 -8px var(--tech-amber), inset 26px 22px 0 -8px var(--tech-amber), inset 30px 22px 0 -8px var(--tech-amber), inset 19px 34px 0 -7px var(--tech-purple), inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
 }
 
 /* === ENERGY NODES (pine-forest reused) === */
